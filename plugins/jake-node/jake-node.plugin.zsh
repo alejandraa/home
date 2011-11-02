@@ -1,5 +1,6 @@
 # Warning : Jakefile should have the right cas : Jakefile
 # Add a .jake_tasks file to your working directory
+#
 #---oh-my-zsh plugin : take Autocomplete for Jake tool---
 # Jake : https://github.com/mde/jake
 # Warning : Jakefile should have the right case : Jakefile
