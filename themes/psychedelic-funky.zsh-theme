@@ -16,14 +16,14 @@ local path_p="${blue_op}%~${blue_cp}"
 local user_host="${blue_op}%n@%m${blue_cp}"
 
 # da prompt son
-PROMPT="╭─${path_p}─${user_host}$(git_prompt_info)
+PROMPT="╭─${path_p}─${user_host}$(vcs_info)
 ╰─ ♬  "
 PROMPT2="╭─${path_p}─${user_host}
 ╰─ ♯  "
 
 # git plugin
-ZSH_THEME_GIT_PROMPT_PREFIX=" on %{$fg[magenta]%}"
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[green]%}!"
-ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[green]%}?"
+ZSH_THEME_GIT_PROMPT_PREFIX="-["
+ZSH_THEME_GIT_PROMPT_SUFFIX="]"
+ZSH_THEME_GIT_PROMPT_DIRTY="!"
+ZSH_THEME_GIT_PROMPT_UNTRACKED="?"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
