@@ -20,7 +20,7 @@
 			<key>filename</key>
 			<string>.zshrc</string>
 			<key>lastUsed</key>
-			<date>2011-12-20T03:25:21Z</date>
+			<date>2011-12-20T03:37:56Z</date>
 			<key>selected</key>
 			<true/>
 		</dict>
@@ -49,8 +49,8 @@
 		<string>.zshrc</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
-	<true/>
+	<false/>
 	<key>windowFrame</key>
-	<string>{{605, 311}, {915, 658}}</string>
+	<string>{{307, 324}, {915, 658}}</string>
 </dict>
 </plist>
