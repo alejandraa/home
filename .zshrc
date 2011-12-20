@@ -44,6 +44,9 @@ EDITOR='mate -w'
 ARCHFLAGS='-arch x86_64'
 PGDATA=/usr/local/var/postgres
 
+# mysql config
+MYSQL_PS1="\R:\m:\s \h> "
+
 # load rvm into a shell session
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
