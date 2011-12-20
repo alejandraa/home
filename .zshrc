@@ -26,8 +26,30 @@ ZSH_THEME="psychedelic-funky"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git bundler osx)
 
-source $ZSH/oh-my-zsh.sh
+# program and documentation paths
+PATH=/usr/local/bin:/usr/pear/bin:$HOME/bin:/usr/local/share/npm/bin:/usr/local/Cellar/python/2.7.1/bin:$PATH
+MANPATH=/opt/local/share/man:$MANPATH
 
-# necromancer@warehouse .profile
-PATH=/Users/necromancer/.rvm/gems/ruby-1.9.2-p290/bin:/Users/necromancer/.rvm/gems/ruby-1.9.2-p290@global/bin:/Users/necromancer/.rvm/rubies/ruby-1.9.2-p290/bin:/Users/necromancer/.rvm/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
+# bash .profile
+EDITOR='mate -w'
+
+# postgresql config
+ARCHFLAGS='-arch x86_64'
+PGDATA=/usr/local/var/postgres
+
+# load rvm into a shell session
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+# jsdoc config
+JSDOCTEMPLATEDIR=/home/necromancer/Code/jsdoc/jsdoc-toolkit/templates
+
+# aliases
+alias redis="redis-server /usr/local/etc/redis.conf"
+alias py="python"
+alias rb="ruby"
+alias js="node"
+alias css="compass"
+alias tmbundle="osascript -e 'tell app \"TextMate\" to reload bundles'"
+
+# run oh-my-zsh!
+source $ZSH/oh-my-zsh.sh
