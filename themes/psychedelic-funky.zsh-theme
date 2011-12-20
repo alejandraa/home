@@ -16,7 +16,7 @@ local path_p="${blue_op}%~${blue_cp}"
 local user_host="${blue_op}%n@%m${blue_cp}"
 
 # git prompt string if necessary
-2local da_git_prompt='${return_status}$(git_prompt_info)$(git_prompt_status)%{$reset_color%}'
+local da_git_prompt='${return_status}$(git_prompt_info)$(git_prompt_status)%{$reset_color%}'
 
 # da prompt son
 PROMPT="╭─${path_p}─${user_host}${da_git_prompt}
