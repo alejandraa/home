@@ -56,3 +56,6 @@ JSDOCTEMPLATEDIR=/home/necromancer/Code/jsdoc/jsdoc-toolkit/templates
 # aliases
 #alias redis="redis-server /usr/local/etc/redis.conf"
 #alias tmbundle="osascript -e 'tell app \"TextMate\" to reload bundles'"
+
+# execute custom commands depending on box
+source $HOME/.zsh_profile
