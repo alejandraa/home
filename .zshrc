@@ -57,5 +57,7 @@ JSDOCTEMPLATEDIR=/home/necromancer/Code/jsdoc/jsdoc-toolkit/templates
 # define the C compiler, we need this so RVM will actually install shit
 CC=/usr/bin/gcc-4.2
 
+alias c=clear
+
 # execute custom commands depending on box
 # source $HOME/.zsh_profile
