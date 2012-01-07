@@ -34,11 +34,12 @@ source $ZSH/oh-my-zsh.sh
 #
 
 # program and documentation paths
-PATH=/usr/local/bin:/usr/pear/bin:$HOME/bin:/usr/local/share/npm/bin:/usr/local/Cellar/python/2.7.1/bin:$PATH
+PATH=/usr/local/bin:/usr/pear/bin:$HOME/bin:/usr/local/share/npm/bin:/usr/local/Cellar/python/2.7.1/bin:/usr/local/git/bin/:$PATH
 MANPATH=/opt/local/share/man:$MANPATH
 
 # bash .profile
 EDITOR='mate -w'
+GIT_EDITOR='mate'
 
 # postgresql config
 ARCHFLAGS='-arch x86_64'
@@ -53,9 +54,10 @@ MYSQL_PS1="\R:\m:\s \h> "
 # jsdoc config
 JSDOCTEMPLATEDIR=/home/necromancer/Code/jsdoc/jsdoc-toolkit/templates
 
-# aliases
-alias redis="redis-server /usr/local/etc/redis.conf"
-alias tmbundle="osascript -e 'tell app \"TextMate\" to reload bundles'"
+# define the C compiler, we need this so RVM will actually install shit
+CC=/usr/bin/gcc-4.2
+
+alias c=clear
 
 # execute custom commands depending on box
-source $HOME/.zsh_profile
+# source $HOME/.zsh_profile
