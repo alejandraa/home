@@ -10,7 +10,7 @@ ZSH=$HOME/.oh-my-zsh
 omz=ZSH 	# alias to the ZSH configuration
 
 # Program and documentation paths
-PATH=/usr/local/bin:/usr/pear/bin:$HOME/bin:/usr/local/share/npm/bin:/usr/local/Cellar/python/2.7.1/bin:/usr/local/git/bin/:$PATH
+PATH=/usr/local/bin:/usr/pear/bin:$HOME/bin:/usr/local/share/npm/bin:/usr/local/Cellar/python/2.7.1/bin:/usr/local/git/bin/:$HOME/Sites/blog/bin:$HOME/Projects/blog/bin:$PATH
 MANPATH=/opt/local/share/man:$MANPATH
 
 # Default text editors
