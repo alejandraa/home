@@ -1,7 +1,9 @@
 current_path=`pwd`
-printf '\033[0;34m%s\033[0m\n' "Upgrading Oh My Zsh"
+printf '\033[0;34m%s\033[0m\n' "Upgrading Oh My Zsh from upstream..."
 ( cd $ZSH && git pull upstream master )
-printf '\033[0;34m%s\033[0m\n' "Synchronizing to fork"
+printf '\033[0;34m%s\033[0m\n' "Upgrading Oh My Zsh from fork..."
+(cd $ZSH && git pull origin master )
+printf '\033[0;34m%s\033[0m\n' "Synchronizing upstream to fork"
 ( cd $ZSH && git push origin master )
 printf '\033[0;32m%s\033[0m\n' '         __                                     __   '
 printf '\033[0;32m%s\033[0m\n' '  ____  / /_     ____ ___  __  __   ____  _____/ /_  '
