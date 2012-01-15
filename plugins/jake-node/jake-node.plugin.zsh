@@ -1,4 +1,7 @@
-#---oh-my-zsh plugin : task Autocomplete for Jake tool---
+# Warning : Jakefile should have the right cas : Jakefile
+# Add a .jake_tasks file to your working directory
+#
+#---oh-my-zsh plugin : take Autocomplete for Jake tool---
 # Jake : https://github.com/mde/jake
 # Warning : Jakefile should have the right case : Jakefile or jakefile
 # Tested on : MacOSX 10.7 (Lion), Ubuntu 11.10
@@ -11,4 +14,4 @@ function _jake () {
   fi
 }
 
-compdef _jake jake
+compctl -K _jake jake
