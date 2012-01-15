@@ -1,0 +1,5 @@
+find . -type f -name '._*' -exec rm {} +
+echo "Removed all ._ files"
+
+#rm -rf .dotest/
+#echo "Removed the .dotest/ directory"

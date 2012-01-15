@@ -1,0 +1,83 @@
+#!/usr/bin/env ruby
+#
+# = Stock
+#
+# Given a key/value pair of a stock symbol and how many shares you own, this
+# program will spit out the yearly dividend amounts you will yield from holding
+# it. Based on data from Yahoo! Finance. 
+#
+# == Installation
+# Install to ~/bin and run
+# => chmod 777 stock
+#
+# Then edit your `~/.profile` so that executables can be loaded from `~/bin`...
+# => export PATH = $HOME/bin:$PATH
+#
+# Reload your shell with `source ~/.profile` and type
+# => stock T=100
+# to see how much you'll be making yearly through dividends.
+#
+# Author:: Tom Scott
+# Homepage:: http://tinyurl.com/div-yield
+
+require 'net/http'
+require 'bigdecimal'
+
+symbols_arr = Array.new
+shares_of = {}
+
+# A small function that shows the user how to use `stock`, then exits with error code=1
+def usage(msg)
+  if msg
+    puts msg
+    puts "-----------------------------------------------------------------"
+  end
+  puts "Usage: stock {symbol}={shares} - prints out the current price and"
+  puts "yearly dividend yield in USD, based on how many shares you own."
+  exit 1
+end
+
+unless ARGV.empty?
+  ARGV.each do |arg|
+    unless arg == ''
+      arg_arr = arg.split '='
+      symbol = arg_arr[0]
+      shares_of[symbol] = arg_arr[1].to_i
+      symbols_arr.push(symbol)
+    end
+  end
+
+  symbols = symbols_arr.join '+'
+  opts = 'syl9'
+  url = "http://download.finance.yahoo.com/d/quotes.csv?s=#{symbols}&f=#{opts}"
+  values  = Net::HTTP.get URI(url)
+  stocks  = values.split "\n"
+
+  unless stocks.empty?
+    stocks.each do |stock_str|
+      # raw data
+      stock     = stock_str.split ','
+      symbol    = stock[0].split('"').join('')
+      shares_of_stock = BigDecimal.new(shares_of[symbol].to_s)
+      dividend  = stock[1].to_f
+      price     = stock[2].to_f
+      
+      if shares_of_stock > 0  
+        # calculations
+        div_per_share = (price*dividend/100).round(2)
+        div_yield     = (div_per_share*shares_of_stock).round(2)
+    
+        # presentation
+        puts "#{symbol}:\t$#{div_yield}/year\t\t(@ #{div_per_share}/share)"
+      else
+        usage("You must specify more than 0 shares of #{symbol}.")
+      end
+    end
+    exit 0
+  else
+    symbols_str = symbols_arr.join ' '
+    usage("Search query failed for stocks #{symbols_str}.")
+  end
+else
+  usage("No arguments specified.")
+end
