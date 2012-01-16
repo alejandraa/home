@@ -29,7 +29,7 @@ JSDOCTEMPLATEDIR=/home/necromancer/Code/jsdoc/jsdoc-toolkit/templates
 # Define the C compiler
 CC=/usr/bin/gcc-4.2
 
-# Clearing is something I do all the time
+# Aliases
 alias c=clear
 
 # Load my custom oh my zsh theme (based on "funky")
