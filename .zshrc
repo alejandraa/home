@@ -1,17 +1,12 @@
 ##
-# @tubbo's .zshrc
-#
-# uses oh-my-zsh for black magick mothafucka code
-# http://github.com/tubbo/oh-my-zsh
+# This is my ZSH configuration. I use oh-my-zsh for ease of use
 ##
 
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
-omz=ZSH 	# alias to the ZSH configuration
 
 # Program and documentation paths
 PATH=/usr/local/bin:/usr/pear/bin:$HOME/.oh-my-zsh/bin:/usr/local/share/npm/bin:/usr/local/Cellar/python/2.7.1/bin:/usr/local/git/bin/:$PATH
-PATH=$HOME/Sites/blog/bin:$HOME/Projects/blog/bin:$PATH
 MANPATH=/opt/local/share/man:$MANPATH
 
 # Default text editors
@@ -31,7 +26,7 @@ MYSQL_PS1="\R:\m:\s \h> "
 # JSDoc config
 JSDOCTEMPLATEDIR=/home/necromancer/Code/jsdoc/jsdoc-toolkit/templates
 
-# Define the C compiler, we need this so RVM will actually install shit
+# Define the C compiler
 CC=/usr/bin/gcc-4.2
 
 # Clearing is something I do all the time
@@ -55,9 +50,7 @@ ZSH_THEME="psychedelic-funky"	# if you set this to "random", it'll load a random
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 # COMPLETION_WAITING_DOTS="true"
 
-# Load the following plugins for aliases, extra completion, and other
-# generally fun features. Some plugins have been modified, their
-# modifications can be found in the custom/<plugin> directories.
+# Load oh-my-zsh plugins
 plugins=(git osx bundler vagrant thor rvm gem)
 
 # Run oh-my-zsh!

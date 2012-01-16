@@ -4,17 +4,17 @@
 #
 # Given a key/value pair of a stock symbol and how many shares you own, this
 # program will spit out the yearly dividend amounts you will yield from holding
-# it. Based on data from Yahoo! Finance. 
+# it. Based on data from Yahoo! Finance.
 #
 # == Installation
 # Install to ~/bin and run
-# => chmod 777 stock
+# => <tt>chmod 777 stock</tt>
 #
-# Then edit your `~/.profile` so that executables can be loaded from `~/bin`...
-# => export PATH = $HOME/bin:$PATH
+# Then edit your Shell config so that executables can be loaded from `~/bin`...
+# => <tt>export PATH = $HOME/bin:$PATH</tt>
 #
 # Reload your shell with `source ~/.profile` and type
-# => stock T=100
+# => <tt>stock T=100</tt>
 # to see how much you'll be making yearly through dividends.
 #
 # Author:: Tom Scott
@@ -61,12 +61,12 @@ unless ARGV.empty?
       shares_of_stock = BigDecimal.new(shares_of[symbol].to_s)
       dividend  = stock[1].to_f
       price     = stock[2].to_f
-      
-      if shares_of_stock > 0  
+
+      if shares_of_stock > 0
         # calculations
         div_per_share = (price*dividend/100).round(2)
         div_yield     = (div_per_share*shares_of_stock).round(2)
-    
+
         # presentation
         puts "#{symbol}:\t$#{div_yield}/year\t\t(@ #{div_per_share}/share)"
       else

@@ -1,3 +1,2 @@
-#!/bin/sh
-# shares iTunes library on warehouse.1913.psychedeli.ca 
+# Shares my iTunes library on garage.1913.psychedeli.ca
 ssh -fNL *:36890:127.0.0.1:3689 necromancer@1913.psychedeli.ca && dns-sd -R "garage" _daap._tcp local 36890
