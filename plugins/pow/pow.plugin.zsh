@@ -63,7 +63,7 @@ powit(){
 
 # View the standard out (puts) from any pow app
 alias kaput="tail -f ~/Library/Logs/Pow/apps/*"
-  [ ! -d "~/.pow/${vhost}/tmp" ] &&  mkdir -p "~/.pow/$vhost/tmp"
+  # [ ! -d "~/.pow/${vhost}/tmp" ] &&  mkdir -p "~/.pow/$vhost/tmp"
   touch ~/.pow/$vhost/tmp/restart.txt;
   [ $? -eq 0 ] &&  echo "pow: restarting $vhost.dev"
 }
