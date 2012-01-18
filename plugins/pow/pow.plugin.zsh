@@ -4,6 +4,7 @@
 # Adds a kapow command that will restart an app
 #
 #   $ kapow myapp
+#   $ kapow # defaults to current directory
 #
 # Supports command completion.
 #
@@ -11,28 +12,11 @@
 # 
 #    autoload -U compinit compinit
 #
-# Changes:
-#
-# Defaults to the current application, and will walk up the tree to find 
-# a config.ru file and restart the corresponding app
-#
-# Will Detect if a app does not exist in pow and print a (slightly) helpful 
-# error message
-
-rack_root_detect(){
-  setopt chaselinks
-  local orgdir=$(pwd)
-  local basedir=$(pwd)
-
-  while [[ $basedir != '/' ]]; do
-    test -e "$basedir/config.ru" && break
-    builtin cd ".." 2>/dev/null
-    basedir="$(pwd)"
-  done
-
-  builtin cd $orgdir 2>/dev/null
-  [[ ${basedir} == "/" ]] && return 1
-  echo `basename $basedir | sed -E "s/.(com|net|org)//"`
+function kapow {
+	FOLDERNAME=$1
+	if [ -z "$FOLDERNAME" ]; then; FOLDERNAME=${PWD##*/}; fi
+	touch ~/.pow/$FOLDERNAME/tmp/restart.txt;
+	if [ $? -eq 0 ]; then; echo "pow: restarting $FOLDERNAME" ; fi
 }
 
 kapow(){
