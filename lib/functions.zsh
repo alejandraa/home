@@ -16,6 +16,6 @@ function take() {
 }
 
 function configure_oh_my_zsh() {
-  subl ~/.oh-my-zsh
+  $EDITOR ~/.oh-my-zsh
   cd ~/.oh-my-zsh
 }

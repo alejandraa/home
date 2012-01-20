@@ -11,7 +11,7 @@ MANPATH=/opt/local/share/man:$MANPATH
 
 # Default text editors
 EDITOR='subl -w'
-GIT_EDITOR='subl -w'
+GIT_EDITOR='vim'
 
 # PostgreSQL config
 ARCHFLAGS='-arch x86_64'
