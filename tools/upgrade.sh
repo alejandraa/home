@@ -1,4 +1,5 @@
 current_path=`pwd`
+
 printf '\033[0;34m%s\033[0m\n' "Upgrading Oh My Zsh from upstream..."
 ( cd $ZSH && git pull upstream master )
 printf '\033[0;34m%s\033[0m\n' "Upgrading Oh My Zsh from fork..."
@@ -13,4 +14,5 @@ printf '\033[0;32m%s\033[0m\n' '\____/_/ /_/  /_/ /_/ /_/\__, /    /___/____/_/ 
 printf '\033[0;32m%s\033[0m\n' '                        /____/                       '
 printf '\033[0;34m%s\033[0m\n' 'Hooray! Oh My Zsh has been updated and/or is at the current version.'
 printf '\033[0;34m%s\033[1m%s\033[0m\n' 'To keep up on the latest, be sure to follow Oh My Zsh on twitter: ' 'http://twitter.com/ohmyzsh'
+
 cd "$current_path"
