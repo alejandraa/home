@@ -40,6 +40,8 @@ alias ga='git add'
 compdef _git ga=git-add
 alias gm='git merge'
 compdef _git gm=git-merge
+alias gls="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+compdef _git gls=git-log
 alias grh='git reset HEAD'
 compdef _get grh=git-reset
 alias grhh='git reset HEAD --hard'
