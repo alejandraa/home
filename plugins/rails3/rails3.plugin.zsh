@@ -28,9 +28,6 @@ alias rtf='rake test:functionals'
 alias rti='rake test:integrations'
 alias rts='rtest' # defined in ruby.plugin.zsh
 
-# Common 3rd-party processes
-alias redis="redis-server /usr/local/etc/redis.conf"
-
 # Logging
 alias rld='tail -f log/development.log'
 alias rlt='tail -f log/test.log'
@@ -40,3 +37,4 @@ alias rlp='tail -f log/production.log'
 
 # Server stuff
 alias u='unicorn -p 3000'
+alias redis="redis-server /usr/local/etc/redis.conf"

@@ -52,3 +52,7 @@ alias rtest_rake='nocorrect rtest_rake'
 # Shorthand aliases
 alias t='rtest'
 alias rts='rtest_rake'
+
+# Run a ruby script
+alias rb='ruby'
+
