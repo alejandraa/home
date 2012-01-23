@@ -39,6 +39,8 @@ alias gm='git merge'
 compdef _git gm=git-merge
 alias gls="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 compdef _git gls=git-log
+alias grh='git reset HEAD'
+alias grhh='git reset HEAD --hard'
 
 # Git and svn mix
 alias git-svn-dcommit-push='git svn dcommit && git push github master:svntrunk'
