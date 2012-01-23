@@ -35,7 +35,7 @@ compdef _git glg=git-log
 alias gls='git log --stat --max-count=5'
 compdef _git gls=git-log
 alias glgg='git log --graph --max-count=5'
-compdef _git glgg=git-log
+compdef _git glg=git-log
 alias lol='git lol'
 compdef _git lol=git-log
 alias gss='git status -s'
