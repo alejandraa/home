@@ -1,5 +1,5 @@
 [core]
-  editor = subl
+  editor = vim
 [user]
 	name = Tom Scott
 	email = tubbo@psychedeli.ca
