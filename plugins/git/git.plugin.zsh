@@ -5,6 +5,8 @@ alias gst='git status'
 compdef _git gst=git-status
 alias gl='git pull'
 compdef _git gl=git-pull
+alias glr='git pull --rebase'
+compdef _git gl=git-pull
 alias gup='git fetch && git rebase'
 compdef _git gup=git-fetch
 alias gp='git push'
@@ -26,11 +28,12 @@ alias gcount='git shortlog -sn'
 compdef gcount=git
 alias gcp='git cherry-pick'
 compdef _git gcp=git-cherry-pick
-alias glg='git l'	# alias has been set up in .gitconfig
-#alias glg='git log --stat --max-count=5'
+alias glg="log --graph --pretty=format':%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset'"
 compdef _git glg=git-log
 alias glgg='git log --graph --max-count=5'
 compdef _git glgg=git-log
+alias lol='log --pretty=oneline --abbrev-commit --graph --decorate'
+compdef _git lol=git-log
 alias gss='git status -s'
 compdef _git gss=git-status
 alias ga='git add'
@@ -40,7 +43,9 @@ compdef _git gm=git-merge
 alias gls="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 compdef _git gls=git-log
 alias grh='git reset HEAD'
+compdef _get grh=git-reset
 alias grhh='git reset HEAD --hard'
+compdef _get grhh=git-reset
 
 # Git and svn mix
 alias git-svn-dcommit-push='git svn dcommit && git push github master:svntrunk'

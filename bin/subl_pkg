@@ -1,0 +1,37 @@
+#!/usr/bin/env ruby
+#
+# Installs a TextMate bundle to Sublime Text 2
+#
+# Author:: Tom Scott
+# Homepage:: http://psychedeli.ca/
+
+require 'rubygems'
+require 'thor'
+
+class SublimePackage < Thor
+  include Thor::Actions
+
+  desc "install", "Installs a Sublime Text 2 package"
+  def install(package)
+    packages_dir = '$HOME/Application Support/Sublime Text 2/Packages'
+
+    # if package.includes 'github' || package.includes 'git'
+      run "git clone #{package} #{packages_dir}/#{package}"
+    # else
+    #   run "cp #{package} #{packages_dir}/#{package}"
+    # end
+
+    say "Installed #{package} to Sublime Text 2."
+  end
+
+  desc "uninstall", "Uninstalls a Sublime Text 2 package"
+  def uninstall(package)
+    run "rm -rf ~/Library/Application Support/Sublime Text 2/Packages/#{package}*"
+    say "Uninstalled #{package} from Sublime Text 2."
+  end
+
+  desc "remove", "An alias for subl_pkg uninstall <folder>"
+  def remove(package)
+    invoke :uninstall, package
+  end
+end
