@@ -4,3 +4,9 @@ alias sgem='sudo gem'
 
 # Find ruby file
 alias rfind='find . -name "*.rb" | xargs grep -n'
+
+# Run a ruby script
+alias rb='ruby'
+
+# Run a ruby test
+alias rb_test="bundle exec ruby -Itest $1 -n $2"

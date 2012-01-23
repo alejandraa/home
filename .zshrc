@@ -51,7 +51,7 @@ ZSH_THEME="psychedelic-funky"	# if you set this to "random", it'll load a random
 # COMPLETION_WAITING_DOTS="true"
 
 # Load oh-my-zsh plugins
-plugins=(git osx bundler vagrant thor rvm gem)
+plugins=(git osx bundler vagrant thor rvm gem rails3 ruby)
 
 # Run oh-my-zsh!
 source $ZSH/oh-my-zsh.sh
