@@ -10,7 +10,7 @@ PATH=/usr/local/bin:/usr/pear/bin:$HOME/.oh-my-zsh/bin:/usr/local/share/npm/bin:
 MANPATH=/opt/local/share/man:$MANPATH
 
 # Default text editors
-EDITOR='subl -w'
+EDITOR='subl'
 GIT_EDITOR='vim'
 
 # PostgreSQL config
