@@ -29,8 +29,9 @@ JSDOCTEMPLATEDIR=/home/necromancer/Code/jsdoc/jsdoc-toolkit/templates
 # Define the C compiler
 CC=/usr/bin/gcc-4.2
 
-# Aliases
+# Shortcuts to existing commands
 alias c=clear
+alias rbt=rb_test
 
 # Load my custom oh my zsh theme (based on "funky")
 ZSH_THEME="psychedelic-funky"	# if you set this to "random", it'll load a random theme each time that oh-my-zsh is loaded.
