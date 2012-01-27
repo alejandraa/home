@@ -14,7 +14,7 @@ alias rd='_rails_command destroy'
 alias rdb='_rails_command dbconsole'
 alias rg='_rails_command generate'
 alias rp='_rails_command plugin'
-alias rr='_rails_command runner'
+alias ru='_rails_command runner'
 alias rs='_rails_command server'
 alias rsd='_rails_command server --debugger'
 
