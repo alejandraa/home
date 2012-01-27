@@ -93,3 +93,4 @@ function git_compare_version() {
 
 #this is unlikely to change so make it all statically assigned
 POST_1_7_2_GIT=$(git_compare_version "1.7.2")
+}

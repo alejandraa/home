@@ -1,4 +1,4 @@
-# Aliases 
+# Aliases   
 alias g='git'
 compdef g=git
 alias gst='git status'
