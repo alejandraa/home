@@ -5,10 +5,6 @@ alias bp="bundle package"
 alias bu="bundle update"
 
 # The following is based on https://github.com/gma/bundler-exec
-<<<<<<< HEAD
-=======
-
->>>>>>> 362927003bcd8052e294dcbdf14f061ef4f2e173
 bundled_commands=(annotate cap capify cucumber ey foreman guard heroku middleman nanoc rackup rainbows rake rspec ruby shotgun spec spork thin thor unicorn unicorn_rails)
 
 ## Functions

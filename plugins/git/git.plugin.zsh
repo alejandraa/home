@@ -68,13 +68,8 @@ compdef ggpull=git
 alias ggpush='git push origin $(current_branch)'
 compdef ggpush=git
 alias ggpnp='git pull origin $(current_branch) && git push origin $(current_branch)'
-<<<<<<< HEAD
-compdef ggpnp=git
 
 # Wrap git in the hub gem if it's installed
 if (( $+commands[hub] )) ; then
   function git() {hub "$@"}
 fi
-=======
-compdef ggpnp=git
->>>>>>> 362927003bcd8052e294dcbdf14f061ef4f2e173
