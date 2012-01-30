@@ -6,7 +6,7 @@ alias sgem='sudo gem'
 alias rfind='find . -name "*.rb" | xargs grep -n'
 
 # Run a ruby script
-alias rb='ruby'
+alias rb='ruby $1'
 
 # Run a ruby test
 # function rb_test() {

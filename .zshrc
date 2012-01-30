@@ -29,9 +29,8 @@ JSDOCTEMPLATEDIR=/home/necromancer/Code/jsdoc/jsdoc-toolkit/templates
 # Define the C compiler
 CC=/usr/bin/gcc-4.2
 
-# Shortcuts to existing commands
+# Shortcuts to existing basic shell commands
 alias c=clear
-alias rbt=rb_test
 
 # Load my custom oh my zsh theme (based on "funky")
 ZSH_THEME="psychedelic-funky"	# if you set this to "random", it'll load a random theme each time that oh-my-zsh is loaded.
@@ -52,7 +51,7 @@ ZSH_THEME="psychedelic-funky"	# if you set this to "random", it'll load a random
 # COMPLETION_WAITING_DOTS="true"
 
 # Load oh-my-zsh plugins
-plugins=(git osx bundler vagrant thor rvm gem rails3 ruby)
+plugins=(git osx bundler vagrant thor rvm gem rails3 ruby growl sublime)
 
 # Run oh-my-zsh!
 source $ZSH/oh-my-zsh.sh
