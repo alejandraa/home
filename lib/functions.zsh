@@ -19,7 +19,3 @@ function configure_oh_my_zsh() {
   $EDITOR ~/.oh-my-zsh
   cd ~/.oh-my-zsh
 }
-
-function growl() {
-  echo -e $'\e]9;'${1}'\007' ; return ;
-}
