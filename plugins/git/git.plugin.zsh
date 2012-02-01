@@ -46,7 +46,8 @@ alias grh='git reset HEAD'
 compdef _get grh=git-reset
 alias grhh='git reset HEAD --hard'
 compdef _get grhh=git-reset
-
+alias grv='git remote -v'
+compdef _get grv=git-remote
 # Git and svn mix
 alias git-svn-dcommit-push='git svn dcommit && git push github master:svntrunk'
 compdef git-svn-dcommit-push=git
