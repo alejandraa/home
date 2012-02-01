@@ -42,3 +42,13 @@ function gems {
 		-Ee "s/$current_ruby@global/$fg[yellow]&$reset_color/g" \
 		-Ee "s/$current_ruby$current_gemset$/$fg[green]&$reset_color/g"
 }
+
+function rvmrc {
+	local folder=$(basename `pwd`)
+
+	if [ -z "$1" ]; then
+		rvm --rvmrc --create $1\@$folder
+	else
+		echo "You must specify a version of Ruby"
+	fi
+}
