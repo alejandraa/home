@@ -23,4 +23,4 @@ alias sl=ls # often screw this up
 alias afind='ack-grep -il'
 
 # Reload Oh My ZSH! after a change
-alias reload='source .zshrc'
+alias reload="source $HOME/.zshrc"

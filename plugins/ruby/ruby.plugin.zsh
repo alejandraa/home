@@ -23,3 +23,4 @@ alias rb='ruby $1'
 # }
 alias rb_test="bundle exec ruby -Itest $1"
 alias rbt=rb_test
+alias rtest=rb_test
