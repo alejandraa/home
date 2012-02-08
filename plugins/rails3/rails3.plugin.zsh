@@ -21,3 +21,5 @@ alias devlog='tail -f log/development.log'
 alias rdm='rake db:migrate'
 alias rdr='rake db:rollback'
 alias redis="redis-server /usr/local/etc/redis.conf"
+
+alias restart='touch tmp/restart.txt; echo "Restarting Rack app..."'
