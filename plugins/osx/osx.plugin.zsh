@@ -97,3 +97,4 @@ function trash() {
   IFS=$temp_ifs
 }
 
+alias ql='quick-look'
