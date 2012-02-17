@@ -53,5 +53,9 @@ ZSH_THEME="psychedelic-funky"	# if you set this to "random", it'll load a random
 # Load oh-my-zsh plugins
 plugins=(git osx bundler vagrant thor rvm gem rails3 ruby growl sublime)
 
+# Initialize RubyGems-Bundler
+USE_BUNDLER="try"
+BUNDLER_BLACKLIST="heroku powder pow"
+
 # Run oh-my-zsh!
 source $ZSH/oh-my-zsh.sh
