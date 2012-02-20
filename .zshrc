@@ -10,8 +10,8 @@ PATH=/usr/local/bin:/usr/pear/bin:$HOME/.oh-my-zsh/bin:/usr/local/share/npm/bin:
 MANPATH=/opt/local/share/man:$MANPATH
 
 # Default text editors
-EDITOR='subl -w'
-GIT_EDITOR='subl -w'
+EDITOR='subl'
+GIT_EDITOR='vim'
 
 # PostgreSQL config
 ARCHFLAGS='-arch x86_64'
@@ -29,7 +29,7 @@ JSDOCTEMPLATEDIR=/home/necromancer/Code/jsdoc/jsdoc-toolkit/templates
 # Define the C compiler
 CC=/usr/bin/gcc-4.2
 
-# Aliases
+# Shortcuts to existing basic shell commands
 alias c=clear
 
 # Load my custom oh my zsh theme (based on "funky")
@@ -51,7 +51,11 @@ ZSH_THEME="psychedelic-funky"	# if you set this to "random", it'll load a random
 # COMPLETION_WAITING_DOTS="true"
 
 # Load oh-my-zsh plugins
-plugins=(git osx bundler vagrant thor rvm gem)
+plugins=(git osx bundler vagrant thor rvm gem rails3 ruby growl sublime)
+
+# Initialize RubyGems-Bundler
+USE_BUNDLER="try"
+BUNDLER_BLACKLIST="heroku powder pow"
 
 # Run oh-my-zsh!
 source $ZSH/oh-my-zsh.sh

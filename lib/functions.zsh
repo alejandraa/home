@@ -15,3 +15,7 @@ function take() {
   cd $1
 }
 
+function configure_oh_my_zsh() {
+  $EDITOR ~/.oh-my-zsh
+  cd ~/.oh-my-zsh
+}
