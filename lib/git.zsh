@@ -70,13 +70,14 @@ git_prompt_status() {
 }
 
 #this is unlikely to change so make it all statically assigned
-POST_1_7_2_GIT=$(git_compare_version "1.7.2")
+POST_1_7_2_GIT=true #$(git_compare_version "1.7.2")
+
 #clean up the namespace slightly by removing the checker function
-unset -f git_compare_version()
+# unset -f git_compare_version()
 
 #compare the provided version of git to the version installed and on path
 #prints 1 if input version <= installed version
-#prints -1 otherwise 
+#prints -1 otherwise
 function git_compare_version() {
   local INPUT_GIT_VERSION=$1;
   local INSTALLED_GIT_VERSION

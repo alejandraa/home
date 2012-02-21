@@ -55,3 +55,5 @@ plugins=(git osx bundler vagrant thor rvm gem rails3 ruby growl sublime)
 
 # Run oh-my-zsh!
 source $ZSH/oh-my-zsh.sh
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
