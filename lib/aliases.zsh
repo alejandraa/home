@@ -22,3 +22,7 @@ alias sl=ls # often screw this up
 
 alias afind='ack-grep -il'
 
+
+alias redis="redis-server /usr/local/etc/redis.conf"
+alias tmbundle="osascript -e 'tell app \"TextMate\" to reload bundles'"
+alias c="clear"

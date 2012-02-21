@@ -52,7 +52,3 @@ MYSQL_PS1="\R:\m:\s \h> "
 
 # jsdoc config
 JSDOCTEMPLATEDIR=/home/necromancer/Code/jsdoc/jsdoc-toolkit/templates
-
-# aliases
-alias redis="redis-server /usr/local/etc/redis.conf"
-alias tmbundle="osascript -e 'tell app \"TextMate\" to reload bundles'"
