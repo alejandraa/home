@@ -24,7 +24,7 @@ ZSH_THEME="psychedelic-funky"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
+plugins=(git osx bundler)
 
 # run oh-my-zsh!
 source $ZSH/oh-my-zsh.sh
@@ -54,8 +54,5 @@ MYSQL_PS1="\R:\m:\s \h> "
 JSDOCTEMPLATEDIR=/home/necromancer/Code/jsdoc/jsdoc-toolkit/templates
 
 # aliases
-#alias redis="redis-server /usr/local/etc/redis.conf"
-#alias tmbundle="osascript -e 'tell app \"TextMate\" to reload bundles'"
-
-# execute custom commands depending on box
-source $HOME/.zsh_profile
+alias redis="redis-server /usr/local/etc/redis.conf"
+alias tmbundle="osascript -e 'tell app \"TextMate\" to reload bundles'"
