@@ -11,8 +11,8 @@ function upgrade_oh_my_zsh() {
 }
 
 function configure_oh_my_zsh() {
-  /usr/bin/env ZSH=$ZSH /bin/sh subl $ZSH
-  /usr/bin/env ZSH=$ZSH /bin/sh cd $ZSH
+  cd $ZSH
+  subl .
 }
 
 function take() {

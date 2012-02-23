@@ -9,6 +9,8 @@ alias gup='git fetch && git rebase'
 compdef _git gup=git-fetch
 alias gp='git push'
 compdef _git gp=git-push
+alias gpf='git push tubbo'
+compdef _git gpf=git-push
 gdv() { git diff -w "$@" | view - }
 compdef _git gdv=git-diff
 alias gc='git commit -v'
@@ -26,8 +28,10 @@ alias gcount='git shortlog -sn'
 compdef gcount=git
 alias gcp='git cherry-pick'
 compdef _git gcp=git-cherry-pick
-alias glg='git log --stat --max-count=5'
+alias glg='git l'
 compdef _git glg=git-log
+alias gls='git log --stat --max-count=5'
+compdef _git gls=git-log
 alias glgg='git log --graph --max-count=5'
 compdef _git glgg=git-log
 alias gss='git status -s'
