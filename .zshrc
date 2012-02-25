@@ -53,5 +53,14 @@ ZSH_THEME="psychedelic-funky"	# if you set this to "random", it'll load a random
 # Load oh-my-zsh plugins
 plugins=(git osx bundler vagrant thor rvm gem rails3 ruby growl sublime)
 
+# Make Ruby/Rails even faster
+RUBY_HEAP_MIN_SLOTS=1000000
+RUBY_HEAP_SLOTS_INCREMENT=1000000
+RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
+RUBY_GC_MALLOC_LIMIT=1000000000
+RUBY_HEAP_FREE_MIN=500000
+
 # Run oh-my-zsh!
 source $ZSH/oh-my-zsh.sh
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
