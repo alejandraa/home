@@ -42,3 +42,4 @@ if [ $FOUND_RBENV -eq 0 ] ; then
   function gemsets() { echo 'not supported' }
   function rbenv_prompt_info() { echo "system: $(ruby -v | cut -f-2 -d ' ')" }
 fi
+

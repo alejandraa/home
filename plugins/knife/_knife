@@ -1,5 +1,5 @@
 #compdef knife
-
+ 
 # These flags should be available everywhere according to man knife
 knife_general_flags=( --help --server-url --key --config --editor --format --log_level --logfile --no-editor --user --print-after --version --yes )
 

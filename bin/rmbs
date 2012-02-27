@@ -1,0 +1,3 @@
+# Removes all "._" files that clutter up git repos on remote VMs
+find . -type f -name '._*' -exec rm {} +
+echo "Removed all ._ files"
