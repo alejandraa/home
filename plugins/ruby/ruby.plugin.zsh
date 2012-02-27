@@ -37,3 +37,7 @@ _rbtest_without_rake() {
   fi;
 }
 eval "function rbtest_exec(){_rbtest_without_rake \$@}"
+
+
+alias rtest='rbtest'
+alias rtest_exec='rbtest_exec'
