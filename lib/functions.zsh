@@ -19,8 +19,3 @@ function take() {
   mkdir -p $1
   cd $1
 }
-
-function configure_oh_my_zsh() {
-  $EDITOR ~/.oh-my-zsh
-  cd ~/.oh-my-zsh
-}
