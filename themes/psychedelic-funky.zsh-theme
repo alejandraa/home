@@ -14,7 +14,7 @@ local ff="%{$fg[white]%}"
 # information to the right of the prompt
 local path_prompt="${op}${ff}%~${cp}-"
 local git_prompt='${return_status}${ff}$(git_prompt_info)$(git_prompt_status)%{$reset_color%}'
-local ruby_prompt="${return_status}$(rvm_prompt_info)%{$reset_color%}"
+local ruby_prompt='${return_status}${op}%{$fg[yellow]%}$(rvm-prompt v p g)${cp}${sp}%{$reset_color%}'
 local user_prompt="${op}${ff}%n@%m${cp}"
 
 # da prompt son

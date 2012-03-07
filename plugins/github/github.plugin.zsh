@@ -14,9 +14,16 @@ if [ "$commands[(I)hub]" ] && [ "$commands[(I)ruby]" ]; then
     }
 fi
 
+# Aliases for `hub`
+alias gfk='git fork'
+alias gpf='git push tubbo'
+compdef _get gpf=git-push
+
+
+
 # Functions #################################################################
 
-# https://github.com/dbb 
+# https://github.com/dbb
 
 
 # empty_gh [NAME_OF_REPO]
