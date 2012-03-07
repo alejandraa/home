@@ -48,7 +48,7 @@ ZSH_THEME="psychedelic-funky"
 COMPLETION_WAITING_DOTS="true"
 
 # Load oh-my-zsh plugins
-plugins=(git osx bundler thor rvm gem rails3 ruby growl sublime brew powder cake cap ruby github)
+plugins=(git osx bundler thor rvm gem rails3 ruby growl sublime brew powder cake cap ruby github git-flow)
 
 # Make Ruby/Rails even faster
 RUBY_HEAP_MIN_SLOTS=1000000
