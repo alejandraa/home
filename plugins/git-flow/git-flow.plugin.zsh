@@ -333,6 +333,7 @@ zstyle ':completion:*:*:git:*' user-commands flow:'description for foo'
 
 alias gf='git flow'
 alias gfi='git flow init'
+alias gff='git flow feature'
 alias gfr='git flow release'
 alias gfb='git flow hotfix'
 alias gfs='git flow support'
