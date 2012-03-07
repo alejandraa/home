@@ -29,23 +29,23 @@ JSDOCTEMPLATEDIR=/home/necromancer/Code/jsdoc/jsdoc-toolkit/templates
 # Define the C compiler
 CC=/usr/bin/gcc-4.2
 
-# Load my custom oh my zsh theme (based on "funky")
-ZSH_THEME="psychedelic-funky" # if you set this to "random", it'll load a random theme each time that oh-my-zsh is loaded.
+# Load my custom theme (based on "funky")
+ZSH_THEME="psychedelic-funky"
 
-# Set to this to use case-sensitive completion
+# Keep everything case-insensitive
 # CASE_SENSITIVE="true"
 
-# Comment this out to disable weekly auto-update checks
+# Automatically update every week
 # DISABLE_AUTO_UPDATE="true"
 
-# Uncomment following line if you want to disable colors in ls
+# Use colors in `ls`
 # DISABLE_LS_COLORS="true"
 
-# Uncomment following line if you want to disable autosetting terminal title.
+# Set the Terminal title automatically
 # DISABLE_AUTO_TITLE="true"
 
-# Uncomment following line if you want red dots to be displayed while waiting for completion
-# COMPLETION_WAITING_DOTS="true"
+# Red dots are displayed when ZSH is hanging
+COMPLETION_WAITING_DOTS="true"
 
 # Load oh-my-zsh plugins
 plugins=(git osx bundler thor rvm gem rails3 ruby growl sublime brew powder cake cap ruby github)
