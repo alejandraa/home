@@ -1,7 +1,9 @@
-# CKY
-# ===
+# CKY by @tubbo
+# =============
 #
-# A CMYK theme for Oh My ZSH! Looks best with iTerm2 and Solarized.
+# A theme for Oh My ZSH that emphasizes CMYK colors primarily.
+#
+# Looks best with iTerm2 and Solarized.
 
 local reset_color_with_bg="%{$reset_color%}%{$bg[grey]%}"
 
