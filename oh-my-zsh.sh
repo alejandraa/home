@@ -54,5 +54,4 @@ done
 for config_file ($ZSH_CUSTOM/*.zsh) source $config_file
 
 # Load the theme
-source "$ZSH/prompt.zsh"
-
+source $ZSH/lib/prompt.zsh
