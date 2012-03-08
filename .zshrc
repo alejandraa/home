@@ -1,8 +1,4 @@
-##
-# This is my ZSH configuration. I use oh-my-zsh for ease of use
-##
-
-# Path to your oh-my-zsh configuration.
+# Path to your shell configuration.
 ZSH=$HOME/.oh-my-zsh
 
 # Program and documentation paths
