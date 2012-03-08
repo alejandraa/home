@@ -53,5 +53,5 @@ done
 # Load all of your custom configurations from custom/
 for config_file ($ZSH_CUSTOM/*.zsh) source $config_file
 
-# Load the theme
+# Load the prompt string, which is actually an OMZ "theme"
 source $ZSH/lib/prompt.zsh
