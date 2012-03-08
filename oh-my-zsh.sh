@@ -31,7 +31,7 @@ is_plugin() {
 for plugin ($plugins); do
   if is_plugin $ZSH_CUSTOM $plugin; then
     fpath=($ZSH_CUSTOM/plugins/$plugin $fpath)
-  elif is_plugin $ZSH $plugin; then
+  elif is_plugin $ZSH $plugin; the
     fpath=($ZSH/plugins/$plugin $fpath)
   fi
 done
