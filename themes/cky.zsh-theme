@@ -1,9 +1,7 @@
+# CKY
+# ===
 #
-# who is this doin this synthetic type of alpha beta psychedelic funky?
-#######################################################################
-
-# Taken from Tassilo's Blog
-# http://tsdh.wordpress.com/2007/12/06/my-funky-zsh-prompt/
+# A CMYK theme for Oh My ZSH! Looks best with iTerm2 and Solarized.
 
 local reset_color_with_bg="%{$reset_color%}%{$bg[grey]%}"
 
