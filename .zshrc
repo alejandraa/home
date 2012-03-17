@@ -1,12 +1,8 @@
-##
-# This is my ZSH configuration. I use oh-my-zsh for ease of use
-##
-
-# Path to your oh-my-zsh configuration.
+# Path to your shell configuration.
 ZSH=$HOME/.oh-my-zsh
 
 # Program and documentation paths
-PATH=/usr/local/bin:/usr/pear/bin:$HOME/.oh-my-zsh/bin:/usr/local/share/npm/bin:/usr/local/Cellar/python/2.7.1/bin:/usr/local/git/bin/:$PATH
+PATH=/usr/local/bin:/usr/pear/bin:$HOME/.oh-my-zsh/bin:/usr/local/share/npm/bin:/usr/local/Cellar/python/2.7.1/bin:/usr/local/git/bin/:$HOME/.rvm/bin:$HOME/bin:$PATH
 MANPATH=/opt/local/share/man:$MANPATH
 
 # Default text editors
@@ -29,33 +25,33 @@ JSDOCTEMPLATEDIR=/home/necromancer/Code/jsdoc/jsdoc-toolkit/templates
 # Define the C compiler
 CC=/usr/bin/gcc-4.2
 
-# Shortcuts to existing basic shell commands
-alias c=clear
+# Load my custom theme (based on "funky")
+ZSH_THEME="cky"
 
-# Load my custom oh my zsh theme (based on "funky")
-ZSH_THEME="psychedelic-funky"	# if you set this to "random", it'll load a random theme each time that oh-my-zsh is loaded.
-
-# Set to this to use case-sensitive completion
+# Keep everything case-insensitive
 # CASE_SENSITIVE="true"
 
-# Comment this out to disable weekly auto-update checks
+# Automatically update every week
 # DISABLE_AUTO_UPDATE="true"
 
-# Uncomment following line if you want to disable colors in ls
+# Use colors in `ls`
 # DISABLE_LS_COLORS="true"
 
-# Uncomment following line if you want to disable autosetting terminal title.
+# Set the Terminal title automatically
 # DISABLE_AUTO_TITLE="true"
 
-# Uncomment following line if you want red dots to be displayed while waiting for completion
-# COMPLETION_WAITING_DOTS="true"
+# Red dots are displayed when ZSH is hanging
+COMPLETION_WAITING_DOTS="true"
 
 # Load oh-my-zsh plugins
-plugins=(git osx bundler vagrant thor rvm gem rails3 ruby growl sublime)
+plugins=(git osx bundler thor rvm gem rails3 ruby growl sublime brew powder cake cap ruby github git-flow)
 
-# Initialize RubyGems-Bundler
-USE_BUNDLER="try"
-BUNDLER_BLACKLIST="heroku powder pow"
+# Make Ruby/Rails even faster
+RUBY_HEAP_MIN_SLOTS=1000000
+RUBY_HEAP_SLOTS_INCREMENT=1000000
+RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
+RUBY_GC_MALLOC_LIMIT=1000000000
+RUBY_HEAP_FREE_MIN=500000
 
 # Run oh-my-zsh!
 source $ZSH/oh-my-zsh.sh

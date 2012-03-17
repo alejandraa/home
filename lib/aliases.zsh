@@ -22,5 +22,10 @@ alias sl=ls # often screw this up
 
 alias afind='ack-grep -il'
 
+# Custom aliases left over from my .bashrc
+alias redis="redis-server /usr/local/etc/redis.conf"
+alias tmbundle="osascript -e 'tell app \"TextMate\" to reload bundles'"
+alias c="clear"
+
 # Reload Oh My ZSH! after a change
 alias reload="source $HOME/.zshrc"

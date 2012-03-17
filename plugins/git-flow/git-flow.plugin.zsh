@@ -5,7 +5,7 @@
 #
 # To achieve git-flow completion nirvana:
 #
-#  0. Update your zsh's git-completion module to the newest verion.
+#  0. Update your zsh's git-completionti module to the newest verion.
 #     From here. http://zsh.git.sourceforge.net/git/gitweb.cgi?p=zsh/zsh;a=blob_plain;f=Completion/Unix/Command/_git;hb=HEAD
 #
 #  1. Install this file. Either:
@@ -330,3 +330,11 @@ __git_command_successful () {
 }
 
 zstyle ':completion:*:*:git:*' user-commands flow:'description for foo'
+
+alias gf='git flow'
+alias gfi='git flow init'
+alias gff='git flow feature'
+alias gfr='git flow release'
+alias gfb='git flow hotfix'
+alias gfs='git flow support'
+alias gfv='git flow version'

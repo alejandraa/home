@@ -10,12 +10,12 @@ function upgrade_oh_my_zsh() {
   /usr/bin/env ZSH=$ZSH /bin/sh $ZSH/tools/upgrade.sh
 }
 
+function configure_oh_my_zsh() {
+  cd $ZSH
+  subl .
+}
+
 function take() {
   mkdir -p $1
   cd $1
-}
-
-function configure_oh_my_zsh() {
-  $EDITOR ~/.oh-my-zsh
-  cd ~/.oh-my-zsh
 }

@@ -11,6 +11,8 @@ alias gup='git fetch && git rebase'
 compdef _git gup=git-fetch
 alias gp='git push'
 compdef _git gp=git-push
+alias gpf='git push tubbo'
+compdef _git gpf=git-push
 gdv() { git diff -w "$@" | view - }
 compdef _git gdv=git-diff
 alias gc='git commit -v'
@@ -28,9 +30,11 @@ alias gcount='git shortlog -sn'
 compdef gcount=git
 alias gcp='git cherry-pick'
 compdef _git gcp=git-cherry-pick
-alias glg="git log --graph --pretty=format':%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset'"
+alias glg='git l'
 compdef _git glg=git-log
-alias glgg='git log --pretty=oneline --abbrev-commit --graph --decorate'
+alias gls='git log --stat --max-count=5'
+compdef _git gls=git-log
+alias glgg='git log --graph --max-count=5'
 compdef _git glgg=git-log
 alias lol='git lol'
 compdef _git lol=git-log
@@ -48,8 +52,13 @@ alias grhh='git reset HEAD --hard'
 compdef _get grhh=git-reset
 alias grv='git remote -v'
 compdef _get grv=git-remote
-alias gpf='git push tubbo'
-compdef _get gpf=git-push
+alias gd='git diff'
+compdef _get grv=git-diff
+
+
+# Super useful alias aliases
+alias s='gst'
+compdef _get grv=git-statuss
 
 # Git and svn mix
 alias git-svn-dcommit-push='git svn dcommit && git push github master:svntrunk'
@@ -73,6 +82,7 @@ compdef ggpull=git
 alias ggpush='git push origin $(current_branch)'
 compdef ggpush=git
 alias ggpnp='git pull origin $(current_branch) && git push origin $(current_branch)'
+compdef ggpnp=git
 
 # Wrap git in the hub gem if it's installed
 if (( $+commands[hub] )) ; then

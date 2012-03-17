@@ -43,6 +43,7 @@ function gems {
 		-Ee "s/$current_ruby$current_gemset$/$fg[green]&$reset_color/g"
 }
 
+# Quickly make an .rvmrc file for the current folder
 function rvmrc {
 	local folder=$(basename `pwd`)
 
@@ -51,4 +52,29 @@ function rvmrc {
 	else
 		echo "You must specify a version of Ruby"
 	fi
+}
+
+# The following functions were shamelessly stolen from http://skitch.com/oshuma/nni3k/zsh-prompt-git-clean
+source ~/.rvm/scripts/rvm
+
+# Prompt function. Return the full version string.
+function ruby_prompt_version_full {
+  version=$(
+    rvm info |
+    grep -m 1 'full_version' |
+    sed 's/^.*full_version:[ ]*//' |
+    sed 's/["]//g'
+  ) || return
+  echo $version
+}
+
+# Prompt function. Return just the version number.
+function ruby_prompt_version {
+  version=$(
+    rvm info |
+    grep -m 1 'version' |
+    sed 's/^.*version:[ ]*//' |
+    sed 's/["]//g'
+  ) || return
+  echo $version
 }
