@@ -37,3 +37,6 @@ alias rlt='tail -f log/test.log'
 alias rls='tail -f log/stage.log'
 alias rlu='tail -f log/uat.log'
 alias rlp='tail -f log/production.log'
+
+# Server stuff
+alias u='unicorn -p 3000'
