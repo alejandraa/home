@@ -1,11 +1,11 @@
-# Aliases   
+# Aliases
 alias g='git'
 compdef g=git
 alias gst='git status'
 compdef _git gst=git-status
-alias gl='git pull'
+alias gu='git pull'
 compdef _git gl=git-pull
-alias glr='git pull --rebase'
+alias gur='git pull --rebase'
 compdef _git gl=git-pull
 alias gup='git fetch && git rebase'
 compdef _git gup=git-fetch
@@ -30,11 +30,11 @@ alias gcount='git shortlog -sn'
 compdef gcount=git
 alias gcp='git cherry-pick'
 compdef _git gcp=git-cherry-pick
-alias glg='git l'
+alias gl='git l'
 compdef _git glg=git-log
 alias gls='git log --stat --max-count=5'
 compdef _git gls=git-log
-alias glgg='git log --graph --max-count=5'
+alias glg='git log --graph --max-count=5'
 compdef _git glg=git-log
 alias lol='git lol'
 compdef _git lol=git-log
