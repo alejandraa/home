@@ -54,6 +54,18 @@ alias grv='git remote -v'
 compdef _get grv=git-remote
 alias gd='git diff'
 compdef _get grv=git-diff
+alias gg='git grep'
+compdef _get gg=git-grep
+alias gr='git rebase'
+compdef _get gg=git-rebase
+alias grc='git rebase --continue'
+compdef _get gg=git-rebase
+alias grs='git rebase --skip'
+compdef _get gg=git-rebase
+alias gra='git rebase --abort'
+compdef _get gg=git-rebase
+alias gri='git rebase --interactive'
+compdef _get gg=git-rebase
 
 
 # Super useful alias aliases
