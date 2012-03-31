@@ -54,23 +54,5 @@ done
 for config_file ($ZSH_CUSTOM/*.zsh) source $config_file
 
 # Load the theme
-if [ "$ZSH_THEME" = "random" ]
-then
-  themes=($ZSH/themes/*zsh-theme)
-  N=${#themes[@]}
-  ((N=(RANDOM%N)+1))
-  RANDOM_THEME=${themes[$N]}
-  source "$RANDOM_THEME"
-  echo "[oh-my-zsh] Random theme '$RANDOM_THEME' loaded..."
-else
-  if [ ! "$ZSH_THEME" = ""  ]
-  then
-    if [ -f "$ZSH/custom/$ZSH_THEME.zsh-theme" ]
-    then
-      source "$ZSH/custom/$ZSH_THEME.zsh-theme"
-    else
-      source "$ZSH/themes/$ZSH_THEME.zsh-theme"
-    fi
-  fi
-fi
+source "$ZSH/lib/prompt.zsh"
 

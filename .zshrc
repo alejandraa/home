@@ -25,9 +25,6 @@ JSDOCTEMPLATEDIR=/home/necromancer/Code/jsdoc/jsdoc-toolkit/templates
 # Define the C compiler
 CC=/usr/bin/gcc-4.2
 
-# Load my custom theme (based on "funky")
-ZSH_THEME="cky"
-
 # Keep everything case-insensitive
 # CASE_SENSITIVE="true"
 

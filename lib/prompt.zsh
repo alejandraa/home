@@ -1,10 +1,3 @@
-# CKY by @tubbo
-# =============
-#
-# A theme for Oh My ZSH that emphasizes CMYK colors primarily.
-#
-# Looks best with the Solarized color scheme.
-
 local reset_color_with_bg="%{$reset_color%}%{$bg[grey]%}"
 
 # information to the right of the prompt
