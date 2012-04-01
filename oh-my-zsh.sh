@@ -4,7 +4,11 @@ then
   /usr/bin/env ZSH=$ZSH zsh $ZSH/tools/check_for_upgrade.sh
 fi
 
-# Initializes Oh My Zsh
+##
+#
+# Initializes DOTS
+#
+##
 
 # add a function path
 fpath=($ZSH/functions $ZSH/completions $fpath)
@@ -26,6 +30,7 @@ is_plugin() {
   test -f $base_dir/plugins/$name/$name.plugin.zsh \
     || test -f $base_dir/plugins/$name/_$name
 }
+
 # Add all defined plugins to fpath. This must be done
 # before running compinit.
 for plugin ($plugins); do
@@ -39,7 +44,6 @@ done
 # Load and run compinit
 autoload -U compinit
 compinit -i
-
 
 # Load all of the plugins that were defined in ~/.zshrc
 for plugin ($plugins); do

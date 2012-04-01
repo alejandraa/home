@@ -1,5 +1,6 @@
 # Path to your shell configuration.
 ZSH=$HOME/.oh-my-zsh
+DOTS=$ZSH
 
 # Program and documentation paths
 PATH=/usr/local/bin:/usr/pear/bin:$HOME/.oh-my-zsh/bin:/usr/local/share/npm/bin:/usr/local/Cellar/python/2.7.1/bin:/usr/local/git/bin/:$HOME/.rvm/bin:$HOME/bin:$PATH
