@@ -27,6 +27,11 @@ fi
 echo "\033[0;34m Linking ZSH config...\033[0m"
 ln -s ~/.dots/config/zshrc ~/.zshrc;
 
+echo "\033[0;34m Synchronizing your custom binaries...\033[0m"
+cp -R $HOME/bin/** $DOTS/bin
+mv $HOME/bin $HOME/bin-pre-dots
+ln -s $HOME/bin $DOTS/bin
+
 echo "\033[0;34mCopying your current PATH and adding it to the end of ~/.zshrc for you.\033[0m"
 echo "export PATH=$PATH" >> ~/.zshrc
 

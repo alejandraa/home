@@ -13,7 +13,7 @@ fi
 # add a function path
 fpath=($ZSH/functions $ZSH/completions $fpath)
 
-# Load all of the config files in ~/oh-my-zsh that end in .zsh
+# Load all of the config files in ~/.dots that end in .zsh
 # TIP: Add files you don't want in git to .gitignore
 for config_file ($ZSH/lib/dots/*.zsh) source $config_file
 
