@@ -25,8 +25,8 @@ CC=/usr/bin/gcc-4.2
 # Keep everything case-insensitive
 # CASE_SENSITIVE="true"
 
-# Automatically update every week
-# DISABLE_AUTO_UPDATE="true"
+# Disable weekly automatic update
+DISABLE_AUTO_UPDATE="true"
 
 # Use colors in `ls`
 # DISABLE_LS_COLORS="true"
