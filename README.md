@@ -10,6 +10,15 @@ Features
 - Simplified prompt string themeing
 - Configuration persistence via the `persist` command. This copies your dot-files to the **config/** directory and allows you to optionally store them in Git.
 
+Roadmap
+-------
+
+### v1.0.0
+
+- Test installer
+- Get all names changed from .oh-my-zsh to .dots
+- Make sure there's no private data in my bin dir
+
 Installation
 ------------
 
