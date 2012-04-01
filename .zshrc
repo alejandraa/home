@@ -16,12 +16,6 @@ PGDATA=/usr/local/var/postgres
 # MySQL config
 MYSQL_PS1="\R:\m:\s \h> "
 
-# Load RVM into a shell session
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
-# JSDoc config
-JSDOCTEMPLATEDIR=/home/necromancer/Code/jsdoc/jsdoc-toolkit/templates
-
 # Define the C compiler
 CC=/usr/bin/gcc-4.2
 
@@ -43,7 +37,7 @@ COMPLETION_WAITING_DOTS="true"
 # Load oh-my-zsh plugins
 plugins=(git osx bundler thor rvm gem rails3 ruby growl sublime brew powder cake cap ruby github git-flow)
 
-# Make Ruby/Rails even faster
+# Make Ruby even faster
 RUBY_HEAP_MIN_SLOTS=1000000
 RUBY_HEAP_SLOTS_INCREMENT=1000000
 RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
