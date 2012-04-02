@@ -1,23 +1,19 @@
 DOTS
 ====
 
-DOTS is a framework for ZSH productivity forked off of the popular [Oh My ZSH!][omz] starter framework. It is slightly slimmed down and expects a certain level of ZSH familiarity and shell comfortability before use. I decided to separate this as an extra project when it became clear that I did not need many of the higher-level functionality (such as themes) for everyday shell use.
+DOTS is a framework for ZSH that helps you manage your dot-files, ZSH sugar functionality, and your general shell experience. It began its life as a fork off the popular [Oh My ZSH framework][omz]. It has similar design philosophies and functionality, but different goals. Where Oh My ZSH is meant for new users to get more acclamated with ZSH, DOTS is meant for the slightly more advanced user who wants the built-in functionality of Oh My ZSH but wants additional customization and functionality, such as the copying and synchronization of "dot-files".
 
 Features
 --------
 
 - Plugin library with backwards compatibility for ZSH plugins
 - Simplified prompt string themeing
-- Configuration persistence via the `persist` command. This copies your dot-files to the **config/** directory and allows you to optionally store them in Git.
+- Configuration persistence via the `persist` command. This copies your dot-files to the **config/** directory and allows you to optionally store them in Git. Add your persisted configs to your fork's `.gitignore` if you don't want them synchronized.
 
 Roadmap
 -------
 
-### v1.0.0
-
-- Test installer
-- Get all names changed from .oh-my-zsh to .dots
-- Make sure there's no private data in my bin dir
+- Make sure Installer is tested
 
 Installation
 ------------
@@ -45,7 +41,21 @@ You *might* need to modify your $PATH in **~/.zshrc** if you're not able to find
 Forking
 -------
 
-It's recommended that you fork this project so you can store your own custom settings in **config/**.
+It's recommended that you fork this project so you can store your own custom settings in **config/**, and get the most use out of this framework.
+
+To do so, click the **Fork** button at the top of this page.
+
+Then, type the following into your Terminal:
+
+    git remote add <your-github-username> git@github.com:<your-github-username>/dots.git
+
+And to make sure it works, type
+
+    git pull <your-github-username> master
+
+We like the follow the standards for fork names set forth in [the hub plugin][hub] by [Chris Wernstrath][cw]. You can feasibly name the fork anything you like.
+
+You can either modify **tools/upgrade.sh** to `git pull` from your fork and `git push` to your fork after the upgrade is complete to keep it in sync, or do it manually by setting `DISABLE_AUTO_UPDATE="true"` (which is disabled by default in **config/zshrc**).
 
 Usage
 -----
@@ -56,6 +66,8 @@ Type `persist .vimrc` or `forget .vimrc` to either add or remove your configs to
 
 License
 -------
+
+DOTS is released under **The MIT License**:
 
     Copyright (c) 2012 Tom Scott
 
@@ -72,3 +84,5 @@ Just me, [@tubbo][twt]
 
 [omg]: https://github.com/robbyrussell/oh-my-zsh
 [twt]: https://twitter.com/tubbo
+[hub]: https://github.com/defunkt/hub
+[cw]: https://defunkt.io

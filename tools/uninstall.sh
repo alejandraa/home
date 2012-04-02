@@ -17,4 +17,4 @@ else
   source /etc/profile
 fi
 
-echo "Thanks for trying out DOTS! It's been uninstalled."
+echo "Thanks for using DOTS, it's been uninstalled."

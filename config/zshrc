@@ -37,7 +37,7 @@ DISABLE_AUTO_UPDATE="true"
 # Red dots are displayed when ZSH is hanging
 COMPLETION_WAITING_DOTS="true"
 
-# Load oh-my-zsh plugins
+# Load plugins
 plugins=(git osx bundler thor rvm gem rails3 ruby growl sublime brew powder cake cap ruby github git-flow)
 
 # Make Ruby even faster
