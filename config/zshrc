@@ -1,0 +1,51 @@
+# Path to your shell configuration.
+ZSH=$HOME/.dots
+DOTS=$ZSH
+
+# Program and documentation paths
+PATH=/usr/bin:/usr/local/bin:$HOME/.dots/bin:$PATH
+MANPATH=/opt/local/share/man:$MANPATH
+
+#/usr/local/share/npm/bin:/usr/pear/bin::/usr/local/Cellar/python/2.7.1/bin:/usr/local/git/bin/:$HOME/.rvm/bin
+
+# Default text editors
+EDITOR='subl'
+GIT_EDITOR='vim'
+
+# PostgreSQL config
+ARCHFLAGS='-arch x86_64'
+PGDATA=/usr/local/var/postgres
+
+# MySQL config
+MYSQL_PS1="\R:\m:\s \h> "
+
+# Define the C compiler
+CC=/usr/bin/gcc-4.2
+
+# Keep everything case-insensitive
+# CASE_SENSITIVE="true"
+
+# Disable weekly automatic update
+DISABLE_AUTO_UPDATE="true"
+
+# Use colors in `ls`
+# DISABLE_LS_COLORS="true"
+
+# Set the Terminal title automatically
+# DISABLE_AUTO_TITLE="true"
+
+# Red dots are displayed when ZSH is hanging
+COMPLETION_WAITING_DOTS="true"
+
+# Load plugins
+plugins=(git osx bundler thor rvm gem rails3 ruby growl sublime brew powder cake cap ruby github git-flow)
+
+# Make Ruby even faster
+RUBY_HEAP_MIN_SLOTS=1000000
+RUBY_HEAP_SLOTS_INCREMENT=1000000
+RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
+RUBY_GC_MALLOC_LIMIT=1000000000
+RUBY_HEAP_FREE_MIN=500000
+
+# Run DOTS...
+source $DOTS/lib/dots.sh

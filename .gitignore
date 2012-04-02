@@ -7,4 +7,8 @@ custom/*
 cache
 *.swp
 *.sublime*
-custom/
+config/gitconfig
+config/npmrc
+config/shsh/**
+config/ssh/**
+config/webbynode

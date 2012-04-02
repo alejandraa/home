@@ -29,8 +29,8 @@ then
     then
       _upgrade_zsh
     else
-      echo "[Oh My Zsh] Would you like to check for updates?"
-      echo "Type Y to update oh-my-zsh: \c"
+      echo "Would you like to check for updates to DOTS?"
+      echo "Type Y to update ~/.dots: \c"
       read line
       if [ "$line" = Y ] || [ "$line" = y ]
       then

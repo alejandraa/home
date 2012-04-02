@@ -1,15 +1,15 @@
-echo "Removing ~/.oh-my-zsh"
-if [[ -d ~/.oh-my-zsh ]]
+echo "Removing ~/.dots"
+if [[ -d ~/.dots ]]
 then
-  rm -rf ~/.oh-my-zsh
+  rm -rf ~/.dots
 fi
 
 echo "Looking for an existing zsh config..."
-if [ -f ~/.zshrc.pre-oh-my-zsh ] || [ -h ~/.zshrc.pre-oh-my-zsh ]
+if [ -f ~/.zshrc.pre-dots ] || [ -h ~/.zshrc.pre-dots ]
 then
-  echo "Found ~/.zshrc. Backing up to ~/.zshrc.pre-oh-my-zsh";
+  echo "Restored ~/.zshrc from ~/.zshrc.pre-dots";
   rm ~/.zshrc;
-  cp ~/.zshrc.pre-oh-my-zsh ~/.zshrc;
+  cp ~/.zshrc.pre-dots ~/.zshrc;
   source ~/.zshrc;
 else
   echo "Switching back to bash"
@@ -17,4 +17,4 @@ else
   source /etc/profile
 fi
 
-echo "Thanks for trying out Oh My Zsh. It's been uninstalled."
+echo "Thanks for using DOTS, it's been uninstalled."

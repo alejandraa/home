@@ -98,3 +98,4 @@ function trash() {
 }
 
 alias ql='quick-look'
+alias hackify='source $ZSH/tools/osx.zsh'
