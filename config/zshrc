@@ -47,5 +47,8 @@ RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
 RUBY_GC_MALLOC_LIMIT=1000000000
 RUBY_HEAP_FREE_MIN=500000
 
+# Load RVM into a shell session
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
 # Run DOTS...
 source $DOTS/lib/dots.sh

@@ -82,7 +82,7 @@ Contributors
 
 Just me, [@tubbo][twt]
 
-[omg]: https://github.com/robbyrussell/oh-my-zsh
+[omz]: https://github.com/robbyrussell/oh-my-zsh
 [twt]: https://twitter.com/tubbo
 [hub]: https://github.com/defunkt/hub
 [cw]: https://defunkt.io
