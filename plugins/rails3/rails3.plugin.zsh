@@ -30,13 +30,23 @@ alias rts='rtest' # defined in ruby.plugin.zsh
 alias rr="rake routes | grep $1"
 alias rra="rake routes"
 
-# Logging
-alias rld='tail -f log/development.log'
-alias rlt='tail -f log/test.log'
-alias rls='tail -f log/stage.log'
-alias rlu='tail -f log/uat.log'
-alias rlp='tail -f log/production.log'
+# View the Rails logger
+RAILS_PAGER='less'
+rl() {
+  if [[ $RAILS_PAGER == "less" ]] ; then
+    MODES="-R"
+  else
+    MODES="-f"
+  fi
 
-# Server stuff
-alias u='unicorn -p 3000'
+  if [[ $RAILS_ENV != "" ]] ; then
+    $RAILS_PAGER $MODES log/$RAILS_ENV.log;
+  elif [[ $1 != "" ]] ; then
+    $RAILS_PAGER $MODES log/$1.log;
+  else
+    $RAILS_PAGER $MODES log/development.log;
+  fi
+}
+
+# 3rd-party processes related to Rails
 alias redis="redis-server /usr/local/etc/redis.conf"
