@@ -27,6 +27,8 @@ alias rtu='rake test:units'
 alias rtf='rake test:functionals'
 alias rti='rake test:integrations'
 alias rts='rtest' # defined in ruby.plugin.zsh
+alias rr="rake routes | grep $1"
+alias rra="rake routes"
 
 # Logging
 alias rld='tail -f log/development.log'

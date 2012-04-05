@@ -38,7 +38,7 @@ DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 
 # Load plugins
-plugins=(git osx bundler thor rvm gem rails3 ruby growl sublime brew powder cake cap ruby github git-flow)
+plugins=(git osx bundler thor rvm gem rails3 ruby growl sublime brew powder cake cap ruby github git-flow mysql)
 
 # Make Ruby even faster
 RUBY_HEAP_MIN_SLOTS=1000000
