@@ -66,6 +66,8 @@ alias gra='git rebase --abort'
 compdef _get gg=git-rebase
 alias gri='git rebase --interactive'
 compdef _get gg=git-rebase
+alias gbl='git blame'
+compdef _get gbl=git-blame
 
 
 # Super useful alias aliases
