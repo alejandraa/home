@@ -3,10 +3,8 @@ ZSH=$HOME/.dots
 DOTS=$ZSH
 
 # Program and documentation paths
-PATH=/usr/bin:/usr/local/bin:$HOME/.dots/bin:$PATH
+PATH=/usr/bin:/usr/local/bin:/usr/local/share/npm/bin:/usr/pear/bin::/usr/local/Cellar/python/2.7.1/bin:/usr/local/git/bin/:$HOME/.rvm/bin:$HOME/.dots/bin::$PATH
 MANPATH=/opt/local/share/man:$MANPATH
-
-#/usr/local/share/npm/bin:/usr/pear/bin::/usr/local/Cellar/python/2.7.1/bin:/usr/local/git/bin/:$HOME/.rvm/bin
 
 # Default text editors
 EDITOR='subl -w'
