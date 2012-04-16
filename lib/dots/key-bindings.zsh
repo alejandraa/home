@@ -12,6 +12,7 @@ bindkey "^[[6~" down-line-or-history
 bindkey '^[[A' up-line-or-search
 bindkey '^[[B' down-line-or-search
 
+# emacs key bindings
 bindkey "^[[H" beginning-of-line
 bindkey "^[[1~" beginning-of-line
 bindkey "^[OH" beginning-of-line

@@ -46,10 +46,6 @@ alias gm='git merge'
 compdef _git gm=git-merge
 alias gls="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 compdef _git gls=git-log
-alias grh='git reset HEAD'
-compdef _get grh=git-reset
-alias grhh='git reset HEAD --hard'
-compdef _get grhh=git-reset
 alias grv='git remote -v'
 compdef _get grv=git-remote
 alias gd='git diff'
@@ -68,6 +64,14 @@ alias gri='git rebase --interactive'
 compdef _get gg=git-rebase
 alias gbl='git blame'
 compdef _get gbl=git-blame
+alias gt='git reset'
+compdef _get gt=git-reset
+alias gth='git reset --hard'
+compdef _get gt=git-reset
+alias gts='git reset --soft'
+compdef _get gt=git-reset
+alias gthh='git reset --hard HEAD'
+compdef _get gt=git-reset
 
 
 # Super useful alias aliases
