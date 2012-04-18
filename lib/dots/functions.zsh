@@ -1,4 +1,5 @@
 function zsh_stats() {
+  echo "Top commands used:"
   history | awk '{print $2}' | sort | uniq -c | sort -rn | head
 }
 
@@ -30,4 +31,8 @@ function configure_dots() {
 function take() {
   mkdir -p $1
   cd $1
+}
+
+function proc() {
+  ps -A | grep $1
 }
