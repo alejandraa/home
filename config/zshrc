@@ -50,6 +50,7 @@ RUBY_HEAP_FREE_MIN=500000
 # Load RVM into a shell session
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 __rvm_project_rvmrc
+USE_BUNDLER=force # always use Bundler
 
 # Run DOTS...
 source $DOTS/lib/dots.sh

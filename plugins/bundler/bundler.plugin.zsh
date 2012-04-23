@@ -1,11 +1,19 @@
+## Aliases
+
 alias be="bundle exec"
 alias bi="bundle install"
 alias bl="bundle list"
 alias bp="bundle package"
 alias bu="bundle update"
 
-# # The following is based on https://github.com/gma/bundler-exec
-# bundled_commands=(annotate cap capify cucumber ey foreman guard heroku middleman nanoc rackup rainbows rails rake rspec ruby shotgun spec spork thin thor unicorn unicorn_rails)
+# # Original commands in the OMZ version. Adding what we need, as we need it.
+# #
+# # annotate cap capify cucumber ey foreman guard heroku middleman
+# # nanoc rackup rainbows rails rake rspec ruby shotgun spec spork
+# # thin thor unicorn unicorn_rails
+# #
+# # based on https://github.com/gma/bundler-exec and OMZ's Bundler.plugin
+# bundled_commands=(guard rake leader rails rake rspec thor)
 
 # ## Functions
 
@@ -31,6 +39,7 @@ alias bu="bundle update"
 # }
 
 # ## Main program
+
 # for cmd in $bundled_commands; do
 #   eval "function bundled_$cmd () { _run-with-bundler $cmd \$@}"
 #   alias $cmd=bundled_$cmd
