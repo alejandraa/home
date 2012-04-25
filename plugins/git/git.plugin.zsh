@@ -72,7 +72,12 @@ alias gts='git reset --soft'
 compdef _get gt=git-reset
 alias gthh='git reset --hard HEAD'
 compdef _get gt=git-reset
-
+alias gs='git pull --rebase && git push'
+compdef _get gs=git-pull
+compdef _get gs=git-push
+alias gsf='git pull --rebase && git push tubbo'
+compdef _get gs=git-pull
+compdef _get gs=git-push
 
 # Super useful alias aliases
 alias s='gst'
