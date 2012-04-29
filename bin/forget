@@ -3,17 +3,23 @@
 # Forgets persisted dot files
 
 require 'fileutils'
+include FileUtils
 
 ARGV.each do |dot_file|
   dot_file_without_dot = dot_file.gsub(/\./, '')
+  home = `echo $HOME`
+  home.gsub!(/\n/, '')
 
-  if rm "~/#{dot_file}"
-    if mv "~/.dots/config/#{dot_file_without_dot}", "~/#{dot_file}"
-      puts "#{dot_file} has been forgotten."
+  if rm "#{home}/#{dot_file}"
+    if mv "#{home}/.dots/config/#{dot_file_without_dot}", "#{home}/#{dot_file}"
+      puts "#{dot_file} has been removed from your DOTS and restored to its original location."
+      exit 0
     else
       puts "Error: #{dot_file_without_dot} could not be moved."
+      exit 1
     end
   else
     puts "Error: #{dot_file} symlink could not be removed."
+    exit 1
   end
 end
