@@ -6,14 +6,9 @@ DOTS is a framework for ZSH that helps you manage your dot-files, ZSH sugar func
 Features
 --------
 
-- Plugin library with backwards compatibility for ZSH plugins
-- Simplified prompt string themeing
+- Vast, modular plugin library, built on top of [Oh My ZSH][omz]'s architecture.
+- Simplified prompt string themeing in the `lib/dots/prompt.zsh` directory.
 - Configuration persistence via the `persist` command. This copies your dot-files to the **config/** directory and allows you to optionally store them in Git. Add your persisted configs to your fork's `.gitignore` if you don't want them synchronized.
-
-Roadmap
--------
-
-- Make sure Installer is tested
 
 Installation
 ------------
@@ -36,7 +31,46 @@ Then start (or restart) ZSH by reloading or opening a new terminal window.
 
 ### Problems?
 
-You *might* need to modify your $PATH in **~/.zshrc** if you're not able to find some commands after switching to **DOTS**.
+You *might* need to modify your $PATH in **~/.zshrc** if you're not able to find some
+commands after switching to **DOTS**.
+
+Usage
+-----
+
+There are a number of commands built-in to the DOTS framework:
+
+### persist <dot-file>
+
+You can persist any dot file with DOTS. Simply run this command on the file...it will copy the
+file to your `$DOTS` folder and symlink that new file in its original place, preserving your
+settings in a git repository but making it accessible for the application needing to use it.
+
+### forget <dot-file>
+
+The opposite of `persist`. Deletes the symlink and restores your file. For when you just need to
+fuggeddaboutit...
+
+### upgrade_zsh
+
+Downloads, unarchives and compiles the latest version of ZSH.
+
+### osx_for_hackers
+
+For Mac OS X users, this runs a bunch of settings that I found very helpful for browsing and using
+my Mac. It's totally optional, but this alias simply runs the `tools/osx.zsh` script.
+
+### configure_dots
+
+Opens up the `$DOTS` folder in your text editor of choice (defined with `EDITOR=` in your zshrc).
+Useful for fixing bugs or development.
+
+### upgrade_dots
+
+Downloads the latest `HEAD` from the DOTS Github repository.
+
+### uninstall_dots
+
+If you don't think DOTS is for you, just get rid of it with this command.
 
 Forking
 -------
@@ -53,7 +87,7 @@ And to make sure it works, type
 
     git pull <your-github-username> master
 
-We like the follow the standards for fork names set forth in [the hub plugin][hub] by [Chris Wernstrath][cw]. You can feasibly name the fork anything you like.
+We like the follow the convention for fork names set forth in [the hub plugin][hub] by [Chris Wernstrath][cw]. You can feasibly name the fork anything you like.
 
 You can either modify **tools/upgrade.sh** to `git pull` from your fork and `git push` to your fork after the upgrade is complete to keep it in sync, or do it manually by setting `DISABLE_AUTO_UPDATE="true"` (which is disabled by default in **config/zshrc**).
 
