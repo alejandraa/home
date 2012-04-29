@@ -28,6 +28,10 @@ function configure_dots() {
   subl .
 }
 
+function osx_for_hackers() {
+  source $DOTS/tools/osx.zsh
+}
+
 function take() {
   mkdir -p $1
   cd $1
