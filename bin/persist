@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+#
+# Persists dot files in .dots/config
+
+require 'fileutils'
+
+ARGV.each do |dot_file|
+  dot_file_without_dot = dot_file.gsub(/\./, '')
+  if mv "~/#{dot_file}", "~/.dots/config/#{dot_file_without_dot}"
+    if `ln -s ~/.dots/config/#{dot_file_without_dot} ~/#{dot_file}`
+      puts "#{dot_file} saved to DOTS!"
+    else
+      puts "Error: #{dot_file} could not be symlinked."
+    end
+  else
+    puts "Error: #{dot_file} could not be moved."
+  end
+end
