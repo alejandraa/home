@@ -59,4 +59,3 @@ for config_file ($ZSH_CUSTOM/*.zsh) source $config_file
 
 # Load the theme
 source "$ZSH/lib/dots/prompt.zsh"
-
