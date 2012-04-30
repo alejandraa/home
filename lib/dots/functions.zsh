@@ -4,10 +4,6 @@ function dots() {
   exec "${DOTS_CMD}_dots"
 }
 
-function remove_dots() {
-  /usr/bin/env ZSH=$ZSH /bin/sh $ZSH/tools/uninstall.sh
-}
-
 # Blindly upgrade the framework from the
 function upgrade_dots() {
   /usr/bin/env ZSH=$ZSH /bin/sh $ZSH/tools/upgrade.sh
@@ -39,11 +35,6 @@ function upgrade_zsh() {
   ./configure --prefix=/ &&
   make &&
   sudo make install
-}
-
-function configure_dots() {
-  cd $ZSH
-  subl .
 }
 
 function osx_for_hackers() {
