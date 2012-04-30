@@ -25,7 +25,7 @@ function reload_dots() {
 # Navigate to the directory the framework is stored in, and open it up in your text editor.
 function configure_dots() {
   cd $DOTS
-  exec "$EDITOR $DOTS"
+  $EDITOR $DOTS
 }
 
 # Upgrade and compile the entire ZSH project.
