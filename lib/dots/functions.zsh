@@ -1,9 +1,3 @@
-# Main gateway to the rest of the DOTS functionality
-function dots() {
-  DOTS_CMD=$1
-  exec "${DOTS_CMD}_dots"
-}
-
 # Blindly upgrade the framework from the
 function upgrade_dots() {
   /usr/bin/env ZSH=$ZSH /bin/sh $ZSH/tools/upgrade.sh

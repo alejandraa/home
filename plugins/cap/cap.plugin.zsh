@@ -21,7 +21,7 @@ function _cap () {
 compctl -K _cap cap
 
 # Custom aliases for eLocal Capistrano deployment
-alias cdp='cap to_prod deploy'
+alias cpd='cap to_prod deploy'
 alias cdd='cap to_dev deploy'
-alias cds='cap to_stage deploy'
-alias cdu='cap to_uat deploy'
+alias csd='cap to_stage deploy'
+alias cud='cap to_uat deploy'
