@@ -78,6 +78,8 @@ compdef _get gs=git-push
 alias gsf='git pull --rebase && git push tubbo'
 compdef _get gs=git-pull
 compdef _get gs=git-push
+alias gy='git synchronize'
+compdef _get gy=git-synchronize
 
 # Super useful alias aliases
 alias s='gst'

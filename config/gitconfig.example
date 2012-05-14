@@ -25,6 +25,7 @@
   current-branch = !git symbolic-ref -q HEAD | sed -e 's|^refs/heads/||'
   # Usage: git track origin/feature-123-login-form
   track = checkout -t
+  synchronize = "!echo \"Synchronizing main line branches...\"; git checkout master; git pull --rebase; git checkout develop; git rebase master; git checkout master"
 [apply]
   whitespace = warn
 [color]
