@@ -15,7 +15,7 @@ alias rdb='_rails_command dbconsole'
 alias rg='_rails_command generate'
 alias rp='_rails_command plugin'
 alias ru='_rails_command runner'
-alias rs='_rails_command server'
+# alias rs='_rails_command server'
 alias rsd='_rails_command server --debugger'
 
 # Rake tasks
@@ -45,6 +45,32 @@ rl() {
     $RAILS_PAGER $MODES log/$1.log;
   else
     $RAILS_PAGER $MODES log/development.log;
+  fi
+}
+
+# Start or stop the Rails server
+rs() {
+  local cmd=$2
+  local port=$3
+
+  if [[ $cmd == "start" ]] ; then
+    if [[ $port != "" ]] ; then
+      thin -p $port -d $cmd
+      wait 3
+      echo "Rails app is up on http://localhost:${port}."
+    else
+      local port='3000'
+      echo "No port passed, starting Thin on port 3000..."
+      thin -p $port -d $cmd
+      wait 3
+      echo "Rails app is up on http://localhost:${port}."
+    fi
+  elif [[ $cmd == 'stop' ]] ; then
+    thin $cmd
+    echo "Rails app server has stopped."
+  else
+    thin $cmd
+    echo "Rails server has been ${cmd}ed."
   fi
 }
 
