@@ -8,28 +8,6 @@ function _rails_command () {
   fi
 }
 
-# Rails commands
-alias rc='_rails_command console'
-alias rd='_rails_command destroy'
-alias rdb='_rails_command dbconsole'
-alias rg='_rails_command generate'
-alias rp='_rails_command plugin'
-alias ru='_rails_command runner'
-# alias rs='_rails_command server'
-alias rsd='_rails_command server --debugger'
-
-# Rake tasks
-alias rdm='rake db:migrate'
-alias rdr='rake db:rollback'
-alias rdbm='rake db:migrate db:test:clone'
-alias rt='rake test'
-alias rtu='rake test:units'
-alias rtf='rake test:functionals'
-alias rti='rake test:integrations'
-alias rts='rtest' # defined in ruby.plugin.zsh
-alias rr="rake routes | grep $1"
-alias rra="rake routes"
-
 # View the Rails logger
 RAILS_PAGER='less'
 rl() {
@@ -48,23 +26,18 @@ rl() {
   fi
 }
 
-# Start or stop the Rails server
-rs() {
+# Control Thin, our Rails application server
+thinctl() {
   local cmd=$2
   local port=$3
 
   if [[ $cmd == "start" ]] ; then
     if [[ $port != "" ]] ; then
-      thin -p $port -d $cmd
-      wait 3
-      echo "Rails app is up on http://localhost:${port}."
-    else
       local port='3000'
       echo "No port passed, starting Thin on port 3000..."
-      thin -p $port -d $cmd
-      wait 3
-      echo "Rails app is up on http://localhost:${port}."
     fi
+    thin -p $port -d $cmd
+    echo "Rails app is up on http://localhost:${port}."
   elif [[ $cmd == 'stop' ]] ; then
     thin $cmd
     echo "Rails app server has stopped."
@@ -73,6 +46,28 @@ rs() {
     echo "Rails server has been ${cmd}ed."
   fi
 }
+
+# Rails commands
+alias rc='_rails_command console'
+alias rd='_rails_command destroy'
+alias rdb='_rails_command dbconsole'
+alias rg='_rails_command generate'
+alias rp='_rails_command plugin'
+alias ru='_rails_command runner'
+alias rs='_rails_command server'
+alias rsd='_rails_command server --debugger'
+
+# Rake tasks
+alias rdm='rake db:migrate'
+alias rdr='rake db:rollback'
+alias rdbm='rake db:migrate db:test:clone'
+alias rt='rake test'
+alias rtu='rake test:units'
+alias rtf='rake test:functionals'
+alias rti='rake test:integrations'
+alias rts='rtest' # defined in ruby.plugin.zsh
+alias rr="rake routes | grep $1"
+alias rra="rake routes"
 
 # 3rd-party processes related to Rails
 alias redis="redis-server /usr/local/etc/redis.conf"

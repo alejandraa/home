@@ -8,9 +8,8 @@ PATH=$HOME/.dots/bin:$HOME/.rvm/bin:/usr/local/bin:/usr/local/share/npm/bin:/usr
 MANPATH=/opt/local/share/man:$MANPATH
 
 
-# Default text editors
-EDITOR='subl'
-GIT_EDITOR='subl -w'
+# Default text editor
+EDITOR='mvim -f --nomru -c "au VimLeave * !open -a Terminal"'
 
 # PostgreSQL config
 ARCHFLAGS='-arch x86_64'

@@ -113,3 +113,6 @@ compdef ggpnp=git
 if (( $+commands[hub] )) ; then
   function git() {hub "$@"}
 fi
+
+# SHIP IT
+alias ship='echo ">>> SHIP IT <<<"; git checkout master; git pull --rebase origin master; git merge develop; git push origin master'
