@@ -441,9 +441,10 @@ end
 
 # >-----------------------------[ Run Bundler ]-------------------------------<
 
-say_wizard "Running 'bundle install'. This will take a while."
-run 'bundle install'
-run 'bundle update'
+#say_wizard "Running 'bundle install'. This will take a while."
+#run 'bundle install'
+#run 'bundle update'
+say_wizard "Bundle has been postponed until after RVM gemset is created."
 say_wizard "Running 'after bundler' callbacks."
 require 'bundler/setup'
 @after_blocks.each{|b| config = @configs[b[0]] || {}; @current_recipe = b[0]; b[1].call}
