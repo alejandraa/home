@@ -3,7 +3,7 @@ ZSH=$HOME/.dots
 DOTS=$ZSH
 
 # Program and documentation paths
-PATH=$HOME/.dots/bin:$HOME/.rvm/bin:/usr/local/bin:/usr/local/share/npm/bin:/usr/local/Cellar/python/2.7.1/bin:/usr/local/git/bin/:/usr/bin:$PATH
+PATH=$HOME/.dots/bin:$HOME/.rvm/bin:/usr/local/bin:/usr/local/share/npm/bin:/usr/local/Cellar/python/2.7.1/bin:/usr/local/git/bin:/usr/bin:$PATH
 
 MANPATH=/opt/local/share/man:$MANPATH
 

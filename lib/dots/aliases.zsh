@@ -22,6 +22,9 @@ alias sl=ls # often screw this up
 
 alias afind='ack-grep -il'
 
+# Reload Oh My ZSH! after a change
+alias reload="source $HOME/.zshrc"
+
 # General purpose time savers
 alias redis="redis-server /usr/local/etc/redis.conf"
 alias tmbundle="osascript -e 'tell app \"TextMate\" to reload bundles'"
