@@ -6,10 +6,11 @@ function upgrade_dots() {
 # Reload the framework after a change to the config file (or one of the plugins)
 function reload_dots() {
   source $HOME/.zshrc
-
+  rvm reload
   if [[ -f .rvmrc ]]; then
     source .rvmrc
   fi
+  echo "DOTS reloaded!"
 }
 
 # Navigate to the directory the framework is stored in, and open it up in your text editor.

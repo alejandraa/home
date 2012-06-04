@@ -56,6 +56,7 @@ alias rp='_rails_command plugin'
 alias ru='_rails_command runner'
 alias rs='_rails_command server'
 alias rsd='_rails_command server --debugger'
+alias rsp='bundle exec foreman start' # Rails Server and Processes
 
 # Rake tasks
 alias rdm='rake db:migrate'

@@ -9,7 +9,7 @@ MANPATH=/opt/local/share/man:$MANPATH
 
 
 # Default text editor
-EDITOR='mvim -f --nomru -c "au VimLeave * !open -a Terminal"'
+EDITOR='mvim -f --nomru'
 
 # PostgreSQL config
 ARCHFLAGS='-arch x86_64'
