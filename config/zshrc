@@ -1,39 +1,43 @@
-# Path to your shell configuration.
+##
+# DOTS
+#
+# Base ZSH configuration.
+##
+
+# Set the path to our shell configuration.
 ZSH=$HOME/.dots
 DOTS=$ZSH
 
-# Program and documentation paths
+# Set our shell paths to load from all of the bin's on the machine.
 PATH=$HOME/.dots/bin:$HOME/.rvm/bin:/usr/local/bin:/usr/local/share/npm/bin:/usr/local/Cellar/python/2.7.1/bin:/usr/local/git/bin:/usr/bin:$PATH
-
 MANPATH=/opt/local/share/man:$MANPATH
 
-
-# Default text editor
+# Set MacVim as our default text editor, with switches to support Git.
 EDITOR='mvim -f --nomru'
 
-# PostgreSQL config
+# Configure PostgreSQL to use the proper architecture.
 ARCHFLAGS='-arch x86_64'
 PGDATA=/usr/local/var/postgres
 
-# MySQL config
+# Configure the MySQL prompt to show more information.
 MYSQL_PS1="\R:\m:\s \h> "
 
-# Define the C compiler
+# Define the C compiler as GCC 4.2
 CC=/usr/bin/gcc-4.2
 
-# Keep everything case-insensitive
-# CASE_SENSITIVE="true"
+# Keep everything case-insensitive.
+#CASE_SENSITIVE="true"
 
-# Disable weekly automatic update
+# Disable weekly automatic update.
 DISABLE_AUTO_UPDATE="true"
 
 # Use colors in `ls`
-# DISABLE_LS_COLORS="true"
+#DISABLE_LS_COLORS="true"
 
-# Set the Terminal title automatically
-# DISABLE_AUTO_TITLE="true"
+# Don't set iTerm/Terminal's title automatically.
+#DISABLE_AUTO_TITLE="true"
 
-# Red dots are displayed when ZSH is hanging
+# Display red dots when ZSH is hanging.
 COMPLETION_WAITING_DOTS="true"
 
 # Load plugins
@@ -49,7 +53,7 @@ RUBY_HEAP_FREE_MIN=500000
 # Load RVM into a shell session
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 __rvm_project_rvmrc
-USE_BUNDLER=force # always use Bundler
+USE_BUNDLER=force
 
-# Run DOTS...
+# Load the DOTS framework
 source $DOTS/lib/dots.sh
