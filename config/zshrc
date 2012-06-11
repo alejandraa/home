@@ -9,10 +9,10 @@ ZSH=$HOME/.dots
 DOTS=$ZSH
 
 # Set our shell paths to load from all of the bin's on the machine.
-PATH=$HOME/.dots/bin:$HOME/.rvm/bin:/usr/local/bin:/usr/local/share/npm/bin:/usr/local/Cellar/python/2.7.1/bin:/usr/local/git/bin:/usr/bin:$PATH
+PATH=/usr/local/share/npm/bin:/usr/local/Cellar/python/2.7.1/bin:/usr/local/git/bin:/usr/bin:/usr/local/bin:$HOME/.dots/bin:$HOME/.rvm/bin:$PATH
 MANPATH=/opt/local/share/man:$MANPATH
 
-# Set MacVim as our default text editor, with switches to support Git.
+# Set MacVim as our catault text editor, with switches to support Git.
 EDITOR='mvim -f --nomru'
 
 # Configure PostgreSQL to use the proper architecture.
@@ -41,7 +41,7 @@ DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 
 # Load plugins
-plugins=(git osx bundler thor rvm gem rails3 ruby growl sublime brew powder cake cap ruby github git-flow mysql)
+plugins=(git osx bundler thor rvm gem rails3 ruby growl cap ruby github git-flow knife)
 
 # Make Ruby even faster
 RUBY_HEAP_MIN_SLOTS=1000000
@@ -50,9 +50,7 @@ RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
 RUBY_GC_MALLOC_LIMIT=1000000000
 RUBY_HEAP_FREE_MIN=500000
 
-# Load RVM into a shell session
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-__rvm_project_rvmrc
+# Always use Bundler with RVM.
 USE_BUNDLER=force
 
 # Load the DOTS framework

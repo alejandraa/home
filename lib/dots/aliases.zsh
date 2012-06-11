@@ -24,6 +24,7 @@ alias afind='ack-grep -il'
 
 # Reload Oh My ZSH! after a change
 alias reload="source $HOME/.zshrc"
+alias refresh="reload && clear"
 
 # General purpose time savers
 alias redis="redis-server /usr/local/etc/redis.conf"

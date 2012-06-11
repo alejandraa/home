@@ -2,8 +2,8 @@
 # index the new data with Solr.
 
 cd /Users/tom/Code/elocal/
-thor db:import:stage
-rake db:migrate
-thor solr:index_accounts
-thor solr:index_categories
-thor solr:index_profiles
+bundle exec thor db:import:stage
+bundle exec rake db:migrate
+bundle exec thor solr:index_accounts
+bundle exec thor solr:index_categories
+bundle exec thor solr:index_profiles
