@@ -340,29 +340,29 @@ end
 if recipes.include? 'guard'
   gem 'guard', '>= 0.6.2', :group => :development
 
-  prepend_file 'Gemfile' do <<-RUBY
-require 'rbconfig'
-HOST_OS = RbConfig::CONFIG['host_os']
+  #prepend_file 'Gemfile' do <<-RUBY
+#require 'rbconfig'
+#HOST_OS = RbConfig::CONFIG['host_os']
 
-RUBY
-  end
+#RUBY
+  #end
 
-  append_file 'Gemfile' do <<-RUBY
-  # need newline here!
-case HOST_OS
-  when /darwin/i
-    gem 'rb-fsevent', :group => :development
-    gem 'growl', :group => :development
-  when /linux/i
-    gem 'libnotify', :group => :development
-    gem 'rb-inotify', :group => :development
-  when /mswin|windows/i
-    gem 'rb-fchange', :group => :development
-    gem 'win32console', :group => :development
-    gem 'rb-notifu', :group => :development
-end
-  RUBY
-  end
+  #append_file 'Gemfile' do <<-RUBY
+  ## need newline here!
+#case HOST_OS
+  #when /darwin/i
+    #gem 'rb-fsevent', :group => :development
+    #gem 'growl', :group => :development
+  #when /linux/i
+    #gem 'libnotify', :group => :development
+    #gem 'rb-inotify', :group => :development
+  #when /mswin|windows/i
+    #gem 'rb-fchange', :group => :development
+    #gem 'win32console', :group => :development
+    #gem 'rb-notifu', :group => :development
+#end
+  #RUBY
+  #end
 
   def guards
     @guards ||= []
@@ -434,17 +434,71 @@ else
 end
 
 
+create_file 'Gemfile' do <<-RUBY
+require 'rbconfig'
+source :rubygems
 
+gem 'rails', '3.2.3'
+gem 'pg'
+
+group :assets do
+  gem 'sass-rails',   '~> 3.2.3'
+  gem 'coffee-rails', '~> 3.2.1'
+  gem 'uglifier', '>= 1.0.3'
+end
+
+group :views do
+  gem 'jquery-rails'
+  gem "bootstrap-sass", ">= 2.0.3"
+  gem "haml", ">= 3.1.6"
+end
+
+group :development do
+  gem "haml-rails", ">= 0.3.4"
+  gem "guard", ">= 0.6.2"
+
+  case RbConfig::CONFIG['host_os']
+    when /darwin/i
+      gem 'rb-fsevent'
+      gem 'growl'
+    when /linux/i
+      gem 'libnotify'
+      gem 'rb-inotify'
+  end
+
+  gem "guard-bundler", ">= 0.1.3"
+  gem "guard-rails", ">= 0.0.3"
+end
+
+group :test do
+  gem "minitest"
+  gem "mini_shoulda"
+  gem "turn"
+  gem "vcr"
+  gem "webmock"
+  gem "factory_girl_rails"
+end
+
+group :production do
+  gem 'unicorn'
+  gem 'capistrano'
+  gem "airbrake"
+end
+RUBY
+end
 
 
 @current_recipe = nil
 
 # >-----------------------------[ Run Bundler ]-------------------------------<
-
-#say_wizard "Running 'bundle install'. This will take a while."
-#run 'bundle install'
-#run 'bundle update'
-say_wizard "Bundle has been postponed until after RVM gemset is created."
+say_wizard "Creating RVM gemset"
+create_file '.rvmrc' do
+ "rvm use --create --rvmrc 1.9.3-p125@#{app_name}"
+end
+say_wizard "Running 'bundle install'. This will take a while."
+run "bundle install"
+run "bundle update"
+#say_wizard "Bundle has been postponed until after RVM gemset is created."
 say_wizard "Running 'after bundler' callbacks."
 require 'bundler/setup'
 @after_blocks.each{|b| config = @configs[b[0]] || {}; @current_recipe = b[0]; b[1].call}

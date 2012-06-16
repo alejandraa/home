@@ -34,3 +34,4 @@ alias rmbs="find . -type f -name '._*' -exec rm {} + && echo \"Removed all ._ fi
 alias reload='reload_dots'
 alias configure='configure_dots'
 alias e=$EDITOR
+alias ed='ed -p "ed> "'
