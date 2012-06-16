@@ -15,7 +15,11 @@ MANPATH=/opt/local/share/man:$MANPATH
 # Set MacVim as our catault text editor, with switches to support Git.
 EDITOR='mvim -f --nomru'
 
-# Configure PostgreSQL to use the proper architecture.
+# Default text editor
+#EDITOR='mvim -f --nomru -c "au VimLeave * !open -a Terminal"'
+EDITOR='vim'
+
+# PostgreSQL config
 ARCHFLAGS='-arch x86_64'
 PGDATA=/usr/local/var/postgres
 
