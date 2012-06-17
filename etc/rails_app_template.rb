@@ -149,7 +149,7 @@ end
 say_recipe 'html5'
 
 config = {}
-config['css_option'] = multiple_choice("Which front-end framework would you like for HTML5 and CSS?", [["None", "nothing"], ["Zurb Foundation", "foundation"], ["Twitter Bootstrap (less)", "bootstrap_less"], ["Twitter Bootstrap (sass)", "bootstrap_sass"], ["Skeleton", "skeleton"], ["Just normalize CSS for consistent styling", "normalize"]]) if true && true unless config.key?('css_option')
+config['css_option'] = 'bootstrap_sass' #multiple_choice("Which front-end framework would you like for HTML5 and CSS?", [["None", "nothing"], ["Zurb Foundation", "foundation"], ["Twitter Bootstrap (less)", "bootstrap_less"], ["Twitter Bootstrap (sass)", "bootstrap_sass"], ["Skeleton", "skeleton"], ["Just normalize CSS for consistent styling", "normalize"]]) if true && true unless config.key?('css_option')
 @configs[@current_recipe] = config
 
 # Application template recipe for the rails_apps_composer. Check for a newer version here:
@@ -299,7 +299,7 @@ end
 say_recipe 'HAML'
 
 config = {}
-config['haml'] = yes_wizard?("Would you like to use Haml instead of ERB?") if true && true unless config.key?('haml')
+config['haml'] = true #yes_wizard?("Would you like to use Haml instead of ERB?") if true && true unless config.key?('haml')
 @configs[@current_recipe] = config
 
 # Application template recipe for the rails_apps_composer. Check for a newer version here:
@@ -320,7 +320,7 @@ end
 say_recipe 'guard'
 
 config = {}
-config['guard'] = multiple_choice("Would you like to use Guard to automate your workflow?", [["No", false], ["Guard default configuration", "standard"], ["Guard with LiveReload", "LiveReload"]]) if true && true unless config.key?('guard')
+config['guard'] = 'standard' #multiple_choice("Would you like to use Guard to automate your workflow?", [["No", false], ["Guard default configuration", "standard"], ["Guard with LiveReload", "LiveReload"]]) if true && true unless config.key?('guard')
 @configs[@current_recipe] = config
 
 case config['guard']
@@ -415,7 +415,7 @@ end
 say_recipe 'Airbrake'
 
 config = {}
-config['use_heroku'] = yes_wizard?("Use the Airbrake Heroku addon?") if true && recipe?('heroku') unless config.key?('use_heroku')
+config['use_heroku'] = false #yes_wizard?("Use the Airbrake Heroku addon?") if true && recipe?('heroku') unless config.key?('use_heroku')
 config['api_key'] = ask_wizard("Enter Airbrake API Key:") if !config['use_heroku'] && true unless config.key?('api_key')
 @configs[@current_recipe] = config
 
@@ -498,7 +498,6 @@ end
 say_wizard "Running 'bundle install'. This will take a while."
 run "bundle install"
 run "bundle update"
-#say_wizard "Bundle has been postponed until after RVM gemset is created."
 say_wizard "Running 'after bundler' callbacks."
 require 'bundler/setup'
 @after_blocks.each{|b| config = @configs[b[0]] || {}; @current_recipe = b[0]; b[1].call}

@@ -13,7 +13,7 @@ PATH=/usr/local/share/npm/bin:/usr/local/Cellar/python/2.7.1/bin:/usr/local/git/
 MANPATH=/opt/local/share/man:$MANPATH
 
 # Set MacVim as our catault text editor, with switches to support Git.
-EDITOR='mvim -f --nomru'
+EDITOR='vim' #'mvim -f --nomru'
 
 # Default text editor
 #EDITOR='mvim -f --nomru -c "au VimLeave * !open -a Terminal"'
