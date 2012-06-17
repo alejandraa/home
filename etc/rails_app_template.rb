@@ -438,7 +438,7 @@ create_file 'Gemfile' do <<-RUBY
 require 'rbconfig'
 source :rubygems
 
-gem 'rails', '3.2.3'
+gem 'rails', '3.2.6'
 gem 'pg'
 
 group :assets do

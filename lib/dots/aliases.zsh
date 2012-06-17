@@ -35,3 +35,20 @@ alias reload='reload_dots'
 alias configure='configure_dots'
 alias e=$EDITOR
 alias ed='ed -p "ed> "'
+
+# Locations
+elocal=$HOME/Code/elocal
+alias elocal='nocorrect elocal'
+
+kitchen=$HOME/Code/elocal/chef_scripts
+alias kitchen='nocorrect kitchen'
+alias chef_scripts='nocorrect kitchen'
+
+blog=$HOME/Code/blog
+alias blog='nocorrect blog'
+
+overcast=$HOME/Code/overcast
+alias overcast='nocorrect overcast'
+
+diaspora=$HOME/Code/diaspora
+alias diaspora='nocorrect diaspora'
