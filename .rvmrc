@@ -1,4 +1,17 @@
 #!/usr/bin/env bash
+#
+# WARNING
+#
+# THIS IS NOT YOUR ~/.rvmrc FILE!!!
+#
+# That file is located in ~/.dots/config/rvmrc. Please go there to edit your global RVM changes.
+
+
+
+
+
+
+
 
 # This is an RVM Project .rvmrc file, used to automatically load the ruby
 # development environment upon cd'ing into the directory
