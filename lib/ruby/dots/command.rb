@@ -4,7 +4,7 @@ module Dots
 
     desc "Show the current version of DOTS"
     def version
-      say ">> We love your DOTS! You are running version #{Dots::VERSION}. <<"
+      say "DOTS version #{Dots::VERSION} - http://tubbo.github.com/dots"
     end
 
     desc "Copy a dotfile to .dots/config and symlink the original location"

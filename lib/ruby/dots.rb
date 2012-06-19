@@ -1,5 +1,6 @@
 require 'bundler'
 require 'fileutils'
+
 Bundler.require :default
 
 require 'dots/command'
