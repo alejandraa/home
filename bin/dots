@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+$LOAD_PATHS << File.expand_path('./lib/ruby')
+require 'dots'
+Dots::Command.start

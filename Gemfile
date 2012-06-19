@@ -1,3 +1,7 @@
 source :rubygems
 
-gem 'rake'
+gem 'thor'
+
+group :development do
+  gem 'rake'
+end
