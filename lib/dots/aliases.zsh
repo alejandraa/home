@@ -52,3 +52,7 @@ alias overcast='nocorrect overcast'
 
 diaspora=$HOME/Code/diaspora
 alias diaspora='nocorrect diaspora'
+
+# Dotfiles persistence
+alias persist='dots persist'
+alias forget='dots forget'
