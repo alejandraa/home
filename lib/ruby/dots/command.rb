@@ -1,13 +1,20 @@
 module Dots
   class Command < Thor
     include FileUtils
+    default_task :usage
 
-    desc "Show the current version of DOTS"
+    desc :usage, "Show usage information"
+    def usage
+      say "Dots helps you persist and forget your dotfiles."
+      help
+    end
+
+    desc :version, "Show the current version of DOTS"
     def version
       say "DOTS version #{Dots::VERSION} - http://tubbo.github.com/dots"
     end
 
-    desc "Copy a dotfile to .dots/config and symlink the original location"
+    desc :persist, "Copy a dotfile to .dots/config and symlink the original location"
     method_option :dot_file, :string
     def persist
       dot_file_without_dot = dot_file.gsub(/\./, '')
@@ -28,7 +35,7 @@ module Dots
       end
     end
 
-    desc "Remove the symlink and restore a dotfile back to its original location"
+    desc :forget, "Remove the symlink and restore a dotfile back to its original location"
     method_option :dot_file, :string
     def forget
       dot_file = options[:dot_file]
