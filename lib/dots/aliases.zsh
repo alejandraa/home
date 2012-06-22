@@ -36,6 +36,9 @@ alias configure='configure_dots'
 alias e=$EDITOR
 alias ed='ed -p "ed> "'
 
+# Reference
+alias exit_code='cat /usr/include/sysexits.h | grep $1'
+
 # Locations
 elocal=$HOME/Code/elocal
 alias elocal='nocorrect elocal'
