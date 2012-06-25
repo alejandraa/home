@@ -85,3 +85,7 @@ alias blog='nocorrect blog'
 # Diaspora
 diaspora=$HOME/Code/diaspora
 alias diaspora='nocorrect diaspora'
+
+# Personal Chef configuration
+skynet=$HOME/Code/skynet
+alias skynet='nocorrect skynet'
