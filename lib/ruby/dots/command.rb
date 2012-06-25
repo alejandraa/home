@@ -2,13 +2,32 @@ module Dots
   class Command < Thor
     include FileUtils
 
+    default_task :usage
+
+    desc :usage, "Show usage information"
+    def usage
+      say <<-TEXT
+
+The DOTS Project
+
+DOTS is a ZSH Framework for managing your dotfiles and other shell configuration.
+It also gives you some nice, sensible defaults and time-saver aliases to better
+work with and understand your shell environment.
+
+The following tasks are meant to help you use the shell more efficiently...
+
+      TEXT
+
+      help
+    end
+
     desc :version, "Show the current version of DOTS"
     def version
       say "DOTS version #{Dots::VERSION} - http://tubbo.github.com/dots"
     end
 
     desc :persist, "Copy a dotfile to .dots/config and symlink the original location"
-    method_option :dot_file, :string
+    method_option :dot_file => :string
     def persist
       dot_file_without_dot = dot_file.gsub(/\./, '')
       home = `echo $HOME`
@@ -29,7 +48,7 @@ module Dots
     end
 
     desc :forget, "Remove the symlink and restore a dotfile back to its original location"
-    method_option :dot_file, :string
+    method_option :dot_file => :string
     def forget
       dot_file = options[:dot_file]
       dot_file_without_dot = dot_file.gsub(/\./, '')
