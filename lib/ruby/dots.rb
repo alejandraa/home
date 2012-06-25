@@ -1,8 +1,5 @@
-require 'bundler'
 require 'fileutils'
-
-Bundler.require :default
-
+require 'thor'
 require 'dots/command'
 
 module Dots
