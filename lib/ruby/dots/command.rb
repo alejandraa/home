@@ -1,13 +1,6 @@
 module Dots
   class Command < Thor
     include FileUtils
-    default_task :usage
-
-    desc :usage, "Show usage information"
-    def usage
-      say "Dots helps you persist and forget your dotfiles."
-      help
-    end
 
     desc :version, "Show the current version of DOTS"
     def version

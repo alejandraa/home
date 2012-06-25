@@ -410,16 +410,20 @@ end
 
 # >-------------------------------[ Airbrake ]--------------------------------<
 
-@current_recipe = "airbrake"
-@before_configs["airbrake"].call if @before_configs["airbrake"]
-say_recipe 'Airbrake'
+if yes_wizard?("Use Airbrake?")
+  @current_recipe = "airbrake"
+  @before_configs["airbrake"].call if @before_configs["airbrake"]
+  say_recipe 'Airbrake'
 
-config = {}
-config['use_heroku'] = false #yes_wizard?("Use the Airbrake Heroku addon?") if true && recipe?('heroku') unless config.key?('use_heroku')
-config['api_key'] = ask_wizard("Enter Airbrake API Key:") if !config['use_heroku'] && true unless config.key?('api_key')
-@configs[@current_recipe] = config
+  config = {}
+  config['use_heroku'] = false #yes_wizard?("Use the Airbrake Heroku addon?") if true && recipe?('heroku') unless config.key?('use_heroku')
+  config['api_key'] = ask_wizard("Enter Airbrake API Key:") if !config['use_heroku'] && true unless config.key?('api_key')
+  @configs[@current_recipe] = config
 
-gem 'airbrake'
+  gem 'airbrake'
+else
+  config['use_heroku'] = false
+end
 
 if config['use_heroku']
   after_everything do
