@@ -55,7 +55,7 @@ for plugin ($plugins); do
 done
 
 # Load all of your custom configurations from custom/
-for config_file ($ZSH_CUSTOM/*.zsh) source $config_file
+#for config_file ($ZSH_CUSTOM/*.zsh) source $config_file
 
 # Load the theme
 source "$ZSH/lib/dots/prompt.zsh"
