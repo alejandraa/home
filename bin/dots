@@ -1,4 +1,7 @@
 #!/usr/bin/env ruby
+#
+# DOTS Thor wrapper binary
+
 $:.unshift File.expand_path(File.join(File.dirname(__FILE__), "..", "lib", "ruby"))
 require 'dots'
 Dots::Command.start
