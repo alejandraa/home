@@ -27,9 +27,8 @@ The following tasks are meant to help you use the shell more efficiently...
     end
 
     desc :persist, "Copy a dotfile to .dots/config and symlink the original location"
-    method_option :dot_file => :string
-    def persist
-      dot_file_without_dot = dot_file.gsub(/\./, '')
+    def persist dot_file
+      dot_file_without_dot = dot_file.gsub(/^\./, '')
       home = `echo $HOME`
       home.gsub!(/\n/, '')
 
@@ -48,10 +47,8 @@ The following tasks are meant to help you use the shell more efficiently...
     end
 
     desc :forget, "Remove the symlink and restore a dotfile back to its original location"
-    method_option :dot_file => :string
-    def forget
-      dot_file = options[:dot_file]
-      dot_file_without_dot = dot_file.gsub(/\./, '')
+    def forget dot_file
+      dot_file_without_dot = dot_file.gsub(/^\./, '')
       home = `echo $HOME`
       home.gsub!(/\n/, '')
 
