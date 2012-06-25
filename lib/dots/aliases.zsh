@@ -36,6 +36,10 @@ alias configure='configure_dots'
 alias e=$EDITOR
 alias ed='ed -p "ed> "'
 
+# Dotfiles persistence
+alias persist='dots persist'
+alias forget='dots forget'
+
 # Reference
 alias exit_code='cat /usr/include/sysexits.h | grep $1'
 
@@ -50,12 +54,8 @@ alias chef_scripts='nocorrect kitchen'
 blog=$HOME/Code/blog
 alias blog='nocorrect blog'
 
-overcast=$HOME/Code/overcast
-alias overcast='nocorrect overcast'
-
 diaspora=$HOME/Code/diaspora
 alias diaspora='nocorrect diaspora'
 
-# Dotfiles persistence
-alias persist='dots persist'
-alias forget='dots forget'
+affiliates=$HOME/Code/affiliates
+alias affiliates='nocorrect affiliates'
