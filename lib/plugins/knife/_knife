@@ -179,3 +179,5 @@ _cookbook_versions() {
 }
 
 _knife "$@"
+
+alias knife='nocorrect knife'

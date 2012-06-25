@@ -1,5 +1,8 @@
-# fixme - the load process here seems a bit bizarre
+# = Completion
+#
+# ZSH Autocomplete configuration and extensions.
 
+# Load stuff bizarrely.
 unsetopt menu_complete   # do not autoselect the first completion entry
 unsetopt flowcontrol
 setopt auto_menu         # show completion menu on succesive tab press

@@ -1,61 +1,44 @@
-# Push and pop directories on directory stack
-alias pu='pushd'
-alias po='popd'
+# = Aliases
+#
+# General purpose, time-saving aliases for everyday use.
 
-# Basic directory operations
-alias ...='cd ../..'
-alias -- -='cd -'
-
-# Super user
+# Access the superuser for a single command.
 alias _='sudo'
 
-#alias g='grep -in'
-
-# Show history
+# Show command history.
 alias history='fc -l 1'
 
-# List direcory contents
-alias lsa='ls -lah'
-alias l='ls -la'
-alias ll='ls -l'
-alias sl=ls # often screw this up
-
+# Use grep with ack.
 alias afind='ack-grep -il'
 
-# Reload Oh My ZSH! after a change
+# Reload DOTS after a change.
 alias reload="source $HOME/.zshrc"
 alias refresh="reload && clear"
 
-# General purpose time savers
+# Launch Redis.
 alias redis="redis-server /usr/local/etc/redis.conf"
+
+# Reload TextMate bundles.
 alias tmbundle="osascript -e 'tell app \"TextMate\" to reload bundles'"
+
+# Move all text out of view.
 alias c="clear"
+
+# Find all ._* files in the directory and remove them.
 alias rmbs="find . -type f -name '._*' -exec rm {} + && echo \"Removed all ._ files\""
-alias reload='reload_dots'
+
+# Open ~/.dots in your text editor.
 alias configure='configure_dots'
+
+# Edit a file or directory with the text editor.
 alias e=$EDITOR
+
+# Use `ed` in a much more helpful manner.
 alias ed='ed -p "ed> "'
 
 # Dotfiles persistence
 alias persist='dots persist'
 alias forget='dots forget'
 
-# Reference
+# Find out what an exit code means.
 alias exit_code='cat /usr/include/sysexits.h | grep $1'
-
-# Locations
-elocal=$HOME/Code/elocal
-alias elocal='nocorrect elocal'
-
-kitchen=$HOME/Code/elocal/chef_scripts
-alias kitchen='nocorrect kitchen'
-alias chef_scripts='nocorrect kitchen'
-
-blog=$HOME/Code/blog
-alias blog='nocorrect blog'
-
-diaspora=$HOME/Code/diaspora
-alias diaspora='nocorrect diaspora'
-
-affiliates=$HOME/Code/affiliates
-alias affiliates='nocorrect affiliates'
