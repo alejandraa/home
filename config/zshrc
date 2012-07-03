@@ -47,6 +47,7 @@ COMPLETION_WAITING_DOTS="true"
 
 # Load plugins
 #plugins=(git osx bundler thor rvm gem rails3 ruby growl cap ruby github git-flow knife zsh-syntax-highlighting aws)
+source "$ZSH/lib/dots/antigen.zsh"
 antigen-lib
 antigen-bundle tubbo/dots lib/plugins/git
 antigen-bundle osx
