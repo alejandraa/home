@@ -23,7 +23,7 @@ if [[ -z "$ZSH_CUSTOM" ]]; then
     ZSH_CUSTOM="$ZSH/lib/local"
 fi
 
-
+# A function for seeing if a plugin is available
 is_plugin() {
   local base_dir=$1
   local name=$2
@@ -33,26 +33,29 @@ is_plugin() {
 
 # Add all defined plugins to fpath. This must be done
 # before running compinit.
-for plugin ($plugins); do
-  if is_plugin $ZSH_CUSTOM $plugin; then
-    fpath=($ZSH_CUSTOM/lib/plugins/$plugin $fpath)
-  elif is_plugin $ZSH $plugin; then
-    fpath=($ZSH/lib/plugins/$plugin $fpath)
-  fi
-done
+#for plugin ($plugins); do
+  #if is_plugin $ZSH_CUSTOM $plugin; then
+    #fpath=($ZSH_CUSTOM/lib/plugins/$plugin $fpath)
+  #elif is_plugin $ZSH $plugin; then
+    #fpath=($ZSH/lib/plugins/$plugin $fpath)
+  #fi
+#done
 
 # Load and run compinit
 autoload -U compinit
 compinit -i
 
 # Load all of the plugins that were defined in ~/.zshrc
-for plugin ($plugins); do
-  if [ -f $ZSH_CUSTOM/lib/plugins/$plugin/$plugin.plugin.zsh ]; then
-    source $ZSH_CUSTOM/lib/plugins/$plugin/$plugin.plugin.zsh
-  elif [ -f $ZSH/lib/plugins/$plugin/$plugin.plugin.zsh ]; then
-    source $ZSH/lib/plugins/$plugin/$plugin.plugin.zsh
-  fi
-done
+#for plugin ($plugins); do
+  #if [ -f $ZSH_CUSTOM/lib/plugins/$plugin/$plugin.plugin.zsh ]; then
+    #source $ZSH_CUSTOM/lib/plugins/$plugin/$plugin.plugin.zsh
+  #elif [ -f $ZSH/lib/plugins/$plugin/$plugin.plugin.zsh ]; then
+    #source $ZSH/lib/plugins/$plugin/$plugin.plugin.zsh
+  #fi
+#done
+
+# Load the Antigen plugin manager
+source "$ZSH/lib/dots/antigen.zsh"
 
 # Load all of your custom configurations from custom/
 #for config_file ($ZSH_CUSTOM/*.zsh) source $config_file

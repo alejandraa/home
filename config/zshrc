@@ -15,9 +15,10 @@ MANPATH=/opt/local/share/man:$MANPATH
 # Set MacVim as our catault text editor, with switches to support Git.
 EDITOR='vim' #'mvim -f --nomru'
 
-# Default text editor
+# Text editing and paging
 #EDITOR='mvim -f --nomru -c "au VimLeave * !open -a Terminal"'
 EDITOR='vim'
+PAGER='less -R'
 
 # PostgreSQL config
 ARCHFLAGS='-arch x86_64'
@@ -45,7 +46,15 @@ DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 
 # Load plugins
-plugins=(git osx bundler thor rvm gem rails3 ruby growl cap ruby github git-flow knife zsh-syntax-highlighting aws)
+#plugins=(git osx bundler thor rvm gem rails3 ruby growl cap ruby github git-flow knife zsh-syntax-highlighting aws)
+antigen-lib
+antigen-bundle tubbo/dots lib/plugins/git
+antigen-bundle osx
+antigen-bundle tubbo/dots lib/plugins/bundler
+antigen-bundle tubbo/dots lib/plugins/git-flow
+antigen-bundle knife
+antigen-bundle zsh-users/zsh-syntax-highlighting
+antigen-bundle cap
 
 # Make Ruby even faster
 RUBY_HEAP_MIN_SLOTS=1000000

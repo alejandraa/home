@@ -42,3 +42,6 @@ alias forget='dots forget'
 
 # Find out what an exit code means.
 alias exit_code='cat /usr/include/sysexits.h | grep $1'
+
+# View a file with the pager utility.
+alias v=$PAGER
