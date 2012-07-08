@@ -1,4 +1,6 @@
 #!/bin/zsh
+#
+# Antigen is a bundled plugin loader.
 
 # Each line in this string has the following entries separated by a space
 # character.
