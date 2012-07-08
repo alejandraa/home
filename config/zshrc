@@ -45,6 +45,9 @@ DISABLE_AUTO_UPDATE="true"
 # Display red dots when ZSH is hanging.
 COMPLETION_WAITING_DOTS="true"
 
+# MacVim is located in /Applications
+VIM_APP_DIR=/Applications
+
 # Load plugins
 source "$ZSH/lib/dots/antigen.zsh"
 antigen-lib
