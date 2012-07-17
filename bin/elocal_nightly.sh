@@ -7,3 +7,4 @@ bundle exec rake db:migrate
 bundle exec thor solr:index_accounts
 bundle exec thor solr:index_categories
 bundle exec thor solr:index_profiles
+bundle exec rake email:nightly_db_pull_notification
