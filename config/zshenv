@@ -1,0 +1,76 @@
+# Set the path to our shell configuration.
+ZSH=$HOME/.dots
+DOTS=$ZSH
+
+# Set our shell paths to load from all of the bin's on the machine.
+PATH=/usr/local/bin:/usr/local/share/npm/bin:/usr/local/Cellar/python/2.7.1/bin:/usr/local/git/bin:/usr/bin:$HOME/.dots/bin:$HOME/.rvm/bin:$PATH
+MANPATH=/opt/local/share/man:$MANPATH
+
+# Text editing and paging
+EDITOR='vim'
+PAGER='less -R'
+
+# PostgreSQL config
+ARCHFLAGS='-arch x86_64'
+PGDATA=/usr/local/var/postgres
+
+# Configure the MySQL prompt to show more information.
+MYSQL_PS1="\R:\m:\s \h> "
+
+# Define the C compiler as GCC 4.2
+CC=/usr/bin/gcc-4.2
+
+# Disable weekly automatic update.
+DISABLE_AUTO_UPDATE="true"
+
+# Don't set iTerm/Terminal's title automatically.
+DISABLE_AUTO_TITLE="true"
+
+# Display red dots when ZSH is hanging.
+COMPLETION_WAITING_DOTS="true"
+
+# Load plugins
+source "$ZSH/lib/dots/antigen.zsh"
+antigen-lib
+antigen-bundle tubbo/dots lib/plugins/git
+antigen-bundle osx
+antigen-bundle tubbo/dots lib/plugins/bundler
+antigen-bundle tubbo/dots lib/plugins/git-flow
+antigen-bundle knife
+antigen-bundle zsh-users/zsh-syntax-highlighting
+antigen-bundle cap
+antigen-bundle tubbo/dots lib/plugins/ruby
+antigen-bundle tubbo/dots lib/plugins/rails3
+
+# Make Ruby even faster
+RUBY_HEAP_MIN_SLOTS=1000000
+RUBY_HEAP_SLOTS_INCREMENT=1000000
+RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
+RUBY_GC_MALLOC_LIMIT=1000000000
+RUBY_HEAP_FREE_MIN=500000
+
+# Always use Bundler with RVM.
+USE_BUNDLER=force
+
+# information to the right of the prompt
+#local path_prompt="%{$reset_color%}%~"
+#local git_prompt='${return_status}%{$fg[cyan]%}$(git_prompt_info)$(git_prompt_status)%{$reset_color_with_bg%} '
+
+#if [[ $(rvm-prompt i) == 'ruby' ]] ; then
+  #local ruby_prompt='${return_status}%{$fg[magenta]%}$(rvm-prompt v p g)%{$reset_color%} '
+#else
+  #local ruby_prompt='${return_status}%{$fg[magenta]%}$(rvm-prompt i v p g)%{$reset_color%} '
+#fi;
+
+#local user_prompt="%{$fg[yellow]%}%n@%m%{$reset_color%}"
+
+# da prompt son
+PROMPT="%{$fg[white]%}♬  %{$reset_color%}"
+#RPROMPT="${git_prompt} ${ruby_prompt} ${user_prompt} ${path_prompt} %{$reset_color%}"
+
+# git plugin
+#ZSH_THEME_GIT_PROMPT_PREFIX="${ff}"
+#ZSH_THEME_GIT_PROMPT_SUFFIX=""
+#ZSH_THEME_GIT_PROMPT_DIRTY="!"
+#ZSH_THEME_GIT_PROMPT_UNTRACKED="?"
+#ZSH_THEME_GIT_PROMPT_CLEAN=""
