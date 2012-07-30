@@ -19,7 +19,6 @@ else
   local git_prompt=''
 fi
 
-
 # Prompt string
 local path_prompt="%{$reset_color%}%~"
 PROMPT="%{$fg[white]%}♬  %{$reset_color%}"
