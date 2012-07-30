@@ -1,3 +1,5 @@
+require 'fileutils'
+
 # >---------------------------------------------------------------------------<
 #
 #            _____       _ _   __          ___                  _
@@ -143,7 +145,7 @@ TXT
 end
 
 
-# >---------------------------------[ html5 ]---------------------------------<
+# >---------------------------------[ HTML5 ]---------------------------------<
 
 @current_recipe = "html5"
 @before_configs["html5"].call if @before_configs["html5"]
@@ -293,11 +295,22 @@ RUBY
       say_wizard 'no HTML5 front-end framework selected'
 
   end
-
 end
 
 
-# >---------------------------------[ HAML ]----------------------------------<
+# >-------------------------------[ JavaScript ]----------------------------------<
+
+after_bundler do
+  say_wizard "Pulling underscore.js from HEAD"
+  mkdir 'vendor/assets/javascripts'
+  get 'https://raw.github.com/documentcloud/underscore/master/underscore.js', 'vendor/assets/javascripts/underscore.js'
+  inject_into_file 'app/assets/javascripts/application.js', :after => "//= require jquery_ujs" do
+    "//= require underscore"
+  end
+end
+
+
+# >---------------------------------[ HAML ]--------------------------------------<
 
 @current_recipe = "haml"
 @before_configs["haml"].call if @before_configs["haml"]
@@ -417,7 +430,7 @@ end
 RUBY
 end
 
-# >-----------------------------------[ guard ]------------------------------------<
+# >-----------------------------------[ Guard ]------------------------------------<
 
 @current_recipe = "guard"
 @before_configs["guard"].call if @before_configs["guard"]

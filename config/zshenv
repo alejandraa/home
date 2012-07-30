@@ -41,6 +41,7 @@ antigen-bundle zsh-users/zsh-syntax-highlighting
 antigen-bundle cap
 antigen-bundle tubbo/dots lib/plugins/ruby
 antigen-bundle tubbo/dots lib/plugins/rails3
+antigen-bundle tubbo/dots lib/plugins/knife
 
 # Make Ruby even faster
 RUBY_HEAP_MIN_SLOTS=1000000

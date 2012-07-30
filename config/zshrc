@@ -11,6 +11,15 @@ antigen-bundle cap
 antigen-bundle tubbo/dots lib/plugins/ruby
 antigen-bundle tubbo/dots lib/plugins/rails3
 
+#source "$ZSH/lib/dots/git.zsh"
+
+if [[ "$(git_prompt_info)" != "git:(master*)" ]] ; then
+  local git_prompt='${return_status}%{$fg[cyan]%}$(git_prompt_info)$(git_prompt_status)%{$reset_color_with_bg%} '
+else
+  local git_prompt=''
+fi
+
+
 # Prompt string
 local path_prompt="%{$reset_color%}%~"
 PROMPT="%{$fg[white]%}♬  %{$reset_color%}"
