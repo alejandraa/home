@@ -4,5 +4,9 @@ e() {
     mvim README.md
   elif [[ -f "$PWD/README.rdoc" ]] ; then
     mvim README.rdoc
+  elif [[ -f "$PWD/README.textile" ]] ; then
+    mvim README.textile
+  else
+    mvim .
   fi
 }
