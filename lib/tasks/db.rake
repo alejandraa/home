@@ -1,4 +1,3 @@
-require 'gmail'
 require 'logger'
 require 'fileutils'
 
@@ -21,7 +20,7 @@ namespace :db do
     cd "#{HOME}/Code/elocal"
 
     logger.info "Importing stage database content"
-    sh "bundle exec thor db:import:stage > /dev/null" unless DRY_RUN
+    sh "bundle exec thor db:import:production > /dev/null" unless DRY_RUN
     logger.info "..done"
 
     logger.info "Migrating database structure"
@@ -45,14 +44,10 @@ namespace :db do
     logger.info "Solr index complete."
 
     puts "Building email notification to '#{EMAIL}'"
-    gmail = Gmail.new('elocal.leads.proxy', 'EMg4p2yE%7^Gp}dQ(8Um')
-    gmail.deliver do
-      to EMAIL
-      subject "Stage Database Download Complete on 'playa'"
-      text_part do
-        body IO.read("#{HOME}/log/tasklog")
-      end
-    end
+    raw_log = IO.read("#{HOME}/log/tasklog")
+    logs = "<code><pre>#{raw_log}</pre></code>"
+    body = "Deployment succeeded!<br>#{logs}"
+    run %x(echo 'To: development@elocal.com,sam@elocal.com\nSubject: #{subject}\nContent-Type: text/html;charset="us-ascii"\n\n<html>#{body}</html>' | sendmail -t)
 
     puts "Delivered email notification to '#{EMAIL}'"
   end
