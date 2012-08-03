@@ -26,3 +26,4 @@ RPROMPT="${path_prompt}"
 
 alias c='clear'
 function set_title() { print -Pn "\033];$1\007"; }
+alias ti='set_title'
