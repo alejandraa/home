@@ -1,3 +1,8 @@
+# ZSH configuration for all shells.
+#
+# Environment variable definitions go here, but that's about it. All
+# other definitions go into zshrc or lib/plugins.
+
 # Set the path to our shell configuration.
 ZSH=$HOME/.dots
 DOTS=$ZSH
@@ -10,6 +15,9 @@ MANPATH=/opt/local/share/man:$MANPATH
 EDITOR='vim'
 PAGER='less -R'
 
+# A more basic version of my promptstring for non-interactive shells.
+PROMPT="♬  "
+
 # PostgreSQL config
 ARCHFLAGS='-arch x86_64'
 PGDATA=/usr/local/var/postgres
@@ -18,7 +26,7 @@ PGDATA=/usr/local/var/postgres
 MYSQL_PS1="\R:\m:\s \h> "
 
 # Define the C compiler as GCC 4.2
-CC=/usr/bin/gcc-4.2
+CC=/usr/local/bin/gcc-4.2
 
 # Disable weekly automatic update.
 DISABLE_AUTO_UPDATE="true"
@@ -29,20 +37,8 @@ DISABLE_AUTO_TITLE="true"
 # Display red dots when ZSH is hanging.
 COMPLETION_WAITING_DOTS="true"
 
-# Load plugins
-source "$ZSH/lib/dots/antigen.zsh"
-antigen-lib
-antigen-bundle tubbo/dots lib/plugins/git
-antigen-bundle osx
-antigen-bundle tubbo/dots lib/plugins/bundler
-antigen-bundle tubbo/dots lib/plugins/git-flow
-antigen-bundle knife
-antigen-bundle zsh-users/zsh-syntax-highlighting
-antigen-bundle cap
-antigen-bundle tubbo/dots lib/plugins/ruby
-antigen-bundle tubbo/dots lib/plugins/rails3
-antigen-bundle tubbo/dots lib/plugins/knife
-antigen-bundle tubbo/dots lib/plugins/macvim
+# Load the framework.
+source "$ZSH/lib/dots.sh"
 
 # Make Ruby even faster
 RUBY_HEAP_MIN_SLOTS=1000000
@@ -54,14 +50,6 @@ RUBY_HEAP_FREE_MIN=500000
 # Always use Bundler with RVM.
 USE_BUNDLER=force
 
-# da prompt son
-PROMPT="%{$fg[white]%}♬  %{$reset_color%}"
-
-# EC2 API/AMI tools
-export JAVA_HOME="$(/usr/libexec/java_home)"
-export EC2_PRIVATE_KEY="$(/bin/ls "$HOME"/.ec2/pk-*.pem | /usr/bin/head -1)"
-export EC2_CERT="$(/bin/ls "$HOME"/.ec2/cert-*.pem | /usr/bin/head -1)"
-export EC2_HOME="/usr/local/Library/LinkedKegs/ec2-api-tools/jars"
-export EC2_AMITOOL_HOME="/usr/local/Library/LinkedKegs/ec2-ami-tools/jars"
-
-source "$ZSH/config/aws"
+# Colorize Grep
+export GREP_OPTIONS='--color=auto'
+export GREP_COLOR='1;32'

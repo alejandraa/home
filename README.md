@@ -50,27 +50,10 @@ settings in a git repository but making it accessible for the application needin
 The opposite of `persist`. Deletes the symlink and restores your file. For when you just need to
 fuggeddaboutit...
 
-### upgrade_zsh
-
-Downloads, unarchives and compiles the latest version of ZSH.
-
 ### osx_for_hackers
 
 For Mac OS X users, this runs a bunch of settings that I found very helpful for browsing and using
 my Mac. It's totally optional, but this alias simply runs the `tools/osx.zsh` script.
-
-### configure_dots
-
-Opens up the `$DOTS` folder in your text editor of choice (defined with `EDITOR=` in your zshrc).
-Useful for fixing bugs or development.
-
-### upgrade_dots
-
-Downloads the latest `HEAD` from the DOTS Github repository.
-
-### uninstall_dots
-
-If you don't think DOTS is for you, just get rid of it with this command.
 
 Forking
 -------

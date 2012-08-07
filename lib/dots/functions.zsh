@@ -12,12 +12,6 @@ function osx_for_hackers() {
   source $DOTS/tools/osx.zsh
 }
 
-# Create a new directory and `cd` into it in one go.
-function take() {
-  mkdir -p $1
-  cd $1
-}
-
 # Search the process list for a specific expression using grep.
 function proc() {
   ps -A | grep $1
@@ -34,4 +28,14 @@ function mvim() {
   else
     mvim
   fi
+}
+
+# Set the title of the iTerm window.
+function set_title() { 
+  print -Pn "\033];$1\007"; 
+}
+
+# Find out what an exit code means.
+function exit_code() { 
+  cat /usr/include/sysexits.h | grep "$1" 
 }

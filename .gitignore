@@ -9,4 +9,4 @@ config/shsh/**
 config/ssh/**
 config/webbynode
 config/gitconfig
-config/aws
+config/aws.zsh
