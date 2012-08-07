@@ -14,6 +14,5 @@ antigen-bundle tubbo/dots lib/plugins/knife
 antigen-bundle tubbo/dots lib/plugins/macvim
 antigen-bundle tubbo/dots lib/plugins/osx
 antigen-bundle tubbo/dots lib/plugins/rails3
-antigen-bundle tubbo/dots lib/plugins/redis
 antigen-bundle tubbo/dots lib/plugins/ruby
 antigen-bundle zsh-users/zsh-syntax-highlighting
