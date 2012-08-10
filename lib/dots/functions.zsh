@@ -20,7 +20,7 @@ function proc() {
 # Loads the README.md file into mvim as well as the current directory, as defined by the
 # functionality of the macvim_drawer plugin. Requires macvim_drawer to be installed, regular MacVim
 # will break with this function.
-function mvim() {
+function e() {
   if [[ -f "./README.md" ]]; then
     mvim README.md
   elif [[ -f "./README.rdoc" ]]; then
@@ -31,11 +31,11 @@ function mvim() {
 }
 
 # Set the title of the iTerm window.
-function set_title() { 
-  print -Pn "\033];$1\007"; 
+function set_title() {
+  print -Pn "\033];$1\007";
 }
 
 # Find out what an exit code means.
-function exit_code() { 
-  cat /usr/include/sysexits.h | grep "$1" 
+function exit_code() {
+  cat /usr/include/sysexits.h | grep "$1"
 }

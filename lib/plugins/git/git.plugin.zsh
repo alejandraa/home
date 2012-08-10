@@ -80,6 +80,9 @@ compdef _get gs=git-pull
 compdef _get gs=git-push
 alias gy='git synchronize'
 compdef _get gy=git-synchronize
+alias garc='ga . && grc'
+compdef _get garc=git-add
+compdef _get garc=git-rebase
 
 # Super useful alias aliases
 alias s='gst'

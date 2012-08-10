@@ -30,7 +30,6 @@ alias forget='dots forget'
 
 # File viewing and editing
 alias v=$PAGER
-alias e=$EDITOR
 
 # Terminal support
 alias c='clear'
