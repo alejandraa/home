@@ -69,6 +69,7 @@ alias rti='rake test:integrations'
 alias rts='rtest' # defined in ruby.plugin.zsh
 alias rr="rake routes | grep $1"
 alias rra="rake routes"
+alias rks="rake server" # for storing server command configuration inside Rake
 
 # 3rd-party processes related to Rails
 alias redis="redis-server /usr/local/etc/redis.conf"
