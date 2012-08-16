@@ -7,9 +7,11 @@ recipes:
 - models
 - controllers
 - views
+- haml_views
 - routes
 - frontend
-- init
+- html5
+- database
 - extras
 
 prefs:
@@ -27,6 +29,3 @@ prefs:
   :authentication: devise
   :devise_modules: default
   :authorization: none
-  
-gems:
-- heroku
