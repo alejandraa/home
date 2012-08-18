@@ -1,0 +1,32 @@
+recipes:
+- setup
+- readme_markdown
+- gems
+- testing
+- auth
+- models
+- controllers
+- views
+- routes
+- frontend
+- database
+- extras
+
+prefs:
+  :dev_webserver: thin
+  :prod_webserver: unicorn
+  :database: postgres
+  :templates: haml
+  :unit_test: minitest
+  :integration: capybara
+  :fixtures: factory_girl
+  :frontend: bootstrap
+  :bootstrap: sass
+  :form_builder: simpleform
+  :email: gmail
+  :authentication: devise
+  :devise_modules: default
+  :authorization: none
+  
+gems:
+- heroku
