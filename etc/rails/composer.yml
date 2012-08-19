@@ -9,13 +9,13 @@ recipes:
 - views
 - routes
 - frontend
-- database
+- init
 - extras
 
 prefs:
   :dev_webserver: thin
   :prod_webserver: unicorn
-  :database: postgres
+  :database: postgresql
   :templates: haml
   :unit_test: minitest
   :integration: capybara
