@@ -35,3 +35,6 @@ alias v=$PAGER
 alias c='clear'
 alias ti='set_title'
 alias o='open .'
+
+# Fix Knife
+alias k='nocorrect bundle exec knife'
