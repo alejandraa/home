@@ -21,4 +21,12 @@ namespace :dots do
     end
     puts "Please reload your DOTS."
   end
+
+  desc "Update all installed plugins"
+  task :update do
+    antigen_repos = Dir[File.join(File.expand_path("../.antigen/repos"), "*")]
+    antigen_repos.each do |repo|
+      sh "cd #{repo} && git pull origin master"
+    end
+  end
 end
