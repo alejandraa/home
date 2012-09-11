@@ -83,10 +83,12 @@ compdef _get gy=git-synchronize
 alias garc='ga . && grc'
 compdef _get garc=git-add
 compdef _get garc=git-rebase
+alias gmt='git mergetool'
+compdef _get gmt=git-mergetool
 
 # Super useful alias aliases
 alias s='gst'
-compdef _get grv=git-statuss
+compdef _get grv=git-status
 
 # Git and svn mix
 alias git-svn-dcommit-push='git svn dcommit && git push github master:svntrunk'
