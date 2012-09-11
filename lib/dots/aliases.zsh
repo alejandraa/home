@@ -38,3 +38,8 @@ alias o='open .'
 
 # Fix Knife
 alias k='nocorrect bundle exec knife'
+
+# Deployment
+alias d='./script/deploy'
+alias ds='./script/deploy to_stage'
+alias dp='./script/deploy to_production'

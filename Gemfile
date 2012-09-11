@@ -1,6 +1,7 @@
 source :rubygems
 
 gem 'thor'
+gem 'maid'
 
 group :development do
   gem 'rake'

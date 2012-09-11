@@ -1,5 +1,6 @@
 recipes:
 - setup
+- git
 - readme_markdown
 - gems
 - testing
@@ -11,8 +12,6 @@ recipes:
 - routes
 - frontend
 - html5
-- database
-- extras
 
 prefs:
   :dev_webserver: thin
