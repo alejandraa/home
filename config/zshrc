@@ -6,3 +6,4 @@
 local path_prompt="%{$reset_color%}%~"
 PROMPT="%{$fg[white]%}♬  %{$reset_color%}"
 RPROMPT="%{$fg[yellow]%}${path_prompt}"
+bindkey -v
