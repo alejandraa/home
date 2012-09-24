@@ -52,16 +52,6 @@ alias gd='git diff'
 compdef _get grv=git-diff
 alias gg='git grep'
 compdef _get gg=git-grep
-alias gr='git rebase'
-compdef _get gg=git-rebase
-alias grc='git rebase --continue'
-compdef _get gg=git-rebase
-alias grs='git rebase --skip'
-compdef _get gg=git-rebase
-alias gra='git rebase --abort'
-compdef _get gg=git-rebase
-alias gri='git rebase --interactive'
-compdef _get gg=git-rebase
 alias gbl='git blame'
 compdef _get gbl=git-blame
 alias gt='git reset'
@@ -83,8 +73,22 @@ compdef _get gy=git-synchronize
 alias garc='ga . && grc'
 compdef _get garc=git-add
 compdef _get garc=git-rebase
+
+# Merging and Rebasing
+alias gr='git rebase'
+compdef _get gg=git-rebase
+alias grc='git rebase --continue'
+compdef _get gg=git-rebase
+alias grs='git rebase --skip'
+compdef _get gg=git-rebase
+alias gra='git rebase --abort'
+compdef _get gg=git-rebase
+alias gri='git rebase --interactive'
+compdef _get gg=git-rebase
 alias gmt='git mergetool'
 compdef _get gmt=git-mergetool
+alias gcf='git clean -f'
+compdef _get gcf=git-clean
 
 # Super useful alias aliases
 alias s='gst'
@@ -93,7 +97,6 @@ compdef _get grv=git-status
 # Git and svn mix
 alias git-svn-dcommit-push='git svn dcommit && git push github master:svntrunk'
 compdef git-svn-dcommit-push=git
-
 
 alias gsr='git svn rebase'
 alias gsd='git svn dcommit'
