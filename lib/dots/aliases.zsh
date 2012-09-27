@@ -39,10 +39,10 @@ alias o='open .'
 # Fix Knife
 alias k='nocorrect bundle exec knife'
 
-# Deployment
-alias d='./script/deploy'
-alias ds='./script/deploy to_stage'
-alias dp='./script/deploy to_production'
+# Deployment shorthand
+alias d='nocorrect deploy'
+alias ds='d to_stage'
+alias dp='d to_production'
 
 # Ripple
 alias canary='open /Applications/Google\ Chrome\ Canary.app --args -disable-web-security'

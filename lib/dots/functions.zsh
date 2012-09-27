@@ -39,3 +39,14 @@ function set_title() {
 function exit_code() {
   cat /usr/include/sysexits.h | grep "$1"
 }
+
+# Use the deploy binary/script from Rails apps, if one exists.
+function deploy() {
+  if [[ -f "./script/deploy" ]]; then
+    ./script/deploy $1
+  elif [[ -f "./script/deployer" ]]; then
+    ./script/deployer $1
+  else
+    echo "Error: Deployer not found in script/"
+  fi
+}
