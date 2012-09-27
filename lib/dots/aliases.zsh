@@ -43,3 +43,6 @@ alias k='nocorrect bundle exec knife'
 alias d='./script/deploy'
 alias ds='./script/deploy to_stage'
 alias dp='./script/deploy to_production'
+
+# Ripple
+alias canary='open /Applications/Google\ Chrome\ Canary.app --args -disable-web-security'
