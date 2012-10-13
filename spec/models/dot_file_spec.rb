@@ -4,7 +4,7 @@ require 'dots/dot_file'
 describe Dots::DotFile do
   before do
     %x(echo "This is my config" >> ~/.dot_file)
-    @file = DotFile.new "~/.dot_file"
+    @file = Dots::DotFile.new "~/.dot_file"
   end
 
   describe "Remembering a file" do
@@ -21,7 +21,7 @@ describe Dots::DotFile do
   end
 
   describe "Forgetting a file" do
-    before { @file = DotFile.find "~/.dot_file" }
+    before { @file = Dots::DotFile.find "~/.dot_file" }
 
     it "removes the dot file from the repo directory" do
       @file.destroy.should == true
@@ -33,5 +33,9 @@ describe Dots::DotFile do
       @file.should_not be_saved
       File.new(@file.untracked_repo).should_not exist
     end
+  end
+
+  after do
+    `rm ~/.dot_file && rm ~/.dots/config/.dot_file`
   end
 end
