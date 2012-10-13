@@ -31,9 +31,11 @@ The following tasks are meant to help you use the shell more efficiently...
       dot_file_without_dot = dot_file.gsub(/^\./, '')
       home = `echo $HOME`
       home.gsub!(/\n/, '')
+      untracked_file = "#{home}/#{dot_file}"
+      tracked_file = "#{home}/.dots/config/#{dot_file_without_dot}"
 
-      if mv "#{home}/#{dot_file}", "#{home}/.dots/config/#{dot_file_without_dot}"
-        if `ln -s ~/.dots/config/#{dot_file_without_dot} ~/#{dot_file}`
+      if mv untracked_file, tracked_file
+        if `ln -s #{tracked_file} #{untracked_file}`
           say "#{dot_file} saved to DOTS!"
           exit 0
         else
