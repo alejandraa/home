@@ -17,7 +17,7 @@ Gem::Specification.new do |gem|
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(spec)/})
-  gem.name          = "dots"
+  gem.name          = "zsh_dots"
   gem.require_paths = ["lib/ruby"]
   gem.version       = Dots::VERSION
 
