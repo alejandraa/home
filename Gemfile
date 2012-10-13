@@ -2,6 +2,7 @@ source :rubygems
 
 gem 'thor'
 gem 'maid'
+gem 'activemodel', require: 'active_model'
 
 group :development do
   gem 'rake'
@@ -9,6 +10,5 @@ group :development do
 end
 
 group :test do
-  gem 'mini_shoulda'
-  gem 'mini_specunit'
+  gem 'rspec'
 end
