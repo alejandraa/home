@@ -21,7 +21,10 @@ describe Dots::DotFile do
   end
 
   describe "Forgetting a file" do
-    before { @file = Dots::DotFile.find "~/.dot_file" }
+    before do
+      %x(touch ~/.dots/config/dot_file && ln -s ~/.dots/config/dot_file ~/.dot_file)
+      @file = Dots::DotFile.find "~/.dot_file"
+    end
 
     it "removes the dot file from the repo directory" do
       @file.destroy.should == true
@@ -31,11 +34,12 @@ describe Dots::DotFile do
     it "moves the tracked file back to its original location" do
       @file.destroy.should == true
       @file.should_not be_saved
-      File.new(@file.untracked_repo).should_not exist
+      File.exists?(@file.tracked_path).should_not == true
     end
   end
 
   after do
-    `rm ~/.dot_file && rm ~/.dots/config/.dot_file`
+    `rm ~/.dot_file` if File.exists? File.expand_path("~/.dot_file")
+    `rm ~/.dots/config/dot_file` if File.exists? File.expand_path("~/.dots/config/dot_file")
   end
 end
