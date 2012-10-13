@@ -36,13 +36,5 @@ alias c='clear'
 alias ti='set_title'
 alias o='open .'
 
-# Fix Knife
-alias k='nocorrect bundle exec knife'
-
-# Deployment shorthand
-alias d='nocorrect deploy'
-alias ds='d to_stage'
-alias dp='d to_production'
-
 # Ripple
-alias canary='open /Applications/Google\ Chrome\ Canary.app --args -disable-web-security'
+alias ripple='open /Applications/Google\ Chrome\ Canary.app --args -disable-web-security'

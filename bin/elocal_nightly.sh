@@ -1,3 +1,5 @@
+#!/bin/zsh
+#
 # Download the latest database from stage.elocal.com and
 # index the new data with Solr.
 

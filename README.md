@@ -6,9 +6,18 @@ DOTS is a framework for ZSH that helps you manage your dot-files, ZSH sugar func
 Features
 --------
 
-- Vast, modular plugin library, built on top of [Oh My ZSH][omz]'s architecture.
+- Modular plugin architecture inspired by [Oh My ZSH][omz], but using Antigen for greater efficiency.
+  Only code that's specific to your repo needs to be in your repo.
 - Simplified prompt string themeing in the `lib/dots/prompt.zsh` directory.
-- Configuration persistence via the `persist` command. This copies your dot-files to the **config/** directory and allows you to optionally store them in Git. Add your persisted configs to your fork's `.gitignore` if you don't want them synchronized, and `forget` them when you don't want them symlinked anymore.
+- Configuration persistence via the `persist` command. This copies your dot-files to the **config/** 
+  directory and allows you to optionally store them in Git. Add your persisted configs to your fork's 
+  `.gitignore` if you don't want them synchronized, and `forget` them when you don't want them symlinked 
+  anymore. Keeping your configuration files in a place that's easily accessible with a text editor helps you 
+  keep an eye on your configuration.
+- Aliases for common shell functionality like searching for a running
+  process, opening your text editor, viewing files with a pager, setting
+  the title of the current iTerm tab, [optimizing your OS X environment](osx4h),
+  and much more.
 
 Installation
 ------------
@@ -103,3 +112,4 @@ Just me, [@tubbo][twt]
 [twt]: https://twitter.com/tubbo
 [hub]: https://github.com/defunkt/hub
 [cw]: https://defunkt.io
+[osx4h]: https://gist.github.com/2260182
