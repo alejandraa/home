@@ -27,44 +27,26 @@ The following tasks are meant to help you use the shell more efficiently...
     end
 
     desc :persist, "Copy a dotfile to .dots/config and symlink the original location"
-    def persist dot_file
-      dot_file_without_dot = dot_file.gsub(/^\./, '')
-      home = `echo $HOME`
-      home.gsub!(/\n/, '')
-      untracked_file = "#{home}/#{dot_file}"
-      tracked_file = "#{home}/.dots/config/#{dot_file_without_dot}"
+    def persist file_name
+      dot_file = DotFile.new file_name
 
-      if mv untracked_file, tracked_file
-        if `ln -s #{tracked_file} #{untracked_file}`
-          say "#{dot_file} saved to DOTS!"
-          exit 0
-        else
-          say "Error: #{dot_file} could not be symlinked."
-          exit 1
-        end
+      if dot_file.save
+        say "#{dot_file} saved to DOTS!"
       else
-        say "Error: #{dot_file} could not be moved."
-        exit 1
+        say "Error: #{dot_file} could not be symlinked:"
+        dot_file.errors.full_messages.each { |msg| say "- #{msg}" }
       end
     end
 
     desc :forget, "Remove the symlink and restore a dotfile back to its original location"
-    def forget dot_file
-      dot_file_without_dot = dot_file.gsub(/^\./, '')
-      home = `echo $HOME`
-      home.gsub!(/\n/, '')
+    def forget file_name
+      dot_file = DotFile.find file_name
 
-      if rm "#{home}/#{dot_file}"
-        if mv "#{home}/.dots/config/#{dot_file_without_dot}", "#{home}/#{dot_file}"
-          say "#{dot_file} has been removed from your DOTS and restored to its original location."
-          exit 0
-        else
-          say "Error: #{dot_file_without_dot} could not be moved."
-          exit 1
-        end
+      if dot_file.destroy
+        say "#{dot_file} is no longer being persisted."
       else
-        say "Error: #{dot_file} symlink could not be removed."
-        exit 1
+        say "Error: #{dot_file} could not be forgotten:"
+        dot_file.errors.full_messages.each { |msg| say "- #{msg}" }
       end
     end
   end
