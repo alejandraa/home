@@ -8,5 +8,4 @@ config/npmrc
 config/shsh/**
 config/ssh/**
 config/webbynode
-config/gitconfig
 config/aws.zsh
