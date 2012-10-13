@@ -1,5 +1,6 @@
 require 'thor'
 require 'active_model'
+require 'fileutils'
 
 require 'dots/dot_file'
 require 'dots/command'
