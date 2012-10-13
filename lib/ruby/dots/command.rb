@@ -25,7 +25,7 @@ The following tasks are meant to help you use the shell more efficiently...
 
     desc :update, "Update DOTS to the latest version"
     def update
-      %x(git pull origin master)
+      %x(cd ~/.dots && git pull origin master)
     end
 
     desc :version, "Show the current version of DOTS"
