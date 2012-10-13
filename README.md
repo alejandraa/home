@@ -8,7 +8,7 @@ Features
 
 - Vast, modular plugin library, built on top of [Oh My ZSH][omz]'s architecture.
 - Simplified prompt string themeing in the `lib/dots/prompt.zsh` directory.
-- Configuration persistence via the `persist` command. This copies your dot-files to the **config/** directory and allows you to optionally store them in Git. Add your persisted configs to your fork's `.gitignore` if you don't want them synchronized.
+- Configuration persistence via the `persist` command. This copies your dot-files to the **config/** directory and allows you to optionally store them in Git. Add your persisted configs to your fork's `.gitignore` if you don't want them synchronized, and `forget` them when you don't want them symlinked anymore.
 
 Installation
 ------------
