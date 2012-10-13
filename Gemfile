@@ -1,6 +1,6 @@
 source :rubygems
 
-gem 'thor'
+gem 'thor', '~> 0.14.6'
 gem 'maid'
 gem 'activemodel', require: 'active_model'
 

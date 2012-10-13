@@ -23,6 +23,11 @@ The following tasks are meant to help you use the shell more efficiently...
       help
     end
 
+    desc :update, "Update DOTS to the latest version"
+    def update
+      %x(git pull origin master)
+    end
+
     desc :version, "Show the current version of DOTS"
     def version
       say "DOTS version #{Dots::VERSION} - http://tubbo.github.com/dots"
