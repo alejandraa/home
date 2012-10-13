@@ -40,6 +40,7 @@ function exit_code() {
   cat /usr/include/sysexits.h | grep "$1"
 }
 
+<<<<<<< HEAD
 # Use the deploy binary/script from Rails apps, if one exists.
 function deploy() {
   if [[ -f "./script/deploy" ]]; then
@@ -50,3 +51,6 @@ function deploy() {
     echo "Error: Deployer not found in script/"
   fi
 }
+=======
+# Create an .rvmrc for this directory.
+>>>>>>> Add Go support and build out Dots::DotFile
