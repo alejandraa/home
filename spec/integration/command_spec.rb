@@ -10,19 +10,25 @@ describe Dots::Command do
   describe "persist PATH" do
     subject { %x(./bin/dots persist ~/.dot_file) }
 
-    it "copies the file to the dots repo"
+    it "copies the file to the dots repo" do
+      subject.should_not be_blank
+    end
   end
 
   describe "forget PATH" do
     subject { %x(./bin/dots forget ~/.dot_file) }
 
-    it "restores the file to its original location"
+    it "restores the file to its original location" do
+      subject.should_not be_blank
+    end
   end
 
   describe "bare invocation" do
     subject { %x(./bin/dots) }
 
-    it "shows usage information"
+    it "shows usage information" do
+      subject.should_not be_blank
+    end
   end
 end
 

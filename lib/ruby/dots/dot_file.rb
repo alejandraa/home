@@ -13,7 +13,8 @@ module Dots
     # Instantiate the file and make sure it exists.
     def initialize with_file_name
       @untracked_path = File.expand_path with_file_name
-      @tracked_path = @untracked_path.gsub /#{USER_HOME}/, File.expand_path("#{DOTS_HOME}/config")
+      @file_name = File.basename(with_file_name)[1..-1]
+      @tracked_path = "#{DOTS_HOME}/config/#{@file_name}"
     end
 
     def to_s

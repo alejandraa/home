@@ -1,3 +1,5 @@
+require 'dots/dot_file'
+
 module Dots
   class Command < Thor
     include FileUtils
@@ -28,7 +30,7 @@ The following tasks are meant to help you use the shell more efficiently...
 
     desc :persist, "Copy a dotfile to .dots/config and symlink the original location"
     def persist file_name
-      dot_file = DotFile.new file_name
+      dot_file = Dots::DotFile.new file_name
 
       if dot_file.save
         say "#{dot_file} saved to DOTS!"
@@ -40,7 +42,7 @@ The following tasks are meant to help you use the shell more efficiently...
 
     desc :forget, "Remove the symlink and restore a dotfile back to its original location"
     def forget file_name
-      dot_file = DotFile.find file_name
+      dot_file = Dots::DotFile.find file_name
 
       if dot_file.destroy
         say "#{dot_file} is no longer being persisted."
