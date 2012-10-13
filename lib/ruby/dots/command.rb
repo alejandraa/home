@@ -1,5 +1,3 @@
-require 'dots/dot_file'
-
 module Dots
   class Command < Thor
     include FileUtils
