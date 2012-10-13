@@ -4,7 +4,6 @@ require 'fileutils'
 
 require 'dots/dot_file'
 require 'dots/command'
+require 'dots/version'
 
-module Dots
-  VERSION = '0.5.0'
-end
+module Dots; end
