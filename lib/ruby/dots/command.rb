@@ -26,6 +26,22 @@ The following tasks are meant to help you use the shell more efficiently...
       %x(cd ~/.dots && git pull origin master)
     end
 
+    desc :install, "Installs DOTS to ~/.dots and links all of your dotfiles"
+    def install
+      %x(ln -s #{installation_path} ~/.dots)
+
+      Dir[File.expand_path("~/.dots/config")].each do |config_file|
+        file_name = File.basename config_file
+        dot_file = File.expand_path "~/.#{file_name}"
+
+        if File.exists? dot_file
+          say "Skipping #{dot_file} as it already exists. Manually merge and symlink later with `dots persist`."
+        else
+          %x(ln -s #{config_file} #{dot_file})
+        end
+      end
+    end
+
     desc :version, "Show the current version of DOTS"
     def version
       say "DOTS version #{Dots::VERSION} - http://tubbo.github.com/dots"

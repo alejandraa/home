@@ -15,6 +15,7 @@ MANPATH=/opt/local/share/man:$MANPATH
 # Text editing and paging
 EDITOR='vim'
 PAGER='less -R'
+DRAWER=true # use macvim_drawer
 
 # A more basic version of my promptstring for non-interactive shells.
 PROMPT="♬  "
