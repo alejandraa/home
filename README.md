@@ -22,21 +22,16 @@ Features
 Installation
 ------------
 
-### One line install:
+Just run the following commands:
 
-If you really trust me, you can run this simple command in your Terminal to download and install the DOTS framework!
+```bash
+$ gem install zsh_dots
+$ dots install
+```
 
-    curl -L https://github.com/tubbo/dots/raw/master/tools/install.sh | sh
-
-### Manual install:
-
-For the more paranoid users, here's basically what the above script does:
-
-    git clone git://github.com/tubbo/dots.git ~/.dots
-    ln -s ~/.dots/config/zshrc ~/.zshrc
-    chsh -s /bin/zsh
-
-Then start (or restart) ZSH by reloading or opening a new terminal window.
+This will link the gem's installation to `~/.dots`, and symlink all of
+the files in `~/.dots/config` to your home directory as dotfiles (unless
+existing ones are found).
 
 ### Problems?
 
@@ -48,13 +43,13 @@ Usage
 
 There are a number of commands built-in to the DOTS framework:
 
-### persist <dot-file>
+### persist DOT_FILE
 
 You can persist any dot file with DOTS. Simply run this command on the file...it will copy the
 file to your `$DOTS` folder and symlink that new file in its original place, preserving your
 settings in a git repository but making it accessible for the application needing to use it.
 
-### forget <dot-file>
+### forget DOT_FILE
 
 The opposite of `persist`. Deletes the symlink and restores your file. For when you just need to
 fuggeddaboutit...
@@ -63,6 +58,35 @@ fuggeddaboutit...
 
 For Mac OS X users, this runs a bunch of settings that I found very helpful for browsing and using
 my Mac. It's totally optional, but this alias simply runs the `tools/osx.zsh` script.
+
+### set_title TO_STRING
+
+Sets the title of the iTerm window to the String you pass in.
+
+### o, v and e
+
+These three commands open, view and edit files, respectively. They use
+the Finder (OS X only), whatever you set as your `$PAGER` and whatever
+you set as your `$EDITOR` to do their tasks. Merely aliases, these
+conventions are prime examples of how DOTS is constructed. They all use
+sensible defaults, for example `o` will open the current directory, but
+`o ~/Code` will open up ~/Code in the Finder. `e` follows suit, but `v`
+throws an error as this should almost never be the case. 
+
+### more on e() and macvim
+
+`e` has some special functionality for [alloy's MacVim
+fork](http://github.com/alloy/macvim), referred to here as
+`macvim_drawer`. 
+
+`e`'s functionality is slightly different for users of `macvim_drawer`, 
+as `mvim` automatically opens up to a directory for some users of the
+fork. Because of this, `e` detects the use of `mvim` and will perform a
+quick hack to allow you to type `e ~/Code/project` without leaving the
+current directory. It `cd`s into the directory you give it, then opens a
+file that's usually there, like `README.md`. It then `cd`s back to the
+original directory and exits with a success code. You can disable this
+functionality by setting `DRAWER=false` in your zshenv.
 
 Forking
 -------

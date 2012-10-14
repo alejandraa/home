@@ -21,12 +21,16 @@ function proc() {
 # functionality of the macvim_drawer plugin. Requires macvim_drawer to be installed, 
 # regular MacVim will break with this function.
 function e() {
-  if [[ -f "./README.md" ]]; then
-    mvim README.md
-  elif [[ -f "./README.rdoc" ]]; then
-    mvim README.rdoc
+  if [[ $EDITOR == 'mvim']] && [[ $DRAWER == true ]]; then
+    if [[ -f "./README.md" ]]; then
+      mvim README.md
+    elif [[ -f "./README.rdoc" ]]; then
+      mvim README.rdoc
+    else
+      mvim
+    fi
   else
-    mvim
+    $EDITOR
   fi
 }
 
