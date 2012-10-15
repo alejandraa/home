@@ -33,7 +33,7 @@ alias v=$PAGER
 
 # Terminal support
 alias c='clear'
-aliasias ti='set_title'
+alias ti='set_title'
 alias o='open .'
 
 # Ripple
