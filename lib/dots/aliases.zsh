@@ -1,26 +1,14 @@
-# = Aliases
-#
-# General purpose, time-saving aliases for everyday use.
-
-# Access the superuser for a single command.
+# System administration
 alias _='sudo'
-
-# Show command history.
 alias history='fc -l 1'
-
-# Use grep with ack.
 alias afind='ack-grep -il'
+<<<<<<< HEAD
 
 # Reload the DOTS framework and clear the screen.
+=======
+>>>>>>> Refactor aliases a lot
 alias refresh="reload && clear"
-
-# Reload TextMate bundles.
-alias tmbundle="osascript -e 'tell app \"TextMate\" to reload bundles'"
-
-# Find all ._* files in the directory and remove them.
-alias rmbs="find . -type f -name '._*' -exec rm {} + && echo \"Removed all ._ files\""
-
-# Make `ed` easier to use.
+alias rmbs="rhombus"
 alias ed='ed -p "ed> "'
 
 # Dotfiles persistence
@@ -29,11 +17,16 @@ alias forget='dots forget'
 
 # File viewing and editing
 alias v=$PAGER
+alias e='editor'
 
 # Terminal support
 alias c='clear'
 alias ti='set_title'
-alias o='open .'
+alias o='open_file_or_directory'
 
-# Ripple
-alias ripple='open /Applications/Google\ Chrome\ Canary.app --args -disable-web-security'
+# iOS development
+alias ripple='canary'
+
+# Application deployment
+alias dp='bundle exec rain on production'
+alias ds='bundle exec rain on stage'

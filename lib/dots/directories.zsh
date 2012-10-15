@@ -1,7 +1,3 @@
-# = Directories
-#
-# Quick aliases for development endpoints.
-
 # eLocal web application
 elocal=$HOME/Code/elocal
 alias elocal='nocorrect elocal'
