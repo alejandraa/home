@@ -39,3 +39,16 @@ function set_title() {
 function exit_code() {
   cat /usr/include/sysexits.h | grep "$1"
 }
+
+# Reload DOTS after a change.
+function reload() {
+  source $HOME/.zshenv
+  source $HOME/.zshrc
+  echo 'DOTS reloaded!'
+  
+  # Reload RVM too
+  rvm reload
+  if [[ -f ".rvmrc" ]]; then 
+    source .rvmrc
+  fi
+}
