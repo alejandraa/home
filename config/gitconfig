@@ -44,3 +44,5 @@
 [merge]
   tool = mvimdiff
 
+[gitProcess]
+	keepLocalIntegrationBranch = true
