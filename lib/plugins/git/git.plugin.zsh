@@ -38,7 +38,7 @@ alias glg='git log --graph --max-count=5'
 compdef _git glg=git-log
 alias lol='git lol'
 compdef _git lol=git-log
-alias gss='git status -s'
+alias gsts='git status -s'
 compdef _git gss=git-status
 alias ga='git add'
 compdef _git ga=git-add
@@ -66,6 +66,12 @@ alias garc='ga . && grc'
 compdef _get garc=git-add
 compdef _get garc=git-rebase
 
+# Stash
+alias gs='git stash save'
+compdef _get gsh=git-stash
+alias gsp='git stash pop'
+compdef _get gsh=git-stash
+
 # Merging and Rebasing
 alias gr='git rebase'
 compdef _get gg=git-rebase
@@ -89,19 +95,17 @@ compdef _get grv=git-status
 # Git and svn mix
 alias git-svn-dcommit-push='git svn dcommit && git push github master:svntrunk'
 compdef git-svn-dcommit-push=git
+alias gvr='git svn rebase'
+alias gvd='git svn dcommit'
 
-alias gsr='git svn rebase'
-alias gsd='git svn dcommit'
-#
 # Will return the current branch name
 # Usage example: git pull origin $(current_branch)
-#
 function current_branch() {
   ref=$(git symbolic-ref HEAD 2> /dev/null) || return
   echo ${ref#refs/heads/}
 }
 
-# these aliases take advantage of the previous function
+# These aliases take advantage of the previous function
 alias ggpull='git pull origin $(current_branch)'
 compdef ggpull=git
 alias ggpush='git push origin $(current_branch)'
@@ -113,6 +117,3 @@ compdef ggpnp=git
 if (( $+commands[hub] )) ; then
   function git() {hub "$@"}
 fi
-
-# SHIP IT
-alias ship='echo ">>> SHIP IT <<<"; git checkout master; git pull --rebase origin master; git merge develop; git push origin master'
