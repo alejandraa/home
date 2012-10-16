@@ -56,5 +56,14 @@ USE_BUNDLER=force
 export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;32'
 
+# Use the Turn testing engine on eLocal
+export USE_TURN=true
+
 # Load interactive shell settings
 source ~/.zshrc
+
+# Enable 'vi mode', which is vi/vim keybindings inside ZSH. Overrides
+# the default 'emacs mode', which uses Emacs keybindings found in other
+# OS X applications. May remove some "Mac-like" functionality, if that's
+# what you're used to, so comment out if you want the defaults.
+bindkey -v
