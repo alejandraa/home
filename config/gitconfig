@@ -46,3 +46,5 @@
 
 [gitProcess]
 	keepLocalIntegrationBranch = true
+[rerere]
+	enabled = 1

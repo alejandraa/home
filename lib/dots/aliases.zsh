@@ -11,8 +11,7 @@ alias history='fc -l 1'
 # Use grep with ack.
 alias afind='ack-grep -il'
 
-# Reload DOTS after a change.
-alias reload="source $HOME/.zshenv; source $HOME/.zshrc"
+# Reload the DOTS framework and clear the screen.
 alias refresh="reload && clear"
 
 # Reload TextMate bundles.

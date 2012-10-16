@@ -61,7 +61,7 @@ alias rsp='bundle exec foreman start' # Rails Server and Processes
 # Rake tasks
 alias rdm='rake db:migrate'
 alias rdr='rake db:rollback'
-alias rdbm='rake db:migrate db:test:clone'
+alias rdbm='rake db:migrate db:test:prepare'
 alias rt='rake test'
 alias rtu='rake test:units'
 alias rtf='rake test:functionals'
