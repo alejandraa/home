@@ -42,11 +42,20 @@ function exit_code() {
 
 # Reload DOTS after a change.
 function reload() {
+  reload_dots && reload_rvm
+}
+
+function reload_dots() {
+  export WORKING_DIR=$PWD
+  cd $ZSH
+  rake update
+  cd $WORKING_DIR
   source $HOME/.zshenv
   source $HOME/.zshrc
   echo 'DOTS reloaded!'
-  
-  # Reload RVM too
+}
+
+function reload_rvm() {
   rvm reload
   if [[ -f ".rvmrc" ]]; then 
     source .rvmrc
