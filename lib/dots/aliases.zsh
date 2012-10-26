@@ -2,11 +2,8 @@
 alias _='sudo'
 alias history='fc -l 1'
 alias afind='ack-grep -il'
-<<<<<<< HEAD
 
 # Reload the DOTS framework and clear the screen.
-=======
->>>>>>> Refactor aliases a lot
 alias refresh="reload && clear"
 alias rmbs="rhombus"
 alias ed='ed -p "ed> "'
