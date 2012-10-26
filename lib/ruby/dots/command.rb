@@ -1,6 +1,7 @@
 module Dots
   class Command < Thor
     include FileUtils
+    include Thor::Actions
 
     default_task :usage
 
@@ -21,9 +22,36 @@ The following tasks are meant to help you use the shell more efficiently...
       help
     end
 
-    desc :update, "Update DOTS to the latest version"
+    desc :update, "Update DOTS, Antigen and all plugins to their latest version."
     def update
-      %x(cd ~/.dots && git pull origin master)
+      run "cd ~/.dots && git pull origin master"
+      run "cd ~/.dots && git submodule sync"
+      run "antigen-update"
+    end
+
+    desc :link, "Symlink your ~/.dots/config into dotfiles"
+    def link
+      Dir["config/*"].each do |config_file|
+        unless File.directory? config_file
+          config_file.gsub! /config\/|.example/, ""
+          config_file_path = File.expand_path "~/.dots/config/#{config_file}"
+          dot_file_path = File.expand_path "~/.#{config_file}"
+          global_rake_path = File.expand_path "~/.rake"
+
+          if File.exists? dot_file_path
+            say "Did not symlink #{config_file} since one already exists"
+          else
+            File.symlink config_file_path, dot_file_path
+            say "Symlinked ~/.#{config_file}"
+          end
+
+          unless File.exists? global_rake_path
+            File.symlink global_rake_path, File.expand_path("~/.dots/lib/tasks")
+          end
+        end
+      end
+
+      update
     end
 
     desc :install, "Installs DOTS to ~/.dots and links all of your dotfiles"

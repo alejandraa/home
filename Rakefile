@@ -7,3 +7,7 @@ Dir["lib/tasks/*.rake"].each { |rake_file| load rake_file }
 
 # Test task for the local testing suite
 RSpec::Core::RakeTask.new(:test)
+
+# Aliases for DOTS tasks
+task :update => ['dots:update']
+task :config => ['dots:config']
