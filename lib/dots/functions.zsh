@@ -46,10 +46,7 @@ function reload() {
 }
 
 function reload_dots() {
-  export WORKING_DIR=$PWD
-  cd $ZSH
-  rake update
-  cd $WORKING_DIR
+  dots update > /dev/null
   source $HOME/.zshenv
   source $HOME/.zshrc
   echo 'DOTS reloaded!'
