@@ -13,6 +13,8 @@ PATH=/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:/usr/local/Cellar/p
 MANPATH=/opt/local/share/man:$MANPATH
 
 # Text editing and paging
+#VISUAL='mvim -f --nomru -c "au VimLeave * !open -a iTerm"'
+VISUAL='mvim'
 EDITOR='vim'
 PAGER='less -R'
 DRAWER=true # use macvim_drawer
@@ -67,3 +69,6 @@ source ~/.zshrc
 # OS X applications. May remove some "Mac-like" functionality, if that's
 # what you're used to, so comment out if you want the defaults.
 bindkey -v
+# Retain search-forward and search-backward bindings from `bindkey -e`
+for i in vi{ins,cmd}; do bindkey -M "$i" "${terminfo[kcuu1]}" history-beginning-search-backward; done
+for i in vi{ins,cmd}; do bindkey -M "$i" "${terminfo[kcud1]}" history-beginning-search-forward; done

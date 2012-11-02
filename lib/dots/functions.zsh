@@ -17,18 +17,28 @@ function proc() {
 # macvim_drawer plugin. Requires macvim_drawer to be installed, 
 # regular MacVim will break with this function.
 function editor() {
-  if [[ -f "./README.md" ]]; then
-    mvim README.md
-  elif [[ -f "./README.rdoc" ]]; then
-    mvim README.rdoc
-  elif [[ -f "./README.textile" ]]; then
-    mvim README.textile
-  elif [[ -f "./README" ]]; then
-    mvim README
-  elif [[ -f "./README.txt" ]]; then
-    mvim README.txt
+  if (($+DRAWER)); then
+    #if [[ -f "./README.md" ]]; then
+      #let readme = "README.md"
+    #elif [[ -f "./README.rdoc" ]]; then
+      #let readme = "README.rdoc"
+    #elif [[ -f "./README.textile" ]]; then
+      #let readme = "README.textile"
+    #elif [[ -f "./README" ]]; then
+      #let readme = "README"
+    #elif [[ -f "./README.txt" ]]; then
+      #let readme = "README.txt"
+    #else
+      #let readme = ""
+    #fi
+  fi
+
+  if (($+VISUAL)); then
+    $VISUAL $1
+  elif (($+EDITOR)); then
+    $EDITOR $1
   else
-    mvim
+    echo "Please set your \$EDITOR or \$VISUAL before using this command."
   fi
 }
 

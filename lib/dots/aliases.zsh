@@ -27,3 +27,9 @@ alias ripple='canary'
 # Application deployment
 alias dp='bundle exec rain on production'
 alias ds='bundle exec rain on stage'
+
+# Language REPLs
+alias rb='ruby'
+alias py='python'
+alias js='node'
+alias json='jsonlint'
