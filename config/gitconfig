@@ -39,7 +39,7 @@
 [core]
 	editor = vim
 [mergetool "mvimdiff"]
-	cmd = mvim -d -g $LOCAL $MERGED $REMOTE
+	cmd = mvim -d $LOCAL $MERGED $REMOTE
   trustExitCode = true
 [merge]
   tool = mvimdiff
