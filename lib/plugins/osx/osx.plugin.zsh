@@ -98,4 +98,6 @@ function trash() {
 }
 
 alias ql='quick-look'
-alias osx_for_hackers='source $ZSH/lib/plugins/osx/osx_for_hackers.zsh'
+
+# Configure OSX using a modified version of 'OSX for Hackers'.
+alias osx_bootstrap='source $DOTS/config/osx.sh'

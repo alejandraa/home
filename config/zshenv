@@ -13,8 +13,7 @@ PATH=/Applications/Postgres.app/Contents/MacOS/bin:/usr/local/bin:/usr/local/sbi
 MANPATH=/opt/local/share/man:$MANPATH
 
 # Text editing and paging
-#VISUAL='mvim -f --nomru -c "au VimLeave * !open -a iTerm"'
-VISUAL='mvim'
+VISUAL='vim'
 EDITOR='vim'
 PAGER='less -R'
 DRAWER=true # use macvim_drawer
