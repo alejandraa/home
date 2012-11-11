@@ -34,7 +34,7 @@ The following tasks are meant to help you use the shell more efficiently...
     desc :link, "Symlink your ~/.dots/config into dotfiles"
     def link
       Dir["config/*"].each do |config_file|
-        unless File.directory? config_file
+        unless File.directory? config_file or config_file =~ /\.zsh$/
           config_file.gsub! /config\/|.example/, ""
           config_file_path = File.expand_path "~/.dots/config/#{config_file}"
           dot_file_path = File.expand_path "~/.#{config_file}"
