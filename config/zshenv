@@ -1,4 +1,4 @@
-# ZSH configuration for all shells.
+# Master configuration for all shells.
 #
 # Environment variable definitions go here, but that's about it. All
 # other definitions go into zshrc or lib/plugins.
@@ -13,10 +13,8 @@ PATH=/Applications/Postgres.app/Contents/MacOS/bin:/usr/local/bin:/usr/local/sbi
 MANPATH=/opt/local/share/man:$MANPATH
 
 # Text editing and paging
-VISUAL='vim'
 EDITOR='vim'
 PAGER='less -R'
-DRAWER=true # use macvim_drawer
 
 # A more basic version of my promptstring for non-interactive shells.
 PROMPT="♬  "
@@ -40,9 +38,6 @@ DISABLE_AUTO_TITLE="true"
 # Display red dots when ZSH is hanging.
 COMPLETION_WAITING_DOTS="true"
 
-# Load the framework.
-source "$ZSH/lib/dots.sh"
-
 # Make Ruby even faster
 RUBY_HEAP_MIN_SLOTS=1000000
 RUBY_HEAP_SLOTS_INCREMENT=1000000
@@ -60,14 +55,15 @@ export GREP_COLOR='1;32'
 # Use the Turn testing engine on eLocal
 export USE_TURN=true
 
-# Load interactive shell settings
-source ~/.zshrc
-
-# Enable 'vi mode', which is vi/vim keybindings inside ZSH. Overrides
-# the default 'emacs mode', which uses Emacs keybindings found in other
-# OS X applications. May remove some "Mac-like" functionality, if that's
-# what you're used to, so comment out if you want the defaults.
+# Use vi-like keybindings instead of Emacs keybindings, typical of most OS X applications.
 bindkey -v
+
 # Retain search-forward and search-backward bindings from `bindkey -e`
-for i in vi{ins,cmd}; do bindkey -M "$i" "${terminfo[kcuu1]}" history-beginning-search-backward; done
-for i in vi{ins,cmd}; do bindkey -M "$i" "${terminfo[kcud1]}" history-beginning-search-forward; done
+#for i in vi{ins,cmd}; do bindkey -M "$i" "${terminfo[kcuu1]}" history-beginning-search-backward; done
+#for i in vi{ins,cmd}; do bindkey -M "$i" "${terminfo[kcud1]}" history-beginning-search-forward; done
+
+# Load the framework.
+. $ZSH/lib/dots.sh
+
+# Load interactive shell settings
+. $HOME/.zshrc
