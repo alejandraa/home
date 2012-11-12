@@ -25,9 +25,11 @@ The following tasks are meant to help you use the shell more efficiently...
     desc :update, "Update DOTS, Antigen and all plugins to their latest version."
     def update
       run "cd ~/.dots && git pull origin master"
-      run "cd ~/.dots && git submodule sync"
-      run "antigen-update"
+      run "cd ~/.dots && git submodule foreach 'git pull origin master' && git submodule update"
+      run "source ~/.dots/vendor/antigen/antigen.zsh && antigen-update"
     end
+
+    #curl -L https://get.rvm.io | bash -s stable --ruby=rbx --gems=rails,puma
 
     desc :link, "Symlink your ~/.dots/config into dotfiles"
     def link
