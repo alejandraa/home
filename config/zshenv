@@ -9,7 +9,7 @@ DOTS=$ZSH
 
 # Set our shell paths to load from all of the bin's on the machine.
 GOPATH=$HOME/Code/Go
-PATH=/Applications/Postgres.app/Contents/MacOS/bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:/usr/local/Cellar/python/2.7.1/bin:/usr/local/git/bin:/usr/bin:$HOME/.dots/bin:$HOME/.rvm/bin:node_modules/.bin:$GOPATH:/usr/local/Cellar/python/2.7.1/lib/python2.7/site-packages:$PATH
+PATH=/Applications/Postgres.app/Contents/MacOS/bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:/usr/local/Cellar/python/2.7.1/bin:/usr/local/git/bin:/usr/bin:$HOME/.dots/bin:$HOME/.rbenv/bin:node_modules/.bin:$GOPATH:/usr/local/Cellar/python/2.7.1/lib/python2.7/site-packages:$PATH
 MANPATH=/opt/local/share/man:$MANPATH
 
 # Text editing and paging
@@ -55,15 +55,17 @@ export GREP_COLOR='1;32'
 # Use the Turn testing engine on eLocal
 export USE_TURN=true
 
-# Use vi-like keybindings instead of Emacs keybindings, typical of most OS X applications.
+# Set up keybindings
 bindkey -v
+for i in vi{ins,cmd}; do bindkey -M "$i" "${terminfo[kcuu1]}" history-beginning-search-backward; done
+for i in vi{ins,cmd}; do bindkey -M "$i" "${terminfo[kcud1]}" history-beginning-search-forward; done
 
-# Retain search-forward and search-backward bindings from `bindkey -e`
-#for i in vi{ins,cmd}; do bindkey -M "$i" "${terminfo[kcuu1]}" history-beginning-search-backward; done
-#for i in vi{ins,cmd}; do bindkey -M "$i" "${terminfo[kcud1]}" history-beginning-search-forward; done
+# Start rbenv
+eval "$(rbenv init -)"
 
 # Load the framework.
 . $ZSH/lib/dots.sh
 
 # Load interactive shell settings
 . $HOME/.zshrc
+
