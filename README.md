@@ -41,23 +41,32 @@ commands after switching to **DOTS**.
 Usage
 -----
 
-There are a number of commands built-in to the DOTS framework:
+There are a number of commands built in to the DOTS binary. They can be
+used anywhere the binary is available, so make sure you install DOTS to
+your global RVM gemset.
 
 ### persist DOT_FILE
 
-You can persist any dot file with DOTS. Simply run this command on the file...it will copy the
-file to your `$DOTS` folder and symlink that new file in its original place, preserving your
-settings in a git repository but making it accessible for the application needing to use it.
+You can persist any dot file with DOTS. Simply run this command on 
+the file...it will copy the file to your `$DOTS` folder and symlink 
+that new file in its original place, preserving your settings in a 
+git repository but making it accessible for the application needing
+to use it.
 
 ### forget DOT_FILE
 
-The opposite of `persist`. Deletes the symlink and restores your file. For when you just need to
-fuggeddaboutit...
+The opposite of `persist`. Deletes the symlink and restores your file. 
+For when you just need to fuggeddaboutit...
 
-### osx_for_hackers
+### osx-bootstrap
 
-For Mac OS X users, this runs a bunch of settings that I found very helpful for browsing and using
-my Mac. It's totally optional, but this alias simply runs the `tools/osx.zsh` script.
+This alias simply `source`s the `~/.dots/config/osx.zsh` file, and
+provides a number of OS X 10.8 enhancements I've found useful. Check
+through the file, read its comments, and make sure you're not doing
+anything to the computer you don't want to, then run this command for
+some useful OS X defaults. This script is based off [OSX for
+Hackers][o4h], which I found useful but somewhat overwhelming in what it
+did, so I slimmed it down to fit my needs.
 
 ### set_title TO_STRING
 
@@ -73,20 +82,20 @@ sensible defaults, for example `o` will open the current directory, but
 `o ~/Code` will open up ~/Code in the Finder. `e` follows suit, but `v`
 throws an error as this should almost never be the case. 
 
-### more on e() and macvim
+Hidden Configuration
+--------------------
 
-`e` has some special functionality for [alloy's MacVim
-fork](http://github.com/alloy/macvim), referred to here as
-`macvim_drawer`. 
+In many cases, programmers want to keep some sensible defaults checked
+in to their DOTS repo, but may need to keep their own personal key and
+certificate settings private. In this case, you can simply put those
+values in a `~/.dots/config/file.zsh`. These files are ignored both by
+Git and by DOTS when it symlinks configuration into the repo. In your
+application's dotfile, insert the following line to load configuration
+from your untracked file:
 
-`e`'s functionality is slightly different for users of `macvim_drawer`, 
-as `mvim` automatically opens up to a directory for some users of the
-fork. Because of this, `e` detects the use of `mvim` and will perform a
-quick hack to allow you to type `e ~/Code/project` without leaving the
-current directory. It `cd`s into the directory you give it, then opens a
-file that's usually there, like `README.md`. It then `cd`s back to the
-original directory and exits with a success code. You can disable this
-functionality by setting `DRAWER=false` in your zshenv.
+```bash
+. $DOTS/config/file.zsh
+```
 
 Forking
 -------
