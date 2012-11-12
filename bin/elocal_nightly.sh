@@ -7,9 +7,9 @@ cd /Users/tom/Code/elocal/
 bundle exec thor db:import:production
 
 # Index the new data with Solr
-#bundle exec thor solr:index_accounts
-#bundle exec thor solr:index_profiles
-#bundle exec thor solr:index_categories
+bundle exec thor solr:index_accounts
+bundle exec thor solr:index_profiles
+bundle exec thor solr:index_categories
 
 # Send a confirmation email when everything is done
 EMAIL="tubbo@psychedeli.ca"
