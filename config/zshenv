@@ -9,7 +9,7 @@ DOTS=$ZSH
 
 # Set our shell paths to load from all of the bin's on the machine.
 GOPATH=$HOME/Code/Go
-PATH=/Applications/Postgres.app/Contents/MacOS/bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:/usr/local/Cellar/python/2.7.1/bin:/usr/local/git/bin:/usr/bin:$HOME/.dots/bin:node_modules/.bin:$GOPATH:/usr/local/Cellar/python/2.7.1/lib/python2.7/site-packages:vendor/gems/bin:/usr/local/Cellar/ruby/1.9.3-p286/bin:$PATH
+PATH=vendor/gems/bin:/Applications/Postgres.app/Contents/MacOS/bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:/usr/local/Cellar/python/2.7.1/bin:/usr/local/git/bin:/usr/bin:$HOME/.dots/bin:node_modules/.bin:$GOPATH:/usr/local/Cellar/python/2.7.1/lib/python2.7/site-packages:vendor/gems/bin:/usr/local/Cellar/ruby/1.9.3-p286/bin:$PATH
 MANPATH=/opt/local/share/man:$MANPATH
 
 # Text editing and paging
@@ -68,3 +68,5 @@ eval "$(rbenv init -)"
 
 # Load interactive shell settings
 . $HOME/.zshrc
+
+source /usr/local/Cellar/autoenv/0.1.0/activate.sh

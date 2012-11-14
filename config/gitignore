@@ -1,2 +1,5 @@
 .env
 vendor/gems
+**.DS_Store
+.svn
+.sass-cache
