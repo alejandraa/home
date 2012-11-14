@@ -69,4 +69,5 @@ eval "$(rbenv init -)"
 # Load interactive shell settings
 . $HOME/.zshrc
 
+# Autoenv
 source /usr/local/Cellar/autoenv/0.1.0/activate.sh
