@@ -22,6 +22,14 @@ The following tasks are meant to help you use the shell more efficiently...
       help
     end
 
+    def install
+      unless File.exists? File.expand_path("~/.dots")
+        run "git clone https://github.com/tubbo/dots.git ~/.dots" unless File.exists?
+      end
+
+      invoke :link
+    end
+
     desc :update, "Update DOTS, Antigen and all plugins to their latest version."
     def update
       run "cd ~/.dots && git pull origin master"
