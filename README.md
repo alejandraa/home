@@ -28,8 +28,7 @@ Just run the following commands:
 $ gem install zsh_dots
 $ dots install
 ```
-
-This will link the gem's installation to `~/.dots`, and symlink all of
+This will fork the repo to `~/.dots`, and symlink all of
 the files in `~/.dots/config` to your home directory as dotfiles (unless
 existing ones are found).
 
