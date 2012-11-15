@@ -27,6 +27,7 @@ Bundle 'scrooloose/syntastic'
 Bundle 'Shougo/neocomplcache'
 Bundle 'tpope/vim-markdown'
 Bundle 'mattn/gist-vim'
+Bundle 'kchmck/vim-coffee-script'
 
 " %s/:\([a-z0-9_]\+\)\s*=>/\1: /g <<< Ruby 1.8->1.9 hashes
 
