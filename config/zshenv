@@ -61,7 +61,7 @@ for i in vi{ins,cmd}; do bindkey -M "$i" "${terminfo[kcuu1]}" history-beginning-
 for i in vi{ins,cmd}; do bindkey -M "$i" "${terminfo[kcud1]}" history-beginning-search-forward; done
 
 # Start rbenv
-eval "$(rbenv init -)"
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # Load the framework.
 . $ZSH/lib/dots.sh
