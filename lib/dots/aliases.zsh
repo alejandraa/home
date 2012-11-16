@@ -10,7 +10,9 @@ alias ed='ed -p "ed> "'
 
 # Dotfiles persistence
 alias persist='dots persist'
+alias pst='persist'
 alias forget='dots forget'
+alias fgt='forget'
 
 # File viewing and editing
 alias v=$PAGER
@@ -20,6 +22,7 @@ alias e='editor'
 alias c='clear'
 alias ti='set_title'
 alias o='open_file_or_directory'
+alias p='echo'
 
 # iOS development
 alias ripple='canary'
