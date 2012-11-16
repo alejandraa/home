@@ -1,4 +1,5 @@
 require 'dots/persistence'
+require 'dots/installation'
 
 module Dots
   class Command < Thor
