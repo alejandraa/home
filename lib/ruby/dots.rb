@@ -5,6 +5,8 @@ require 'active_model'
 require 'dots/dot_file'
 require 'dots/command'
 require 'dots/version'
+require 'dots/persistence'
+require 'dots/installation'
 
 module Dots
   # The root path of the DOTS gem.
