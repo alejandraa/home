@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'fileutils'
-require 'bundler/setup'
+require 'bundler'
+Bundler.setup
 require 'dots/dot_file'
 require 'dots/command'
 require 'dots/version'

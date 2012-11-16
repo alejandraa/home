@@ -6,7 +6,6 @@ module Dots
     include Thor::Actions
 
     include Dots::Persistence
-    #include Dots::Installer
 
     default_task :usage
 
