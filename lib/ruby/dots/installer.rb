@@ -1,0 +1,2 @@
+module Installer
+end
