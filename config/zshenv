@@ -55,19 +55,9 @@ export GREP_COLOR='1;32'
 # Use the Turn testing engine on eLocal
 export USE_TURN=true
 
-# Set up keybindings
-bindkey -v
-for i in vi{ins,cmd}; do bindkey -M "$i" "${terminfo[kcuu1]}" history-beginning-search-backward; done
-for i in vi{ins,cmd}; do bindkey -M "$i" "${terminfo[kcud1]}" history-beginning-search-forward; done
 
 # Start rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # Load the framework.
 . $ZSH/lib/dots.sh
-
-# Load interactive shell settings
-. $HOME/.zshrc
-
-# Autoenv
-source /usr/local/Cellar/autoenv/0.1.0/activate.sh
