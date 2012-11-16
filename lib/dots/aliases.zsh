@@ -37,3 +37,6 @@ alias json='jsonlint'
 # Kill the first Ruby process.
 alias kill_first_ruby_process="kill -9 `ps -A | grep ruby | awk '{ print $1 }' | head -n 1`"
 alias krp='kill_first_ruby_process'
+
+alias fs='foreman start'
+alias reload='reload_dots'

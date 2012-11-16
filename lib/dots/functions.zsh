@@ -67,22 +67,11 @@ function tmbundle() {
 }
 
 # Reload DOTS after a change.
-function reload() {
-  reload_dots && reload_rvm
-}
-
 function reload_dots() {
   dots update > /dev/null
   source $HOME/.zshenv
   source $HOME/.zshrc
   echo 'DOTS reloaded!'
-}
-
-function reload_rvm() {
-  rvm reload
-  if [[ -f ".rvmrc" ]]; then 
-    source .rvmrc
-  fi
 }
 
 # Open Google Chrome Canary and disable web
