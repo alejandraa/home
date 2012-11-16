@@ -22,7 +22,7 @@ Gem::Specification.new do |gem|
   gem.version       = Dots::VERSION
 
   gem.add_runtime_dependency 'thor'
-  gem.add_runtime_dependency 'activemodel', require: 'active_model'
+  gem.add_runtime_dependency 'activemodel'
 
   gem.add_development_dependency 'rake'
 end
