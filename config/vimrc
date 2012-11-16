@@ -1,11 +1,9 @@
-"
 " @tubbo's vimrc
-"
+""""""""""""""""""""""""""""""""""""""""
 
-set nocompatible
-filetype off 
-
-" Dependencies with Vundle
+""
+"" Dependencies
+""
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
@@ -27,47 +25,108 @@ Bundle 'scrooloose/syntastic'
 Bundle 'Shougo/neocomplcache'
 Bundle 'tpope/vim-markdown'
 Bundle 'mattn/gist-vim'
+Bundle 'vim-scripts/sudo.vim'
 Bundle 'kchmck/vim-coffee-script'
 
 " %s/:\([a-z0-9_]\+\)\s*=>/\1: /g <<< Ruby 1.8->1.9 hashes
 
 " ZSH is the greatest shell in the history of the universe.
-set shell=zsh
 
 " Search highlighting, only done by request and easy to get rid of.
 set nohlsearch
 nnoremap <C-L> :set hlsearch!<cr>
 nnoremap <C-l> :nohl<cr>
 
-" CTags, hit Ctrl+H to browse them, Ctrl+H,N to iterate through findings, and Ctrl+Shift+H to go
-" directly to the first tag found
+
+""
+"" Basic Setup
+""
+
+set nocompatible      " Use vim, no vi defaults
+set number            " Show line numbers
+set ruler             " Show line and column number
+syntax enable         " Turn on syntax highlighting allowing local overrides
+set encoding=utf-8    " Set default encoding to UTF-8
+"filetype off         " Somebody told me to add this I dunno.
+set shell=zsh         " Use the greatest shell in the universe inline
+set autoread          " Reload files after a change
+set showcmd           " Show (partial) command in the status line
+set clipboard=unnamed " Use the system clipboard when possible.
+
+""
+"" Whitespace
+""
+
+set nowrap                        " don't wrap lines
+set tabstop=2                     " a tab is two spaces
+set shiftwidth=2                  " an autoindent (with <<) is two spaces
+set expandtab                     " use spaces, not tabs
+set list                          " Show invisible characters
+set backspace=indent,eol,start    " backspace through everything in insert mode
+
+if exists("g:enable_mvim_shift_arrow")
+  let macvim_hig_shift_movement = 1 " mvim shift-arrow-keys
+endif
+
+" List chars
+set listchars=""                  " Reset the listchars
+set listchars=tab:\ \             " a tab should display as "  ", trailing whitespace as "."
+set listchars+=trail:.            " show trailing spaces as dots
+set listchars+=extends:>          " The character to show in the last column when wrap is
+                                  " off and the line continues beyond the right of the screen
+set listchars+=precedes:<         " The character to show in the last column when wrap is
+                                  " off and the line continues beyond the right of the screen
+
+""
+"" Searching
+""
+
+set hlsearch    " highlight matches
+set incsearch   " incremental searching
+set ignorecase  " searches are case insensitive...
+set smartcase   " ... unless they contain at least one capital letter
+
+""
+"" CTags Documentation
+""
+
+" Ctrl+H browses, then use Ctrl+H,{N|S} to scroll through them.
 vmap <C-h> <C-]>
 nnoremap <C-h>n :tnext<cr>
 nnoremap <C-h>s :tselect<cr>
 
-" Soft word wrap, by default using 2 spaces to conform with eLocal.
-set wrap
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-set expandtab
-set list listchars=tab:\ \ ,trail:·
-set tw=100
-set ai    " Auto indent
-set si    " Smart indent
+""
+"" Wild settings
+""
 
-" Reload saved files automatically after they were changed outside of
-" Vim
-set autoread
+" TODO: Investigate the precise meaning of these settings
+" set wildmode=list:longest,list:full
 
-" MacVim shift+arrow-keys behavior (required in .vimrc)
-let macvim_hig_shift_movement = 1
+" Disable output and VCS files
+set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
 
-" Show (partial) command in the status line
-set showcmd
+" Disable archive files
+set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
 
-" Use the system clipboard
-set clipboard=unnamed
+" Ignore bundler and sass cache
+set wildignore+=*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-cache/*
+
+" Disable temp and backup files
+set wildignore+=*.swp,*~,._*
+
+""
+"" Backup and swap files
+""
+
+set backupdir=~/.vim/_backup//    " where to put backup files.
+set directory=~/.vim/_temp//      " where to put swap files.
+
+""
+"" Misc.
+""
+let macvim_hig_shift_movement = 1 " MacVim shift+arrow-keys behavior (required in .vimrc)
+
+
 
 " Autocommands
 augroup vimrcEx
