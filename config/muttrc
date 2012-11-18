@@ -1,0 +1,28 @@
+##
+# @tubbo's mutt configuration
+##
+
+set imap_user = ''
+set imap_pass = ''
+set spoolfile = imaps://imap.mail.me.com:993/INBOX
+set folder = imaps://imap.mail.me.com:993
+set record="imaps://imap.mail.me.com/Sent Mail"
+set postponed=”imaps://imap.mail.me.com/Drafts”
+set message_cachedir=”~/.mutt/cache/bodies”
+set certificate_file=~/.mutt/certificates
+
+set smtp_url = "smtp://{user}@smtp.me.com:587/"
+set smtp_pass = ""
+set from = "tubbo@psychedeli.ca"
+set realname = "Tom Scott"
+
+set sort=threads
+
+# HTML emails
+auto_view text/html
+
+# Check every 5 minutes
+set mail_check=300
+
+# Edit email with vim
+set editor="vim"
