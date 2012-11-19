@@ -27,6 +27,7 @@ Bundle 'tpope/vim-markdown'
 Bundle 'mattn/gist-vim'
 Bundle 'vim-scripts/sudo.vim'
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'janx/vim-rubytest'
 
 " %s/:\([a-z0-9_]\+\)\s*=>/\1: /g <<< Ruby 1.8->1.9 hashes
 
@@ -36,7 +37,6 @@ Bundle 'kchmck/vim-coffee-script'
 set nohlsearch
 nnoremap <C-L> :set hlsearch!<cr>
 nnoremap <C-l> :nohl<cr>
-
 
 ""
 "" Basic Setup
@@ -229,11 +229,17 @@ endtry
 let Grep_Skip_Dirs = 'RCS CVS SCCS .svn generated .sass-cache .git'
 set grepprg=/bin/grep\ -nH
 
-" Pressing ,ss will toggle and untoggle spell checking
-map <leader>ss :setlocal spell!<cr>
 
 " Turn off italics everywhere
 let g:solarized_italic=0
 syntax on
 colorscheme solarized
 set background=light
+
+""
+"" Mappings
+""
+
+map <C-t> :CommandT<cr>               " Search for files
+map <C-j> :RubyTest<cr>               " Jump to test file
+map <leader>ss :setlocal spell!<cr>   " Pressing ,ss will toggle and untoggle spell checking
