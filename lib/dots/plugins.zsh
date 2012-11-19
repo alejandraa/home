@@ -16,6 +16,7 @@ antigen-bundle $HOME/.dots lib/plugins/knife
 antigen-bundle $HOME/.dots lib/plugins/osx
 antigen-bundle $HOME/.dots lib/plugins/rails3
 antigen-bundle $HOME/.dots lib/plugins/ruby
+antigen-bundle kennethreitz/autoenv
 
 # From alternative sources
 antigen-bundle zsh-users/zsh-syntax-highlighting
