@@ -9,7 +9,8 @@ DOTS=$ZSH
 
 # Set our shell paths to load from all of the bin's on the machine.
 GOPATH=$HOME/Code/Go
-PATH=vendor/gems/bin:/Applications/Postgres.app/Contents/MacOS/bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:/usr/local/Cellar/python/2.7.1/bin:/usr/local/git/bin:/usr/bin:$HOME/.dots/bin:node_modules/.bin:$GOPATH:/usr/local/Cellar/python/2.7.1/lib/python2.7/site-packages:vendor/gems/bin:/usr/local/Cellar/ruby/1.9.3-p286/bin:/usr/local/Cellar/ruby/1.9.3-p194/bin:$PATH
+PATH=vendor/gems/bin:node_modules/.bin:/usr/local/share/npm/bin:/usr/local/lib/ruby/gems/1.9.1/bin:/Applications/Postgres.app/Contents/MacOS/bin:/usr/local/bin:/usr/local/sbin:/usr/local/git/bin:/usr/bin:$GOPATH:/usr/local/Cellar/python/2.7.1/lib/python2.7/site-packages:/usr/local/Cellar/ruby/1.9.3-p286/bin:/usr/local/Cellar/ruby/1.9.3-p194/bin:$PATH
+
 MANPATH=/opt/local/share/man:$MANPATH
 
 # Text editing and paging
