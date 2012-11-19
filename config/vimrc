@@ -124,11 +124,14 @@ set directory=~/.vim/_temp//      " where to put swap files.
 ""
 "" Misc.
 ""
+
 let macvim_hig_shift_movement = 1 " MacVim shift+arrow-keys behavior (required in .vimrc)
 
 
+""
+"" Autocommands
+""
 
-" Autocommands
 augroup vimrcEx
   " Clear all autocmds in the group
   autocmd!
@@ -150,15 +153,6 @@ augroup vimrcEx
   " In Python, maintain strict 4-space indents and don't word wrap
   autocmd FileType python set sw=4 sts=4 set wrap=off
 
-  " Alternative Sass extensions
-  autocmd! BufRead,BufNewFile *.sass setfiletype sass
-
-  " LESS 'n shit
-  au BufNewFile,BufRead *.less set filetype=less
-
-  " Parse Procfiles as YAML
-  autocmd! BufRead,BufNewFile Procfile setfiletype yaml
-
   " Alternative Markdown extensions
   autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:&gt textwidth=120;
   autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:&gt textwidth=120;
@@ -171,8 +165,10 @@ augroup vimrcEx
 
   " Open the README file in a project dir (if there is one)
   "autocmd AuNERDTreeCmd VimEnter * call OpenReadme()
-augroup END
 
+  " Strip whitespace in Python
+  autocmd BufWritePre *.py :%s/\s\+$//e
+augroup END
 
 " When there's no text behind it, tab indents. When there is, tab
 " autocompletes.
@@ -194,19 +190,7 @@ function! OpenReadme()
   endif
 endfunction
 
-" automatically reload vimrc when it's saved
-au BufWritePost .vimrc so ~/.vimrc
 
-" Strip whitespace in Python
-autocmd BufWritePre *.py :%s/\s\+$//e
-
-" Include user's local vim config
-if filereadable(expand("~/.vimrc.local"))
-  source ~/.vimrc.local
-endif
-
-" That bell is ANNOYING.
-set vb
 
 " Turn backups off since we store everything in Git
 set nobackup
