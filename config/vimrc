@@ -24,10 +24,13 @@ Bundle 'Lokaltog/vim-powerline'
 Bundle 'scrooloose/syntastic'
 Bundle 'Shougo/neocomplcache'
 Bundle 'tpope/vim-markdown'
+Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
 Bundle 'vim-scripts/sudo.vim'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'janx/vim-rubytest'
+Bundle 'skwp/vim-rspec'
+Bundle 'tpope/vim-rails'
 
 " %s/:\([a-z0-9_]\+\)\s*=>/\1: /g <<< Ruby 1.8->1.9 hashes
 

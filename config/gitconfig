@@ -39,11 +39,8 @@
 [core]
 	editor = vim
 	excludesfile = /Users/necromancer/.gitignore
-[mergetool "mvimdiff"]
-	cmd = mvim -d $LOCAL $MERGED $REMOTE
-  trustExitCode = true
 [merge]
-  tool = mvimdiff
+  tool = vimdiff
 
 [gitProcess]
 	keepLocalIntegrationBranch = true
