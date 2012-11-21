@@ -55,6 +55,7 @@ set shell=zsh         " Use the greatest shell in the universe inline
 set autoread          " Reload files after a change
 set showcmd           " Show (partial) command in the status line
 set clipboard=unnamed " Use the system clipboard when possible.
+set laststatus=2      " Make Powerline work on single-file sessions
 
 ""
 "" Whitespace
