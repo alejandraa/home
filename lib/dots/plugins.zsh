@@ -8,7 +8,6 @@ antigen-lib
 antigen-bundle cap
 
 # Local modifications to OMZ plugins
-antigen-bundle $HOME/.dots lib/plugins/aws
 antigen-bundle $HOME/.dots lib/plugins/bundler
 antigen-bundle $HOME/.dots lib/plugins/git
 antigen-bundle $HOME/.dots lib/plugins/git-process
