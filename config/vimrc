@@ -228,6 +228,9 @@ set background=light
 "" Mappings
 ""
 
-map <C-t> :CommandT<cr>               " Search for files
-map <C-j> :RubyTest<cr>               " Jump to test file
-map <leader>ss :setlocal spell!<cr>   " Pressing ,ss will toggle and untoggle spell checking
+" Search for files
+map <C-t> :CommandT<cr>
+" Jump to test file
+map <C-j> :RubyTest<cr>
+" Pressing ,ss will toggle and untoggle spell checking
+map <leader>ss :setlocal spell!<cr>
