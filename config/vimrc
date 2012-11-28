@@ -126,18 +126,36 @@ set wildignore+=*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-cache/*
 " Disable temp and backup files
 set wildignore+=*.swp,*~,._*
 
+
 ""
 "" Backup and swap files
 ""
-
 set backupdir=~/.vim/_backup//    " where to put backup files.
 set directory=~/.vim/_temp//      " where to put swap files.
+
 
 ""
 "" Misc.
 ""
 
 let macvim_hig_shift_movement = 1 " MacVim shift+arrow-keys behavior (required in .vimrc)
+" Skip bullshit directories
+let Grep_Skip_Dirs = 'RCS CVS SCCS .svn generated .sass-cache .git'
+set grepprg=/bin/grep\ -nH
+" Enforce Ruby 1.9 syntax in the selection
+"map <leader>h %s/:\([a-z0-9_]\+\)\s*=>/\1: /g<cr>
+
+
+""
+"" Testing
+""
+
+let g:rubytest_cmd_test = "rtest %p"
+let g:rubytest_cmd_testcase = "rtest %p -n \'/%c/\'"
+let g:rubytest_cmd_spec = "spec -f specdoc %p"
+let g:rubytest_cmd_example = "spec -f specdoc %p -e '%c'"
+let g:rubytest_cmd_feature = "cucumber %p"
+let g:rubytest_cmd_story = "cucumber %p -n '%c'"
 
 
 ""
@@ -172,9 +190,6 @@ augroup vimrcEx
   " Indent <p> tags inherently
   "autocmd FileType html,eruby if g:html_indent_tags !~ '\\|p\>' | let g:html_indent_tags .= '\|p\|li\|dt\|dd' | endif
 
-  " Uncomment this to turn off Markdown syntax highlighting
-  "autocmd! FileType mkd setlocal syn=off
-
   " Open the README file in a project dir (if there is one)
   "autocmd AuNERDTreeCmd VimEnter * call OpenReadme()
 
@@ -202,8 +217,6 @@ function! OpenReadme()
   endif
 endfunction
 
-
-
 " Turn backups off since we store everything in Git
 set nobackup
 set nowb
@@ -221,19 +234,19 @@ try
 catch
 endtry
 
-" Skip bullshit directories
-let Grep_Skip_Dirs = 'RCS CVS SCCS .svn generated .sass-cache .git'
-set grepprg=/bin/grep\ -nH
 
+""
+"" Color Scheme
+""
 
-" Turn off italics everywhere
 let g:solarized_italic=0
 syntax on
 colorscheme solarized
 set background=light
 
+
 ""
-"" Mappings
+"" Navigation
 ""
 
 " Search for files
@@ -242,3 +255,40 @@ map <C-t> :CommandT<cr>
 map <C-j> :RubyTest<cr>
 " Pressing ,ss will toggle and untoggle spell checking
 map <leader>ss :setlocal spell!<cr>
+" Find either the test file or implementation file path for the currently-opened file
+" (depending on which one it is)
+" Open this file's corresponding test or implementation.
+function! OpenTestAlternate()
+  let new_file = AlternateForCurrentFile()
+  exec ':e ' . new_file
+endfunction
+" Find the test or implementation code that corresponds with this file.
+function! AlternateForCurrentFile()
+  let current_file = expand("%")
+  let new_file = current_file
+  let in_test = match(current_file, '^test/') != -1
+  let going_to_test = !in_test
+  let in_app = match(current_file, '\<controllers\>') != -1 || match(current_file, '\<models\>') != -1 || match(current_file, '\<views\>') != -1 || match(current_file, '\<decorators\>') != -1 || match(current_file, '\<support\>') != -1 || match(current_file, '\<observers\>') != -1
+  if going_to_test
+    if in_app
+      let new_file = substitute(new_file, '^app/', '', '')
+    end
+    let new_file = substitute(new_file, '\.rb$', '_test.rb', '')
+    let new_file = 'test/' . new_file
+
+    " Test::Unit places its tests in a different location than RSpec
+    let new_file = substitute(new_file, 'models', 'unit', '')
+    let new_file = substitute(new_file, 'controllers', 'functional', '')
+  else
+    let new_file = substitute(new_file, '_test\.rb$', '.rb', '')
+    let new_file = substitute(new_file, '^test/', '', '')
+    if !in_app
+      let new_file = 'app/' . new_file
+    end
+
+    let new_file = substitute(new_file, 'unit', 'models', '')
+    let new_file = substitute(new_file, 'functional', 'controllers', '')
+  endif
+  return new_file
+endfunction
+nnoremap <leader>. :call OpenTestAlternate()<cr>
