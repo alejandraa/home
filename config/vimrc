@@ -90,14 +90,22 @@ set incsearch   " incremental searching
 set ignorecase  " searches are case insensitive...
 set smartcase   " ... unless they contain at least one capital letter
 
+" Search highlighting, only done by request and easy to get rid of.
+set nohlsearch
+nnoremap <C-L> :set hlsearch!<cr>
+nnoremap <C-l> :nohl<cr>
+
+
+
 ""
-"" CTags Documentation
+"" Documentation
 ""
 
 " Ctrl+H browses, then use Ctrl+H,{N|S} to scroll through them.
 vmap <C-h> <C-]>
 nnoremap <C-h>n :tnext<cr>
 nnoremap <C-h>s :tselect<cr>
+
 
 ""
 "" Wild settings
