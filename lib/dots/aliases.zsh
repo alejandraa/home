@@ -46,3 +46,4 @@ alias reload='reload_dots'
 
 alias guard='nocorrect guard --no-bundler-warning'
 alias rspec='nocorrect rspec'
+alias rain='nocorrect rain'
