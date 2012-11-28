@@ -1,19 +1,27 @@
-" @tubbo's vimrc
-""""""""""""""""""""""""""""""""""""""""
+"""
+""" @tubbo's vimrc
+"""
 
 ""
 "" Dependencies
 ""
+
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
 
-" Color Scheme
+" Colors
 Bundle 'altercation/vim-colors-solarized'
 
 " Languages
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'jelera/vim-javascript-syntax'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'tpope/vim-markdown'
+Bundle 'skwp/vim-rspec'
+Bundle 'tpope/vim-rails'
+Bundle 'sunaku/vim-ruby-shoulda-context'
+Bundle 'vim-scripts/nginx.vim'
 
 " Tools
 Bundle 'tpope/vim-fugitive'
@@ -23,23 +31,13 @@ Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'scrooloose/syntastic'
 Bundle 'Shougo/neocomplcache'
-Bundle 'tpope/vim-markdown'
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
 Bundle 'vim-scripts/sudo.vim'
-Bundle 'kchmck/vim-coffee-script'
 Bundle 'janx/vim-rubytest'
-Bundle 'skwp/vim-rspec'
-Bundle 'tpope/vim-rails'
 
-" %s/:\([a-z0-9_]\+\)\s*=>/\1: /g <<< Ruby 1.8->1.9 hashes
 
-" ZSH is the greatest shell in the history of the universe.
 
-" Search highlighting, only done by request and easy to get rid of.
-set nohlsearch
-nnoremap <C-L> :set hlsearch!<cr>
-nnoremap <C-l> :nohl<cr>
 
 ""
 "" Basic Setup
