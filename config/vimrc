@@ -37,8 +37,6 @@ Bundle 'vim-scripts/sudo.vim'
 Bundle 'janx/vim-rubytest'
 
 
-
-
 ""
 "" Basic Setup
 ""
@@ -152,8 +150,8 @@ set grepprg=/bin/grep\ -nH
 
 let g:rubytest_cmd_test = "rtest %p"
 let g:rubytest_cmd_testcase = "rtest %p -n \'/%c/\'"
-let g:rubytest_cmd_spec = "spec -f specdoc %p"
-let g:rubytest_cmd_example = "spec -f specdoc %p -e '%c'"
+let g:rubytest_cmd_spec = "rspec --format=progress %p"
+let g:rubytest_cmd_example = "rspec --format=documentation %p -e '%c'"
 let g:rubytest_cmd_feature = "cucumber %p"
 let g:rubytest_cmd_story = "cucumber %p -n '%c'"
 
@@ -251,8 +249,6 @@ set background=light
 
 " Search for files
 map <C-t> :CommandT<cr>
-" Jump to test file
-map <C-j> :RubyTest<cr>
 " Pressing ,ss will toggle and untoggle spell checking
 map <leader>ss :setlocal spell!<cr>
 " Find either the test file or implementation file path for the currently-opened file
@@ -264,31 +260,51 @@ function! OpenTestAlternate()
 endfunction
 " Find the test or implementation code that corresponds with this file.
 function! AlternateForCurrentFile()
+  let using_rspec = filereadable('spec/spec_helper.rb')
   let current_file = expand("%")
   let new_file = current_file
-  let in_test = match(current_file, '^test/') != -1
+  let in_test = match(current_file, '^test/') != -1 || match(current_file, '^spec/') != -1
   let going_to_test = !in_test
-  let in_app = match(current_file, '\<controllers\>') != -1 || match(current_file, '\<models\>') != -1 || match(current_file, '\<views\>') != -1 || match(current_file, '\<decorators\>') != -1 || match(current_file, '\<support\>') != -1 || match(current_file, '\<observers\>') != -1
+  let in_app = match(current_file, '\<controllers\>') != -1 || match(current_file, '\<models\>') != -1 || match(current_file, '\<views\>') != -1 || match(current_file, '\<decorators\>') != -1 || match(current_file, '\<support\>') != -1 || match(current_file, '\<observers\>') != -1 || match(current_file, '\<parsers\>') != -1 || match(current_file, '\<transformers\>') != -1
+
   if going_to_test
     if in_app
       let new_file = substitute(new_file, '^app/', '', '')
     end
-    let new_file = substitute(new_file, '\.rb$', '_test.rb', '')
-    let new_file = 'test/' . new_file
 
     " Test::Unit places its tests in a different location than RSpec
-    let new_file = substitute(new_file, 'models', 'unit', '')
-    let new_file = substitute(new_file, 'controllers', 'functional', '')
+    if using_rspec
+      let new_file = substitute(new_file, '\.rb$', '_spec.rb', '')
+      let new_file = 'spec/' . new_file
+    else
+      let new_file = substitute(new_file, '\.rb$', '_test.rb', '')
+      let new_file = 'test/' . new_file
+      let new_file = substitute(new_file, 'models', 'unit', '')
+      let new_file = substitute(new_file, 'support', 'unit', '')
+      let new_file = substitute(new_file, 'controllers', 'functional', '')
+    endif
   else
-    let new_file = substitute(new_file, '_test\.rb$', '.rb', '')
-    let new_file = substitute(new_file, '^test/', '', '')
-    if !in_app
+    if in_app
       let new_file = 'app/' . new_file
     end
 
-    let new_file = substitute(new_file, 'unit', 'models', '')
-    let new_file = substitute(new_file, 'functional', 'controllers', '')
+    if using_rspec
+      let new_file = substitute(new_file, '_spec\.rb$', '.rb', '')
+      let new_file = substitute(new_file, 'spec/', '', '')
+    else
+      let new_file = substitute(new_file, '_test\.rb$', '.rb', '')
+      let new_file = substitute(new_file, '^test/', '', '')
+
+      if match(new_file, 'support/')
+        let new_file = substitute(new_file, 'unit', 'support', '')
+      else
+        let new_file = substitute(new_file, 'unit', 'models', '')
+      endif
+
+      let new_file = substitute(new_file, 'functional', 'controllers', '')
+    endif
   endif
   return new_file
 endfunction
 nnoremap <leader>. :call OpenTestAlternate()<cr>
+map <C-j> <leader>.
