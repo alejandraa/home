@@ -37,6 +37,10 @@ alias py='python'
 alias js='node'
 alias json='jsonlint'
 
+# Running Ruby tests
+alias t='run_single_test'
+alias rts='rtest_rake'
+
 # Kill the first Ruby process.
 alias kill_first_ruby_process="kill -9 `ps -A | grep ruby | awk '{ print $1 }' | head -n 1`"
 alias krp='kill_first_ruby_process'
@@ -47,3 +51,6 @@ alias reload='reload_dots'
 alias guard='nocorrect guard --no-bundler-warning'
 alias rspec='nocorrect rspec'
 alias rain='nocorrect rain'
+
+# Kill it with fire
+alias k9='kill -9'

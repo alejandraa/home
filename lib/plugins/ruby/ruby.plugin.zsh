@@ -49,10 +49,13 @@ eval "function rtest_bare () {_rbtest_without_rake \$@}"
 alias rtest='nocorrect rtest_bare'
 alias rtest_rake='nocorrect rtest_rake'
 
-# Shorthand aliases
-alias t='rtest'
-alias rts='rtest_rake'
+# Framework-agnostic testing command.
+run_single_test() {
+  if [ -f "spec/spec_helper.rb" ]; then
+    bundle exec rspec $@;
+  else
+    rtest $@;
+  fi
+}
 
-# Run a ruby script
-alias rb='ruby'
 
