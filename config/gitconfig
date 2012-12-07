@@ -38,6 +38,7 @@
   default = current
 [core]
 	editor = vim
+  pager = less -r
 	excludesfile = /Users/necromancer/.gitignore
 [merge]
   tool = vimdiff
