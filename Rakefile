@@ -7,12 +7,16 @@
 # These tasks are also available within DOTS natively.
 
 require 'rake'
-require 'rspec/core/rake_task'
 require 'bundler/gem_tasks'
 
 Dir["lib/tasks/*.rake"].each { |rake_file| load rake_file }
 
-RSpec::Core::RakeTask.new(:test)
+begin
+  require 'rspec/core/rake_task'
+  RSpec::Core::RakeTask.new(:test)
+rescue LoadError => e
+  # RSpec can not be run in the gem installation.
+end
 
 desc "Update DOTS, Antigen, and all installed plugins."
 task :update do
