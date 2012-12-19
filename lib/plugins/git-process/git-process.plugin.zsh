@@ -11,6 +11,7 @@ alias gf='git new-fb'
 
 # Gets the latest changes that have happened on the integration branch, then pushes your changes to a "private" branch on the server.
 alias gy='git sync --rebase'
+alias gym='git sync' # because merging should be harder to do than rebasing
 
 # Creates a Pull Request for the current branch.
 alias gq='git pull-request'
