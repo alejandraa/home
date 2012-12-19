@@ -315,3 +315,6 @@ function! AlternateForCurrentFile()
 endfunction
 nnoremap <leader>. :call OpenTestAlternate()<cr>
 map <C-j> <leader>.
+
+" Remap :W => :w to avoid errors
+command! W w
