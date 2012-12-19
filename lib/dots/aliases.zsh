@@ -55,4 +55,8 @@ alias rain='nocorrect rain'
 # Kill it with fire
 alias k9='kill -9'
 
+# Sane defaults for the `patch` command, reverts a given diff.
 alias revert='patch -R -p1'
+
+# Set up Autoenv for this directory.
+alias cfg='source .env'
