@@ -54,3 +54,5 @@ alias rain='nocorrect rain'
 
 # Kill it with fire
 alias k9='kill -9'
+
+alias revert='patch -R -p1'
