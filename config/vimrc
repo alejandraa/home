@@ -150,7 +150,7 @@ set grepprg=/bin/grep\ -nH
 
 let g:rubytest_cmd_test = "rtest %p"
 let g:rubytest_cmd_testcase = "rtest %p -n \'/%c/\'"
-let g:rubytest_cmd_spec = "rspec --format=progress %p"
+let g:rubytest_cmd_spec = "rspec --format=documentation %p"
 let g:rubytest_cmd_example = "rspec --format=documentation %p -l '%c'"
 let g:rubytest_cmd_feature = "cucumber %p"
 let g:rubytest_cmd_story = "cucumber %p -n '%c'"
