@@ -3,12 +3,12 @@
 #
 
 gem 'haml'
-gem 'puma'
 
 gem_group :development do
   gem 'haml-rails'
   gem 'ruby_parser'
   gem 'hpricot'
+  gem 'puma'
 end
 
 gem_group :test do
@@ -25,30 +25,17 @@ RUBY
 
 rakefile "base.rake" do
   <<-RUBY
-    require 'rspec/core/rake_task'
-    RSpec::Core::RakeTask.new :spec
-
-    task :test => ['db:test:prepare', 'spec']
-
-    task :server do
-      sh "rails server puma"
-    end
+task :server do
+  sh "rails server puma"
+end
   RUBY
 end
 
-file ".env" do
-  <<-RUBY
-    export GEM_HOME='vendor/gems'
-  RUBY
+%w(.env .travis.yml).each do |name|
+  file(name) { IO.read File.expand_path("~/etc/rails/template/#{name}") }
 end
 
-file "README.md" do
-  <<-MARKDOWN
-    # #{app_name.titleize}
-
-    A thorough description of the application.
-  MARKDOWN
-end
+file("README.md") { "# #{app_name.titleize}" }
 
 run "createuser -s #{app_name}"
 run "bundle install"
