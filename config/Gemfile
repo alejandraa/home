@@ -1,0 +1,10 @@
+# A global collection of gems that are used in all dirs.
+#
+# Add gems here to be included on the whole system.
+
+source :rubygems
+
+gem 'git_tracker'
+gem 'git-process'
+gem 'pv'
+gem 'rails'
