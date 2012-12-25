@@ -66,10 +66,6 @@ function tmbundle() {
   osascript -e 'tell app \"TextMate\" to reload bundles'
 }
 
-function update_dots() {
-  dots update > /dev/null
-}
-
 # Reload DOTS after a change.
 function reload_dots() {
   source $HOME/.zshenv
@@ -87,4 +83,10 @@ function canary() {
 function rhombus() {
   find . -type f -name '._*' -exec rm {} +
   echo "Removed all ._ files"
+}
+
+# Source a hidden configuration file, usually with the same name as
+# the file it's in, but we set it here explicitly.
+function hidden_config_for() {
+  source "$DOTS/config/$1.zsh"
 }
