@@ -11,7 +11,7 @@ module Dots
 
     # The Git remote we'll be pulling from. Set this in your +~/.zshenv+
     # to use a different fork of the project.
-    REMOTE = ENV['DOTS_REMOTE']
+    REMOTE = ENV['DOTS_REMOTE'] or 'origin'
 
     # Attempts to update DOTS, but fails if changes are detected
     # in the repo beforehand.
