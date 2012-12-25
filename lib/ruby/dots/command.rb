@@ -15,13 +15,14 @@ module Dots
     end
 
     desc :install, "Copies DOTS to your home directory."
+    alias install install_framework
     def install
-      copy_to_home_directory! and link_dot_files!
+      copy_to_home_directory and link_dot_files
     end
 
     desc :update, "Update DOTS, Antigen and all plugins to their latest version."
     def update
-      pull_from_origin! and run 'reload'
+      update_the_framework
     end
 
     desc :version, "Show the current version of DOTS"
@@ -31,12 +32,13 @@ module Dots
 
     desc :link, "Symlink your ~/.dots/config into dotfiles"
     def link
-      link_dot_files!
+      link_dot_files
     end
 
     desc :persist, "Copy a dotfile to .dots/config and symlink the original location"
-    def persist file_name
-      persist_dot_file! file_name
+    alias persist persist_file
+    def persist_file name
+      persist_dot_file name
     end
 
     desc :forget, "Remove the symlink and restore a dotfile back to its original location"
