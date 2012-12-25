@@ -42,8 +42,14 @@ module Dots
     end
 
     desc :forget, "Remove the symlink and restore a dotfile back to its original location"
-    def forget file_name
-      forget_dot_file! file_name
+    alias forget forget_file
+    def forget_file name
+      forget_dot_file name
+    end
+
+    desc :bootstrap, "Install the whole shebang: gems, C programs, Python stuff, DOTS."
+    def bootstrap
+      install_programs and install_bundle and install_framework
     end
   end
 end
