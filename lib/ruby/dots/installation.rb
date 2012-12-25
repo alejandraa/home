@@ -47,7 +47,7 @@ module Dots
     end
 
     def git_pull
-      "git pull --rebase #{REMOTE} #{Dots::VERSION}"
+      "git pull --rebase #{REMOTE} v#{Dots::VERSION}"
     end
   end
 end
