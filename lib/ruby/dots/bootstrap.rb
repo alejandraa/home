@@ -3,7 +3,8 @@ module Dots
     include Thor::Actions
 
     # These are the programs we are going to download from Homebrew.
-    PROGRAMS = %w(httpie git ruby)
+    PROGRAMS = %w(git ruby python vim pip hub)
+    PACKAGES = %w(httpie aws)
 
     # Install C binaries, Python programs, and other useful tools
     # from Homebrew.
@@ -24,6 +25,11 @@ module Dots
     # gems are configured in +~/.Gemfile+.
     def install_bundle
       system "cd #{Dots::HOME} && #{bundle_install}"
+    end
+
+    # Install Python packages from pip. Pip!
+    def install_packages
+      system "pip install #{PACKAGES.join(' ')}"
     end
 
   private
