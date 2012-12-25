@@ -66,9 +66,12 @@ function tmbundle() {
   osascript -e 'tell app \"TextMate\" to reload bundles'
 }
 
+function update_dots() {
+  dots update > /dev/null
+}
+
 # Reload DOTS after a change.
 function reload_dots() {
-  dots update > /dev/null
   source $HOME/.zshenv
   source $HOME/.zshrc
   echo 'DOTS reloaded!'

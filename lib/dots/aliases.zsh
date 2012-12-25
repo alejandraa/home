@@ -46,7 +46,7 @@ alias kill_first_ruby_process="kill -9 `ps -A | grep ruby | awk '{ print $1 }' |
 alias krp='kill_first_ruby_process'
 
 alias fs='foreman start'
-alias reload='reload_dots'
+alias reload='dots update'
 
 alias guard='nocorrect guard --no-bundler-warning'
 alias rspec='nocorrect rspec'
@@ -60,3 +60,6 @@ alias revert='patch -R -p1'
 
 # Set up Autoenv for this directory.
 alias cfg='source .env'
+
+# Just in case..
+alias dots='nocorrect dots'
