@@ -13,7 +13,6 @@ module Dots
     end
 
     desc :install, "Copies DOTS to your home directory."
-    alias install install_framework
     def install
       copy_to_home_directory and link_dot_files
     end
@@ -34,20 +33,18 @@ module Dots
     end
 
     desc :persist, "Copy a dotfile to .dots/config and symlink the original location"
-    alias persist persist_file
-    def persist_file name
+    def persist name
       persist_dot_file name
     end
 
     desc :forget, "Remove the symlink and restore a dotfile back to its original location"
-    alias forget forget_file
-    def forget_file name
+    def forget name
       forget_dot_file name
     end
 
     desc :bootstrap, "Install the whole shebang: gems, C programs, Python stuff, DOTS."
     def bootstrap
-      install_programs and install_bundle and install_framework
+      install_programs and install_bundle and install
     end
   end
 end
