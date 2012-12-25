@@ -4,7 +4,16 @@
 
 source :rubygems
 
-gem 'git_tracker'
-gem 'git-process'
-gem 'pv'
-gem 'rails'
+group :version_control do
+  gem 'git_tracker'
+  gem 'git-process'
+end
+
+group :development_tools do
+  gem 'rails'
+  gem 'pv'
+end
+
+group :configuration_management do
+  gem 'zsh_dots' # keep up to date with the latest version
+end
