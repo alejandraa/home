@@ -1,7 +1,15 @@
 DOTS
 ====
 
-DOTS is a framework for ZSH that helps you manage your dot-files, ZSH sugar functionality, and your general shell experience. It began its life as a fork off the popular [Oh My ZSH framework][omz]. It has similar design philosophies and functionality, but different goals. Where Oh My ZSH is meant for new users to get more acclamated with ZSH, DOTS is meant for the slightly more advanced user who wants the built-in functionality of Oh My ZSH but wants additional customization and functionality, such as the copying and synchronization of "dot-files".
+DOTS is a framework for ZSH that helps you manage your dot-files, ZSH
+sugar functionality, and your general shell experience. It began its
+life as a fork off the popular [Oh My ZSH framework][omz]. It has
+similar design philosophies and functionality, but different goals.
+Where Oh My ZSH is meant for new users to get more acclamated with ZSH,
+DOTS is meant for the slightly more advanced user who wants the built-in
+functionality of Oh My ZSH but wants a bit more additional
+customization. It also includes some extra tools that help with day-to-day
+shell management tasks.
 
 Features
 --------
@@ -9,18 +17,25 @@ Features
 - Modular plugin architecture inspired by [Oh My ZSH][omz], but using Antigen for greater efficiency.
   Only code that's specific to your repo needs to be in your repo.
 - Simplified prompt string themeing in the `lib/dots/prompt.zsh` directory.
-- Configuration persistence via the `persist` command. This copies your dot-files to the **config/** 
-  directory and allows you to optionally store them in Git. Add your persisted configs to your fork's 
-  `.gitignore` if you don't want them synchronized, and `forget` them when you don't want them symlinked 
-  anymore. Keeping your configuration files in a place that's easily accessible with a text editor helps you 
-  keep an eye on your configuration.
+- Configuration persistence via the `persist` command. This copies your
+  dot-files to the **config/** directory and allows you to optionally
+  store them in Git. Add your persisted configs to your fork's
+  `.gitignore` if you don't want them synchronized, and `forget`
+  them when you don't want them symlinked anymore. Keeping your
+  configuration files in a place that's easily accessible with a
+  text editor helps you keep an eye on your configuration.
 - Aliases for common shell functionality like searching for a running
   process, opening your text editor, viewing files with a pager, setting
   the title of the current iTerm tab, [optimizing your OS X environment](osx4h),
   and much more.
+- Environment boostrapping, installs a global gemset and a series of
+  programs through Homebrew (as well as Homebrew itself) that aid in
+  your day-to-day programming tasks.
 
 Installation
 ------------
+
+Unlike Oh My ZSH, DOTS is installed as a gem. 
 
 Just run the following commands:
 
@@ -111,12 +126,41 @@ $ source $DOTS/config/$1.zsh
 
 where `$1` is the first argument given to the function.
 
-Usage
------
+Environment Bootstrapping
+-------------------------
 
-Edit `lib/dots/prompt.zsh` to change your prompt string.
+DOTS installs a number of programs for you:
 
-Type `persist .vimrc` or `forget .vimrc` to either add or remove your configs to the .dots/ directory, wherein they can then be pushed to your GitHub fork.
+- **HTTPie** for querying HTTP, and displaying the results in a colorful
+  format.
+- **Vim** for text editing. It fits into the DOTS philosophy very nicely
+  of having each program do one thing really well.
+- The latest version of the **Ruby** programming language. We believe
+  that you should keep your tools up to date, and Homebrew has been
+  very reliable in maintaining the latest version of Ruby, as Homebrew
+  is itself a Ruby project. It's also a great shell scripting language,
+  among other things...
+- **Ruby on Rails**. I'm a Rails developer, so having Rails in the
+  global Gemfile is a must. If this offends you, you may kindly remove
+  the gem as it isn't really necessary for your use. However, this
+  framework is bundled with a number of aliases/plugins for use in Rails
+  projects, so I felt like including Rails makes the whole thing
+  "complete".
+- **AWS Developer Tools** for interfacing with Amazon Web Services. I
+  use AWS to host all of my projects, both at work and at home, and
+  these tools make it very easy to get statistics on your instances
+  quickly.
+- **Git** is my favorite distributed version control system, and I use
+  it on all of my projects, both private and public. DOTS also installs
+  a number of plugins for Git that I find useful: **git_tracker** for
+  automatically including a Pivotal Tracker issue number in commits
+  when your branch follows a specific naming convention, **git-process**
+  for managing a strict feature branch-based workflow, and **hub** for
+  easy interfacing with Github (allowing you to clone with a simple
+  short Github URL: `git clone tubbo/dots`, make pull requests and edit
+  them in Vim, define issues, and fork projects). With the exception of
+  **hub** all of these gems are completely optional, and must be
+  installed explicitly in each new project (as they add Git hooks).
 
 License
 -------
