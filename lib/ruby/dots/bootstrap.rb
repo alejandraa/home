@@ -5,11 +5,6 @@ module Dots
     # These are the programs we are going to download from Homebrew.
     PROGRAMS = %w(httpie git ruby)
 
-    # Install the latest version of all gems to the global gemset.
-    def install_bundle
-      system "cd #{Dots::HOME} && #{bundle_install}"
-    end
-
     # Install C binaries, Python programs, and other useful tools
     # from Homebrew.
     def install_programs
@@ -24,6 +19,12 @@ module Dots
       end
     end
 
+    # Install the latest version of all gems to the global gemset. These
+    # gems are configured in +~/.Gemfile+.
+    def install_bundle
+      system "cd #{Dots::HOME} && #{bundle_install}"
+    end
+
   private
     def installed? command
       `which #{command}` != ""
@@ -35,7 +36,7 @@ module Dots
     end
 
     def install_global_gemset
-      "bundler install --gemfile=~/.Gemfile"
+      "bundle install --gemfile=#{global_gemset}"
     end
 
     def install_bundler
@@ -45,6 +46,10 @@ module Dots
     # Install the latest version of the Homebrew package manager.
     def install_homebrew
       %x[ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"]
+    end
+
+    def global_gemset
+      "#{Dots.root}/config/Gemfile"
     end
   end
 end
