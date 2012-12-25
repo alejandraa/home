@@ -56,6 +56,10 @@ RUBY_HEAP_FREE_MIN=500000
 # Always use Bundler with RVM.
 USE_BUNDLER=force
 
+# Set this to a different Git remote to pull updates from there.
+# NOTE: You will have to manage updating from upstream yourself.
+DOTS_REMOTE='origin'
+
 # Colorize Grep
 export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;32'
