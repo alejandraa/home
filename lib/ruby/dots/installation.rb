@@ -22,7 +22,7 @@ module Dots
     # saves the user from an ugly Git error...
     def update_the_framework
       if repo_is_clean?
-        pull_from_origin and system 'reload_dots'
+        pull_from_origin and run 'reload_dots'
       else
         say "You have uncommitted changes in ~/.dots. Please resolve them before updating."
       end
