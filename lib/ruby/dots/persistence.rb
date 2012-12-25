@@ -8,12 +8,12 @@ module Dots
       Dir[File.expand_path("~/.dots/config/*")].each do |config_file|
         persist_dot_file config_file
       end
-
-      update
     end
 
-
-    def persist_dot_file! file_name
+    # Moves the given +~/.file+ to the repo, while saving its original
+    # location. It then symlinks the new location to the old location
+    # so applications will continue to run.
+    def persist_dot_file file_name
       dot_file = Dots::DotFile.new file_name
 
       if dot_file.save
@@ -24,8 +24,10 @@ module Dots
       end
     end
 
-
-    def forget_dot_file! file_name
+    # Restores the given configuration file that's in the repo back
+    # to an unremembered state. Deletes the symlink and places the
+    # file back to its perceived original location in +~/.file+.
+    def forget_dot_file file_name
       dot_file = Dots::DotFile.find file_name
 
       if dot_file.destroy
