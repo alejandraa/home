@@ -100,27 +100,16 @@ application's dotfile, insert the following line to load configuration
 from your untracked file:
 
 ```bash
-. $DOTS/config/file.zsh
+hidden_config_for 'file'
 ```
 
-Forking
--------
+This will run the following shell command:
 
-It's recommended that you fork this project so you can store your own custom settings in **config/**, and get the most use out of this framework.
+```bash
+$ source $DOTS/config/$1.zsh
+```
 
-To do so, click the **Fork** button at the top of this page.
-
-Then, type the following into your Terminal:
-
-    git remote add <your-github-username> git@github.com:<your-github-username>/dots.git
-
-And to make sure it works, type
-
-    git pull <your-github-username> master
-
-We like the follow the convention for fork names set forth in [the hub plugin][hub] by [Chris Wernstrath][cw]. You can feasibly name the fork anything you like.
-
-You can either modify **tools/upgrade.sh** to `git pull` from your fork and `git push` to your fork after the upgrade is complete to keep it in sync, or do it manually by setting `DISABLE_AUTO_UPDATE="true"` (which is disabled by default in **config/zshrc**).
+where `$1` is the first argument given to the function.
 
 Usage
 -----
@@ -155,13 +144,14 @@ DOTS is released under **The MIT License**:
     ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-Contributors
+Contributing
 ------------
 
-Just me, [@tubbo][twt]
+To contribute to the project, fork it and send me a pull request!
+
+I accept either traditional email pulls or Github pull requests.
 
 [omz]: https://github.com/robbyrussell/oh-my-zsh
-[twt]: https://twitter.com/tubbo
 [hub]: https://github.com/defunkt/hub
 [cw]: https://defunkt.io
 [osx4h]: https://gist.github.com/2260182
