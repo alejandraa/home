@@ -1,12 +1,10 @@
 require 'dots/persistence'
 require 'dots/installation'
+require 'dots/bootstrap'
 
 module Dots
   class Command < Thor
-    include Thor::Actions
-    include Dots::Persistence
-    include Dots::Installation
-
+    include Thor::Actions, Dots::Persistence, Dots::Installation, Dots::Bootstrap
     default_task :usage
 
     desc :usage, "Show usage information"
