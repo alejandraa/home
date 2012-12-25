@@ -13,7 +13,8 @@ module Dots
           programs << program unless installed? program
         }.join " "
 
-        system "brew install #{programs_to_install}"
+        system "brew install #{programs_to_install}" \
+          unless programs_to_install.empty?
       else
         install_homebrew
       end
