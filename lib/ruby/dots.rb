@@ -22,18 +22,19 @@ module Dots
     @home_dir ||= File.expand_path "~/.dots"
   end
 
-  # Usage information for the DOTS command line tool.
-  USAGE_INFORMATION = <<-TEXT
+  def self.usage_information
+    path = "#{Dots.root}/lib/ruby/templates/usage.txt.erb"
+    template = ERB.new File.read(path)
 
-  The DOTS Project
+    template.result(binding)
+  end
 
-  DOTS is a ZSH Framework for managing your dotfiles and other shell configuration.
-  It also gives you some nice, sensible defaults and time-saver aliases to better
-  work with and understand your shell environment.
+  def self.dots_version
+    "DOTS version #{Dots::VERSION} - http://github.com/tubbo/dots"
+  end
 
-  The following tasks are meant to help you use the shell more efficiently...
-
-  TEXT
-
+  def dots_version
+    self.dots_version
+  end
 end
 
