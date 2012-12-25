@@ -16,8 +16,9 @@ module Dots
 
         system "brew install #{programs_to_install}" \
           unless programs_to_install.empty?
+        install_packages
       else
-        install_homebrew
+        install_homebrew and install_programs
       end
     end
 
