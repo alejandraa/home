@@ -9,7 +9,7 @@ module Dots
 
     desc :usage, "Show usage information"
     def usage
-      say Dots::USAGE_INFORMATION and help
+      say Dots.usage_information and help
     end
 
     desc :install, "Copies DOTS to your home directory."
@@ -24,7 +24,7 @@ module Dots
 
     desc :version, "Show the current version of DOTS"
     def version
-      say "DOTS version #{Dots::VERSION} - http://tubbo.github.com/dots"
+      say dots_version
     end
 
     desc :link, "Symlink your ~/.dots/config into dotfiles"
