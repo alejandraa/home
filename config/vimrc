@@ -59,7 +59,8 @@ let mapleader = ","   " Set leader key to something easier to access
 "" Whitespace
 ""
 
-set nowrap                        " don't wrap lines
+set wrap                          " turn word wrap on
+set textwidth=72                  " attempt to enforce 72 chars
 set tabstop=2                     " a tab is two spaces
 set shiftwidth=2                  " an autoindent (with <<) is two spaces
 set expandtab                     " use spaces, not tabs
@@ -164,16 +165,15 @@ augroup vimrcEx
   " Clear all autocmds in the group
   autocmd!
 
-  " Whenever we're writing text, like comments, make the width mo more
-  " than 72 characters. This is to ensure maximum readability of
-  " documentation with things like CTags.
-  autocmd FileType text setlocal textwidth=72
-
   " Jump to last cursor position unless it's invalid or in an event handler
   autocmd BufReadPost *
     \ if line("'\"") > 0 && line("'\"") <= line("$") |
     \   exe "normal g`\"" |
     \ endif
+
+  " On the contrary, Haml and HTML files can be uber-long sometimes,
+  " so we will ignore wrapping in Haml.
+  autocmd FileType haml,html setlocal nowrap
 
   " In Ruby, autoindent with two spaces, always expand tabs
   autocmd FileType coffee,ruby,haml,eruby,yaml,html,javascript,sass,cucumber set ai sw=2 sts=2 et
@@ -191,12 +191,6 @@ augroup vimrcEx
 
   " Standard two-space indentation in CoffeeScript files
   au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
-
-  " Indent <p> tags inherently
-  "autocmd FileType html,eruby if g:html_indent_tags !~ '\\|p\>' | let g:html_indent_tags .= '\|p\|li\|dt\|dd' | endif
-
-  " Open the README file in a project dir (if there is one)
-  "autocmd AuNERDTreeCmd VimEnter * call OpenReadme()
 
   " Strip whitespace in Python
   autocmd BufWritePre *.py :%s/\s\+$//e
