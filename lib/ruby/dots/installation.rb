@@ -43,7 +43,7 @@ module Dots
 
   private
     def repo_is_clean?
-      `cd #{Dots.home} && git ls-files -m` == ""
+      `cd #{Dots.home} && git ls-files -m`.split("\n").empty?
     end
 
     def git_pull
