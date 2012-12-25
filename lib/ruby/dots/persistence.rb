@@ -2,21 +2,11 @@ module Dots
   module Persistence
     include Thor::Actions
 
-
-    def link_dot_files!
-      Dir["config/*"].each do |config_file|
-        unless File.directory? config_file or config_file =~ /\.zsh$/
-          config_file.gsub!(/config\/|.example/, "")
-          config_file_path = File.expand_path "~/.dots/config/#{config_file}"
-          dot_file_path = File.expand_path "~/.#{config_file}"
-
-          if File.exists? dot_file_path
-            say "Did not symlink #{config_file} since one already exists"
-          else
-            File.symlink config_file_path, dot_file_path
-            say "Symlinked ~/.#{config_file}"
-          end
-        end
+    # Run through every file in +~/.dots/config+ and symlink them to
+    # +~/.+.
+    def link_dot_files
+      Dir[File.expand_path("~/.dots/config/*")].each do |config_file|
+        persist_dot_file config_file
       end
 
       update
