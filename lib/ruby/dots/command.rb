@@ -46,5 +46,10 @@ module Dots
     def bootstrap
       install_programs and install_bundle and install
     end
+
+    desc :bundle, "Install and update the global gem bundle"
+    def bundle
+      install_bundle
+    end
   end
 end

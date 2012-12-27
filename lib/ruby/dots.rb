@@ -29,6 +29,7 @@ module Dots
     template.result(binding)
   end
 
+  # Shows a String with the current version of the framework.
   def self.dots_version
     "DOTS version #{Dots::VERSION} - http://github.com/tubbo/dots"
   end
@@ -36,5 +37,8 @@ module Dots
   def dots_version
     self.dots_version
   end
+
+  # The home directory for the current user.
+  HOME = ENV['HOME']
 end
 
