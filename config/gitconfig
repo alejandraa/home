@@ -11,18 +11,19 @@
 	on = branch
 	br = branch
   co = checkout
-  # Log display from "Advanced Git" PeepCode screencast, with train tracks.
   l = log --graph --pretty=format':%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset'
-  # Alternate log display from Scott Chacon
   lol = log --pretty=oneline --abbrev-commit --graph --decorate
-  # Other useful aliases:
   unstage = reset HEAD
   staged = diff --cached
   unstaged = diff
   current-branch = !git symbolic-ref -q HEAD | sed -e 's|^refs/heads/||'
-  # Usage: git track origin/feature-123-login-form
   track = checkout -t
-  restore = stash pop
+  # Rewrite of 'git-process' in git.
+  beta-restore = stash pop
+  beta-sync = !git checkout $1 && git rebase master
+  beta-feature = !git checkout -b
+  beta-expose = !git checkout master && git pull --rebase && git checkout $1 && git rebase master && git push origin $1
+  beta-to-master = !git checkout master && git merge $1 && git push --rebase origin master
 [apply]
   whitespace = warn
 [color]
