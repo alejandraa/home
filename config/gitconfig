@@ -18,12 +18,14 @@
   unstaged = diff
   current-branch = !git symbolic-ref -q HEAD | sed -e 's|^refs/heads/||'
   track = checkout -t
-  # Rewrite of 'git-process' in git.
-  beta-restore = stash pop
-  beta-sync = !git checkout $1 && git rebase master
-  beta-feature = !git checkout -b
-  beta-expose = !git checkout master && git pull --rebase && git checkout $1 && git rebase master && git push origin $1
-  beta-to-master = !git checkout master && git merge $1 && git push --rebase origin master
+  restore = stash pop
+  # Rewrite of 'git-process' in git. Basically the same thing without
+  # the _parking_ branch (it's the same as master)
+  sync = !git fetch origin && git rebase master
+  new-fb = !git checkout master && git pull --rebase origin master && git checkout -b $2
+  expose = !git sync && git push origin `git current-branch`
+  pull-upstream = !git pull --rebase origin master && git checkout master
+  to-master = !export GIT_BRANCH=`git current-branch` && git pull-upstream  && git merge $GIT_BRANCH && git push origin master
 [apply]
   whitespace = warn
 [color]
