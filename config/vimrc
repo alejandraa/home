@@ -34,7 +34,7 @@ Bundle 'Shougo/neocomplcache'
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
 Bundle 'vim-scripts/sudo.vim'
-Bundle 'janx/vim-rubytest'
+Bundle 'skalnik/vim-vroom'
 
 
 ""
@@ -59,8 +59,8 @@ let mapleader = ","   " Set leader key to something easier to access
 "" Whitespace
 ""
 
-set wrap                          " turn word wrap on
-set textwidth=72                  " attempt to enforce 72 chars
+"set wrap                          " turn word wrap on
+"set textwidth=72                  " attempt to enforce 72 chars
 set tabstop=2                     " a tab is two spaces
 set shiftwidth=2                  " an autoindent (with <<) is two spaces
 set expandtab                     " use spaces, not tabs
@@ -141,20 +141,8 @@ let macvim_hig_shift_movement = 1 " MacVim shift+arrow-keys behavior (required i
 " Skip bullshit directories
 let Grep_Skip_Dirs = 'RCS CVS SCCS .svn generated .sass-cache .git'
 set grepprg=/bin/grep\ -nH
-" Enforce Ruby 1.9 syntax in the selection
-"map <leader>h %s/:\([a-z0-9_]\+\)\s*=>/\1: /g<cr>
-
-
-""
-"" Testing
-""
-
-let g:rubytest_cmd_test = "rtest %p"
-let g:rubytest_cmd_testcase = "rtest %p -n \'/%c/\'"
-let g:rubytest_cmd_spec = "rspec --format=documentation %p"
-let g:rubytest_cmd_example = "rspec --format=documentation %p -l '%c'"
-let g:rubytest_cmd_feature = "cucumber %p"
-let g:rubytest_cmd_story = "cucumber %p -n '%c'"
+" Enforce Ruby 1.9 syntax on this line
+map <leader>h :s/:\([a-z0-9_]\+\)\s*=>/\1: /g<cr>
 
 
 ""
@@ -194,6 +182,10 @@ augroup vimrcEx
 
   " Strip whitespace in Python
   autocmd BufWritePre *.py :%s/\s\+$//e
+
+  " Highlight certain files as Ruby
+  au BufNewFile,BufRead *.gemfile set filetype=ruby
+  au BufNewFile,BufRead *.rake   set filetype=ruby
 augroup END
 
 " When there's no text behind it, tab indents. When there is, tab
@@ -252,63 +244,47 @@ set background=light
 map <C-t> :CommandT<cr>
 " Pressing ,ss will toggle and untoggle spell checking
 map <leader>ss :setlocal spell!<cr>
-" Find either the test file or implementation file path for the currently-opened file
-" (depending on which one it is)
-" Open this file's corresponding test or implementation.
+
+" Remap :W => :w to avoid errors
+command! W w
+
+""
+"" Inline Testing
+""
+
+let g:vroom_use_binstubs = 1
+let g:vroom_use_colors = 1
+let g:vroom_map_keys = 0
+let g:vroom_spec_command = 'rspec --format=documentation '
+let g:vroom_test_unit_command = 'bundle exec ruby -Itest '
+"let g:vroom_test_unit_command = 'rtest '
+
+nnoremap <leader>t :VroomRunNearestTest<cr>
+nnoremap <leader>T :VroomRunTestFile<cr>
+
 function! OpenTestAlternate()
   let new_file = AlternateForCurrentFile()
   exec ':e ' . new_file
 endfunction
-" Find the test or implementation code that corresponds with this file.
 function! AlternateForCurrentFile()
-  let using_rspec = filereadable('spec/spec_helper.rb')
   let current_file = expand("%")
   let new_file = current_file
-  let in_test = match(current_file, '^test/') != -1 || match(current_file, '^spec/') != -1
-  let going_to_test = !in_test
-  let in_app = match(current_file, '\<controllers\>') != -1 || match(current_file, '\<models\>') != -1 || match(current_file, '\<views\>') != -1 || match(current_file, '\<decorators\>') != -1 || match(current_file, '\<support\>') != -1 || match(current_file, '\<observers\>') != -1 || match(current_file, '\<parsers\>') != -1 || match(current_file, '\<transformers\>') != -1
-
-  if going_to_test
+  let in_spec = match(current_file, '^spec/') != -1
+  let going_to_spec_or_test = !in_spec
+  let in_app = match(current_file, '\<controllers\>') != -1 || match(current_file, '\<models\>') != -1 || match(current_file, '\<views\>') != -1 || match(current_file, '\<helpers\>') != -1
+  if going_to_spec
     if in_app
       let new_file = substitute(new_file, '^app/', '', '')
     end
-
-    " Test::Unit places its tests in a different location than RSpec
-    if using_rspec
-      let new_file = substitute(new_file, '\.rb$', '_spec.rb', '')
-      let new_file = 'spec/' . new_file
-    else
-      let new_file = substitute(new_file, '\.rb$', '_test.rb', '')
-      let new_file = 'test/' . new_file
-      let new_file = substitute(new_file, 'models', 'unit', '')
-      let new_file = substitute(new_file, 'support', 'unit', '')
-      let new_file = substitute(new_file, 'controllers', 'functional', '')
-    endif
+    let new_file = substitute(new_file, '\.rb$', '_spec.rb', '')
+    let new_file = 'spec/' . new_file
   else
+    let new_file = substitute(new_file, '_spec\.rb$', '.rb', '')
+    let new_file = substitute(new_file, '^spec/', '', '')
     if in_app
       let new_file = 'app/' . new_file
     end
-
-    if using_rspec
-      let new_file = substitute(new_file, '_spec\.rb$', '.rb', '')
-      let new_file = substitute(new_file, 'spec/', '', '')
-    else
-      let new_file = substitute(new_file, '_test\.rb$', '.rb', '')
-      let new_file = substitute(new_file, '^test/', '', '')
-
-      if match(new_file, 'support/')
-        let new_file = substitute(new_file, 'unit', 'support', '')
-      else
-        let new_file = substitute(new_file, 'unit', 'models', '')
-      endif
-
-      let new_file = substitute(new_file, 'functional', 'controllers', '')
-    endif
   endif
   return new_file
 endfunction
 nnoremap <leader>. :call OpenTestAlternate()<cr>
-map <C-j> <leader>.
-
-" Remap :W => :w to avoid errors
-command! W w
