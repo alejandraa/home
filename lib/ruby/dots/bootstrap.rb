@@ -25,7 +25,7 @@ module Dots
     # Install the latest version of all gems to the global gemset. These
     # gems are configured in +~/.Gemfile+.
     def install_bundle
-      system "cd #{Dots::HOME} && #{bundle_install}"
+      system "cd && #{install_bundler} && #{install_global_gemset}"
     end
 
     # Install Python packages from pip. Pip!
@@ -38,26 +38,17 @@ module Dots
       `which #{command}` != ""
     end
 
-    def bundle_install
-      return install_global_gemset if installed? 'bundle'
-      "#{install_bundler} #{install_global_gemset}"
+    def install_bundler
+      "gem install bundler"
     end
 
     def install_global_gemset
-      "bundle install --gemfile=#{global_gemset}"
-    end
-
-    def install_bundler
-      "gem install bundler"
+      "gem install #{Dots.gems}"
     end
 
     # Install the latest version of the Homebrew package manager.
     def install_homebrew
       %x[ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"]
-    end
-
-    def global_gemset
-      "#{Dots.root}/config/Gemfile"
     end
   end
 end

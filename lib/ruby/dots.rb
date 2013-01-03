@@ -9,6 +9,9 @@ require 'dots/persistence'
 require 'dots/installation'
 
 module Dots
+  # All gems installed by DOTS
+  GEMS = %w(dots pv git_tracker rails)
+
   # The root path of the DOTS gem.
   def self.root
     @root_dir ||= begin
@@ -40,5 +43,10 @@ module Dots
 
   # The home directory for the current user.
   HOME = ENV['HOME']
+
+  # Accessor for all gems installed by DOTS, formatted for a `gem install`.
+  def self.gems
+    GEMS.join " "
+  end
 end
 
