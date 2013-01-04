@@ -63,3 +63,5 @@ alias cfg='source .env'
 
 # Just in case..
 alias dots='nocorrect dots'
+
+alias replace='gg_replace'
