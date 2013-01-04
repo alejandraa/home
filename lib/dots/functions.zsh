@@ -126,3 +126,8 @@ gg_replace() {
 gg_dasherize() {
   gg_replace $1 `echo $1 | sed -e 's/_/-/g'` $2
 }
+
+# Wrap a Ruby binary in the global GEM_HOME.
+function globalize() {
+  GEM_HOME=$GLOBAL_GEM_HOME $1
+}
