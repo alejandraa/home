@@ -90,3 +90,39 @@ function rhombus() {
 function hidden_config_for() {
   source "$DOTS/config/$1.zsh"
 }
+
+# Find and replace in a directory.
+gg_replace() {
+  if [[ "$#" == "0" ]]; then
+    echo 'Usage:'
+    echo '  gg_replace term replacement file_mask'
+    echo
+    echo 'Example:'
+    echo '  gg_replace cappuchino cappuccino *.html'
+    echo
+  else
+    find=$1; shift
+    replace=$1; shift
+
+    ORIG_GLOBIGNORE=$GLOBIGNORE
+    GLOBIGNORE=*.*
+
+    if [[ "$#" = "0" ]]; then
+      set -- ' ' $@
+    fi
+
+    while [[ "$#" -gt "0" ]]; do
+      for file in `git grep -l $find -- $1`; do
+        sed -i -e "s/$find/$replace/g" -i'' $file
+      done
+      shift
+    done
+
+    GLOBIGNORE=$ORIG_GLOBIGNORE
+  fi
+}
+
+# Turn underscores into dashes.
+gg_dasherize() {
+  gg_replace $1 `echo $1 | sed -e 's/_/-/g'` $2
+}
