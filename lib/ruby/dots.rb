@@ -7,6 +7,7 @@ require 'dots/command'
 require 'dots/version'
 require 'dots/persistence'
 require 'dots/installation'
+require 'dots/sanity'
 
 module Dots
   # All gems installed by DOTS

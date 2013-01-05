@@ -1,10 +1,11 @@
 require 'dots/persistence'
 require 'dots/installation'
 require 'dots/bootstrap'
+require 'dots/sanity'
 
 module Dots
   class Command < Thor
-    include Thor::Actions, Dots::Persistence, Dots::Installation, Dots::Bootstrap
+    include Thor::Actions, Dots::Persistence, Dots::Installation, Dots::Bootstrap, Dots::Sanity
     default_task :usage
 
     desc :usage, "Show usage information"
@@ -47,9 +48,10 @@ module Dots
       install_programs and install_bundle and install
     end
 
-    desc :bundle, "Install and update the global gem bundle"
-    def bundle
-      install_bundle
+    desc :robify, "Restore the shell to sane, sensible defaults."
+    method_option :edit, default: true
+    def robify
+      stop_being_insane! and (open_textmate if options[:edit])
     end
   end
 end
