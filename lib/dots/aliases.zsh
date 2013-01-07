@@ -64,4 +64,14 @@ alias cfg='source .env'
 # Just in case..
 alias dots='nocorrect dots'
 
-alias replace='gg_replace'
+# Globalize some necessary RubyGems
+global_gems=(dots pv)
+for cmd in $global_gems; do
+  eval "function local_$cmd () { $cmd \$@ }"
+  eval "function global_$cmd () { globalize $cmd \$@}"
+  alias $cmd=global_$cmd
+
+  if which _$cmd > /dev/null 2>&1; then
+    compdef _$cmd local_$cmd=$cmd
+  fi
+done
