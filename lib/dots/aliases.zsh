@@ -67,11 +67,12 @@ alias dots='nocorrect dots'
 # Globalize some necessary RubyGems
 global_gems=(dots pv)
 for cmd in $global_gems; do
-  eval "function local_$cmd () { $cmd \$@ }"
+  eval "function local_$cmd () { bundle exec $cmd \$@ }"
   eval "function global_$cmd () { globalize $cmd \$@}"
   alias $cmd=global_$cmd
+  alias _$cmd=local_$cmd
 
   if which _$cmd > /dev/null 2>&1; then
-    compdef _$cmd local_$cmd=$cmd
+    compdef _$cmd global_$cmd=$cmd
   fi
 done
