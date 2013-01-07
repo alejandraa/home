@@ -16,6 +16,7 @@ gem_group :test do
   gem 'capybara'
 end
 
+# Template files
 initializer "generators.rb", <<-RUBY
 Rails.application.config.generators do |g|
   g.template_engine :haml
@@ -37,10 +38,14 @@ end
 
 file("README.md") { "# #{app_name.titleize}" }
 
+# Set up the database
 run "createuser -s #{app_name}"
-run "bundle install"
-run "bundle exec rails generate rspec:install"
 rake 'db:create'
 rake 'db:test:prepare'
+
+# Generate necessary code
+run "bundle install"
+run "bundle exec rails generate rspec:install"
+
 run "rm -rf test/; rm -rf README.rdoc; rm -rf public/index.html"
 run "git init && git add . && git commit -am 'Initial commit.'"
