@@ -61,9 +61,6 @@ alias revert='patch -R -p1'
 # Set up Autoenv for this directory.
 alias cfg='source .env'
 
-# Just in case..
-alias dots='nocorrect dots'
-
 # Globalize some necessary RubyGems
 global_gems=(dots pv)
 for cmd in $global_gems; do
