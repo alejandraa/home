@@ -25,7 +25,7 @@ servers = (
 chatnets = {
   freenode = {
     type = "IRC";
-    autosendcmd = "/^msg nickserv identify <freenode-credentials>;/^wait -freenode 2000";
+    autosendcmd = "/^msg nickserv identify FREENODE_PASSWORD;/^wait -freenode 2000";
     max_kicks = "4";
     max_msgs = "1";
     max_modes = "4";
@@ -33,7 +33,7 @@ chatnets = {
   };
   flowdock = {
     type = "IRC";
-    autosendcmd = "/^msg nickserv identify <flowdock-credentials>";
+    autosendcmd = "/^msg nickserv identify FLOWDOCK_USERNAME FLOWDOCK_PASSWORD";
   };
 };
 
