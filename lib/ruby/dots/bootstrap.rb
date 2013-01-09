@@ -3,7 +3,7 @@ module Dots
     include Thor::Actions
 
     # These are the programs we are going to download from Homebrew.
-    PROGRAMS = %w(git ruby python vim pip hub)
+    PROGRAMS = %w(git ruby python vim pip hub mutt procmail)
     PACKAGES = %w(httpie aws)
 
     # Install C binaries, Python programs, and other useful tools
