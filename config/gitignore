@@ -102,3 +102,4 @@ bin/
 .yardoc
 _yardoc
 doc/
+bin/
