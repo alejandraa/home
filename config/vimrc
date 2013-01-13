@@ -22,6 +22,7 @@ Bundle 'skwp/vim-rspec'
 Bundle 'tpope/vim-rails'
 Bundle 'sunaku/vim-ruby-shoulda-context'
 Bundle 'vim-scripts/nginx.vim'
+Bundle 'leshill/vim-json'
 
 " Tools
 Bundle 'tpope/vim-fugitive'
@@ -272,7 +273,7 @@ function! AlternateForCurrentFile()
   let in_spec = match(current_file, '^spec/') != -1
   let going_to_spec_or_test = !in_spec
   let in_app = match(current_file, '\<controllers\>') != -1 || match(current_file, '\<models\>') != -1 || match(current_file, '\<views\>') != -1 || match(current_file, '\<helpers\>') != -1
-  if going_to_spec
+  if going_to_spec_or_test
     if in_app
       let new_file = substitute(new_file, '^app/', '', '')
     end
