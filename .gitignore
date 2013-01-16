@@ -24,3 +24,4 @@ rdoc
 spec/reports
 tmp
 vendor/ievms
+config/*.zsh
