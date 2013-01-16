@@ -13,12 +13,13 @@ JSPATH=node_modules/.bin:/usr/local/share/npm/bin
 PYPATH=/usr/local/Cellar/python/2.7.3/bin
 GOPATH=$HOME/Code/Go
 PGPATH=/Applications/Postgres.app/Contents/MacOS/bin
+MLPATH=/usr/local/Cellar/smlnj/110.75/libexec/bin
 MANPATH=/opt/local/share/man:$MANPATH
 HEROKU_PATH="/usr/local/heroku/bin"
 CPATH=/usr/local/bin:/usr/local/sbin:/usr/local/git/bin:/usr/bin:$HOME/bin
 
 # Global PATH, the variable that really matters
-PATH=$PGPATH:$RBPATH:$CPATH:$PYPATH:$PATH
+PATH=$PGPATH:$RBPATH:$CPATH:$PYPATH:$MLPATH:$PATH
 
 # Text editing and paging
 EDITOR='vim'
