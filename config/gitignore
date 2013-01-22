@@ -74,7 +74,6 @@ db/*.sqlite3
 public/system/*
 coverage/
 spec/tmp/*
-**.orig
 
 # Environment configuration
 .env
