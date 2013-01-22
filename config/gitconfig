@@ -25,9 +25,10 @@
   new-fb = !git checkout master && git pull --rebase origin master && git checkout -b $2
   expose = !git sync && git push origin `git current-branch`
   pull-upstream = !git pull --rebase origin master && git checkout master
-  to-master = !export GIT_BRANCH=`git current-branch` && git pull-upstream  && git merge $GIT_BRANCH && git push origin master
+  to-master = !export GIT_BRANCH=`git current-branch` && git pull-upstream  && git merge $GIT_BRANCH && git push origin master && git branch -D $GIT_BRANCH
   ship = !git to-master
   rename-branch = !export GIT_BRANCH=`git current-branch` && git checkout master && git branch -m $GIT_BRANCH $1
+  delete-branch = !export GIT_BRANCH=`git current-branch` && git checkout master && git branch -D $GIT_BRANCH
 [apply]
   whitespace = warn
 [color]
