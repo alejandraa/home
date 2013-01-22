@@ -1,0 +1,2 @@
+#Triggers file version 1.0
+-rawin -regexp '^>> :Flowdock!Flowdock@services. NOTICE #elocal/main :$' -replace '' 
