@@ -73,3 +73,6 @@ for cmd in $global_gems; do
     compdef _$cmd global_$cmd=$cmd
   fi
 done
+
+# Email reader
+alias m='nocorrect mutt'
