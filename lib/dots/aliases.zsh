@@ -17,6 +17,7 @@ alias fgt='forget'
 # File viewing and editing
 alias v=$PAGER
 alias e='editor'
+alias se='sudo editor'
 
 # Terminal support
 alias c='clear'
