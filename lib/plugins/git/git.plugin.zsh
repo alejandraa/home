@@ -62,9 +62,6 @@ alias gts='git reset --soft'
 compdef _get gt=git-reset
 alias gthh='git reset --hard HEAD'
 compdef _get gt=git-reset
-alias garc='ga . && grc'
-compdef _get garc=git-add
-compdef _get garc=git-rebase
 
 # Stash
 alias gs='git stash save'
@@ -87,6 +84,9 @@ alias gmt='git mergetool'
 compdef _get gmt=git-mergetool
 alias gcf='git clean -f'
 compdef _get gcf=git-clean
+alias garc='gcf && ga . && grc' # a big one..., clean the repo, add everything, rebase --continue
+compdef _get garc=git-add
+compdef _get garc=git-rebase
 
 # Super useful alias aliases
 alias s='gst'
