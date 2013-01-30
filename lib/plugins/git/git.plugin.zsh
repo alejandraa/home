@@ -23,7 +23,7 @@ alias gm='git merge'
 compdef _git gm=git-merge
 
 # Logging and Viewing
-alias gl='git l'
+alias gl='git blog'
 compdef _git glg=git-log
 alias gls='git log --stat --max-count=5'
 compdef _git gls=git-log
