@@ -11,8 +11,7 @@
 	on = branch
 	br = branch
   co = checkout
-  l = log --graph --pretty=format':%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset'
-  lol = log --pretty=oneline --abbrev-commit --graph --decorate
+  blog = log --graph --pretty=format':%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset' --abrev-commit --decorate
   unstage = reset HEAD
   staged = diff --cached
   unstaged = diff
