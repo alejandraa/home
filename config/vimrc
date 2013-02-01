@@ -245,6 +245,10 @@ set background=light
 map <C-t> :CommandT<cr>
 " Pressing ,ss will toggle and untoggle spell checking
 map <leader>ss :setlocal spell!<cr>
+" Alternate between tabs
+map <leader>m :tabn<cr>
+map <C-s> :w<cr>
+map <leader>s :w<cr>
 
 " Remap :W => :w to avoid errors
 command! W w
