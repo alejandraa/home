@@ -102,3 +102,6 @@ bin/
 _yardoc
 doc/
 bin/
+
+# CTags
+tags
