@@ -25,4 +25,7 @@ Gem::Specification.new do |gem|
   gem.add_runtime_dependency 'activemodel'
 
   gem.add_development_dependency 'rake'
+
+  gem.signing_key = '/Users/tom/.gem/auth/gem-private_key.pem'
+  gem.cert_chain  = ['gem-public_cert.pem']
 end
