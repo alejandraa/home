@@ -144,6 +144,9 @@ let Grep_Skip_Dirs = 'RCS CVS SCCS .svn generated .sass-cache .git'
 set grepprg=/bin/grep\ -nH
 " Enforce Ruby 1.9 syntax on this line
 map <leader>h :s/:\([a-z0-9_]\+\)\s*=>/\1: /g<cr>
+" Easy saving of files
+nnoremap Z :w<cr>
+nnoremap ZZ :wq<cr>
 
 
 ""
