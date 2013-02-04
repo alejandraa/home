@@ -13,23 +13,25 @@
   co = checkout
   blog = log --graph --pretty=format':%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset' --decorate
   l = !git blog
-  unstage = reset HEAD
   staged = diff --cached
   unstaged = diff
   current-branch = !git symbolic-ref -q HEAD | sed -e 's|^refs/heads/||'
   track = checkout -t
   restore = stash pop
-  # Rewrite of 'git-process' in git. Basically the same thing without
-  # the _parking_ branch (it's the same as master)
-  sync = !git fetch origin && git rebase master
-  new-fb = !git checkout master && git pull --rebase origin master && git checkout -b $2
+  # git_ship: Rewrite of 'git-process' in git. Basically the same thing without the _parking_ branch (it's the same as master)
+  blog = log --graph --pretty=format':%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset' --abbrev-commit --decorate
+  unstage = reset HEAD
+  restore = stash pop
+  sync = !export GIT_BRANCH=`git current-branch` && git fetch origin && git checkout master && git rebase origin/master && git checkout $GIT_BRANCH && git rebase master
+  feature = !git checkout master && git pull --rebase origin master && git checkout -b $2
+  new-fb = !git feature
   expose = !git sync && git push origin `git current-branch`
-  pull-upstream = !git pull --rebase origin master && git checkout master
-  to-master = !export GIT_BRANCH=`git current-branch` && git pull-upstream  && git merge $GIT_BRANCH && git push origin master && git branch -D $GIT_BRANCH
-  ship = !git to-master
+  swim = !git pull --rebase origin master && git checkout master
+  ship = !export GIT_BRANCH=`git current-branch` && git swim && git merge $GIT_BRANCH && git push origin master && git branch -D $GIT_BRANCH
+  prepare = rebase --interactive origin/master
+  # Makes your life generally easier..
   rename-branch = !export GIT_BRANCH=`git current-branch` && git checkout master && git branch -m $GIT_BRANCH $1
   delete-branch = !export GIT_BRANCH=`git current-branch` && git checkout master && git branch -D $GIT_BRANCH
-  prepare = rebase --interactive origin/master
 [apply]
   whitespace = warn
 [color]
