@@ -37,6 +37,16 @@ Bundle 'mattn/gist-vim'
 Bundle 'vim-scripts/sudo.vim'
 Bundle 'skalnik/vim-vroom'
 
+""
+"" Quick Config
+""
+
+" Edit the Vim configuration
+map <leader>c :tabnew<cr>:e ~/.vimrc<cr>
+
+" Reload the Vim configuration
+map <leader>s :source ~/.vimrc<cr>
+
 
 ""
 "" Basic Setup
@@ -96,12 +106,11 @@ nnoremap <C-L> :set hlsearch!<cr>
 nnoremap <C-l> :nohl<cr>
 
 
-
 ""
 "" Documentation
 ""
 
-" Ctrl+H browses, then use Ctrl+H,{N|S} to scroll through them.
+" CTags: Ctrl+H browses, then use Ctrl+H,{N|S} to scroll through them.
 vmap <C-h> <C-]>
 nnoremap <C-h>n :tnext<cr>
 nnoremap <C-h>s :tselect<cr>
@@ -182,12 +191,12 @@ augroup vimrcEx
   autocmd BufRead *.pv set filetype=yaml
 
   " Standard two-space indentation in CoffeeScript files
-  au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
+  au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab foldmethod=indent nofoldenable
 
   " Strip whitespace in Python
   autocmd BufWritePre *.py :%s/\s\+$//e
 
-  " Highlight certain files as Ruby
+  " Alternative Ruby extensions
   au BufNewFile,BufRead *.gemfile set filetype=ruby
   au BufNewFile,BufRead *.rake   set filetype=ruby
 augroup END
@@ -250,8 +259,7 @@ map <C-t> :CommandT<cr>
 map <leader>ss :setlocal spell!<cr>
 " Alternate between tabs
 map <leader>m :tabn<cr>
-map <C-s> :w<cr>
-map <leader>s :w<cr>
+map <C-w>t :tabn<cr>
 
 " Remap :W => :w to avoid errors
 command! W w
@@ -260,7 +268,7 @@ command! W w
 "" Inline Testing
 ""
 
-let g:vroom_use_binstubs = 1
+let g:vroom_use_binstubs = 0
 let g:vroom_use_colors = 1
 let g:vroom_map_keys = 0
 let g:vroom_spec_command = 'rspec --format=documentation '
