@@ -8,7 +8,8 @@ ZSH=$HOME/.dots
 DOTS=$ZSH
 
 # Domain-specific PATHs.
-RBPATH=/usr/local/lib/ruby/gems/1.9.1/bin:/usr/local/Cellar/ruby/1.9.3-p362/bin
+RUBY_VERSION='1.9.3-p385'
+RBPATH=/usr/local/lib/ruby/gems/1.9.1/bin:/usr/local/Cellar/ruby/$RUBY_VERSION/bin
 JSPATH=node_modules/.bin:/usr/local/share/npm/bin
 PYPATH=/usr/local/Cellar/python/2.7.3/bin:/usr/local/share/python
 GOPATH=$HOME/Code/Go
