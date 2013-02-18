@@ -9,7 +9,9 @@ alias gur='git pull --rebase'
 compdef _git gl=git-pull
 alias gp='git push'
 compdef _git gp=git-push
-alias gpf='git push tubbo'
+alias gpf="git push `git config github.user`"
+compdef _git gpf=git-push
+alias gph="git push heroku"
 compdef _git gpf=git-push
 gdv() { git diff -w "$@" | view - }
 compdef _git gdv=git-diff
