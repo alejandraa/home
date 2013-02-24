@@ -20,7 +20,7 @@ HEROKU_PATH="/usr/local/heroku/bin"
 CPATH=/usr/local/bin:/usr/local/sbin:/usr/local/git/bin:/usr/bin:$HOME/bin
 
 # Global PATH, the variable that really matters
-PATH=$PGPATH:$RBPATH:$CPATH:$PYPATH:$MLPATH:$PATH
+PATH=$PGPATH:$RBPATH:$CPATH:$PYPATH:$MLPATH:$JSPATH:$PATH
 
 # Text editing and paging
 EDITOR='vim'
@@ -80,3 +80,6 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # Load the framework.
 . $ZSH/lib/dots.sh
+
+# Load Boxen
+[ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
