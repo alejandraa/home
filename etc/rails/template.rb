@@ -36,8 +36,8 @@ web: bundle exec rails server puma
 end
 
 # Set up the shell environment and Travis-CI configuration
-%w(.env .travis.yml).each do |name|
-  file(name) { IO.read File.expand_path("~/etc/rails/template/#{name}") }
+%w(env travis.yml).each do |name|
+  file(".#{name}") { IO.read File.expand_path("~/etc/rails/template/#{name}") }
 end
 
 # Generate the README and remove the default one
