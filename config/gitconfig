@@ -21,7 +21,9 @@
   blog = log --graph --pretty=format':%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset' --abbrev-commit --decorate
   unstage = reset HEAD
   restore = stash pop
-  sync = !export GIT_BRANCH=`git current-branch` && git fetch origin && git checkout master && git rebase origin/master && git checkout $GIT_BRANCH && git rebase master
+  update-master-and-return-to-branch = !export GIT_BRANCH=`git current-branch` && git fetch origin && git checkout master && git rebase origin/master && git checkout $GIT_BRANCH && unset GIT_BRANCH
+  sync = !git update-master-and-return-to-branch && git rebase master
+  sync-unsafe = !git update-master-and-return-to-branch && && git merge master
   feature = !git checkout master && git pull --rebase origin master && git checkout -b $2
   new-fb = !git feature
   expose = !git sync && git push origin `git current-branch`
