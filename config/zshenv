@@ -21,6 +21,7 @@ CPATH=/usr/local/bin:/usr/local/sbin:/usr/local/git/bin:/usr/bin:$HOME/bin
 # Global PATH, the variable that really matters
 PATH=$RBPATH:$PGPATH:$CPATH:$PYPATH:$MLPATH:$JSPATH:$PATH
 
+
 # Text editing and paging
 EDITOR='vim'
 PAGER='less -R'
@@ -71,14 +72,17 @@ export GREP_COLOR='1;32'
 # Use the Turn testing engine on eLocal
 export USE_TURN=true
 
-# Load Java from OS X
+# Load Java on OS X
 export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home/
 
-# Start rbenv
-#if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+# Load rbenv
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+# Load the Bower completion (for now)
+source ~/.dots/lib/plugins/bower/bower.plugin.zsh
 
 # Load the framework.
-. $ZSH/lib/dots.sh
+source $ZSH/lib/dots.sh
 
 # Load Boxen
 [ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
