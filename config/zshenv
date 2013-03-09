@@ -8,8 +8,7 @@ ZSH=$HOME/.dots
 DOTS=$ZSH
 
 # Domain-specific PATHs.
-RUBY_VERSION='1.9.3-p385'
-RBPATH=/usr/local/lib/ruby/gems/1.9.1/bin:/usr/local/Cellar/ruby/$RUBY_VERSION/bin
+RBPATH=/usr/local/lib/ruby/gems/1.9.1/bin
 JSPATH=node_modules/.bin:/usr/local/share/npm/bin
 PYPATH=/usr/local/Cellar/python/2.7.3/bin:/usr/local/share/python
 GOPATH=$HOME/Code/Go
@@ -20,7 +19,7 @@ HEROKU_PATH="/usr/local/heroku/bin"
 CPATH=/usr/local/bin:/usr/local/sbin:/usr/local/git/bin:/usr/bin:$HOME/bin
 
 # Global PATH, the variable that really matters
-PATH=$PGPATH:$RBPATH:$CPATH:$PYPATH:$MLPATH:$JSPATH:$PATH
+PATH=$RBPATH:$PGPATH:$CPATH:$PYPATH:$MLPATH:$JSPATH:$PYPATH:$PATH
 
 # Text editing and paging
 EDITOR='vim'
