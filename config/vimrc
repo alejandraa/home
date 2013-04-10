@@ -75,8 +75,9 @@ let mapleader = ","   " Set leader key to something easier to access
 "" Whitespace
 ""
 
-"set wrap                          " turn word wrap on
-"set textwidth=72                  " attempt to enforce 72 chars
+set wrap                          " turn word wrap on
+set textwidth=72                  " attempt to enforce 72 chars
+set linebreak                     " wait for word char to break lines
 set tabstop=2                     " a tab is two spaces
 set shiftwidth=2                  " an autoindent (with <<) is two spaces
 set expandtab                     " use spaces, not tabs
