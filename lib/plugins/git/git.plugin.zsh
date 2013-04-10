@@ -122,3 +122,7 @@ compdef ggpnp=git
 if (( $+commands[hub] )) ; then
   function git() {hub "$@"}
 fi
+
+# Github-specific
+alias gpr='git pull-request'
+alias gip='git internal-pull-request'
