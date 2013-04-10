@@ -79,3 +79,6 @@ done
 
 # Email reader
 alias m='nocorrect mutt'
+
+# IRC
+alias irc='set_title irc; weechat-curses'
