@@ -23,6 +23,8 @@ Bundle 'tpope/vim-rails'
 Bundle 'sunaku/vim-ruby-shoulda-context'
 Bundle 'vim-scripts/nginx.vim'
 Bundle 'leshill/vim-json'
+Bundle 'sunaku/vim-ruby-minitest'
+Bundle 'tsaleh/vim-tmux'
 
 " Tools
 Bundle 'tpope/vim-fugitive'
@@ -36,6 +38,9 @@ Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
 Bundle 'vim-scripts/sudo.vim'
 Bundle 'skalnik/vim-vroom'
+Bundle 'ecomba/vim-ruby-refactoring'
+Bundle 'Townk/vim-autoclose'
+Bundle 'tpope/vim-dispatch.git'
 
 ""
 "" Quick Config
