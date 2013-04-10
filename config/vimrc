@@ -117,9 +117,11 @@ nnoremap <C-l> :nohl<cr>
 ""
 
 " CTags: Ctrl+H browses, then use Ctrl+H,{N|S} to scroll through them.
-vmap <C-h> <C-]>
+map <C-h> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 nnoremap <C-h>n :tnext<cr>
 nnoremap <C-h>s :tselect<cr>
+" CTags: Go back to the starting file.
+noremap <C-j> <C-t>
 
 
 ""
