@@ -171,62 +171,62 @@ nnoremap ZZ :wq<cr>
 ""
 
 augroup vimrcEx
-  " Clear all autocmds in the group
-  autocmd!
+" Clear all autocmds in the group
+autocmd!
 
-  " Jump to last cursor position unless it's invalid or in an event handler
-  autocmd BufReadPost *
-    \ if line("'\"") > 0 && line("'\"") <= line("$") |
-    \   exe "normal g`\"" |
-    \ endif
+" Jump to last cursor position unless it's invalid or in an event handler
+autocmd BufReadPost *
+  \ if line("'\"") > 0 && line("'\"") <= line("$") |
+  \   exe "normal g`\"" |
+  \ endif
 
-  " On the contrary, Haml and HTML files can be uber-long sometimes,
-  " so we will ignore wrapping in Haml.
-  autocmd FileType haml,html setlocal nowrap
+" On the contrary, Haml and HTML files can be uber-long sometimes,
+" so we will ignore wrapping in Haml.
+autocmd FileType haml,html setlocal nowrap
 
-  " In Ruby, autoindent with two spaces, always expand tabs
-  autocmd FileType coffee,ruby,haml,eruby,yaml,html,javascript,sass,cucumber set ai sw=2 sts=2 et
+" In Ruby, autoindent with two spaces, always expand tabs
+autocmd FileType coffee,ruby,haml,eruby,yaml,html,javascript,sass,cucumber set ai sw=2 sts=2 et
 
-  " In Python, maintain strict 4-space indents and don't word wrap
-  autocmd FileType python set sw=4 sts=4 set wrap=off
+" In Python, maintain strict 4-space indents and don't word wrap
+autocmd FileType python set sw=4 sts=4 set wrap=off
 
-  " Alternative Markdown extensions
-  autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:&gt textwidth=120;
-  autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:&gt textwidth=120;
+" Alternative Markdown extensions
+autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:&gt textwidth=120;
+autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:&gt textwidth=120;
 
-  " Alternative YAML extensions
-  autocmd BufRead *.fdoc* set filetype=yaml
-  autocmd BufRead *.pv set filetype=yaml
+" Alternative YAML extensions
+autocmd BufRead *.fdoc* set filetype=yaml
+autocmd BufRead *.pv set filetype=yaml
 
-  " Standard two-space indentation in CoffeeScript files
-  au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab foldmethod=indent nofoldenable
+" Standard two-space indentation in CoffeeScript files
+au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab foldmethod=indent nofoldenable
 
-  " Strip whitespace in Python
-  autocmd BufWritePre *.py :%s/\s\+$//e
+" Strip whitespace in Python
+autocmd BufWritePre *.py :%s/\s\+$//e
 
-  " Alternative Ruby extensions
-  au BufNewFile,BufRead *.gemfile set filetype=ruby
-  au BufNewFile,BufRead *.rake   set filetype=ruby
+" Alternative Ruby extensions
+au BufNewFile,BufRead *.gemfile set filetype=ruby
+au BufNewFile,BufRead *.rake   set filetype=ruby
 augroup END
 
 " When there's no text behind it, tab indents. When there is, tab
 " autocompletes.
 function! InsertTabWrapper()
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<tab>"
-    else
-        return "\<c-p>"
-    endif
+  let col = col('.') - 1
+  if !col || getline('.')[col - 1] !~ '\k'
+      return "\<tab>"
+  else
+      return "\<c-p>"
+  endif
 endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <s-tab> <c-n>
 
 " Opens the README.md file
 function! OpenReadme()
-  if filereadable('README.md')
-    edit README.md
-  endif
+if filereadable('README.md')
+  edit README.md
+endif
 endfunction
 
 " Turn backups off since we store everything in Git
@@ -236,13 +236,13 @@ set noswapfile
 
 " Persistent undo
 try
-    if MySys() == "windows"
-      set undodir=C:\Windows\Temp
-    else
-      set undodir=~/.vim_runtime/undodir
-    endif
+  if MySys() == "windows"
+    set undodir=C:\Windows\Temp
+  else
+    set undodir=~/.vim_runtime/undodir
+  endif
 
-    set undofile
+  set undofile
 catch
 endtry
 
