@@ -1,7 +1,6 @@
 #!/usr/bin/env rake
 
 require 'rake'
-require 'bundler/gem_tasks'
 
 begin
   require 'rspec/core/rake_task'
