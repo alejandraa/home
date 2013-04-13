@@ -3,14 +3,18 @@
 #
 
 # Place the following gems in the Gemfile
-gem 'haml'
+gem 'strong_parameters'
 gem 'foreman'
+gem 'haml-rails'
+gem 'draper'
+gem 'active_model_serializers'
+gem 'sumatra-rails'
+gem 'bootstrap-sass'
 
 gem_group :development do
-  gem 'haml-rails'
-  gem 'ruby_parser'
-  gem 'hpricot'
-  gem 'puma'
+  gem 'pry-rails'
+  gem 'better_errors'
+  gem 'meta_request'
 end
 
 gem_group :test do
@@ -31,7 +35,7 @@ RUBY
 # become available.
 file "Procfile" do
   <<-RUBY
-web: bundle exec rails server puma
+web: bundle exec rails server
   RUBY
 end
 
