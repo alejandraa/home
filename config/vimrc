@@ -25,6 +25,7 @@ Bundle 'vim-scripts/nginx.vim'
 Bundle 'leshill/vim-json'
 Bundle 'sunaku/vim-ruby-minitest'
 Bundle 'tsaleh/vim-tmux'
+Bundle 'nono/vim-handlebars'
 
 " Tools
 Bundle 'tpope/vim-fugitive'
