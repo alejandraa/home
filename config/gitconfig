@@ -35,6 +35,7 @@
   rename-branch = !export GIT_BRANCH=`git current-branch` && git checkout master && git branch -m $GIT_BRANCH $1
   delete-branch = !export GIT_BRANCH=`git current-branch` && git checkout master && git branch -D $GIT_BRANCH
   internal-pull-request = !export GIT_BRANCH=`git current-branch` && GIT_REMOTE=`git config hub.remote` && hub pull-request -h $GIT_REMOTE:$GIT_BRANCH
+  standup = !git blog --author="`git config user.name`" --since=yesterday
 [apply]
   whitespace = warn
 [color]
