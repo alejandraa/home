@@ -282,7 +282,7 @@ let g:vroom_use_binstubs = 0
 let g:vroom_use_colors = 1
 let g:vroom_map_keys = 0
 let g:vroom_spec_command = 'bundle exec rspec --format=documentation '
-let g:vroom_test_unit_command = 'bundle exec ruby -Itest '
+let g:vroom_test_unit_command = 'bundle exec rtest '
 
 nnoremap <leader>t :VroomRunNearestTest<cr>
 nnoremap <leader>T :VroomRunTestFile<cr>
