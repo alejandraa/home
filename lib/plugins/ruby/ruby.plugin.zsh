@@ -45,6 +45,8 @@ _rbtest_without_rake() {
 }
 eval "function rtest_bare () {_rbtest_without_rake \$@}"
 
+## end @robdimarco contributions ##
+
 # Disable autocorrect
 alias rtest='nocorrect rtest_bare'
 alias rtest_rake='nocorrect rtest_rake'
