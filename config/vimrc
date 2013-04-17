@@ -42,6 +42,7 @@ Bundle 'skalnik/vim-vroom'
 Bundle 'ecomba/vim-ruby-refactoring'
 Bundle 'Townk/vim-autoclose'
 Bundle 'tpope/vim-dispatch.git'
+Bundle 'drewolson/ruby_focused_unit_test_vim'
 
 ""
 "" Quick Config
