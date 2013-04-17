@@ -48,16 +48,5 @@ eval "function rtest_bare () {_rbtest_without_rake \$@}"
 ## end @robdimarco contributions ##
 
 # Disable autocorrect
-alias rtest='nocorrect rtest_bare'
-alias rtest_rake='nocorrect rtest_rake'
-
-# Framework-agnostic testing command.
-run_single_test() {
-  if [ -f "spec/spec_helper.rb" ]; then
-    bundle exec rspec $@;
-  else
-    rtest $@;
-  fi
-}
-
-
+alias rb_test='nocorrect rtest_bare'
+alias rb_test_rake='nocorrect rtest_rake'
