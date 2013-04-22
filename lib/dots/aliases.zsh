@@ -85,3 +85,6 @@ alias irc='set_title irc; weechat-curses'
 
 # Use tmux with iTerm2 integration
 alias tm='tmux -CC'
+
+# Generate CTags for all dependencies and code in the $PWD
+alias ctags='ctags -R .'

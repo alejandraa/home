@@ -5,7 +5,7 @@ compdef g=git
 # Branching
 alias gu='git pull'
 compdef _git gl=git-pull
-alias gur='git pull --rebase && ctags -R .'
+alias gur='git pull --rebase'
 compdef _git gl=git-pull
 alias gp='git push'
 compdef _git gp=git-push
