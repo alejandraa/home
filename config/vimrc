@@ -24,7 +24,6 @@ Bundle 'sunaku/vim-ruby-shoulda-context'
 Bundle 'vim-scripts/nginx.vim'
 Bundle 'leshill/vim-json'
 Bundle 'sunaku/vim-ruby-minitest'
-Bundle 'tsaleh/vim-tmux'
 Bundle 'nono/vim-handlebars'
 
 " Tools
@@ -36,13 +35,16 @@ Bundle 'Lokaltog/vim-powerline'
 Bundle 'scrooloose/syntastic'
 Bundle 'Shougo/neocomplcache'
 Bundle 'mattn/webapi-vim'
+Bundle 'ecomba/vim-ruby-refactoring'
+Bundle 'Townk/vim-autoclose'
+
+" Integration
 Bundle 'mattn/gist-vim'
 Bundle 'vim-scripts/sudo.vim'
 Bundle 'skalnik/vim-vroom'
-Bundle 'ecomba/vim-ruby-refactoring'
-Bundle 'Townk/vim-autoclose'
 Bundle 'tpope/vim-dispatch.git'
-Bundle 'drewolson/ruby_focused_unit_test_vim'
+Bundle 'benmills/vimux'
+Bundle 'pgr0ss/vimux-ruby-test'
 
 ""
 "" Quick Config
