@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+#
+# Dots Master Control
+
+command = ARGV.first
+
+if command.nil?
+  welcome = %(
+  DOTS | http://tubbo.github.com/dots
+  -----------------------------------
+  )
+
+  help = %(
+  Usage:
+
+    dots update - Update the ~/.dots directory and Antigen
+  )
+
+  puts "#{welcome}\n#{help}"
+else
+  `dots-#{command}`
+end
