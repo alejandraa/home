@@ -23,7 +23,7 @@ REPO_DIR = "#{HOME_DIR}/.dots/config"
 
 ARGV.each do |raw_dot_file|
   dot_file = File.expand_path raw_dot_file
-  persisted_dot_file = "#{REPO_DIR}/.#{dot_file}"
+  persisted_dot_file = "#{REPO_DIR}/#{raw_dot_file}"
 
   if File.exists? persisted_dot_file
     return "#{raw_dot_file} is already persisted"
