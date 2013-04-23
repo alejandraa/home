@@ -12,7 +12,6 @@ gem 'sumatra-rails'
 gem 'bootstrap-sass'
 
 gem_group :development do
-  gem 'pry-rails'
   gem 'better_errors'
   gem 'meta_request'
 end
@@ -21,6 +20,8 @@ gem_group :test do
   gem 'rspec-rails'
   gem 'capybara'
 end
+
+gem 'pry-rails', group: [ :development, :test ]
 
 # Set up the template engine and test framework to use when generating
 # new resources in the course of development.
@@ -48,16 +49,11 @@ end
 file("README.md") { "# #{app_name.titleize}" }
 run "rm -rf README.rdoc"
 
-# Install gem dependencies
-run "bundle install"
-
 # Set up the database
 run "createuser -s #{app_name}"
-rake 'db:create'
-rake 'db:test:prepare'
 
-# Install the test framework
-run "bundle exec rails generate rspec:install && rm -rf test/"
+# Remove the Rails tests
+run "rm -rf test/"
 
 # Remove unnecessary default files
 run "rm -rf public/index.html"

@@ -1,2 +1,1 @@
-export GEM_HOME=vendor/gems
 export PATH=$PWD/bin:$PATH
