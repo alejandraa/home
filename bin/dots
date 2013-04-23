@@ -1,10 +1,15 @@
 #!/usr/bin/env ruby
 #
-# Dots Master Control
+#    dots - A shell framework for ZSH
+#
+# == Usage
+#
+# Master control for the dots framework shell commands.
 
 command = ARGV.first
 
 if command.nil?
+  `dots-help`
   welcome = %(
   DOTS | http://tubbo.github.com/dots
   -----------------------------------
