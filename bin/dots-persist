@@ -1,0 +1,34 @@
+#!/usr/bin/env ruby
+#
+# = DOTS
+#
+#     dots persist FILE - Save a config file to your personal DOTS repo.
+#
+# == Usage
+#
+# Copies a configuration file from the home directory into
+# `~/.dots/config` in order to "save" its changes in your personal DOTS
+# repository. It then symlinks the file back to its original location to
+# preserve file path integrity.
+#
+# == Installation
+#
+# This program comes for free when you install DOTS.
+#
+
+require 'fileutils'
+
+HOME_DIR = File.expand_path '~'
+REPO_DIR = "#{HOME_DIR}/.dots/config"
+
+ARGV.each do |raw_dot_file|
+  dot_file = File.expand_path raw_dot_file
+  persisted_dot_file = "#{REPO_DIR}/.#{dot_file}"
+
+  if File.exists? persisted_dot_file
+    return "#{raw_dot_file} is already persisted"
+  else
+    mv dot_file, persisted_dot_file
+    ln_s persisted_dot_file, dot_file
+  end
+end
