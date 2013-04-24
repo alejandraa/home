@@ -74,4 +74,4 @@ alias irc='set_title irc; weechat-curses'
 alias tm='tmux -CC'
 
 # Generate CTags for all dependencies and code in the $PWD
-alias ctags='ctags -R .'
+alias ct='ctags -R .'
