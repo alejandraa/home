@@ -73,3 +73,9 @@ alias rks="rake server" # for storing server command configuration inside Rake
 
 # 3rd-party processes related to Rails
 alias redis="redis-server /usr/local/etc/redis.conf"
+
+# Find ruby file
+alias rfind='find . -name "*.rb" | xargs grep -n'
+
+# Run a test with Runtest (http://github.com/tubbo/runtest)
+alias t='rtest'
