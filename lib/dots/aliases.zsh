@@ -60,11 +60,8 @@ alias revert='patch -R -p1'
 # Set up Autoenv for this directory.
 alias cfg='source .env'
 
-# Email reader
-alias m='nocorrect mutt'
-
 # IRC
-alias irc='set_title irc; weechat-curses'
+alias irc="set_title irc; irssi"
 
 # Use tmux with iTerm2 integration
 alias tm='tmux -CC'
