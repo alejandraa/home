@@ -44,7 +44,6 @@ Bundle 'vim-scripts/sudo.vim'
 Bundle 'skalnik/vim-vroom'
 Bundle 'tpope/vim-dispatch.git'
 Bundle 'benmills/vimux'
-Bundle 'pgr0ss/vimux-ruby-test'
 Bundle 'jceb/vim-orgmode'
 
 ""
@@ -285,12 +284,9 @@ command! W w
 let g:vroom_use_binstubs = 0
 let g:vroom_use_colors = 1
 let g:vroom_map_keys = 0
-let g:vroom_spec_command = 'bundle exec rspec --format=documentation '
-let g:vroom_test_unit_command = 'rb_test '
+let g:vroom_spec_command = 'bundle exec rspec --format=documentation'
+let g:vroom_test_unit_command = 'rtest'
 let g:vroom_use_vimux = 1
-"let g:vimux_ruby_cmd_unit_test = "bundle exec ruby"
-"let g:vimux_ruby_cmd_all_tests = "rake test"
-"let g:vimux_ruby_cmd_context
 
 nnoremap <leader>t :VroomRunNearestTest<cr>
 nnoremap <leader>T :VroomRunTestFile<cr>
