@@ -276,6 +276,8 @@ map <C-w>t :tabn<cr>
 
 " Remap :W => :w to avoid errors
 command! W w
+command! Q q
+map ; :
 
 ""
 "" Inline Testing
