@@ -210,6 +210,7 @@ autocmd BufWritePre *.py :%s/\s\+$//e
 
 " Alternative Ruby extensions
 au BufNewFile,BufRead *.gemfile set filetype=ruby
+au BufNewFile,BufRead *.procfile set filetype=ruby
 au BufNewFile,BufRead *.rake   set filetype=ruby
 augroup END
 
