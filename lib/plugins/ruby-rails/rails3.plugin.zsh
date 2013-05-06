@@ -78,4 +78,4 @@ alias redis="redis-server /usr/local/etc/redis.conf"
 alias rfind='find . -name "*.rb" | xargs grep -n'
 
 # Run a test with Runtest (http://github.com/tubbo/runtest)
-alias t='rtest'
+alias t='m'
