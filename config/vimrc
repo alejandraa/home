@@ -64,7 +64,6 @@ map <leader>s :source ~/.vimrc<cr>
 set nocompatible      " Use vim, no vi defaults
 set number            " Show line numbers
 set ruler             " Show line and column number
-syntax enable         " Turn on syntax highlighting allowing local overrides
 set encoding=utf-8    " Set default encoding to UTF-8
 "filetype off         " Somebody told me to add this I dunno.
 set shell=zsh         " Use the greatest shell in the universe inline
@@ -284,11 +283,8 @@ command! W w
 let g:vroom_use_binstubs = 0
 let g:vroom_use_colors = 1
 let g:vroom_map_keys = 0
-let g:vroom_spec_command = 'bundle exec rspec --format=documentation'
-let g:vroom_test_unit_command = 'rtest'
-let g:vroom_use_vimux = 1
-
-nnoremap <leader>t :VroomRunNearestTest<cr>
+let g:vroom_spec_command = 'bundle exec rspec --format=progress '
+let g:vroom_test_unit_command = 'rb_test '
 nnoremap <leader>T :VroomRunTestFile<cr>
 
 function! OpenTestAlternate()
