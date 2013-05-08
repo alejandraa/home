@@ -47,10 +47,6 @@ alias krp='kill_first_ruby_process'
 alias fs='foreman start'
 alias reload='dots update'
 
-#alias guard='nocorrect guard --no-bundler-warning'
-alias rspec='nocorrect rspec'
-alias rain='nocorrect rain'
-
 # Kill it with fire
 alias k9='kill -9'
 
