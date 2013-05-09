@@ -21,6 +21,8 @@ CPATH=/usr/local/bin:/usr/local/sbin:/usr/local/git/bin:/usr/bin:$HOME/bin
 # Global PATH, the variable that really matters
 PATH=$RBPATH:$PGPATH:$CPATH:$PYPATH:$MLPATH:$JSPATH:$PATH
 
+alias reset_path='export PATH=$RBPATH:$PGPATH:$CPATH:$PYPATH:$MLPATH:$JSPATH:$PATH'
+
 # Force 256 color terminals
 TERM=screen-256color
 
