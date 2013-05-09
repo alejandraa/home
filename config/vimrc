@@ -28,7 +28,6 @@ Bundle 'nono/vim-handlebars'
 
 " Tools
 Bundle 'tpope/vim-fugitive'
-Bundle 'Lokaltog/vim-easymotion'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'Lokaltog/vim-powerline'
@@ -37,6 +36,7 @@ Bundle 'Shougo/neocomplcache'
 Bundle 'mattn/webapi-vim'
 Bundle 'ecomba/vim-ruby-refactoring'
 Bundle 'Townk/vim-autoclose'
+Bundle 'edsono/vim-matchit'
 
 " Integration
 Bundle 'mattn/gist-vim'
@@ -286,7 +286,7 @@ map ; :
 let g:vroom_use_binstubs = 0
 let g:vroom_use_colors = 1
 let g:vroom_map_keys = 0
-let g:vroom_spec_command = 'bundle exec rspec --format=progress '
+let g:vroom_spec_command = 'rspec --format=progress '
 let g:vroom_test_unit_command = 'm'
 let g:vroom_use_vimux = 1
 
