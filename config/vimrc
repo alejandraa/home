@@ -37,6 +37,8 @@ Bundle 'mattn/webapi-vim'
 Bundle 'ecomba/vim-ruby-refactoring'
 Bundle 'Townk/vim-autoclose'
 Bundle 'edsono/vim-matchit'
+Bundle 'rking/ag.vim'
+Bundle 'FredKSchott/CoVim'
 
 " Integration
 Bundle 'mattn/gist-vim'
