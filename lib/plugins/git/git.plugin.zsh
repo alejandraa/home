@@ -23,6 +23,8 @@ alias gba='git branch -a'
 compdef _git gba=git-branch
 alias gm='git merge'
 compdef _git gm=git-merge
+alias gcoh='git checkout HEAD'
+compdef _git gcoh=git-checkout
 
 # Logging and Viewing
 alias gl='git blog'
