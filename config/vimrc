@@ -52,12 +52,6 @@ Bundle 'jceb/vim-orgmode'
 "" Quick Config
 ""
 
-" Edit the Vim configuration
-map <leader>c :tabnew<cr>:e ~/.vimrc<cr>
-
-" Reload the Vim configuration
-map <leader>s :source ~/.vimrc<cr>
-
 
 ""
 "" Basic Setup
@@ -75,6 +69,14 @@ set clipboard=unnamed " Use the system clipboard when possible.
 set laststatus=2      " Make Powerline work on single-file sessions
 let mapleader = ","   " Set leader key to something easier to access
 
+map <leader>w <C-w>
+map <leader>- <C-w>_
+
+" Edit the Vim configuration
+map <leader>c :tabnew ~/.vimrc<cr>
+
+" Reload the Vim configuration
+map <leader>s :source ~/.vimrc<cr>
 
 ""
 "" Whitespace
