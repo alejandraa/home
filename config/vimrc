@@ -29,7 +29,7 @@ Bundle 'nono/vim-handlebars'
 " Tools
 Bundle 'tpope/vim-fugitive'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-Bundle 'git://git.wincent.com/command-t.git'
+Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'scrooloose/syntastic'
 Bundle 'Shougo/neocomplcache'
@@ -209,8 +209,9 @@ au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 tabstop=2 softtabstop=2 exp
 autocmd BufWritePre *.py :%s/\s\+$//e
 
 " Alternative Ruby extensions
-au BufNewFile,BufRead *.gemfile set filetype=ruby
-au BufNewFile,BufRead *.procfile set filetype=ruby
+au BufNewFile,BufRead Berksfile set filetype=ruby
+au BufNewFile,BufRead Gemfile set filetype=ruby
+au BufNewFile,BufRead Procfile set filetype=yaml
 au BufNewFile,BufRead *.rake   set filetype=ruby
 augroup END
 
@@ -267,9 +268,12 @@ set background=light
 ""
 
 " Search for files
-map <C-t> :CommandT<cr>
+let g:ctrlp_map = '<c-t>'
+let g:ctrlp_user_command = 'find %s -type f'
+
 " Pressing ,ss will toggle and untoggle spell checking
 map <leader>ss :setlocal spell!<cr>
+
 " Alternate between tabs
 map <leader>m :tabn<cr>
 map <C-w>t :tabn<cr>
