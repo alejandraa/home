@@ -29,7 +29,7 @@ Bundle 'nono/vim-handlebars'
 " Tools
 Bundle 'tpope/vim-fugitive'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-Bundle 'kien/ctrlp.vim'
+Bundle 'wincent/Command-T'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'scrooloose/syntastic'
 Bundle 'Shougo/neocomplcache'
@@ -72,11 +72,8 @@ let mapleader = ","   " Set leader key to something easier to access
 map <leader>w <C-w>
 map <leader>- <C-w>_
 
-" Edit the Vim configuration
+" Edit Vim configuration
 map <leader>c :tabnew ~/.vimrc<cr>
-
-" Reload the Vim configuration
-map <leader>s :source ~/.vimrc<cr>
 
 ""
 "" Whitespace
@@ -188,35 +185,26 @@ autocmd BufReadPost *
   \   exe "normal g`\"" |
   \ endif
 
-" On the contrary, Haml and HTML files can be uber-long sometimes,
-" so we will ignore wrapping in Haml.
-autocmd FileType haml,html set nowrap
-
-" In Ruby, autoindent with two spaces, always expand tabs
-autocmd FileType coffee,ruby,haml,eruby,yaml,html,javascript,sass,cucumber set ai sw=2 sts=2 et
+" Disable wrapping in view files
+autocmd FileType html,haml set textwidth=0
+autocmd FileType markdown set ai formatoptions=tcroqn2 comments=n:&gt textwidth=0
 
 " In Python, maintain strict 4-space indents and don't word wrap
-autocmd FileType python set sw=4 sts=4 set wrap=off
+autocmd FileType python set sw=4 sts=4 tw=0
 
-" Alternative Markdown extensions
-autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:&gt textwidth=120;
-autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:&gt textwidth=120;
+" Alternative extensions
+autocmd BufEnter *.mkd,*.markdown,*.md set filetype=markdown
+autocmd BufEnter *.fdoc*,*.pv,Procfile set filetype=yaml
+autocmd BufEnter *.rake,Berksfile,Gemfile set filetype=ruby
 
-" Alternative YAML extensions
-autocmd BufRead *.fdoc* set filetype=yaml
-autocmd BufRead *.pv set filetype=yaml
-
-" Standard two-space indentation in CoffeeScript files
-au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab foldmethod=indent nofoldenable
+autocmd FileType coffee,ruby,haml,eruby,yaml,html,javascript,sass,cucumber set ai sw=2 sts=2 et
 
 " Strip whitespace in Python
 autocmd BufWritePre *.py :%s/\s\+$//e
 
-" Alternative Ruby extensions
-au BufNewFile,BufRead Berksfile set filetype=ruby
-au BufNewFile,BufRead Gemfile set filetype=ruby
-au BufNewFile,BufRead Procfile set filetype=yaml
-au BufNewFile,BufRead *.rake   set filetype=ruby
+" Auto-load vimrc after a change
+autocmd BufWritePost *.vimrc nested source ~/.vimrc
+
 augroup END
 
 " When there's no text behind it, tab indents. When there is, tab
@@ -272,8 +260,7 @@ set background=light
 ""
 
 " Search for files
-let g:ctrlp_map = '<c-t>'
-let g:ctrlp_user_command = 'find %s -type f'
+map <c-t> :CommandT<cr>
 
 " Pressing ,ss will toggle and untoggle spell checking
 map <leader>ss :setlocal spell!<cr>
