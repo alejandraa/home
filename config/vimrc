@@ -353,6 +353,10 @@ function! SearchDash()
 endfunction
 map <leader>d :call SearchDash()<CR>
 
+" Disable code folding
+set foldmethod=manual
+set foldlevel=99
+
 " For tmux, disable background clearing
 set t_ut=
 
