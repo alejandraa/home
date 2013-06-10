@@ -360,4 +360,18 @@ set foldlevel=99
 " For tmux, disable background clearing
 set t_ut=
 
+" Copy Gists to clipboard after creation
+let g:gist_clip_command = 'pbcopy'
 
+" Detect filetype by file extension (just like on gist.github.com)
+let g:gist_detect_filetype = 1
+
+" Post all Gists as private unless otherwise noted
+let g:gist_post_private = 1
+
+" Enable multi-file Gists
+let g:gist_get_multiplefile = 1
+
+" Map keys for creating single and multi file Gists
+map <leader>g :Gist<cr>
+map <leader>G :Gist -m<cr>
