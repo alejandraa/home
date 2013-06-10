@@ -196,6 +196,8 @@ autocmd FileType python set sw=4 sts=4 tw=0
 autocmd BufEnter *.mkd,*.markdown,*.md set filetype=markdown
 autocmd BufEnter *.fdoc*,*.pv,Procfile set filetype=yaml
 autocmd BufEnter *.rake,Berksfile,Gemfile set filetype=ruby
+autocmd BufEnter *.bowerrc set filetype=json
+autocmd BufEnter *.hamlc set filetype=haml
 
 autocmd FileType coffee,ruby,haml,eruby,yaml,html,javascript,sass,cucumber set ai sw=2 sts=2 et
 
