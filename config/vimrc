@@ -19,6 +19,7 @@ Bundle 'leshill/vim-json'
 Bundle 'sunaku/vim-ruby-minitest'
 Bundle 'nono/vim-handlebars'
 Bundle 'heartsentwined/vim-ember-script'
+Bundle 'heartsentwined/vim-emblem'
 
 " Tools
 Bundle 'tpope/vim-fugitive'
