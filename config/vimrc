@@ -18,6 +18,7 @@ Bundle 'vim-scripts/nginx.vim'
 Bundle 'leshill/vim-json'
 Bundle 'sunaku/vim-ruby-minitest'
 Bundle 'nono/vim-handlebars'
+Bundle 'heartsentwined/vim-ember-script'
 
 " Tools
 Bundle 'tpope/vim-fugitive'
@@ -202,6 +203,7 @@ set background=light
 
 " Search for files
 map <c-t> :CommandT<cr>
+map <leader>f :CommandTFlush<cr>
 
 " Alternate between tabs
 map <leader>m :tabn<cr>
@@ -258,3 +260,4 @@ let g:gist_get_multiplefile = 1
 " Map keys for creating single and multi file Gists
 map <leader>g :Gist<cr>
 map <leader>G :Gist -m<cr>
+
