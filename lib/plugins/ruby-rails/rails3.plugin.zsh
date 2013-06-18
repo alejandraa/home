@@ -12,6 +12,19 @@ function _rails_command () {
   fi
 }
 
+function _rake_task () {
+  if [ -e 'bin/zeus' ]; then
+    zeus rake $@
+  else
+    if [ -e "bin/rake" ]; then
+      rake $@
+    else
+      bundle exec rake $@
+    fi
+  fi
+}
+
+
 # View the Rails logger
 RAILS_PAGER='less'
 rl() {
@@ -30,27 +43,6 @@ rl() {
   fi
 }
 
-# Control Thin, our Rails application server
-thinctl() {
-  local cmd=$2
-  local port=$3
-
-  if [[ $cmd == "start" ]] ; then
-    if [[ $port != "" ]] ; then
-      local port='3000'
-      echo "No port passed, starting Thin on port 3000..."
-    fi
-    thin -p $port -d $cmd
-    echo "Rails app is up on http://localhost:${port}."
-  elif [[ $cmd == 'stop' ]] ; then
-    thin $cmd
-    echo "Rails app server has stopped."
-  else
-    thin $cmd
-    echo "Rails server has been ${cmd}ed."
-  fi
-}
-
 # Rails commands
 alias rc='_rails_command console'
 alias rd='_rails_command destroy'
@@ -61,6 +53,7 @@ alias ru='_rails_command runner'
 alias rs='_rails_command server'
 alias rsd='_rails_command server --debugger'
 alias rsp='bundle exec foreman start' # Rails Server and Processes
+alias rg='_rails_command generate'
 
 # Rake tasks
 alias rdm='rake db:migrate'
@@ -78,8 +71,5 @@ alias rks="rake server" # for storing server command configuration inside Rake
 # 3rd-party processes related to Rails
 alias redis="redis-server /usr/local/etc/redis.conf"
 
-# Find ruby file
-alias rfind='find . -name "*.rb" | xargs grep -n'
-
-# Run a test with Runtest (http://github.com/tubbo/runtest)
+# Run a singleton test
 alias t='m'
