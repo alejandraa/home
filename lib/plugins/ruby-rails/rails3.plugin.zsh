@@ -1,10 +1,14 @@
 # Rails 3 aliases, backwards-compatible with Rails 2.
 
 function _rails_command () {
-  if [ -e "script/server" ]; then
-    ruby script/$@
+  if [ -e 'bin/zeus' ]; then
+    zeus $@
   else
-    ruby script/rails $@
+    if [ -e "script/server" ]; then
+      ruby script/$@
+    else
+      ruby script/rails $@
+    fi
   fi
 }
 
