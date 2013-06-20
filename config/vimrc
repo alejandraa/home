@@ -157,7 +157,7 @@ augroup vimrcEx
   " Alternative extensions
   autocmd BufEnter *.mkd,*.markdown,*.md set filetype=markdown
   autocmd BufEnter *.fdoc*,*.pv,Procfile set filetype=yaml
-  autocmd BufEnter *.rake,Berksfile,Gemfile set filetype=ruby
+  autocmd BufEnter *.rake,*file set filetype=ruby
   autocmd BufEnter *.bowerrc set filetype=json
   autocmd BufEnter *.hamlc set filetype=haml
 
