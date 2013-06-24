@@ -58,9 +58,6 @@ db/*.sqlite3
 log/*.log
 tmp
 
-# Sensitive configuration
-config/*.yml
-
 # Rails files
 *.rbc
 *.sassc
@@ -83,17 +80,17 @@ pickle-email-*.html
 # Ruby files
 *.gem
 *.rbc
-.bundle
-.config
-coverage
+/.bundle
+/.config
+/coverage
 InstalledFiles
-lib/bundler/man
-pkg
-rdoc
-spec/reports
-test/tmp
-test/version_tmp
-tmp
+/lib/bundler/man
+/pkg
+/rdoc
+/spec/reports
+/test/tmp
+/test/version_tmp
+
 # Binstubs
 bin/
 

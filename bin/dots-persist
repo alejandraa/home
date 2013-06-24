@@ -18,7 +18,7 @@
 
 require 'fileutils'
 
-HOME_DIR = File.expand_path '~'
+HOME_DIR = ENV['HOME']
 REPO_DIR = "#{HOME_DIR}/.dots/config"
 
 ARGV.each do |raw_dot_file|
