@@ -2,27 +2,6 @@
 # Default Rails application template
 #
 
-# Place the following gems in the Gemfile
-gem 'strong_parameters'
-gem 'foreman'
-gem 'haml-rails'
-gem 'draper'
-gem 'active_model_serializers'
-gem 'sumatra-rails'
-gem 'bootstrap-sass'
-
-gem_group :development do
-  gem 'better_errors'
-  gem 'meta_request'
-end
-
-gem_group :test do
-  gem 'rspec-rails'
-  gem 'capybara'
-end
-
-gem 'pry-rails', group: [ :development, :test ]
-
 # Set up the template engine and test framework to use when generating
 # new resources in the course of development.
 initializer "generators.rb", <<-RUBY
@@ -36,7 +15,7 @@ RUBY
 # become available.
 file "Procfile" do
   <<-RUBY
-web: bundle exec rails server
+web: bundle exec rails server puma
   RUBY
 end
 
@@ -57,6 +36,9 @@ run "rm -rf test/"
 
 # Remove unnecessary default files
 run "rm -rf public/index.html"
+
+# Reset Gemfile
+run "rm -rf Gemfile && cp ~/etc/rails/template/Gemfile Gemfile"
 
 # Initialize the repository
 run "git init && git add . && git commit -am 'Initial commit.'"

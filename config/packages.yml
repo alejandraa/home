@@ -1,0 +1,18 @@
+# This file is for defining packages that are to be installed on every workstation
+# running DOTS.
+brew:
+  - git
+  - ruby
+  - python
+  - vim
+  - pip
+  - hub
+  - ctags
+  - irssi
+pip:
+  - httpie
+  - aws
+gem:
+  - pv
+  - maid
+  - rails
