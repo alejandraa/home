@@ -1,6 +1,7 @@
 # Heroku plugin
 #
-# A tool for managing continuous deployment from Travis to Heroku.
+# A tool for managing continuous deployment from Travis to Heroku, as
+# well as managing your Heroku apps via the CLI.
 
 # Load Heroku config
 source ~/.dots/config/heroku.zsh

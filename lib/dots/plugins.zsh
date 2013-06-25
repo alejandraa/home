@@ -9,8 +9,8 @@ antigen-bundle $HOME/.dots lib/plugins/bundler
 antigen-bundle $HOME/.dots lib/plugins/git
 antigen-bundle $HOME/.dots lib/plugins/knife
 antigen-bundle $HOME/.dots lib/plugins/ruby-rails
-#antigen-bundle $HOME/.dots lib/plugins/chruby
 antigen-bundle $HOME/.dots lib/plugins/bower
+antigen-bundle $HOME/.dots lib/plugins/heroku
 
 # Plugins from alternative sources
 antigen-bundle zsh-users/zsh-syntax-highlighting
