@@ -10,3 +10,6 @@ rescue LoadError => e
 end
 
 Dir["lib/tasks/*.rake"].each { |rake_file| load rake_file }
+
+desc "Preload some config files to bootstrap the framework"
+task :default => ['install:configuration', 'install:submodules']
