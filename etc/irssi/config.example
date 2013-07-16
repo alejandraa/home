@@ -1,13 +1,6 @@
 servers = (
   {
     address = "psychedeli.ca";
-    chatnet = "flowdock";
-    port = "1337";
-    password = "";
-    autoconnect = "yes";
-  },
-  {
-    address = "psychedeli.ca";
     chatnet = "freenode";
     port = "1338";
     password = "";
@@ -26,15 +19,12 @@ chatnets = {
 };
 
 channels = (
-  { name = "#elocal/main"; chatnet = "flowdock"; autojoin = "Yes"; },
-  { name = "#callahans"; chatnet = "freenode"; autojoin = "Yes"; },
   { name = "#philly.rb"; chatnet = "freenode"; autojoin = "Yes"; },
   { name = "#diaspora"; chatnet = "freenode"; autojoin = "Yes"; },
   { name = "#diaspora-dev"; chatnet = "freenode"; autojoin = "Yes"; },
-  {
-    name = "#rubyonrails-offtopic";
-    chatnet = "freenode";
-    autojoin = "yes";
+  { name = "#rubyonrails-offtopic"; chatnet = "freenode"; autojoin = "yes"; }
+  { name = "#rubyonrails"; chatnet = "freenode"; autojoin = "yes"; }
+  { name = "##javascript"; chatnet = "freenode"; autojoin = "yes"; }
   }
 );
 
