@@ -17,3 +17,9 @@ Dir["#{HOME_DIR}/.dots/config/*"].each do |dot_file_path|
     `ln -s #{dot_file_path} #{link_path}` unless File.exists? link_path
   end
 end
+
+# Include irssi config from etc
+unless File.exists? '~/.irssi/config.example'
+  `ln -s ~/etc/irssi ~/.irssi` and
+  `cp ~/.irssi/config.example ~/.irssi/config`
+end
