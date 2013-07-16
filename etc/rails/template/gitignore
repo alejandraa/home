@@ -1,0 +1,30 @@
+# Ruby
+*.gem
+*.rbc
+/coverage
+InstalledFiles
+/lib/bundler/man
+/pkg
+/rdoc
+/spec/reports
+/test/tmp
+/test/version_tmp
+
+
+# Rails
+db/*.sqlite3
+log/*.log
+tmp
+*.rbc
+*.sassc
+.sass-cache
+capybara-*.html
+.rspec
+vendor/gems
+log/*
+tmp/*
+db/*.sqlite3
+public/system/*
+coverage/
+spec/tmp/*
+
