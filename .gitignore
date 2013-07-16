@@ -27,3 +27,4 @@ vendor/ievms
 config/*.zsh
 etc/irssi/config
 etc/irssi/nickserv.auth
+tags
