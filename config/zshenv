@@ -87,3 +87,6 @@ source $ZSH/lib/dots.sh
 
 # Override git log
 alias gl='nocorrect git blog'
+
+# Load rbenv
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
