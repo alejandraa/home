@@ -8,7 +8,7 @@ ZSH=$HOME/.dots
 DOTS=$ZSH
 
 # Domain-specific PATHs.
-RBPATH=/usr/local/lib/ruby/gems/1.9.1/bin
+RBPATH=/usr/local/lib/ruby/gems/1.9.1/bin:$HOME/.rbenv/bin
 JSPATH=node_modules/.bin:/usr/local/share/npm/bin
 PYPATH=/usr/local/Cellar/python/2.7.3/bin:/usr/local/share/python
 GOPATH=$HOME/Code/Go
@@ -44,7 +44,7 @@ PGDATA=/usr/local/var/postgres
 MYSQL_PS1="\R:\m:\s \h> "
 
 # Define the C compiler as GCC 4.2
-CC=/usr/local/bin/gcc-4.2
+#CC=/usr/local/bin/gcc-4.2
 
 # Disable weekly automatic update.
 DISABLE_AUTO_UPDATE="true"
