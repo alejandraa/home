@@ -26,7 +26,7 @@ Bundle 'rodjek/vim-puppet'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-rails'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-Bundle 'wincent/Command-T'
+Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'scrooloose/syntastic'
 Bundle 'Shougo/neocomplcache'
@@ -205,8 +205,11 @@ colorscheme solarized
 set background=light
 
 " Search for files
-map <c-t> :CommandT<cr>
 map <leader>f :CommandTFlush<cr>
+let g:ctrlp_map = '<c-t>'
+let g:ctrlp_working_path_mode = 'ra'
+"let g:ctrlp_user_command = 'git ls-files | grep %s'
+
 
 " Alternate between tabs
 map <leader>m :tabn<cr>
