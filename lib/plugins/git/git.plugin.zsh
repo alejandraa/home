@@ -102,8 +102,11 @@ compdef _get grv=git-status
 # Git and svn mix
 alias git-svn-dcommit-push='git svn dcommit && git push github master:svntrunk'
 compdef git-svn-dcommit-push=git
+alias gvdp='git-svn-dcommit-push'
 alias gvr='git svn rebase'
 alias gvd='git svn dcommit'
+alias gvp=gvr
+alias gvc=gvd
 
 # Will return the current branch name
 # Usage example: git pull origin $(current_branch)
