@@ -23,6 +23,9 @@ PATH=$RBPATH:$PGPATH:$CPATH:$PYPATH:$MLPATH:$JSPATH:$PATH
 
 alias reset_path='export PATH=$RBPATH:$PGPATH:$CPATH:$PYPATH:$MLPATH:$JSPATH:$PATH'
 
+# Use WebKit Nightly
+BROWSER=/Applications/Webkit.app/Contents/MacOS/webkit
+
 # Force 256 color terminals
 TERM=screen-256color
 
