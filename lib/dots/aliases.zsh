@@ -64,3 +64,6 @@ alias tm='tmux -CC'
 
 # Generate CTags for all dependencies and code in the $PWD
 alias ct='ctags -R .'
+
+# Use `hub` as a wrapper over Git
+alias git='hub'
