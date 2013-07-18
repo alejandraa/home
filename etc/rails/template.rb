@@ -2,6 +2,8 @@
 # Default Rails application template
 #
 
+templates = File.expand_path '~/etc/rails/template'
+
 # Set up the template engine and test framework to use when generating
 # new resources in the course of development.
 initializer "generators.rb", <<-RUBY
@@ -25,8 +27,8 @@ end
 end
 
 # Generate the README and remove the default one
-file("README.md") { "# #{app_name.titleize}" }
 run "rm -rf README.rdoc"
+file("README.md") { "# #{app_name.titleize}" }
 
 # Set up the database
 run "createuser -s #{app_name}"
@@ -37,8 +39,11 @@ run "rm -rf test/"
 # Remove unnecessary default files
 run "rm -rf public/index.html"
 
-# Reset Gemfile
-run "rm -rf Gemfile && cp ~/etc/rails/template/Gemfile Gemfile"
+# Add necessary gems
+run "rm -rf Gemfile"
+file('Gemfile') { IO.read File.join(templates, 'Gemfile') }
 
 # Initialize the repository
-run "git init && git add . && git commit -am 'Initial commit.'"
+git :init
+git add: '.'
+git commit: '-am "Initial commit."'
