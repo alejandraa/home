@@ -11,6 +11,7 @@ antigen-bundle $HOME/.dots lib/plugins/knife
 antigen-bundle $HOME/.dots lib/plugins/ruby-rails
 antigen-bundle $HOME/.dots lib/plugins/bower
 antigen-bundle $HOME/.dots lib/plugins/heroku
+antigen-bundle $HOME/.dots lib/plugins/vim
 
 # Plugins from alternative sources
 antigen-bundle zsh-users/zsh-syntax-highlighting
