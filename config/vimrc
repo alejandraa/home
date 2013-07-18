@@ -268,3 +268,6 @@ let g:gist_get_multiplefile = 1
 map <leader>g :Gist<cr>
 map <leader>G :Gist -m<cr>
 
+map <leader>w <leader>wt
+
+let g:vimwiki_list = [{ 'path': '~/Documents/Wiki', 'path_html': '~/Library/WebServer/Documents/Wiki' }]
