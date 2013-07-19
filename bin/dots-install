@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+#
+# Install DOTS for the first time
+
+alias sh system
+
+applications = File.read("~/.dots/applications").split("\n").join(' ')
+
+unless Dir.exists? "~/etc"
+  puts "Linking configuration folders..."
+  sh "ln -s ~/.dots/etc ~/etc"
+end
+
+puts "Installing configuration..."
+sh "dots reload"
+
+unless `which brew` =~ /brew/
+  puts "Installing the Homebrew package manager..."
+  sh %{ ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)" }
+end
+
+puts "Installing applications..."
+sh "brew install #{applications}"
+
+puts "Installing plugins and dependencies..."
+sh "dots update"

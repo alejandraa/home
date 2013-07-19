@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+#
+#     dots reload - Reload your dotfiles
+#
+# = Usage
+#
+# Runs through each file in ~/.dots/config and links them as dotfiles in
+# the home directory.
+#
+
+HOME_DIR = ENV['HOME']
+
+Dir["#{HOME_DIR}/.dots/config/*"].each do |dot_file_path|
+  unless dot_file_path =~ /\.zsh\Z|\.example\Z|packages\.yml/
+    dot_file = File.basename dot_file_path
+    link_path = "#{HOME_DIR}/.#{dot_file}"
+    `ln -s #{dot_file_path} #{link_path}` unless File.exists? link_path
+  end
+end

@@ -1,16 +1,36 @@
+#
+# My IRC config
+# shamelessly stolen from http://www.whmcr.com/old-content/irssi-config/
+#
+
 servers = (
   {
-    address = "psychedeli.ca";
-    chatnet = "flowdock";
-    port = "1337";
-    password = "";
+    address = "wiki.telvue.com";
+    chatnet = "telvue";
+    port = "6667";
+    autoconnect = "yes";
+    nick = "tscott";
+  },
+  {
+    address = "irc.freenode.net";
+    chatnet = "freenode";
+    port = "7000";
+    use_ssl = "yes";
+    ssl_verify = "yes";
     autoconnect = "yes";
   },
   {
-    address = "psychedeli.ca";
-    chatnet = "freenode";
-    port = "1338";
-    password = "";
+    address = "irc.broadcasthe.net";
+    chatnet = "btn";
+    port = "6697";
+    use_ssl = "yes";
+    ssl_verify = "yes";
+    autoconnect = "yes";
+  },
+  {
+    address = "irc.what.cd";
+    chatnet = "what";
+    port = "6667";
     autoconnect = "yes";
   }
 );
@@ -18,24 +38,30 @@ servers = (
 chatnets = {
   freenode = {
     type = "IRC";
-    max_kicks = "1";
-    max_msgs = "3";
-    max_whois = "30";
+    autosendcmd = "/^msg nickserv identify tom94263;/^wait -freenode 2000";
+    max_kicks = "4";
+    max_msgs = "1";
+    max_modes = "4";
+    max_whois = "1";
   };
-  flowdock = { type = "IRC"; };
+  telvue = { type = "IRC"; };
+  btn = {
+    type = "IRC";
+    autosendcmd = "/^msg nickserv identify tom94263;/^msg CableGuy IDENTIFY grizzlicious 114c02dd731d7cc0edd8d64ca425d073";
+  };
+  what = {
+    type = "IRC";
+    autosendcmd = "/^msg Drone enter #what.cd necromancer ballsdeep";
+  };
 };
 
 channels = (
-  { name = "#elocal/main"; chatnet = "flowdock"; autojoin = "Yes"; },
   { name = "#callahans"; chatnet = "freenode"; autojoin = "Yes"; },
+  { name = "#rubyonrails"; chatnet = "freenode"; autojoin = "Yes"; },
   { name = "#philly.rb"; chatnet = "freenode"; autojoin = "Yes"; },
   { name = "#diaspora"; chatnet = "freenode"; autojoin = "Yes"; },
   { name = "#diaspora-dev"; chatnet = "freenode"; autojoin = "Yes"; },
-  {
-    name = "#rubyonrails-offtopic";
-    chatnet = "freenode";
-    autojoin = "yes";
-  }
+  { name = "#telvue"; chatnet = "telvue"; autojoin = "Yes"; }
 );
 
 aliases = {
@@ -77,16 +103,11 @@ aliases = {
   GOTO = "sb goto";
   CHAT = "dcc chat";
   RUN = "SCRIPT LOAD";
-  CALC = "exec - if command -v bc >/dev/null 2>&1\\; then printf '%s=' '$*'\\; echo '$*' | bc -l\\; else echo bc was not found\\; fi";
+  UPTIME = "eval exec - expr `date +%s` - \\$F | awk '{print \"Irssi uptime: \"int(\\\\\\$1/3600/24)\"d \"int(\\\\\\$1/3600%24)\"h \"int(\\\\\\$1/60%60)\"m \"int(\\\\\\$1%60)\"s\" }'";
+  CALC = "exec - if which bc &>/dev/null\\; then echo '$*' | bc | awk '{print \"$*=\"$$1}'\\; else echo bc was not found\\; fi";
   SBAR = "STATUSBAR";
   INVITELIST = "mode $C +I";
   Q = "QUERY";
-  "MANUAL-WINDOWS" = "set use_status_window off;set autocreate_windows off;set autocreate_query_level none;set autoclose_windows off;set reuse_unused_windows on;save";
-  EXEMPTLIST = "mode $C +e";
-  ATAG = "WINDOW SERVER";
-  UNSET = "set -clear";
-  RESET = "set -default";
-  hideadd = "eval set activity_hide_targets $activity_hide_targets $-";
 };
 
 statusbar = {
@@ -96,11 +117,6 @@ statusbar = {
   # but {sb $T} is printed only if $T isn't empty.
 
   items = {
-    # Solarized
-    lag = "{sb Lag: $0-}";
-    act = "{sb Act: $0-}";
-    more = "-- more --";
-
     # start/end text in statusbars
     barstart = "{sbstart}";
     barend = "{sbend}";
@@ -114,14 +130,17 @@ statusbar = {
 
     # treated specially .. window is printed with non-empty windows,
     # window_empty is printed with empty windows
-    window = "{sb $winref:$tag/$itemname{sbmode $M}}";
+    window = "{sb $winref:$itemname{sbmode $M}}";
     window_empty = "{sb $winref{sbservertag $tag}}";
     prompt = "{prompt $[.15]itemname}";
     prompt_empty = "{prompt $winname}";
     topic = " $topic";
-    topic_empty = " Irssi v$J - http://www.irssi.org";
+    topic_empty = " Irssi v$J - http://irssi.org/help/";
 
     # all of these treated specially, they're only displayed when needed
+    lag = "{sb Lag: $0-}";
+    act = "{sb Act: $0-}";
+    more = "-- more --";
   };
 
   # there's two type of statusbars. root statusbars are either at the top
@@ -171,7 +190,7 @@ statusbar = {
       };
     };
 
-    # we treat input line as yet another statusbar :) It's possible to
+    # we treat input line as yet another statusbar   It's possible to
     # add other items before or after the input line item.
     prompt = {
       type = "root";
@@ -204,27 +223,34 @@ statusbar = {
 };
 settings = {
   core = {
-    real_name = "http://psychedeli.ca";
+    real_name = "Tom";
     user_name = "tubbo";
     nick = "tubbo";
+    server_reconnect_time = "1min";
+    #hostname = "psychedeli.ca";
   };
+  "irc/core" = {
+    skip_motd = "yes";
+    alternate_nick = "tubbo`work";
+    #ctcp_version_reply = "= Apple iPhone v9.1";
+    usermode = "= +iw";
+  };
+  "fe-common/irc" = { show_away_once = "yes"; };
   "fe-text" = { actlist_sort = "refnum"; };
-  "fe-common/core" = {
-    theme = "solarized-universal";
-    hilight_color = "= %R";
-    activity_hide_targets = " #irssi #diaspora-dev #rubyonrails #rubyonrails #philly.rb";
+  proxy = {
+    irssiproxy_password = "tom94263";
+    irssiproxy_ports = "telvue=1336 freenode=1337 what=1338 btn=1339";
   };
 };
-ignores = (
-  { level = "JOINS PARTS QUITS MODES"; channels = ( "#diaspora" ); },
-  { 
-    level = "JOINS PARTS QUITS MODES";
-    channels = ( "#diaspora-dev" );
-  },
-  { 
-    level = "JOINS PARTS QUITS MODES";
-    channels = ( "#rubyonrails" );
-  },
-  { level = "JOINS PARTS QUITS MODES"; channels = ( "#philly.rb" ); },
-  { mask = "melisaa"; level = "ALL"; }
+
+keyboard = (
+  { key = "meta-e"; id = "scroll_end"; data = ""; },
+  { key = "^w"; id = "lower_window"; data = ""; },
+  { key = "end"; id = "scroll_end"; data = ""; },
+  { key = "home"; id = "scroll_start"; data = ""; }
 );
+ignores = (
+  { level = "JOINS PARTS QUITS"; },
+  { mask = "frangarey"; level = "ALL"; }
+);
+logs = { };

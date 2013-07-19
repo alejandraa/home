@@ -18,3 +18,6 @@ task :update do
   sh "cd ~/.dots && git submodule sync"
   sh "antigen-update"
 end
+
+desc "Preload some config files to bootstrap the framework"
+task :default => ['install:configuration', 'install:submodules']

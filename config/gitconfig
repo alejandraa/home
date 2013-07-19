@@ -37,6 +37,8 @@
   internal-pull-request = !export GIT_BRANCH=`git current-branch` && GIT_REMOTE=`git config hub.remote` && hub pull-request -h $GIT_REMOTE:$GIT_BRANCH
   standup = !git blog --author="`git config user.name`" --since=yesterday
   finish = branch -D
+  update-submodules = !git pull --recursee-submodules && git submodule update --recursive
+  exclude = !echo $1 >> .git/info/exclude
 [apply]
   whitespace = warn
 [color]
@@ -54,7 +56,7 @@
 [core]
 	editor = vim
   pager = less -r
-	excludesfile = /Users/necromancer/.gitignore
+	excludesfile = ~/.gitignore
 [merge]
   tool = vimdiff
 

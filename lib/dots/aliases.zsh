@@ -40,20 +40,12 @@ alias py='python'
 alias js='node'
 alias json='jsonlint'
 
-# Running Ruby tests
-alias t='run_single_test'
-alias rts='rtest_rake'
-
 # Kill the first Ruby process.
 alias kill_first_ruby_process="kill -9 `ps -A | grep ruby | awk '{ print $1 }' | head -n 1`"
 alias krp='kill_first_ruby_process'
 
 alias fs='foreman start'
 alias reload='dots update'
-
-#alias guard='nocorrect guard --no-bundler-warning'
-alias rspec='nocorrect rspec'
-alias rain='nocorrect rain'
 
 # Kill it with fire
 alias k9='kill -9'
@@ -64,21 +56,14 @@ alias revert='patch -R -p1'
 # Set up Autoenv for this directory.
 alias cfg='source .env'
 
-# Globalize some necessary RubyGems
-global_gems=(dots pv)
-for cmd in $global_gems; do
-  eval "function local_$cmd () { bundle exec $cmd \$@ }"
-  eval "function global_$cmd () { globalize $cmd \$@}"
-  alias $cmd=global_$cmd
-  alias _$cmd=local_$cmd
-
-  if which _$cmd > /dev/null 2>&1; then
-    compdef _$cmd global_$cmd=$cmd
-  fi
-done
-
-# Email reader
-alias m='nocorrect mutt'
-
 # IRC
-alias irc='set_title irc; weechat-curses'
+alias irc="set_title irc; irssi"
+
+# Use tmux with iTerm2 integration
+alias tm='tmux -CC'
+
+# Generate CTags for all dependencies and code in the $PWD
+alias ct='ctags -R .'
+
+# Use `hub` as a wrapper over Git
+alias git='hub'
