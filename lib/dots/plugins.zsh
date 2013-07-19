@@ -21,6 +21,7 @@ antigen-bundle kennethreitz/autoenv
 # Plugins directly from OMZ
 antigen-bundle osx
 antigen-bundle vi-mode
+antigen-bundle tmux
 
 # Apply loaded plugins to the environment
 antigen-apply
