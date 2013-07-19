@@ -56,7 +56,7 @@
 [core]
 	editor = vim
   pager = less -r
-	excludesfile = /Users/necromancer/.gitignore
+	excludesfile = ~/.gitignore
 [merge]
   tool = vimdiff
 
