@@ -2,25 +2,7 @@
 # Default Rails application template
 #
 
-# Place the following gems in the Gemfile
-gem 'strong_parameters'
-gem 'foreman'
-gem 'haml-rails'
-gem 'draper'
-gem 'active_model_serializers'
-gem 'sumatra-rails'
-gem 'bootstrap-sass'
-
-gem_group :development do
-  gem 'pry-rails'
-  gem 'better_errors'
-  gem 'meta_request'
-end
-
-gem_group :test do
-  gem 'rspec-rails'
-  gem 'capybara'
-end
+templates = File.expand_path '~/etc/rails/template'
 
 # Set up the template engine and test framework to use when generating
 # new resources in the course of development.
@@ -35,32 +17,33 @@ RUBY
 # become available.
 file "Procfile" do
   <<-RUBY
-web: bundle exec rails server
+web: bundle exec rails server puma
   RUBY
 end
 
-# Set up the shell environment and Travis-CI configuration
-%w(env travis.yml).each do |name|
+# Set up the shell environment and CI configuration
+%w(env travis.yml gitignore).each do |name|
   file(".#{name}") { IO.read File.expand_path("~/etc/rails/template/#{name}") }
 end
 
 # Generate the README and remove the default one
-file("README.md") { "# #{app_name.titleize}" }
 run "rm -rf README.rdoc"
-
-# Install gem dependencies
-run "bundle install"
+file("README.md") { "# #{app_name.titleize}" }
 
 # Set up the database
 run "createuser -s #{app_name}"
-rake 'db:create'
-rake 'db:test:prepare'
 
-# Install the test framework
-run "bundle exec rails generate rspec:install && rm -rf test/"
+# Remove the Rails tests
+run "rm -rf test/"
 
 # Remove unnecessary default files
 run "rm -rf public/index.html"
 
+# Add necessary gems
+run "rm -rf Gemfile"
+file('Gemfile') { IO.read File.join(templates, 'Gemfile') }
+
 # Initialize the repository
-run "git init && git add . && git commit -am 'Initial commit.'"
+git :init
+git add: '.'
+git commit: '-am "Initial commit."'

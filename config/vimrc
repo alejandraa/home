@@ -1,16 +1,9 @@
-"""
-""" the ~/.vimrc of @tubbo
-"""
-
-""
 "" Dependencies
-""
-
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
-Bundle 'gmarik/vundle'
 
-" Colors
+" Framework
+Bundle 'gmarik/vundle'
 Bundle 'altercation/vim-colors-solarized'
 
 " Languages
@@ -24,44 +17,36 @@ Bundle 'sunaku/vim-ruby-shoulda-context'
 Bundle 'vim-scripts/nginx.vim'
 Bundle 'leshill/vim-json'
 Bundle 'sunaku/vim-ruby-minitest'
-Bundle 'tsaleh/vim-tmux'
 Bundle 'nono/vim-handlebars'
+Bundle 'heartsentwined/vim-ember-script'
+Bundle 'heartsentwined/vim-emblem'
+Bundle 'rodjek/vim-puppet'
+Bundle 'vim-scripts/vimwiki'
 
 " Tools
 Bundle 'tpope/vim-fugitive'
-Bundle 'Lokaltog/vim-easymotion'
+Bundle 'tpope/vim-rails'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-Bundle 'git://git.wincent.com/command-t.git'
+Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'scrooloose/syntastic'
 Bundle 'Shougo/neocomplcache'
 Bundle 'mattn/webapi-vim'
+Bundle 'ecomba/vim-ruby-refactoring'
+Bundle 'Townk/vim-autoclose'
+Bundle 'edsono/vim-matchit'
+
+" Integration
 Bundle 'mattn/gist-vim'
 Bundle 'vim-scripts/sudo.vim'
 Bundle 'skalnik/vim-vroom'
-Bundle 'ecomba/vim-ruby-refactoring'
-Bundle 'Townk/vim-autoclose'
 Bundle 'tpope/vim-dispatch.git'
+Bundle 'benmills/vimux'
 
-""
-"" Quick Config
-""
-
-" Edit the Vim configuration
-map <leader>c :tabnew<cr>:e ~/.vimrc<cr>
-
-" Reload the Vim configuration
-map <leader>s :source ~/.vimrc<cr>
-
-
-""
-"" Basic Setup
-""
-
+"" Basic Settings
 set nocompatible      " Use vim, no vi defaults
 set number            " Show line numbers
 set ruler             " Show line and column number
-syntax enable         " Turn on syntax highlighting allowing local overrides
 set encoding=utf-8    " Set default encoding to UTF-8
 "filetype off         " Somebody told me to add this I dunno.
 set shell=zsh         " Use the greatest shell in the universe inline
@@ -71,6 +56,12 @@ set clipboard=unnamed " Use the system clipboard when possible.
 set laststatus=2      " Make Powerline work on single-file sessions
 let mapleader = ","   " Set leader key to something easier to access
 
+"" Split pane hotkeys
+map <leader>w <C-w>
+map <leader>- <C-w>_
+
+" Edit Vim configuration
+map <leader>c :tabnew ~/.vimrc<cr>
 
 ""
 "" Whitespace
@@ -102,7 +93,7 @@ set listchars+=precedes:<         " The character to show in the last column whe
 "" Searching
 ""
 
-set hlsearch    " highlight matches
+set hlsearch!    " highlight matches
 set incsearch   " incremental searching
 set ignorecase  " searches are case insensitive...
 set smartcase   " ... unless they contain at least one capital letter
@@ -126,89 +117,63 @@ nnoremap <C-h>s :tselect<cr>
 noremap <C-j> <C-t>
 
 
-""
-"" Wild settings
-""
-
-" TODO: Investigate the precise meaning of these settings
-" set wildmode=list:longest,list:full
-
-" Disable output and VCS files
+" Ignore files that Vim can't edit
 set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
-
-" Disable archive files
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
-
-" Ignore bundler and sass cache
 set wildignore+=*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-cache/*
-
-" Disable temp and backup files
 set wildignore+=*.swp,*~,._*
+set wildignore+=*/tmp/*
 
-
-""
 "" Backup and swap files
-""
 set backupdir=~/.vim/_backup//    " where to put backup files.
 set directory=~/.vim/_temp//      " where to put swap files.
 
+" MacVim shift+arrow-keys behavior (required in .vimrc)
+let macvim_hig_shift_movement = 1
 
-""
-"" Misc.
-""
-
-let macvim_hig_shift_movement = 1 " MacVim shift+arrow-keys behavior (required in .vimrc)
-" Skip bullshit directories
+" Skip bullshit directories in grep
 let Grep_Skip_Dirs = 'RCS CVS SCCS .svn generated .sass-cache .git'
 set grepprg=/bin/grep\ -nH
+
 " Enforce Ruby 1.9 syntax on this line
 map <leader>h :s/:\([a-z0-9_]\+\)\s*=>/\1: /g<cr>
+
 " Easy saving of files
 nnoremap Z :w<cr>
 nnoremap ZZ :wq<cr>
 
-
-""
-"" Autocommands
-""
-
+"" Autocommand event bindings
 augroup vimrcEx
-" Clear all autocmds in the group
-autocmd!
+  autocmd!
 
-" Jump to last cursor position unless it's invalid or in an event handler
-autocmd BufReadPost *
-  \ if line("'\"") > 0 && line("'\"") <= line("$") |
-  \   exe "normal g`\"" |
-  \ endif
+  " When opening a file, jump to the last cursor position
+  autocmd BufReadPost *
+    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal g`\"" |
+    \ endif
 
-" On the contrary, Haml and HTML files can be uber-long sometimes,
-" so we will ignore wrapping in Haml.
-autocmd FileType haml,html setlocal nowrap
+  " Disable wrapping in view files
+  autocmd FileType html,haml set textwidth=0
+  autocmd FileType markdown set ai formatoptions=tcroqn2 comments=n:&gt
 
-" In Ruby, autoindent with two spaces, always expand tabs
-autocmd FileType coffee,ruby,haml,eruby,yaml,html,javascript,sass,cucumber set ai sw=2 sts=2 et
+  " Alternative extensions
+  autocmd BufEnter *.mkd,*.markdown,*.md set filetype=markdown
+  autocmd BufEnter *.fdoc*,*.pv,Procfile set filetype=yaml
+  autocmd BufEnter *.rake,*file set filetype=ruby
+  autocmd BufEnter *.bowerrc set filetype=json
+  autocmd BufEnter *.hamlc set filetype=haml
 
-" In Python, maintain strict 4-space indents and don't word wrap
-autocmd FileType python set sw=4 sts=4 set wrap=off
+  " Auto-indent with 2 spaces on most code files.
+  autocmd FileType * set ai sw=2 sts=2 et
 
-" Alternative Markdown extensions
-autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:&gt textwidth=120;
-autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:&gt textwidth=120;
+  " In Python, maintain strict 4-space indents and don't word wrap
+  autocmd FileType python set sw=4 sts=4 tw=0
 
-" Alternative YAML extensions
-autocmd BufRead *.fdoc* set filetype=yaml
-autocmd BufRead *.pv set filetype=yaml
+  " Strip whitespace in Python
+  autocmd BufWritePre *.py :%s/\s\+$//e
 
-" Standard two-space indentation in CoffeeScript files
-au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab foldmethod=indent nofoldenable
-
-" Strip whitespace in Python
-autocmd BufWritePre *.py :%s/\s\+$//e
-
-" Alternative Ruby extensions
-au BufNewFile,BufRead *.gemfile set filetype=ruby
-au BufNewFile,BufRead *.rake   set filetype=ruby
+  " Auto-load vimrc after a change
+  autocmd BufWritePost *.vimrc nested source ~/.vimrc
 augroup END
 
 " When there's no text behind it, tab indents. When there is, tab
@@ -224,120 +189,50 @@ endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <s-tab> <c-n>
 
-" Opens the README.md file
-function! OpenReadme()
-if filereadable('README.md')
-  edit README.md
-endif
-endfunction
-
 " Turn backups off since we store everything in Git
 set nobackup
 set nowb
 set noswapfile
 
 " Persistent undo
-try
-  if MySys() == "windows"
-    set undodir=C:\Windows\Temp
-  else
-    set undodir=~/.vim_runtime/undodir
-  endif
-
-  set undofile
-catch
-endtry
+set undodir=~/.vim/undo
+set undofile
 
 
-""
-"" Color Scheme
-""
-
+" Set color scheme to Solarized (light)
 let g:solarized_italic=0
 syntax on
 colorscheme solarized
 set background=light
 
-
-""
-"" Navigation
-""
-
 " Search for files
-map <C-t> :CommandT<cr>
-" Pressing ,ss will toggle and untoggle spell checking
-map <leader>ss :setlocal spell!<cr>
+map <leader>f :CommandTFlush<cr>
+let g:ctrlp_map = '<c-t>'
+let g:ctrlp_working_path_mode = 'ra'
+"let g:ctrlp_user_command = 'git ls-files | grep %s'
+
+
 " Alternate between tabs
 map <leader>m :tabn<cr>
 map <C-w>t :tabn<cr>
 
 " Remap :W => :w to avoid errors
 command! W w
+command! Q q
+map ; :
 
-""
-"" Inline Testing
-""
-
+" Run tests in Vim and Tmux
 let g:vroom_use_binstubs = 0
 let g:vroom_use_colors = 1
 let g:vroom_map_keys = 0
-let g:vroom_spec_command = 'bundle exec rspec --format=documentation '
-let g:vroom_test_unit_command = 'rtest '
-
+let g:vroom_spec_command = 'rspec --format=progress '
+let g:vroom_test_unit_command = 'm'
+let g:vroom_use_vimux = 1
 nnoremap <leader>t :VroomRunNearestTest<cr>
 nnoremap <leader>T :VroomRunTestFile<cr>
 
-function! OpenTestAlternate()
-  let new_file = AlternateForCurrentFile()
-  exec ':e ' . new_file
-endfunction
-function! AlternateForCurrentFile()
-  let current_file = expand("%")
-  let new_file = current_file
-  let in_spec = match(current_file, '^spec/') != -1
-  let in_test = match(current_file, '^test/') != -1
-  let using_test_unit = isdirectory('./test')
-
-  if using_test_unit
-    let going_to_spec = !in_spec
-  else
-    let going_to_spec = !in_test
-  endif
-  let in_app = match(current_file, '\<controllers\>') != -1 || match(current_file, '\<models\>') != -1 || match(current_file, '\<views\>') != -1 || match(current_file, '\<helpers\>') != -1
-
-  if going_to_spec
-    if in_app
-      let new_file = substitute(new_file, '^app/', '', '')
-    end
-
-    let new_file = substitute(new_file, '\.rb$', '_spec.rb', '')
-    let new_file = 'spec/' . new_file
-
-    if using_test_unit
-      let new_file = substitute(new_file, '^spec/', 'test/', '')
-      let new_file = substitute(new_file, '_spec\.rb$', '_test.rb', '')
-      let is_unit = match(new_file, 'models') != -1
-      let is_func = match(new_file, 'controllers') != -1
-
-      if is_unit
-        let new_file = substitute(new_file, 'models', 'unit', '')
-      endif
-
-      if is_func
-        let new_file = substitute(new_file, 'controllers', 'functional', '')
-      endif
-    end
-  else
-    let new_file = substitute(new_file, '_spec\.rb$', '.rb', '')
-    let new_file = substitute(new_file, '^spec/', '', '')
-    if in_app
-      let new_file = 'app/' . new_file
-    end
-  endif
-
-  return new_file
-endfunction
-nnoremap <leader>. :call OpenTestAlternate()<cr>
+" Switch to test alternate
+nnoremap <leader>. :A<cr>
 
 " Search Dash.app for word under cursor
 function! SearchDash()
@@ -349,3 +244,30 @@ function! SearchDash()
   redraw!
 endfunction
 map <leader>d :call SearchDash()<CR>
+
+" Disable code folding
+set foldmethod=manual
+set foldlevel=99
+
+" For tmux, disable background clearing
+set t_ut=
+
+" Copy Gists to clipboard after creation
+let g:gist_clip_command = 'pbcopy'
+
+" Detect filetype by file extension (just like on gist.github.com)
+let g:gist_detect_filetype = 1
+
+" Post all Gists as private unless otherwise noted
+let g:gist_post_private = 1
+
+" Enable multi-file Gists
+let g:gist_get_multiplefile = 1
+
+" Map keys for creating single and multi file Gists
+map <leader>g :Gist<cr>
+map <leader>G :Gist -m<cr>
+
+map <leader>w <leader>wt
+
+let g:vimwiki_list = [{ 'path': '~/Documents/Wiki', 'path_html': '~/Library/WebServer/Documents/Wiki' }]

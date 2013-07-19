@@ -35,31 +35,29 @@ Features
 Installation
 ------------
 
-Unlike Oh My ZSH, DOTS is installed as a gem. 
+Before installing, make sure you have Git on your system!
 
-Just run the following commands:
+Fork this project, then clone your fork of the repo like so:
 
 ```bash
-$ gem install zsh_dots
-$ dots install
+$ git clone git@github.com:tubbo/dots.git ~/.dots
 ```
-This will fork the repo to `~/.dots`, and symlink all of
-the files in `~/.dots/config` to your home directory as dotfiles (unless
-existing ones are found).
 
-### Problems?
+You'll then need to 
 
-You *might* need to modify your $PATH in **~/.zshrc** if you're not able to find some
-commands after switching to **DOTS**.
 
 Usage
 -----
 
-There are a number of commands built in to the DOTS binary. They can be
-used anywhere the binary is available, so make sure you install DOTS to
-your global RVM gemset.
+### dots
 
-### persist DOT_FILE
+The DOTS binary is another useful tool in your shell adventures. Invoke
+`dots help` to check out what it does. This binary is most useful for
+updating the DOTS framework from source and bootstrapping the environment
+on new installs.
+
+
+### dots persist DOT_FILE
 
 You can persist any dot file with DOTS. Simply run this command on 
 the file...it will copy the file to your `$DOTS` folder and symlink 
@@ -67,24 +65,24 @@ that new file in its original place, preserving your settings in a
 git repository but making it accessible for the application needing
 to use it.
 
-### forget DOT_FILE
+### dots forget DOT_FILE
 
 The opposite of `persist`. Deletes the symlink and restores your file. 
 For when you just need to fuggeddaboutit...
 
-### osx-bootstrap
+### dots reload
 
-This alias simply `source`s the `~/.dots/config/osx.zsh` file, and
-provides a number of OS X 10.8 enhancements I've found useful. Check
-through the file, read its comments, and make sure you're not doing
-anything to the computer you don't want to, then run this command for
-some useful OS X defaults. This script is based off [OSX for
-Hackers][o4h], which I found useful but somewhat overwhelming in what it
-did, so I slimmed it down to fit my needs.
+Symlink all dotfiles in ~/.dots/config to your home directory.
 
-### set_title TO_STRING
+### dots update
 
-Sets the title of the iTerm window to the String you pass in.
+Pull the latest changes from Git's origin:master and run `antigen
+update` to make sure all plugins and framework code are up to date.
+
+### ti NEW_TITLE
+
+Sets the title of the iTerm window to the String you pass in. This is a
+function called **set_title()** but is aliased to `ti` for convenience.
 
 ### o, v and e
 
@@ -96,12 +94,6 @@ sensible defaults, for example `o` will open the current directory, but
 `o ~/Code` will open up ~/Code in the Finder. `e` follows suit, but `v`
 throws an error as this should almost never be the case. 
 
-### dots
-
-The DOTS binary is another useful tool in your shell adventures. Invoke
-`dots help` to check out what it does. This binary is most useful for
-updating the DOTS framework from source and bootstrapping the environment
-on new installs.
 
 Hidden Configuration
 --------------------
@@ -115,7 +107,7 @@ application's dotfile, insert the following line to load configuration
 from your untracked file:
 
 ```bash
-hidden_config_for 'file'
+$ dots hide FILE
 ```
 
 This will run the following shell command:
@@ -131,8 +123,6 @@ Environment Bootstrapping
 
 DOTS installs a number of programs for you:
 
-- **HTTPie** for querying HTTP, and displaying the results in a colorful
-  format.
 - **Vim** for text editing. It fits into the DOTS philosophy very nicely
   of having each program do one thing really well.
 - The latest version of the **Ruby** programming language. We believe
@@ -140,27 +130,11 @@ DOTS installs a number of programs for you:
   very reliable in maintaining the latest version of Ruby, as Homebrew
   is itself a Ruby project. It's also a great shell scripting language,
   among other things...
-- **Ruby on Rails**. I'm a Rails developer, so having Rails in the
-  global Gemfile is a must. If this offends you, you may kindly remove
-  the gem as it isn't really necessary for your use. However, this
-  framework is bundled with a number of aliases/plugins for use in Rails
-  projects, so I felt like including Rails makes the whole thing
-  "complete".
-- **AWS Developer Tools** for interfacing with Amazon Web Services. I
-  use AWS to host all of my projects, both at work and at home, and
-  these tools make it very easy to get statistics on your instances
-  quickly.
-- **Git** is my favorite distributed version control system, and I use
-  it on all of my projects, both private and public. DOTS also installs
-  a number of plugins for Git that I find useful: **git_tracker** for
-  automatically including a Pivotal Tracker issue number in commits
-  when your branch follows a specific naming convention, **git-process**
-  for managing a strict feature branch-based workflow, and **hub** for
-  easy interfacing with Github (allowing you to clone with a simple
-  short Github URL: `git clone tubbo/dots`, make pull requests and edit
-  them in Vim, define issues, and fork projects). With the exception of
-  **hub** all of these gems are completely optional, and must be
-  installed explicitly in each new project (as they add Git hooks).
+- **Hub for Git** is a plugin for Git that makes it easier to work with
+  Github. I use Github to host all my code so I find this software useful.
+  Hub is aliased to `git` when the github plugin is enabled.
+
+Run `dots bootstrap` to install these apps via Homebrew (and Pip)
 
 License
 -------

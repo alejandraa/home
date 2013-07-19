@@ -5,7 +5,7 @@ compdef g=git
 # Branching
 alias gu='git pull'
 compdef _git gl=git-pull
-alias gur='git pull --rebase && ctags -R .'
+alias gur='git pull --rebase'
 compdef _git gl=git-pull
 alias gp='git push'
 compdef _git gp=git-push
@@ -23,6 +23,8 @@ alias gba='git branch -a'
 compdef _git gba=git-branch
 alias gm='git merge'
 compdef _git gm=git-merge
+alias gcoh='git checkout HEAD'
+compdef _git gcoh=git-checkout
 
 # Logging and Viewing
 alias gl='git blog'
@@ -100,8 +102,11 @@ compdef _get grv=git-status
 # Git and svn mix
 alias git-svn-dcommit-push='git svn dcommit && git push github master:svntrunk'
 compdef git-svn-dcommit-push=git
+alias gvdp='git-svn-dcommit-push'
 alias gvr='git svn rebase'
 alias gvd='git svn dcommit'
+alias gvp=gvr
+alias gvc=gvd
 
 # Will return the current branch name
 # Usage example: git pull origin $(current_branch)
@@ -126,3 +131,17 @@ fi
 # Github-specific
 alias gpr='git pull-request'
 alias gip='git internal-pull-request'
+
+# Create a new feature branch based on the integration branch.
+alias gf='git new-fb'
+
+# Gets the latest changes that have happened on the integration branch,
+# then pushes your changes to a "private" branch on the server.
+alias gy='git sync --rebase'
+alias gym='git sync' # because merging should be harder to do than rebasing
+
+# Creates a Pull Request for the current branch.
+alias gq='git pull-request'
+
+# Rebase against the integration branch, then push to it.
+alias gu='git to-master'
