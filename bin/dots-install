@@ -14,7 +14,7 @@ end
 puts "Installing configuration..."
 sh "dots reload"
 
-if `brew` == ""
+unless `which brew` =~ /brew/
   puts "Installing the Homebrew package manager..."
   sh %{ ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)" }
 end
