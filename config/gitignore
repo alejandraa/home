@@ -23,6 +23,7 @@ Session.vim
 
 # Local Bundler settings
 .bundle
+/vendor/gems
 
 # Environment configuration
 .env
