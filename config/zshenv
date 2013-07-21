@@ -8,18 +8,17 @@ ZSH=$HOME/.dots
 DOTS=$ZSH
 
 # Domain-specific PATHs.
-RBPATH=/usr/local/lib/ruby/gems/1.9.1/bin:$HOME/.rbenv/bin
+RBPATH=$HOME/.rbenv/bin:$HOME/.rbenv/shims:/usr/local/lib/ruby/gems/1.9.1/bin:vendor/gems/bin
 JSPATH=node_modules/.bin:/usr/local/share/npm/bin
 PYPATH=/usr/local/Cellar/python/2.7.3/bin:/usr/local/share/python
 GOPATH=$HOME/Code/Go
 PGPATH=/Applications/Postgres.app/Contents/MacOS/bin
-MLPATH=/usr/local/Cellar/smlnj/110.75/libexec/bin
 MANPATH=/opt/local/share/man:$MANPATH
 HEROKU_PATH="/usr/local/heroku/bin"
-CPATH=/usr/local/bin:/usr/local/sbin:/usr/local/git/bin:/usr/bin:$HOME/bin
+CPATH=/usr/local/bin:/usr/local/sbin:/usr/local/git/bin:/usr/bin:$HOME/bin:bin
 
 # Global PATH, the variable that really matters
-PATH=$RBPATH:$PGPATH:$CPATH:$PYPATH:$MLPATH:$JSPATH:$PATH
+PATH=$PGPATH:$RBPATH:$JSPATH:$PYPATH:$CPATH:$PATH
 
 alias reset_path='export PATH=$RBPATH:$PGPATH:$CPATH:$PYPATH:$MLPATH:$JSPATH:$PATH'
 
