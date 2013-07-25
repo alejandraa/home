@@ -12,16 +12,16 @@ antigen-bundle $HOME/.dots lib/plugins/ruby-rails
 antigen-bundle $HOME/.dots lib/plugins/bower
 antigen-bundle $HOME/.dots lib/plugins/heroku
 antigen-bundle $HOME/.dots lib/plugins/vim
-antigen-bundle $HOME/.dots lib/plugins/tmuxinator
 
 # Plugins from alternative sources
 antigen-bundle zsh-users/zsh-syntax-highlighting
 antigen-bundle kennethreitz/autoenv
 
 # Plugins directly from OMZ
-antigen-use oh-my-zsh osx
-antigen-use oh-my-zsh vi-mode
-antigen-use oh-my-zsh tmux
+antigen-use oh-my-zsh
+antigen bundle osx
+antigen bundle vi-mode
+antigen bundle tmux
 
 # Apply loaded plugins to the environment
 antigen-apply
