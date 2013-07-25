@@ -1,9 +1,6 @@
 # Load the plugin architecture
 source "$ZSH/vendor/antigen/antigen.zsh"
 
-# Set up the plugin architecture
-antigen-lib
-
 # Local plugins and OMZ overrides
 antigen bundle tubbo/dots lib/plugins/bundler
 antigen bundle tubbo/dots lib/plugins/git
