@@ -23,5 +23,6 @@ if command.nil?
 
   puts "#{welcome}\n#{help}"
 else
-  `dots-#{command}`
+  arguments = ARGV.reject { |arg| arg =~ /#{command}|dots/o }.join ' '
+  `dots-#{command} #{arguments}`
 end
