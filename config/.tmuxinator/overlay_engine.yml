@@ -1,0 +1,20 @@
+# ~/.tmuxinator/overlay_engine.yml
+# you can make as many tabs as you wish...
+
+project_name: overlay_engine
+project_root: ~/Code/overlay_engine
+#socket_name: foo # Not needed.  Remove to use default socket
+#pre: sudo /etc/rc.d/mysqld start
+tabs:
+  - chat: irssi
+  - edit: vim
+  - logs:
+      layout: even-vertical
+      panes:
+        - 'ti dev && oe server'
+        - 'ti test && rake test:log'
+  - test:
+      layout: even-vertical
+      panes:
+        - 'ti remote && ssh picard'
+        - 'ti local && oe console'
