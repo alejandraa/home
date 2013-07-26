@@ -16,19 +16,22 @@
 # This program comes for free when you install DOTS.
 #
 
-require 'fileutils'
-
 HOME_DIR = ENV['HOME']
 REPO_DIR = "#{HOME_DIR}/.dots/config"
 
+def sh(command)
+  puts command if ENV['DOTS_DEBUG']
+  system command
+end
+
 ARGV.each do |raw_dot_file|
   dot_file = File.expand_path raw_dot_file
-  persisted_dot_file = "#{REPO_DIR}/#{raw_dot_file}"
+  persisted_dot_file = "#{REPO_DIR}/#{File.basename(raw_dot_file)}"
 
-  if File.exists? persisted_dot_file
-    return "#{raw_dot_file} is already persisted"
-  else
-    mv dot_file, persisted_dot_file
-    ln_s persisted_dot_file, dot_file
+  if File.exists?(persisted_dot_file) || Dir.exists?(persisted_dot_file)
+    puts "#{raw_dot_file} is already persisted" and exit 0
   end
+
+  sh "mv #{dot_file} #{persisted_dot_file}"
+  sh "ln -s #{persisted_dot_file} #{dot_file}"
 end
