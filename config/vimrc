@@ -43,18 +43,21 @@ Bundle 'skalnik/vim-vroom'
 Bundle 'tpope/vim-dispatch.git'
 Bundle 'benmills/vimux'
 
-"" Basic Settings
+"" Editing Environment
 set nocompatible      " Use vim, no vi defaults
 set number            " Show line numbers
 set ruler             " Show line and column number
 set encoding=utf-8    " Set default encoding to UTF-8
-"filetype off         " Somebody told me to add this I dunno.
 set shell=zsh         " Use the greatest shell in the universe inline
 set autoread          " Reload files after a change
 set showcmd           " Show (partial) command in the status line
 set clipboard=unnamed " Use the system clipboard when possible.
 set laststatus=2      " Make Powerline work on single-file sessions
 let mapleader = ","   " Set leader key to something easier to access
+
+"" Enable plugins to add rules based on what kind of file we're editing
+filetype plugin on    " Add plugin commands and bindings
+filetype indent on    " Change indentation
 
 "" Split pane hotkeys
 map <leader>w <C-w>
