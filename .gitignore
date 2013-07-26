@@ -1,5 +1,4 @@
 .bundle
-bin/
 config/npmrc
 config/shsh/**
 config/ssh/*rsa
