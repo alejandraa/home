@@ -11,7 +11,7 @@ tabs:
       panes:
         - git pull --rebase
         - rails c
-  - server: rails s
+  - server: foreman start
   - database: rails db
   - logs: less -R log/development.log
   - server: heroku console
