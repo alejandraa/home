@@ -1,0 +1,17 @@
+# ~/.tmuxinator/wonderbars.yml
+# you can make as many tabs as you wish...
+
+project_name: wonderbars
+project_root: ~/Sites/thewonderbars.com
+tabs:
+  - chat: irssi
+  - editor: vim
+  - shell:
+      layout: even-vertical
+      panes:
+        - git pull --rebase
+        - rails c
+  - server: rails s
+  - database: rails db
+  - logs: less -R log/development.log
+  - server: heroku console
