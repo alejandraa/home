@@ -24,13 +24,26 @@ def sh(command)
   system command
 end
 
+def err(message)
+  puts message
+  exit 0
+end
+
+def persisted?(filename)
+  File.exists?(filename) || Dir.exists?(filename)
+end
+
 ARGV.each do |raw_dot_file|
   dot_file = File.expand_path raw_dot_file
-  persisted_dot_file = "#{REPO_DIR}/#{File.basename(raw_dot_file)}"
-
-  if File.exists?(persisted_dot_file) || Dir.exists?(persisted_dot_file)
-    puts "#{raw_dot_file} is already persisted" and exit 0
+  dot_file_name = File.basename raw_dot_file
+  persisted_dot_file = if raw_dot_file =~ /rbenv/
+    "#{REPO_DIR}/.rbenv/#{dot_file_name}"
+  else
+    "#{REPO_DIR}/#{dot_file_name}"
   end
+
+  err "#{raw_dot_file} is already persisted" \
+    if persisted? persisted_dot_file
 
   sh "mv #{dot_file} #{persisted_dot_file}"
   sh "ln -s #{persisted_dot_file} #{dot_file}"
