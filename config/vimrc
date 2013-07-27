@@ -59,6 +59,10 @@ let mapleader = ","   " Set leader key to something easier to access
 filetype plugin on    " Add plugin commands and bindings
 filetype indent on    " Change indentation
 
+"" Disable sounds
+set noerrorbells visualbell t_vb=
+autocmd GUIEnter * set visualbell t_vb=
+
 "" Split pane hotkeys
 map <leader>w <C-w>
 map <leader>- <C-w>_
@@ -273,4 +277,4 @@ map <leader>G :Gist -m<cr>
 
 map <leader>w <leader>wt
 
-let g:vimwiki_list = [{ 'path': '~/Documents/Wiki', 'path_html': '~/Library/WebServer/Documents/Wiki' }]
+let g:vimwiki_list = [{ 'path': '~/Documents/Wiki', 'path_html': '~/Library/Application Support/Dash/DocSets/Wiki/Contents/Resources/Documents/' }]
