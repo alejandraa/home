@@ -12,7 +12,7 @@ tabs:
         - git pull --rebase
         - rails c
   - database: rails db
-  - server: rails s
+  - server: foreman start
   - logs:
       layout: even-vertical
       panes:
