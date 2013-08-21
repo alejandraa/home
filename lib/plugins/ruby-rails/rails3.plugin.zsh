@@ -7,7 +7,11 @@ function _rails_command () {
     if [ -e "script/server" ]; then
       ruby script/$@
     else
-      ruby script/rails $@
+      if [ -e 'bin/rails' ]; then
+        bin/rails $@
+      else
+        ruby script/rails $@
+      fi
     fi
   fi
 }
