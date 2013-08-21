@@ -213,7 +213,7 @@ colorscheme solarized
 set background=light
 
 " Search for files
-map <leader>f :CommandTFlush<cr>
+map <leader>f :CtrlPClearCache<cr>
 let g:ctrlp_map = '<c-t>'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_max_files = 0
