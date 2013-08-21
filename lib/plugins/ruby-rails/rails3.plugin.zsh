@@ -1,14 +1,17 @@
 # Rails 3 aliases, backwards-compatible with Rails 2.
 
 function _rails_command () {
-  if [ -e 'bin/zeus' ]; then
+  if [ -e 'vendor/gems/bin/zeus' ]; then
     zeus $@
   else
+    # Rails 2.x
     if [ -e "script/server" ]; then
       ruby script/$@
     else
+      # Rails 4.x
       if [ -e 'bin/rails' ]; then
         bin/rails $@
+      # Rails 3.x
       else
         ruby script/rails $@
       fi
@@ -17,7 +20,7 @@ function _rails_command () {
 }
 
 function _rake_task () {
-  if [ -e 'bin/zeus' ]; then
+  if [ -e 'vendor/gems/bin/zeus' ]; then
     zeus rake $@
   else
     if [ -e "bin/rake" ]; then
