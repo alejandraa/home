@@ -158,7 +158,7 @@ augroup vimrcEx
     \ endif
 
   " Disable wrapping in view files
-  autocmd FileType html,haml set textwidth=0
+  autocmd FileType erb,html,haml,emblem set textwidth=0
   autocmd FileType markdown set ai formatoptions=tcroqn2 comments=n:&gt
 
   " Alternative extensions
