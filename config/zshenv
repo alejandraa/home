@@ -93,5 +93,8 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 # Hack to get around PostgreSQL not always being socket-connectable
 export PGHOST='localhost'
 
+# Use vagrant-digitalocean
+export SSL_CERT_FILE=/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
+
 # Execute autoenv
 source ~/.antigen/repos/https-COLON--SLASH--SLASH-github.com-SLASH-kennethreitz-SLASH-autoenv.git/activate.sh
