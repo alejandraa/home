@@ -25,10 +25,7 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'scrooloose/syntastic'
 Bundle 'Shougo/neocomplcache'
-Bundle 'mattn/webapi-vim'
-Bundle 'ecomba/vim-ruby-refactoring'
-Bundle 'Townk/vim-autoclose'
-Bundle 'edsono/vim-matchit'
+Bundle 'vim-scripts/vimwiki'
 
 " Integration
 Bundle 'mattn/gist-vim'
@@ -36,6 +33,9 @@ Bundle 'vim-scripts/sudo.vim'
 Bundle 'skalnik/vim-vroom'
 Bundle 'tpope/vim-dispatch.git'
 Bundle 'benmills/vimux'
+
+" Required for Gist.vim. Don't remove!
+Bundle 'mattn/webapi-vim'
 
 "" Editing Environment
 set nocompatible      " Use vim, no vi defaults
@@ -50,19 +50,23 @@ set laststatus=2      " Make Powerline work on single-file sessions
 let mapleader = ","   " Set leader key to something easier to access
 
 "" Enable plugins to add rules based on what kind of file we're editing
-filetype plugin on    " Add plugin commands and bindings
-filetype indent on    " Change indentation
+"filetype plugin on    " Add plugin commands and bindings
+"filetype indent on    " Change indentation
+map <leader>p :filetype plugin on<cr>
+map <leader>P :filetype plugin off<cr>
 
 "" Disable sounds
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
 
 "" Split pane hotkeys
-map <leader>w <C-w>
 map <leader>- <C-w>_
 
 " Edit Vim configuration
 map <leader>c :tabnew ~/.vimrc<cr>
+
+" Open Vimwiki
+map <leader>/ <leader>p<leader>wt
 
 ""
 "" Whitespace
