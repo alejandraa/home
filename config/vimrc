@@ -7,26 +7,20 @@ Bundle 'gmarik/vundle'
 Bundle 'altercation/vim-colors-solarized'
 
 " Languages
-Bundle 'vim-ruby/vim-ruby'
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'tpope/vim-markdown'
 Bundle 'skwp/vim-rspec'
 Bundle 'tpope/vim-rails'
-Bundle 'sunaku/vim-ruby-shoulda-context'
 Bundle 'vim-scripts/nginx.vim'
 Bundle 'leshill/vim-json'
-Bundle 'sunaku/vim-ruby-minitest'
 Bundle 'nono/vim-handlebars'
 Bundle 'heartsentwined/vim-ember-script'
 Bundle 'heartsentwined/vim-emblem'
-Bundle 'rodjek/vim-puppet'
-Bundle 'vim-scripts/vimwiki'
 
 " Tools
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-rails'
-Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'scrooloose/syntastic'
