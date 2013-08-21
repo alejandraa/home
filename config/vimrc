@@ -216,7 +216,17 @@ set background=light
 map <leader>f :CommandTFlush<cr>
 let g:ctrlp_map = '<c-t>'
 let g:ctrlp_working_path_mode = 'ra'
-"let g:ctrlp_user_command = 'git ls-files | grep %s'
+let g:ctrlp_max_files = 0
+let g:ctrlp_user_command = {
+\ 'types': {
+    \ 1: ['.git/', 'cd %s && git ls-files']
+\ },
+\ 'fallback': 'find %s -type f | head -' . g:ctrlp_max_files
+\ }
+let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_custom_ignore = {
+  \ 'dir': '\v[\/](\.(git|hg|svn|)|vendor/(gems|cookbooks))$'
+  \ }
 
 
 " Alternate between tabs
