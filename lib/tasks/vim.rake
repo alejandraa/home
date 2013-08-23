@@ -1,14 +1,29 @@
 namespace :vim do
   task :configuration do
-    sh 'ln -s ~/.dots/config/vimrc ~/.vimrc'
-    sh 'mkdir -p ~/.vim/bundle'
+    vim_config_path = File.expand_path '~/.vimrc'
+    sh "ln -s ~/.dots/config/vimrc #{vim_config_path}" \
+      unless File.exists? vim_config_path
   end
 
-  task :package_manager do
-    sh 'git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle'
-    sh 'vim +BundleInstall +qall'
+  namespace :plugins do
+    task :manager do
+      path = File.expand_path '~/.vim/bundle/vundle'
+
+      unless File.exists? "#{path}/autoload/vundle.vim"
+        repo = "https://github.com/gmarik/vundle.git"
+        sh 'mkdir -p ~/.vim/bundle'
+        sh "git clone #{repo} #{path}" 
+      end
+    end
+
+    task :bundle do
+      sh 'vim +BundleInstall +qall'
+    end
   end
+
+  desc "Install Vim plugins"
+  task :plugins => %w(vim:plugins:manager vim:plugins:bundle)
 end
 
 desc "Install Vim and related plugins"
-task :vim => %w(vim:configuration vim:package_manager)
+task :vim => %w(vim:configuration vim:plugins)
