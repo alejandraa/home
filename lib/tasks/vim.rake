@@ -1,5 +1,3 @@
-# Install Vim
-
 namespace :vim do
   task :configuration do
     sh 'ln -s ~/.dots/config/vimrc ~/.vimrc'
@@ -12,4 +10,5 @@ namespace :vim do
   end
 end
 
+desc "Install Vim and related plugins"
 task :vim => %w(vim:configuration vim:package_manager)
