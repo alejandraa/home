@@ -290,3 +290,5 @@ map <leader>w <leader>wt
 let g:vimwiki_list = [{ 'path': '~/Documents/Wiki', 'path_html': '~/Library/Application Support/Dash/DocSets/Wiki/Contents/Resources/Documents/' }]
 
 map <leader>b :BundleInstall<cr>:q<cr>
+
+set modelines=0
