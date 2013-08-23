@@ -8,8 +8,6 @@ rescue LoadError => e
   # RSpec can not be run in the gem installation.
 end
 
-require 'bundler/gem_tasks'
-
 Dir["lib/tasks/*.rake"].each { |rake_file| load rake_file }
 
 desc "Update DOTS, Antigen, and all installed plugins."
