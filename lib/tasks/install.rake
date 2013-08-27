@@ -1,3 +1,9 @@
+class Dir
+  def self.exists? dir_path
+    File.exists? File.expand_path(dir_path)
+  end
+end
+
 namespace :install do
   task :links do
     sh 'ln -s ~/.dots/bin ~/bin' unless Dir.exists? "~/bin"
