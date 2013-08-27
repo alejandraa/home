@@ -4,7 +4,8 @@
 
 alias sh system
 
-applications = File.read("~/.dots/applications").split("\n").join(' ')
+application_config_path = File.expand_path "~/.dots/applications"
+applications = File.read(application_config_path).split("\n").join(' ')
 
 unless Dir.exists? "~/etc"
   puts "Linking configuration folders..."

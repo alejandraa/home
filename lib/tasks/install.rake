@@ -15,3 +15,11 @@ namespace :install do
     sh 'cd ~/.dots && git submodule init && git submodule update'
   end
 end
+
+desc "Install DOTS to this user's home directory"
+task :install => %w(
+  install:configuration
+  install:binaries
+  install:submodules
+  install:applications
+)

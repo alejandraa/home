@@ -23,7 +23,16 @@ namespace :vim do
 
   desc "Install Vim plugins"
   task :plugins => %w(vim:plugins:manager vim:plugins:bundle)
+
+  desc "Install dirs for VimWiki"
+  task :wiki do
+    sh 'mkdir -p ~/Documents/Wiki'
+  end
 end
 
 desc "Install Vim and related plugins"
-task :vim => %w(vim:configuration vim:plugins)
+task :vim => %w(
+  vim:configuration
+  vim:plugins
+  vim:wiki
+)
