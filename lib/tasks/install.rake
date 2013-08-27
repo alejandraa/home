@@ -17,8 +17,8 @@ namespace :install do
   task :configuration do
     HOME = ENV['HOME'] || File.expand_path('~')
 
-    sh "#{HOME}/.dots/bin/dots update"
-    sh "#{HOME}/.dots/bin/dots reload"
+    sh "#{HOME}/.dots/bin/dots-update"
+    sh "#{HOME}/.dots/bin/dots-reload"
   end
 
   task :submodules do
@@ -46,6 +46,10 @@ namespace :install do
     end
 
     sh install_command
+  end
+
+  task :change_shell do
+    sh 'chsh -s zsh'
   end
 end
 
