@@ -4,6 +4,10 @@ class Dir
   end
 end
 
+def linux?
+  @is_linux ||= `cat /proc/version` =~ /Linux/
+end
+
 namespace :install do
   task :links do
     sh 'ln -s ~/.dots/bin ~/bin' unless Dir.exists? "~/bin"
@@ -23,8 +27,16 @@ namespace :install do
 
   task :applications do
     application_config_path = File.expand_path "~/.dots/applications"
-    applications = File.read(application_config_path).split("\n").join(' ')
-    install_command = if `cat /proc/version` =~ /Linux/
+    file_contents = File.read application_config_path
+    list_of_applications = if linux?
+      file_contents.split("\n").reject do |app_name|
+        app_name =~ /ruby-build|rbenv/
+      end
+    else
+      file_contents.split "\n"
+    end
+    applications = list_of_applications.join ' '
+    install_command = if linux?
       "apt-get install -y #{applications}"
     else
       sh %{ ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)" } \
