@@ -25,12 +25,12 @@ namespace :install do
     application_config_path = File.expand_path "~/.dots/applications"
     applications = File.read(application_config_path).split("\n").join(' ')
     install_command = if `cat /proc/version` =~ /Linux/
-      "apt-get install -y #{names}"
+      "apt-get install -y #{applications}"
     else
       sh %{ ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)" } \
         unless `which brew` =~ /brew/
 
-      "brew install #{names}"
+      "brew install #{applications}"
     end
 
     sh install_command
