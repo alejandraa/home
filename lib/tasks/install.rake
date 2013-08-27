@@ -55,4 +55,5 @@ task :install => %w(
   install:configuration
   install:submodules
   install:applications
+  vim
 )
