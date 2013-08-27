@@ -11,8 +11,10 @@ namespace :install do
   end
 
   task :configuration do
-    sh 'dots update'
-    sh 'dots reload'
+    HOME = ENV['HOME'] || File.expand_path('~')
+
+    sh "#{HOME}/.dots/bin/dots update"
+    sh "#{HOME}/.dots/bin/dots reload"
   end
 
   task :submodules do
