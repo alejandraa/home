@@ -131,3 +131,8 @@ gg_dasherize() {
 spec() {
   rspec spec/$1
 }
+
+# Install this framework to a remote machine on your LAN.
+takeover() {
+  ssh $1 "rm -rf ~/.dots; git clone git://github.com/tubbo/dots.git ~/.dots; cd ~/.dots; rake install"
+}
