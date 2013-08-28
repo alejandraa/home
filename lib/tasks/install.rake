@@ -57,7 +57,7 @@ desc "Install DOTS to this user's home directory"
 task :install => %w(
   install:links
   install:applications
-  install:configuration
   install:submodules
+  install:configuration
   vim
 )
