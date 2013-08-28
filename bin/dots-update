@@ -4,8 +4,6 @@
 
 cd ~/.dots
 git pull --rebase origin master
-source $HOME/.dots/vendor/antigen
-ctags -R .
-antigen update
 source $HOME/zshenv
 source $HOME/zshrc
+ctags -R .
