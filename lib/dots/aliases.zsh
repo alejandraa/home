@@ -67,6 +67,3 @@ alias ct='ctags -R .'
 
 # Use `hub` as a wrapper over Git
 alias git='hub'
-
-# Install this framework to a remote machine on your LAN.
-alias takeover="ssh picard 'rm -rf ~/.dots;git clone git://github.com/tubbo/dots.git ~/.dots; cd ~/.dots; rake install'"
