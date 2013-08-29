@@ -4,7 +4,7 @@
 # everything looks pretty.
 
 local path_prompt="%{$reset_color%}%~"
-PROMPT="%{$fg[white]%}♬  %{$reset_color%}"
+PROMPT="%m %{$fg[white]%}♬  %{$reset_color%}"
 RPROMPT="%{$fg[yellow]%}${path_prompt}"
 
 # Use 'viins' mappings for *most* inline command editing
@@ -17,6 +17,3 @@ bindkey -v
 bindkey '^R' history-incremental-search-backward
 bindkey '\e[A' history-beginning-search-backward
 bindkey '\e[B' history-beginning-search-forward
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
