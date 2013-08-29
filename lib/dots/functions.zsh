@@ -136,3 +136,9 @@ spec() {
 takeover() {
   ssh $1 "rm -rf ~/.dots; git clone git://github.com/tubbo/dots.git ~/.dots; cd ~/.dots; rake install"
 }
+
+# Install Vim configuration to a remote machine on your LAN.
+beautify() {
+  ssh $1 "apt-get install -y zsh; git clone git://github.com/tubbo/dots.git ~/.dots; cd ~/.dots; rake vim"
+}
+
