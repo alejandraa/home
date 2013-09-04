@@ -1,12 +1,3 @@
-servers = (
-  {
-    address = "psychedeli.ca";
-    chatnet = "freenode";
-    port = "1337";
-    password = "<INSERT PASSWORD HERE>";
-    autoconnect = "yes";
-  }
-);
 
 chatnets = {
   freenode = {
@@ -20,16 +11,23 @@ chatnets = {
 channels = (
   { name = "#diaspora"; chatnet = "freenode"; autojoin = "Yes"; },
   { name = "#diaspora-dev"; chatnet = "freenode"; autojoin = "Yes"; },
-  {
-    name = "#rubyonrails-offtopic";
-    chatnet = "freenode";
-    autojoin = "yes";
-  },
+  { name = "#rubyonrails-offtopic"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#rubyonrails"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#ruby-lang"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "##javascript"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#ember.js"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#emberjs"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "##77days"; chatnet = "freenode"; autojoin = "yes"; }
+);
+
+ignores = (
+  {
+    level = "JOINS PARTS QUITS MODES";
+    channels = (
+      "#diaspora-dev", "#diaspora-dev", "#rubyonrails",
+      "#ruby-lang", "##javascript", "#emberjs", "##77days"
+    );
+  },
+  { mask = "garbagecollectio"; level = "ALL"; }
 );
 
 aliases = {
@@ -81,6 +79,30 @@ aliases = {
   UNSET = "set -clear";
   RESET = "set -default";
   hideadd = "eval set activity_hide_targets $activity_hide_targets $-";
+};
+
+servers = (
+  {
+    address = "IRSSI_PROXY";
+    chatnet = "freenode";
+    port = "1337";
+    password = "IRSSI_PASSWD"
+    autoconnect = "yes";
+  }
+);
+
+settings = {
+  core = {
+    real_name = "http://psychedeli.ca";
+    user_name = "tubbo";
+    nick = "tubbo";
+  };
+  "fe-text" = { actlist_sort = "refnum"; };
+  "fe-common/core" = {
+    theme = "solarized-universal";
+    hilight_color = "= %R";
+    activity_hide_targets = " #irssi #diaspora-dev #rubyonrails #rubyonrails #philly.rb";
+  };
 };
 
 statusbar = {
@@ -190,29 +212,4 @@ statusbar = {
     };
   };
 };
-settings = {
-  core = {
-    real_name = "http://psychedeli.ca";
-    user_name = "tubbo";
-    nick = "tubbo";
-  };
-  "fe-text" = { actlist_sort = "refnum"; };
-  "fe-common/core" = {
-    theme = "solarized-universal";
-    hilight_color = "= %R";
-    activity_hide_targets = " #irssi #diaspora-dev #rubyonrails #rubyonrails #philly.rb";
-  };
-};
-ignores = (
-  { level = "JOINS PARTS QUITS MODES"; channels = ( "#diaspora" ); },
-  { 
-    level = "JOINS PARTS QUITS MODES";
-    channels = ( "#diaspora-dev" );
-  },
-  { 
-    level = "JOINS PARTS QUITS MODES";
-    channels = ( "#rubyonrails" );
-  },
-  { level = "JOINS PARTS QUITS MODES"; channels = ( "#philly.rb" ); },
-  { mask = "melisaa"; level = "ALL"; }
-);
+
