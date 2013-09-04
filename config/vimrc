@@ -10,8 +10,7 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'tpope/vim-markdown'
-Bundle 'skwp/vim-rspec'
-Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-rake'
 Bundle 'vim-scripts/nginx.vim'
 Bundle 'leshill/vim-json'
 Bundle 'nono/vim-handlebars'
@@ -21,19 +20,17 @@ Bundle 'heartsentwined/vim-emblem'
 " Tools
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-rails'
-Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'scrooloose/syntastic'
 Bundle 'Shougo/neocomplcache'
 Bundle 'vim-scripts/vimwiki'
+Bundle 'Shougo/unite.vim'
+Bundle 'kien/ctrlp.vim'
 
 " Integration
 Bundle 'mattn/gist-vim'
 Bundle 'vim-scripts/sudo.vim'
 Bundle 'skalnik/vim-vroom'
-Bundle 'tpope/vim-dispatch.git'
-Bundle 'benmills/vimux'
-
 " Required for Gist.vim. Don't remove!
 Bundle 'mattn/webapi-vim'
 
@@ -125,7 +122,8 @@ noremap <C-j> <C-t>
 " Ignore files that Vim can't edit
 set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
-set wildignore+=*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-cache/*
+set wildignore+=vendor/gems/**,vendor/cache/**,.bundle/**,.sass-cache/**,
+set wildignore+=vendor/rails**,vendor/plugins**
 set wildignore+=*.swp,*~,._*
 set wildignore+=*/tmp/*
 
@@ -213,17 +211,7 @@ colorscheme solarized
 set background=light
 
 " Search for files
-map <leader>f :CtrlPClearCache<cr>
 let g:ctrlp_map = '<c-t>'
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_max_files = 0
-let g:ctrlp_user_command = {
-\ 'types': {
-    \ 1: ['.git/', 'cd %s && git ls-files']
-\ },
-\ 'fallback': 'find %s -type f | head -' . g:ctrlp_max_files
-\ }
-let g:ctrlp_clear_cache_on_exit = 1
 let g:ctrlp_custom_ignore = {
   \ 'dir': '\v[\/](\.(git|hg|svn|)|vendor/(gems|cookbooks))$'
   \ }
@@ -285,10 +273,19 @@ let g:gist_get_multiplefile = 1
 map <leader>g :Gist<cr>
 map <leader>G :Gist -m<cr>
 
+" TODO: What does this do?
 map <leader>w <leader>wt
 
+" Vimwiki configuration
 let g:vimwiki_list = [{ 'path': '~/Documents/Wiki', 'path_html': '~/Library/Application Support/Dash/DocSets/Wiki/Contents/Resources/Documents/' }]
 
+" Easy dependency manager alias
 map <leader>b :BundleInstall<cr>:q<cr>
 
+" Disable modelines for security
 set modelines=0
+
+
+" Highlight RSpec code in every project with the same strategy
+autocmd BufRead *_spec.rb syn keyword rubyRspec describe context it specify it_should_behave_like before after setup subject its shared_examples_for shared_context let
+highlight def link rubyRspec Function
