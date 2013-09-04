@@ -10,7 +10,7 @@ DOTS=$ZSH
 # Domain-specific PATHs.
 RBPATH=$HOME/.rbenv/bin:$HOME/.rbenv/shims:/usr/local/lib/ruby/gems/1.9.1/bin:vendor/gems/bin
 JSPATH=node_modules/.bin:/usr/local/share/npm/bin
-PYPATH=/usr/local/Cellar/python/2.7.3/bin:/usr/local/share/python
+PYPATH=/usr/local/lib/python2.7/site-packages
 GOPATH=$HOME/Code/Go
 PGPATH=/Applications/Postgres.app/Contents/MacOS/bin
 MANPATH=/opt/local/share/man:$MANPATH
