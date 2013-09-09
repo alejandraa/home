@@ -26,6 +26,13 @@ end
   file(".#{name}") { IO.read File.expand_path("~/etc/rails/template/#{name}") }
 end
 
+# Add Rakefiles to lib/tasks
+%(db.rake deploy.rake test.rake).each do |rakefile|
+  file "lib/tasks/#{rakefile}" do
+    File.read File.expand_path("~/etc/rails/template/#{rakefile}")
+  end
+end
+
 # Generate the README and remove the default one
 run "rm -rf README.rdoc"
 file("README.md") { "# #{app_name.titleize}" }
