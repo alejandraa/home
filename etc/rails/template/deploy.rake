@@ -1,12 +1,15 @@
 namespace :deploy do
   task :ssh_configuration do
+    config_path = File.expand_path "~/.ssh/config"
+    return if File.exists? config_path
     ssh_config = %(
     Host heroku.com
       StrictHostKeyChecking no
       CheckHostIP no
       UserKnownHostsFile=/dev/null
     )
-    File.write(File.expand_path("~/.ssh/config"), 'rw+') do |f|
+
+    File.write(config_path, 'rw+') do |f|
       f.puts ssh_config
     end
   end
