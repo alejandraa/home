@@ -1,5 +1,5 @@
 bundler
 tmuxinator
 rails
-travis-ci
+travis
 git-deploy
