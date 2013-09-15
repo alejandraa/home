@@ -8,7 +8,7 @@ templates = File.expand_path '~/etc/rails/template'
 # new resources in the course of development.
 initializer "generators.rb", <<-RUBY
 Rails.application.config.generators do |g|
-  g.template_engine :haml
+  #g.template_engine :haml
   g.test_framework :rspec, fixtures: true, fixture_location: "spec/fixtures"
 end
 RUBY
@@ -24,13 +24,6 @@ end
 # Set up the shell environment and CI configuration
 %w(env travis.yml gitignore).each do |name|
   file(".#{name}") { IO.read File.expand_path("~/etc/rails/template/#{name}") }
-end
-
-# Add Rakefiles to lib/tasks
-%(db.rake deploy.rake test.rake).each do |rakefile|
-  file "lib/tasks/#{rakefile}" do
-    File.read File.expand_path("~/etc/rails/template/#{rakefile}")
-  end
 end
 
 # Generate the README and remove the default one
