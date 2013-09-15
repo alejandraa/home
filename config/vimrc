@@ -207,21 +207,31 @@ set noswapfile
 set undodir=~/.vim/undo
 set undofile
 
-
 " Set color scheme to Solarized (light)
 let g:solarized_italic=0
 syntax on
 colorscheme solarized
 set background=light
 
-" Search for files
-let g:ctrlp_map = '<c-t>'
-let g:ctrlp_custom_ignore = {
-  \ 'dir': '\v[\/](\.(git|hg|svn|)|vendor/(gems|cookbooks))$'
-  \ }
+" Escape from a Unite buffer quickly.
+function! s:unite_settings()
+  nmap <buffer> <esc> <plug>(unite_exit)
+  imap <buffer> <esc> <plug>(unite_exit)
+endfunction
+autocmd FileType unite call s:unite_settings()
 
+" Use fuzzy matching in Unite searches
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
 
-" Alternate between tabs
+" Use Ag to power Unite's grep mode
+let g:unite_source_grep_command='ag'
+let g:unite_source_grep_default_opts='--nocolor --nogroup -S -C4'
+let g:unite_source_grep_recursive_opt=''
+
+" Search for files with Unite
+map <c-t> :Unite file_rec<cr>i
+map <c-f> :Unite grep:.<cr>
+
 map <leader>m :tabn<cr>
 map <C-w>t :tabn<cr>
 
@@ -236,7 +246,7 @@ let g:vroom_use_colors = 1
 let g:vroom_map_keys = 0
 let g:vroom_spec_command = 'rspec --format=progress '
 let g:vroom_test_unit_command = 'm'
-let g:vroom_use_vimux = 1
+"let g:vroom_use_vimux = 1
 nnoremap <leader>t :VroomRunNearestTest<cr>
 nnoremap <leader>T :VroomRunTestFile<cr>
 
@@ -288,7 +298,6 @@ map <leader>b :BundleInstall<cr>:q<cr>
 
 " Disable modelines for security
 set modelines=0
-
 
 " Highlight RSpec code in every project with the same strategy
 autocmd BufRead *_spec.rb syn keyword rubyRspec describe context it specify it_should_behave_like before after setup subject its shared_examples_for shared_context let
