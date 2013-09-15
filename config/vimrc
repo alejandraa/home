@@ -1,4 +1,4 @@
-"" Dependencies
+" Set up dependencies
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
@@ -19,7 +19,7 @@ Bundle 'heartsentwined/vim-emblem'
 " Tools
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-rake'
+"Bundle 'tpope/vim-rake'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'scrooloose/syntastic'
 Bundle 'Shougo/neocomplcache'
@@ -28,6 +28,7 @@ Bundle 'skalnik/vim-vroom'
 Bundle 'tpope/vim-endwise'
 Bundle 'Shougo/unite.vim'
 Bundle 'Shougo/vimproc.vim'
+Bundle 'tsukkee/unite-tag'
 
 " Integration
 Bundle 'vim-scripts/sudo.vim'
@@ -35,7 +36,7 @@ Bundle 'mattn/gist-vim'
 " Required for Gist.vim. Don't remove!
 Bundle 'mattn/webapi-vim'
 
-"" Editing Environment
+" Editing Environment
 set nocompatible      " Use vim, no vi defaults
 set number            " Show line numbers
 set ruler             " Show line and column number
@@ -47,17 +48,17 @@ set clipboard=unnamed " Use the system clipboard when possible.
 set laststatus=2      " Make Powerline work on single-file sessions
 let mapleader = ","   " Set leader key to something easier to access
 
-"" Enable plugins to add rules based on what kind of file we're editing
+" Enable plugins to add rules based on what kind of file we're editing
 "filetype plugin on    " Add plugin commands and bindings
 "filetype indent on    " Change indentation
 map <leader>p :filetype plugin on<cr>
 map <leader>P :filetype plugin off<cr>
 
-"" Disable sounds
+" Disable sounds
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
 
-"" Split pane hotkeys
+" Split pane hotkeys
 map <leader>- <C-w>_
 
 " Edit Vim configuration
@@ -66,10 +67,7 @@ map <leader>c :tabnew ~/.vimrc<cr>
 " Open Vimwiki
 map <leader>/ <leader>p<leader>wt
 
-""
-"" Whitespace
-""
-
+" Whitespace settings
 set wrap                          " turn word wrap on
 set textwidth=72                  " attempt to enforce 72 chars
 set linebreak                     " wait for word char to break lines
@@ -79,6 +77,7 @@ set expandtab                     " use spaces, not tabs
 set list                          " Show invisible characters
 set backspace=indent,eol,start    " backspace through everything in insert mode
 
+" Special MacVim configuration (must be in vimrc for some reason)
 if exists("g:enable_mvim_shift_arrow")
   let macvim_hig_shift_movement = 1 " mvim shift-arrow-keys
 endif
@@ -92,46 +91,40 @@ set listchars+=extends:>          " The character to show in the last column whe
 set listchars+=precedes:<         " The character to show in the last column when wrap is
                                   " off and the line continues beyond the right of the screen
 
-""
-"" Searching
-""
-
-set hlsearch!    " highlight matches
-set incsearch   " incremental searching
-set ignorecase  " searches are case insensitive...
-set smartcase   " ... unless they contain at least one capital letter
+" Ignore files that Vim can't edit
+set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
+set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
+set wildignore+=*.swp,*~,._*
+" Ignore Ruby files
+set wildignore+=vendor/gems/**
+" Ignore Rails 2.x files
+set wildignore+=vendor/rails**,vendor/plugins**
 
 " Search highlighting, only done by request and easy to get rid of.
 set nohlsearch
 nnoremap <C-L> :set hlsearch!<cr>
 nnoremap <C-l> :nohl<cr>
 
+" In-file fulltext search
+set hlsearch!   " highlight matches
+set incsearch   " incremental searching
+set ignorecase  " searches are case insensitive...
+set smartcase   " ... unless they contain at least one capital letter
 
-""
-"" Documentation
-""
+" Project-wide Grep with Ag and Unite
+map <c-f> :Unite grep:.<cr>
+let g:unite_source_grep_command='ag'
+let g:unite_source_grep_default_opts='--nocolor --nogroup -S -C4'
+let g:unite_source_grep_recursive_opt=''
 
-" CTags: Ctrl+H browses, then use Ctrl+H,{N|S} to scroll through them.
-"map <C-h> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
-map <C-h> :split<cr>:exec("tag ".expand("<cword>"))<CR>
-nnoremap <C-h>n :tnext<cr>
-nnoremap <C-h>s :tselect<cr>
-" CTags: Go back to the starting file.
-noremap <C-j> <C-t>
+" Project-wide file search with Unite
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+map <c-t> :Unite file_rec<cr>i
 
+" CTags and Neocomplcache documentation search with Unite
+map <c-h> :Unite tag/include<cr>i
 
-" Ignore files that Vim can't edit
-set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
-set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
-set wildignore+=*.swp,*~,._*
-
-" Ignore Ruby files
-set wildignore+=vendor/gems/**
-
-" Ignore Rails 2.x files
-set wildignore+=vendor/rails**,vendor/plugins**
-
-"" Backup and swap files
+" Backup and swap files
 set backupdir=~/.vim/_backup//    " where to put backup files.
 set directory=~/.vim/_temp//      " where to put swap files.
 
@@ -149,7 +142,7 @@ map <leader>h :s/:\([a-z0-9_]\+\)\s*=>/\1: /g<cr>
 nnoremap Z :w<cr>
 nnoremap ZZ :wq<cr>
 
-"" Autocommand event bindings
+" Autocommand event bindings
 augroup vimrcEx
   autocmd!
 
@@ -183,6 +176,13 @@ augroup vimrcEx
 
   " Auto-load vimrc after a change
   autocmd BufWritePost *.vimrc nested source ~/.vimrc
+
+  " Escape from a Unite buffer quickly by pressing ESC
+  function! s:unite_settings()
+    nmap <buffer> <esc> <plug>(unite_exit)
+    imap <buffer> <esc> <plug>(unite_exit)
+  endfunction
+  autocmd FileType unite call s:unite_settings()
 augroup END
 
 " When there's no text behind it, tab indents. When there is, tab
@@ -213,25 +213,7 @@ syntax on
 colorscheme solarized
 set background=light
 
-" Escape from a Unite buffer quickly.
-function! s:unite_settings()
-  nmap <buffer> <esc> <plug>(unite_exit)
-  imap <buffer> <esc> <plug>(unite_exit)
-endfunction
-autocmd FileType unite call s:unite_settings()
-
-" Use fuzzy matching in Unite searches
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-
-" Use Ag to power Unite's grep mode
-let g:unite_source_grep_command='ag'
-let g:unite_source_grep_default_opts='--nocolor --nogroup -S -C4'
-let g:unite_source_grep_recursive_opt=''
-
-" Search for files with Unite
-map <c-t> :Unite file_rec<cr>i
-map <c-f> :Unite grep:.<cr>
-
+" Alternate through tabs
 map <leader>m :tabn<cr>
 map <C-w>t :tabn<cr>
 
