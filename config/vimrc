@@ -1,12 +1,27 @@
-" Set up dependencies
+"" Vundle
+
+" ,b to install the Bundle from within Vim
+map <leader>b :BundleInstall<cr>:q<cr>
+" Vundle basic configuration
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
-
-" Framework
 Bundle 'gmarik/vundle'
+
+"" Cosmetics
+
+" Use solarized-light as a color scheme
+
 Bundle 'altercation/vim-colors-solarized'
 
-" Languages
+let g:solarized_italic=0
+syntax on
+colorscheme solarized
+set background=light
+
+" Use Powerline for a colorful status bar
+Bundle 'Lokaltog/vim-powerline'
+
+" Highlight extra languages that don't come stock with Vim
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'tpope/vim-markdown'
@@ -19,22 +34,16 @@ Bundle 'heartsentwined/vim-emblem'
 " Tools
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-rails'
-"Bundle 'tpope/vim-rake'
-Bundle 'Lokaltog/vim-powerline'
 Bundle 'scrooloose/syntastic'
-Bundle 'Shougo/neocomplcache'
 Bundle 'vim-scripts/vimwiki'
-Bundle 'skalnik/vim-vroom'
+
 Bundle 'tpope/vim-endwise'
-Bundle 'Shougo/unite.vim'
-Bundle 'Shougo/vimproc.vim'
-Bundle 'tsukkee/unite-tag'
 
 " Integration
 Bundle 'vim-scripts/sudo.vim'
-Bundle 'mattn/gist-vim'
-" Required for Gist.vim. Don't remove!
-Bundle 'mattn/webapi-vim'
+
+
+"" Vim Settings
 
 " Editing Environment
 set nocompatible      " Use vim, no vi defaults
@@ -47,26 +56,21 @@ set showcmd           " Show (partial) command in the status line
 set clipboard=unnamed " Use the system clipboard when possible.
 set laststatus=2      " Make Powerline work on single-file sessions
 let mapleader = ","   " Set leader key to something easier to access
-
+" Turn backups off since we store everything in Git
+set nobackup
+set nowb
+set noswapfile
+" Persistent undo
+set undodir=~/.vim/undo
+set undofile
 " Enable plugins to add rules based on what kind of file we're editing
-"filetype plugin on    " Add plugin commands and bindings
-"filetype indent on    " Change indentation
 map <leader>p :filetype plugin on<cr>
 map <leader>P :filetype plugin off<cr>
-
 " Disable sounds
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
-
-" Split pane hotkeys
-map <leader>- <C-w>_
-
 " Edit Vim configuration
 map <leader>c :tabnew ~/.vimrc<cr>
-
-" Open Vimwiki
-map <leader>/ <leader>p<leader>wt
-
 " Whitespace settings
 set wrap                          " turn word wrap on
 set textwidth=72                  " attempt to enforce 72 chars
@@ -76,12 +80,6 @@ set shiftwidth=2                  " an autoindent (with <<) is two spaces
 set expandtab                     " use spaces, not tabs
 set list                          " Show invisible characters
 set backspace=indent,eol,start    " backspace through everything in insert mode
-
-" Special MacVim configuration (must be in vimrc for some reason)
-if exists("g:enable_mvim_shift_arrow")
-  let macvim_hig_shift_movement = 1 " mvim shift-arrow-keys
-endif
-
 " List chars
 set listchars=""                  " Reset the listchars
 set listchars=tab:\ \             " a tab should display as "  ", trailing whitespace as "."
@@ -100,40 +98,9 @@ set wildignore+=vendor/gems/**
 " Ignore Rails 2.x files
 set wildignore+=vendor/rails**,vendor/plugins**
 
-" Search highlighting, only done by request and easy to get rid of.
-set nohlsearch
-nnoremap <C-L> :set hlsearch!<cr>
-nnoremap <C-l> :nohl<cr>
-
-" In-file fulltext search
-set hlsearch!   " highlight matches
-set incsearch   " incremental searching
-set ignorecase  " searches are case insensitive...
-set smartcase   " ... unless they contain at least one capital letter
-
-" Project-wide Grep with Ag and Unite
-map <c-f> :Unite grep:.<cr>
-let g:unite_source_grep_command='ag'
-let g:unite_source_grep_default_opts='--nocolor --nogroup -S -C4'
-let g:unite_source_grep_recursive_opt=''
-
-" Project-wide file search with Unite
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-map <c-t> :Unite file_rec<cr>i
-
-" CTags and Neocomplcache documentation search with Unite
-map <c-h> :Unite tag/include<cr>i
-
 " Backup and swap files
 set backupdir=~/.vim/_backup//    " where to put backup files.
 set directory=~/.vim/_temp//      " where to put swap files.
-
-" MacVim shift+arrow-keys behavior (required in .vimrc)
-let macvim_hig_shift_movement = 1
-
-" Skip bullshit directories in grep
-let Grep_Skip_Dirs = 'RCS CVS SCCS .svn generated .sass-cache .git'
-set grepprg=/bin/grep\ -nH
 
 " Enforce Ruby 1.9 syntax on this line
 map <leader>h :s/:\([a-z0-9_]\+\)\s*=>/\1: /g<cr>
@@ -142,7 +109,152 @@ map <leader>h :s/:\([a-z0-9_]\+\)\s*=>/\1: /g<cr>
 nnoremap Z :w<cr>
 nnoremap ZZ :wq<cr>
 
-" Autocommand event bindings
+"" Search
+
+Bundle 'Shougo/unite.vim'
+Bundle 'Shougo/vimproc.vim'
+Bundle 'tsukkee/unite-tag'
+
+" Highlight search terms by default
+set nohlsearch
+nnoremap <C-L> :set hlsearch!<cr>
+nnoremap <C-l> :nohl<cr>
+
+" In-file fulltext search options
+set hlsearch!   " highlight matches
+set incsearch   " incremental searching
+set ignorecase  " searches are case insensitive...
+set smartcase   " ... unless they contain at least one capital letter
+
+" Invoke the fuzzy matcher when using Unite
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+
+" Use Ag to grep through files
+let g:unite_source_grep_command='ag'
+let g:unite_source_grep_default_opts='--nocolor --nogroup -S -C4'
+let g:unite_source_grep_recursive_opt=''
+
+" Project-wide file search hotkey
+map <c-t> :Unite file_rec<cr>i
+" Project-wide CTag/Autocompleter search hotkey
+map <c-h> :Unite tag/include<cr>i
+" Project-wide fulltext search hotkey
+map <c-f> :Unite grep:.<cr>
+
+" Skip bullshit directories in grep
+let Grep_Skip_Dirs = 'RCS CVS SCCS .svn generated .sass-cache .git'
+set grepprg=/bin/grep\ -nH
+
+"" Autocomplete
+
+Bundle 'Shougo/neocomplcache'
+
+" Use <tab> for autocompletion in INSERT mode by checking for a space
+" on the next column. If there is one, insert a 'tab'. Otherwise, try
+" to autocomplete the word prior to the current column.
+function! InsertTabWrapper()
+  let col = col('.') - 1
+  if !col || getline('.')[col - 1] !~ '\k'
+      return "\<tab>"
+  else
+      return "\<c-p>"
+  endif
+endfunction
+inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+inoremap <s-tab> <c-n>
+
+
+" Alternate through tabs
+map <leader>m :tabn<cr>
+map <C-w>t :tabn<cr>
+
+" Remap :W => :w to avoid errors
+command! W w
+command! Q q
+map ; :
+
+"" Test Running
+
+
+Bundle 'skalnik/vim-vroom'
+
+" Configure Vroom to use RSpec and M as test runners.
+let g:vroom_use_binstubs = 0
+let g:vroom_use_colors = 1
+let g:vroom_map_keys = 0
+let g:vroom_spec_command = 'rspec --format=progress '
+let g:vroom_test_unit_command = 'm'
+
+" ,t runs the nearest test
+nnoremap <leader>t :VroomRunNearestTest<cr>
+
+" ,T runs the whole test file from inside Vim
+nnoremap <leader>T :VroomRunTestFile<cr>
+
+" ,. switches to the test alternate
+nnoremap <leader>. :A<cr>
+
+" Search Dash.app for word under cursor
+function! SearchDash()
+  let s:browser = "/usr/bin/open"
+  let s:wordUnderCursor = expand("<cword>")
+  let s:url = "dash://".s:wordUnderCursor
+  let s:cmd ="silent ! " . s:browser . " " . s:url
+  execute s:cmd
+  redraw!
+endfunction
+map <leader>d :call SearchDash()<CR>
+
+" Disable code folding
+set foldmethod=manual
+set foldlevel=99
+
+" For tmux, disable background clearing
+set t_ut=
+
+"" Gist
+
+Bundle 'mattn/gist-vim'
+Bundle 'mattn/webapi-vim'
+
+" Copy Gists to clipboard after creation
+let g:gist_clip_command = 'pbcopy'
+" Detect filetype by file extension (just like on gist.github.com)
+let g:gist_detect_filetype = 1
+" Post all Gists as private unless otherwise noted
+let g:gist_post_private = 1
+" Enable multi-file Gists
+let g:gist_get_multiplefile = 1
+" Use ,g to create a single-file Gist
+map <leader>g :Gist<cr>
+" Use ,G to create a multi-file Gist of all buffers
+map <leader>G :Gist -m<cr>
+
+"" Vimwiki
+
+" Open Vimwiki
+map <leader>/ <leader>p<leader>wt
+" Vimwiki should use files in ~/Documents/Wiki
+let g:vimwiki_list = [{ 'path': '~/Documents/Wiki', 'path_html': '~/Library/Application Support/Dash/DocSets/Wiki/Contents/Resources/Documents/' }]
+
+
+" Disable modelines for security
+set modelines=0
+
+" Highlight RSpec code in every project with the same strategy
+autocmd BufRead *_spec.rb syn keyword rubyRspec describe context it specify it_should_behave_like before after setup subject its shared_examples_for shared_context let
+highlight def link rubyRspec Function
+
+
+"" MacVim
+
+" Special MacVim configuration (must be in vimrc for some reason)
+if exists("g:enable_mvim_shift_arrow")
+  let macvim_hig_shift_movement = 1 " mvim shift-arrow-keys
+endif
+
+"" Event bindings
+
 augroup vimrcEx
   autocmd!
 
@@ -185,102 +297,5 @@ augroup vimrcEx
   autocmd FileType unite call s:unite_settings()
 augroup END
 
-" When there's no text behind it, tab indents. When there is, tab
-" autocompletes.
-function! InsertTabWrapper()
-  let col = col('.') - 1
-  if !col || getline('.')[col - 1] !~ '\k'
-      return "\<tab>"
-  else
-      return "\<c-p>"
-  endif
-endfunction
-inoremap <tab> <c-r>=InsertTabWrapper()<cr>
-inoremap <s-tab> <c-n>
 
-" Turn backups off since we store everything in Git
-set nobackup
-set nowb
-set noswapfile
 
-" Persistent undo
-set undodir=~/.vim/undo
-set undofile
-
-" Set color scheme to Solarized (light)
-let g:solarized_italic=0
-syntax on
-colorscheme solarized
-set background=light
-
-" Alternate through tabs
-map <leader>m :tabn<cr>
-map <C-w>t :tabn<cr>
-
-" Remap :W => :w to avoid errors
-command! W w
-command! Q q
-map ; :
-
-" Run tests in Vim and Tmux
-let g:vroom_use_binstubs = 0
-let g:vroom_use_colors = 1
-let g:vroom_map_keys = 0
-let g:vroom_spec_command = 'rspec --format=progress '
-let g:vroom_test_unit_command = 'm'
-"let g:vroom_use_vimux = 1
-nnoremap <leader>t :VroomRunNearestTest<cr>
-nnoremap <leader>T :VroomRunTestFile<cr>
-
-" Switch to test alternate
-nnoremap <leader>. :A<cr>
-
-" Search Dash.app for word under cursor
-function! SearchDash()
-  let s:browser = "/usr/bin/open"
-  let s:wordUnderCursor = expand("<cword>")
-  let s:url = "dash://".s:wordUnderCursor
-  let s:cmd ="silent ! " . s:browser . " " . s:url
-  execute s:cmd
-  redraw!
-endfunction
-map <leader>d :call SearchDash()<CR>
-
-" Disable code folding
-set foldmethod=manual
-set foldlevel=99
-
-" For tmux, disable background clearing
-set t_ut=
-
-" Copy Gists to clipboard after creation
-let g:gist_clip_command = 'pbcopy'
-
-" Detect filetype by file extension (just like on gist.github.com)
-let g:gist_detect_filetype = 1
-
-" Post all Gists as private unless otherwise noted
-let g:gist_post_private = 1
-
-" Enable multi-file Gists
-let g:gist_get_multiplefile = 1
-
-" Map keys for creating single and multi file Gists
-map <leader>g :Gist<cr>
-map <leader>G :Gist -m<cr>
-
-" TODO: What does this do?
-map <leader>w <leader>wt
-
-" Vimwiki configuration
-let g:vimwiki_list = [{ 'path': '~/Documents/Wiki', 'path_html': '~/Library/Application Support/Dash/DocSets/Wiki/Contents/Resources/Documents/' }]
-
-" Easy dependency manager alias
-map <leader>b :BundleInstall<cr>:q<cr>
-
-" Disable modelines for security
-set modelines=0
-
-" Highlight RSpec code in every project with the same strategy
-autocmd BufRead *_spec.rb syn keyword rubyRspec describe context it specify it_should_behave_like before after setup subject its shared_examples_for shared_context let
-highlight def link rubyRspec Function
