@@ -123,10 +123,13 @@ noremap <C-j> <C-t>
 " Ignore files that Vim can't edit
 set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
-set wildignore+=vendor/gems/**,vendor/cache/**,.bundle/**,.sass-cache/**,
-set wildignore+=vendor/rails**,vendor/plugins**
 set wildignore+=*.swp,*~,._*
-set wildignore+=*/tmp/*
+
+" Ignore Ruby files
+set wildignore+=vendor/gems/**
+
+" Ignore Rails 2.x files
+set wildignore+=vendor/rails**,vendor/plugins**
 
 "" Backup and swap files
 set backupdir=~/.vim/_backup//    " where to put backup files.
