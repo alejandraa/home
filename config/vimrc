@@ -1,11 +1,13 @@
 "" Vundle
 
-" ,b to install the Bundle from within Vim
-map <leader>b :BundleInstall<cr>:q<cr>
 " Vundle basic configuration
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
+
+" ,b to install the Bundle from within Vim
+map <leader>b :BundleInstall<cr>:q<cr>
+
 
 "" Cosmetics
 
@@ -21,29 +23,39 @@ set background=light
 " Use Powerline for a colorful status bar
 Bundle 'Lokaltog/vim-powerline'
 
-" Highlight extra languages that don't come stock with Vim
-Bundle 'jelera/vim-javascript-syntax'
+" Alternative JavaScript language support
 Bundle 'kchmck/vim-coffee-script'
-Bundle 'tpope/vim-markdown'
-Bundle 'vim-scripts/nginx.vim'
-Bundle 'leshill/vim-json'
-Bundle 'nono/vim-handlebars'
 Bundle 'heartsentwined/vim-ember-script'
 Bundle 'heartsentwined/vim-emblem'
+Bundle 'nono/vim-handlebars'
 
-" Tools
-Bundle 'tpope/vim-fugitive'
+" Markdown language support
+Bundle 'tpope/vim-markdown'
+
+" JSON file support
+Bundle 'leshill/vim-json'
+
+" Rails project swiss-army knife
 Bundle 'tpope/vim-rails'
-Bundle 'scrooloose/syntastic'
-Bundle 'vim-scripts/vimwiki'
 
-Bundle 'tpope/vim-endwise'
+" Git integration
+Bundle 'tpope/vim-fugitive'
+
+" Run code through syntax checker before save
+Bundle 'scrooloose/syntastic'
 
 " Integration
 Bundle 'vim-scripts/sudo.vim'
 
 
-"" Vim Settings
+"" Basic Vim Settings
+
+" Auto-add ruby `end` keywords
+Bundle 'tpope/vim-endwise'
+
+" Set filetype and indent based on plugins
+filetype plugin on
+filetype indent on
 
 " Editing Environment
 set nocompatible      " Use vim, no vi defaults
@@ -232,6 +244,8 @@ map <leader>G :Gist -m<cr>
 
 "" Vimwiki
 
+Bundle 'vim-scripts/vimwiki'
+
 " Open Vimwiki
 map <leader>/ <leader>p<leader>wt
 " Vimwiki should use files in ~/Documents/Wiki
@@ -294,7 +308,7 @@ augroup vimrcEx
     nmap <buffer> <esc> <plug>(unite_exit)
     imap <buffer> <esc> <plug>(unite_exit)
   endfunction
-  autocmd FileType unite call s:unite_settings()
+  "autocmd FileType unite call s:unite_settings()
 augroup END
 
 
