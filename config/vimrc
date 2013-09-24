@@ -5,57 +5,19 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
 
+" Edit Vim configuration in a new tab
+map <leader>c :tabnew ~/.vimrc<cr>
+
 " ,b to install the Bundle from within Vim
 map <leader>b :BundleInstall<cr>:q<cr>
 
-
-"" Cosmetics
-
-" Use solarized-light as a color scheme
-
-Bundle 'altercation/vim-colors-solarized'
-
-let g:solarized_italic=0
-syntax on
-colorscheme solarized
-set background=light
-
-" Use Powerline for a colorful status bar
-Bundle 'Lokaltog/vim-powerline'
-
-" Alternative JavaScript language support
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'heartsentwined/vim-ember-script'
-Bundle 'heartsentwined/vim-emblem'
-Bundle 'nono/vim-handlebars'
-
-" Markdown language support
-Bundle 'tpope/vim-markdown'
-
-" JSON file support
-Bundle 'leshill/vim-json'
-
-" Rails project swiss-army knife
-Bundle 'tpope/vim-rails'
-
-" Git integration
-Bundle 'tpope/vim-fugitive'
-
-" Run code through syntax checker before save
-Bundle 'scrooloose/syntastic'
-
 " Integration
 Bundle 'vim-scripts/sudo.vim'
-
 
 "" Basic Vim Settings
 
 " Auto-add ruby `end` keywords
 Bundle 'tpope/vim-endwise'
-
-" Set filetype and indent based on plugins
-filetype plugin on
-filetype indent on
 
 " Editing Environment
 set nocompatible      " Use vim, no vi defaults
@@ -75,14 +37,9 @@ set noswapfile
 " Persistent undo
 set undodir=~/.vim/undo
 set undofile
-" Enable plugins to add rules based on what kind of file we're editing
-map <leader>p :filetype plugin on<cr>
-map <leader>P :filetype plugin off<cr>
 " Disable sounds
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
-" Edit Vim configuration
-map <leader>c :tabnew ~/.vimrc<cr>
 " Whitespace settings
 set wrap                          " turn word wrap on
 set textwidth=72                  " attempt to enforce 72 chars
@@ -247,6 +204,7 @@ map <leader>G :Gist -m<cr>
 Bundle 'vim-scripts/vimwiki'
 
 " Open Vimwiki
+map <leader>p :filetype plugin on<cr>
 map <leader>/ <leader>p<leader>wt
 " Vimwiki should use files in ~/Documents/Wiki
 let g:vimwiki_list = [{ 'path': '~/Documents/Wiki', 'path_html': '~/Library/Application Support/Dash/DocSets/Wiki/Contents/Resources/Documents/' }]
@@ -267,8 +225,44 @@ if exists("g:enable_mvim_shift_arrow")
   let macvim_hig_shift_movement = 1 " mvim shift-arrow-keys
 endif
 
-"" Event bindings
+"" Cosmetics
 
+
+" Use Powerline for a colorful status bar
+Bundle 'Lokaltog/vim-powerline'
+
+" Alternative JavaScript language support
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'heartsentwined/vim-ember-script'
+Bundle 'heartsentwined/vim-emblem'
+Bundle 'nono/vim-handlebars'
+
+" Markdown language support
+Bundle 'tpope/vim-markdown'
+
+" JSON file support
+Bundle 'leshill/vim-json'
+
+" Rails project swiss-army knife
+Bundle 'tpope/vim-rails'
+
+" Git integration
+Bundle 'tpope/vim-fugitive'
+
+" Run code through syntax checker before save
+Bundle 'scrooloose/syntastic'
+
+" Use solarized-light as a color scheme
+
+Bundle 'altercation/vim-colors-solarized'
+
+let g:solarized_italic=0
+filetype on
+syntax on
+colorscheme solarized
+set background=light
+
+" Event bindings
 augroup vimrcEx
   autocmd!
 
@@ -290,6 +284,7 @@ augroup vimrcEx
   autocmd BufEnter *.hamlc set filetype=haml
   autocmd BufEnter *.gemrc set filetype=yaml
   autocmd BufEnter gemrc.erb set filetype=yaml
+  autocmd BufEnter .slate set filetype=javascript
 
   " Auto-indent with 2 spaces on most code files.
   autocmd FileType * set ai sw=2 sts=2 et
@@ -310,6 +305,3 @@ augroup vimrcEx
   endfunction
   "autocmd FileType unite call s:unite_settings()
 augroup END
-
-
-
