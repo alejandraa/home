@@ -6,8 +6,8 @@ config/ssh/*dsa
 config/webbynode
 config/aws.zsh
 config/*.zsh
-config/irssi/config
-config/irssi/nickserv.auth
+config/.weechat/logs/*.weechatlog
+config/.weechat/*.log
 Gemfile.lock
 spec/reports
 tmp
