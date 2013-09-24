@@ -8,7 +8,8 @@ ZSH=$HOME/.dots
 DOTS=$ZSH
 
 # Domain-specific PATHs.
-RBPATH=$HOME/.rbenv/bin:$HOME/.rbenv/shims:/usr/local/lib/ruby/gems/1.9.1/bin:vendor/gems/bin
+MDPATH=/Applications/Marked.app/Contents/Resources/
+RBPATH=/usr/local/lib/ruby/gems/1.9.1/bin:vendor/gems/bin
 JSPATH=node_modules/.bin:/usr/local/share/npm/bin
 PYPATH=/usr/local/lib/python2.7/site-packages
 GOPATH=$HOME/Code/Go
@@ -22,7 +23,21 @@ CPATH=/usr/local/bin:/usr/local/sbin:/usr/local/git/bin:/usr/bin:$HOME/bin:bin
 MANPATH=/usr/local/opt/coreutils/libexec/gnuman:$MANPATH
 
 # Global PATH, the variable that really matters
-PATH=$PERLPATH:$HEROKU_PATH:$PGPATH:$RBPATH:$JSPATH:$PYPATH:$CPATH:$PATH
+PATH=$MDPATH:$HEROKU_PATH:$PGPATH:$RBPATH:$JSPATH:$PYPATH:$CPATH:$PATH
+
+# Change package-installed Ruby on demand
+source /usr/local/opt/chruby/share/chruby/chruby.sh
+RUBIES=(
+  ~/.rbenv/versions/*
+  /usr/local/ruby
+)
+
+# Enable auto-switching of Ruby on `cd`.
+source /usr/local/opt/chruby/share/chruby/auto.sh
+
+# Enable running scripts after Ruby installs
+source $HOME/Code/chruby-default-gems/lib/chruby/default_gems.sh
+export DEFAULT_GEMFILE="~/.rbenv/default-gems"
 
 # Cache the path laid out in this file and `reset_path` if the shell
 # gets confused.
@@ -93,9 +108,6 @@ source $ZSH/lib/dots.sh
 
 # Override git log
 alias gl='nocorrect git blog'
-
-# Load rbenv
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # Hack to get around PostgreSQL not always being socket-connectable
 export PGHOST='localhost'
