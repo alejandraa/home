@@ -30,7 +30,7 @@ def err(message)
 end
 
 def persisted?(filename)
-  File.exists?(filename) || Dir.exists?(filename)
+  File.exists? filename
 end
 
 ARGV.each do |raw_dot_file|
