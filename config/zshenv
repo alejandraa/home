@@ -117,3 +117,6 @@ export SSL_CERT_FILE=/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
 
 # Execute autoenv
 source ~/.antigen/repos/https-COLON--SLASH--SLASH-github.com-SLASH-kennethreitz-SLASH-autoenv.git/activate.sh
+
+# Execute Boxen
+[ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
