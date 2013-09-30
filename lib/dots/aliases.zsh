@@ -67,3 +67,7 @@ alias ct='ctags -R .'
 
 # Use `hub` as a wrapper over Git
 alias git='hub'
+
+rk() {
+  cat $HOME/.ssh/known_hosts | sed "$1 d" > $HOME/.ssh/known_hosts
+}
