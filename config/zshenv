@@ -28,8 +28,7 @@ PATH=$MDPATH:$HEROKU_PATH:$PGPATH:$RBPATH:$JSPATH:$PYPATH:$CPATH:$PATH
 # Change package-installed Ruby on demand
 source /usr/local/opt/chruby/share/chruby/chruby.sh
 RUBIES=(
-  ~/.rbenv/versions/*
-  /usr/local/ruby
+  $HOME/.rubies/*
 )
 
 # Enable auto-switching of Ruby on `cd`.
