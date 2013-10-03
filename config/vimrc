@@ -1,45 +1,69 @@
+"" Self-Awareness
+
+" Open Vim configuration in a new tab
+map <leader>c :tabnew ~/.vimrc<cr>
+
+" Auto-load Vim configuration after a change
+autocmd BufWritePost *.vimrc nested source ~/.vimrc
+
 "" Vundle
 
-" Vundle basic configuration
+" Load plug-in environment
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
 
-" Edit Vim configuration in a new tab
-map <leader>c :tabnew ~/.vimrc<cr>
-
 " ,b to install the Bundle from within Vim
 map <leader>b :BundleInstall<cr>:q<cr>
 
-" Integration
-Bundle 'vim-scripts/sudo.vim'
+"" Application
 
-"" Basic Vim Settings
-
-" Auto-add ruby `end` keywords
+" Auto-add Ruby `end` keywords
 Bundle 'tpope/vim-endwise'
 
-" Editing Environment
-set nocompatible      " Use vim, no vi defaults
-set number            " Show line numbers
-set ruler             " Show line and column number
-set encoding=utf-8    " Set default encoding to UTF-8
-set shell=zsh         " Use the greatest shell in the universe inline
-set autoread          " Reload files after a change
-set showcmd           " Show (partial) command in the status line
-set clipboard=unnamed " Use the system clipboard when possible.
-set laststatus=2      " Make Powerline work on single-file sessions
-let mapleader = ","   " Set leader key to something easier to access
+" No need to be backwards-compatible with Vi
+set nocompatible
+
+" Show line numbers
+set number
+
+" Show line/column ruler
+set ruler
+
+" Use UTF-8 as our default charset
+set encoding=utf-8
+
+" Use the default login shell inside Vim
+set shell=$SHELL\ -l
+
+" Automatically reload files when a change occurs
+set autoread
+
+" Show partial command in the status line
+set showcmd
+
+" Use the system clipboard
+set clipboard=unnamed
+
+" Make Powerline work on single-file sessions
+set laststatus=2
+
+" Set leader key to ','
+let mapleader = ","
+
 " Turn backups off since we store everything in Git
 set nobackup
 set nowb
 set noswapfile
-" Persistent undo
+
+" Keep undo persisted across sessions
 set undodir=~/.vim/undo
 set undofile
-" Disable sounds
+
+" Disable sounds and visual bells
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
+
 " Whitespace settings
 set wrap                          " turn word wrap on
 set textwidth=72                  " attempt to enforce 72 chars
@@ -78,11 +102,20 @@ map <leader>h :s/:\([a-z0-9_]\+\)\s*=>/\1: /g<cr>
 nnoremap Z :w<cr>
 nnoremap ZZ :wq<cr>
 
+
+
 "" Search
 
+Bundle "vim-scripts/AutoTag"
 Bundle 'Shougo/unite.vim'
 Bundle 'Shougo/vimproc.vim'
 Bundle 'tsukkee/unite-tag'
+Bundle 'Shougo/neocomplcache'
+Bundle 'rizzatti/funcoo.vim'
+Bundle 'rizzatti/dash.vim'
+
+" Search docs with Dash.app
+map <leader>d :Dash!<cr>
 
 " Highlight search terms by default
 set nohlsearch
@@ -95,28 +128,26 @@ set incsearch   " incremental searching
 set ignorecase  " searches are case insensitive...
 set smartcase   " ... unless they contain at least one capital letter
 
-" Invoke the fuzzy matcher when using Unite
+" Use the fuzzy matcher in a Unite buffer
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 
-" Use Ag to grep through files
-let g:unite_source_grep_command='git grep'
-"let g:unite_source_grep_default_opts='--nocolor --nogroup -S -C4'
-"let g:unite_source_grep_recursive_opt=''
+" Use Ag to grep through files with Unite
+let g:unite_source_grep_command='ag'
+let g:unite_source_grep_default_opts='--nocolor --nogroup -S -C4'
+let g:unite_source_grep_recursive_opt=''
 
-" Project-wide file search hotkey
+" Invoke project-wide file search with Ctrl+T
 map <c-t> :Unite file_rec<cr>i
-" Project-wide CTag/Autocompleter search hotkey
+
+" Invoke project-wide ctag/autocomplete with Ctrl+H
 map <c-h> :Unite tag/include<cr>i
-" Project-wide fulltext search hotkey
+
+" Invoke project-wide grep with Ctrl+F
 map <c-f> :Unite grep:.<cr>
 
 " Skip bullshit directories in grep
 let Grep_Skip_Dirs = 'RCS CVS SCCS .svn generated .sass-cache .git'
 set grepprg=/bin/grep\ -nH
-
-"" Autocomplete
-
-Bundle 'Shougo/neocomplcache'
 
 " Use <tab> for autocompletion in INSERT mode by checking for a space
 " on the next column. If there is one, insert a 'tab'. Otherwise, try
@@ -131,7 +162,6 @@ function! InsertTabWrapper()
 endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <s-tab> <c-n>
-
 
 " Alternate through tabs
 map <leader>m :tabn<cr>
@@ -163,16 +193,6 @@ nnoremap <leader>T :VroomRunTestFile<cr>
 " ,. switches to the test alternate
 nnoremap <leader>. :A<cr>
 
-" Search Dash.app for word under cursor
-function! SearchDash()
-  let s:browser = "/usr/bin/open"
-  let s:wordUnderCursor = expand("<cword>")
-  let s:url = "dash://".s:wordUnderCursor
-  let s:cmd ="silent ! " . s:browser . " " . s:url
-  execute s:cmd
-  redraw!
-endfunction
-map <leader>d :call SearchDash()<CR>
 
 " Disable code folding
 set foldmethod=manual
@@ -296,8 +316,6 @@ augroup vimrcEx
   " Strip whitespace in Python
   autocmd BufWritePre *.py :%s/\s\+$//e
 
-  " Auto-load vimrc after a change
-  autocmd BufWritePost *.vimrc nested source ~/.vimrc
 
   " Escape from a Unite buffer quickly by pressing ESC
   function! s:unite_settings()
@@ -306,3 +324,7 @@ augroup vimrcEx
   endfunction
   "autocmd FileType unite call s:unite_settings()
 augroup END
+
+" Get Vim working with `sudo`
+Bundle 'vim-scripts/sudo.vim'
+
