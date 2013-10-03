@@ -22,7 +22,7 @@ web: bundle exec rails server puma
 end
 
 # Set up the shell environment and CI configuration
-%w(env travis.yml gitignore).each do |name|
+%w(env travis.yml gitignore ruby-version).each do |name|
   file(".#{name}") { IO.read File.expand_path("~/etc/rails/template/#{name}") }
 end
 
