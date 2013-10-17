@@ -7,24 +7,6 @@
 ZSH=$HOME/.dots
 DOTS=$ZSH
 
-# Domain-specific PATHs.
-MDPATH=/Applications/Marked.app/Contents/Resources/
-RBPATH=/usr/local/lib/ruby/gems/1.9.1/bin:vendor/gems/bin
-JSPATH=node_modules/.bin:/usr/local/share/npm/bin
-PYPATH=/usr/local/lib/python2.7/site-packages
-GOPATH=$HOME/Code/Go
-PGPATH=/Applications/Postgres.app/Contents/MacOS/bin
-HEROKU_PATH="/usr/local/heroku/bin"
-PERLPATH=/usr/local/ActivePerl-5.16/bin
-CPATH=/usr/local/bin:/usr/local/sbin:/usr/local/git/bin:/usr/bin:$HOME/bin:bin
-#COREPATH=/usr/local/opt/coreutils/libexec/gnubin
-
-# Documentation PATHs
-MANPATH=/usr/local/opt/coreutils/libexec/gnuman:$MANPATH
-
-# Global PATH, the variable that really matters
-PATH=$MDPATH:$HEROKU_PATH:$PGPATH:$RBPATH:$JSPATH:$PYPATH:$CPATH:$PATH
-
 # Change package-installed Ruby on demand
 source /usr/local/opt/chruby/share/chruby/chruby.sh
 RUBIES=(
@@ -36,15 +18,31 @@ source /usr/local/opt/chruby/share/chruby/auto.sh
 
 # Enable running scripts after Ruby installs
 source $HOME/Code/chruby-default-gems/lib/chruby/default_gems.sh
-export DEFAULT_GEMFILE="~/.rbenv/default-gems"
+export DEFAULT_GEMFILE=$HOME/.default-gems
+
+# Domain-specific PATHs.
+MDPATH=/Applications/Marked.app/Contents/Resources/
+RBPATH=/usr/local/lib/ruby/gems/1.9.1/bin:vendor/gems/bin
+JSPATH=node_modules/.bin:/usr/local/share/npm/bin
+PYPATH=/usr/local/lib/python2.7/site-packages
+GOPATH=$HOME/Code/Go
+PGPATH=/Applications/Postgres.app/Contents/MacOS/bin
+HEROKU_PATH="/usr/local/heroku/bin"
+PERLPATH=/usr/local/ActivePerl-5.16/bin
+CPATH=/usr/local/bin:$HOME/bin
+MYSQLPATH=/usr/local/mysql/bin
+#COREPATH=/usr/local/opt/coreutils/libexec/gnubin
+
+# Documentation PATHs
+MANPATH=/usr/local/opt/coreutils/libexec/gnuman:$MANPATH
+
+# Global PATH, the variable that really matters
+PATH=$MYSQLPATH:$CPATH:$MDPATH:$HEROKU_PATH:$PGPATH:$RBPATH:$JSPATH:$PYPATH:$PATH
 
 # Cache the path laid out in this file and `reset_path` if the shell
 # gets confused.
 export DEFAULT_PATH=$PATH
 alias reset_path='export PATH=$DEFAULT_PATH'
-
-# Use WebKit Nightly
-BROWSER=/Applications/Webkit.app/Contents/MacOS/webkit
 
 # Force 256 color terminals
 TERM=screen-256color
@@ -119,3 +117,6 @@ source ~/.antigen/repos/https-COLON--SLASH--SLASH-github.com-SLASH-kennethreitz-
 
 # Execute Boxen
 [ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
+
+# So we can actually compile Ruby 1.8
+export CPPFLAGS=-I/opt/X11/include
