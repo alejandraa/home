@@ -142,3 +142,10 @@ beautify() {
   ssh $1 "apt-get install -y zsh; git clone git://github.com/tubbo/dots.git ~/.dots; cd ~/.dots; rake vim"
 }
 
+# Install default gems for this version of Ruby
+gem-defaults() {
+  while read name
+  do
+    gem install $name
+  done < $DEFAULT_GEMFILE
+}
