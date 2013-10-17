@@ -6,6 +6,8 @@ map <leader>c :tabnew ~/.vimrc<cr>
 " Auto-load Vim configuration after a change
 autocmd BufWritePost *.vimrc nested source ~/.vimrc
 
+
+
 "" Vundle
 
 " Load plug-in environment
@@ -20,6 +22,7 @@ map <leader>b :BundleInstall<cr>:q<cr>
 
 " Auto-add Ruby `end` keywords
 Bundle 'tpope/vim-endwise'
+Bundle 'Shougo/vimproc.vim'
 
 " No need to be backwards-compatible with Vi
 set nocompatible
@@ -34,7 +37,7 @@ set ruler
 set encoding=utf-8
 
 " Use the default login shell inside Vim
-set shell=$SHELL\ -l
+set shell=$SHELL
 
 " Automatically reload files when a change occurs
 set autoread
@@ -108,7 +111,6 @@ nnoremap ZZ :wq<cr>
 
 Bundle "vim-scripts/AutoTag"
 Bundle 'Shougo/unite.vim'
-Bundle 'Shougo/vimproc.vim'
 Bundle 'tsukkee/unite-tag'
 Bundle 'Shougo/neocomplcache'
 Bundle 'rizzatti/funcoo.vim'
@@ -293,7 +295,7 @@ augroup vimrcEx
     \ endif
 
   " Disable wrapping in view files
-  autocmd FileType erb,html,haml,emblem set textwidth=0
+  autocmd FileType erb,html,haml,emblem set nowrap
   autocmd FileType markdown set ai formatoptions=tcroqn2 comments=n:&gt
 
   " Alternative extensions
