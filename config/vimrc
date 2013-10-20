@@ -1,28 +1,20 @@
-"" Self-Awareness
+""
+"" tubbo's vimrc
+""
 
-" Open Vim configuration in a new tab
-map <leader>c :tabnew ~/.vimrc<cr>
-
-" Auto-load Vim configuration after a change
-autocmd BufWritePost *.vimrc nested source ~/.vimrc
-
-
-
-"" Vundle
+"" Vundle is used for dependency management
 
 " Load plug-in environment
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
 
-" ,b to install the Bundle from within Vim
-map <leader>b :BundleInstall<cr>:q<cr>
 
 "" Application
 
-" Auto-add Ruby `end` keywords
-Bundle 'tpope/vim-endwise'
-Bundle 'Shougo/vimproc.vim'
+
+" Get Vim working with `sudo`
+Bundle 'vim-scripts/sudo.vim'
 
 " No need to be backwards-compatible with Vi
 set nocompatible
@@ -105,10 +97,21 @@ map <leader>h :s/:\([a-z0-9_]\+\)\s*=>/\1: /g<cr>
 nnoremap Z :w<cr>
 nnoremap ZZ :wq<cr>
 
+"" Configuration Editing
+
+" Open Vim configuration in a new tab
+map <leader>c :tabnew ~/.vimrc<cr>
+
+" ,b to install the Bundle from within Vim
+map <leader>b :BundleInstall<cr>:q<cr>
+
+" Auto-load Vim configuration after a change
+autocmd BufWritePost *.vimrc nested source ~/.vimrc
 
 
 "" Search
 
+Bundle 'Shougo/vimproc.vim'
 Bundle "vim-scripts/AutoTag"
 Bundle 'Shougo/unite.vim'
 Bundle 'tsukkee/unite-tag'
@@ -132,6 +135,12 @@ set smartcase   " ... unless they contain at least one capital letter
 
 " Use the fuzzy matcher in a Unite buffer
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
+
+" Escape from a Unite buffer quickly by pressing ESC
+function! s:unite_settings()
+  nmap <buffer> <esc> <plug>(unite_exit)
+  imap <buffer> <esc> <plug>(unite_exit)
+endfunction
 
 " Use Ag to grep through files with Unite
 let g:unite_source_grep_command='ag'
@@ -176,7 +185,6 @@ map ; :
 
 "" Test Running
 
-
 Bundle 'skalnik/vim-vroom'
 
 " Configure Vroom to use RSpec and M as test runners.
@@ -203,10 +211,14 @@ set foldlevel=99
 " For tmux, disable background clearing
 set t_ut=
 
-"" Gist
+"" Git and GitHub
 
+" Save to Gist from Vim
 Bundle 'mattn/gist-vim'
 Bundle 'mattn/webapi-vim'
+
+" Integrate with Git
+Bundle 'tpope/vim-fugitive'
 
 " Copy Gists to clipboard after creation
 let g:gist_clip_command = 'pbcopy'
@@ -253,80 +265,75 @@ endif
 " Use Powerline for a colorful status bar
 Bundle 'Lokaltog/vim-powerline'
 
-" Alternative JavaScript language support
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'heartsentwined/vim-ember-script'
-Bundle 'heartsentwined/vim-emblem'
-Bundle 'nono/vim-handlebars'
-
-" Markdown language support
-Bundle 'tpope/vim-markdown'
-
-" JSON file support
-Bundle 'leshill/vim-json'
-
-" Rails project swiss-army knife
-Bundle 'tpope/vim-rails'
-
-" Git integration
-Bundle 'tpope/vim-fugitive'
 
 " Run code through syntax checker before save
 Bundle 'scrooloose/syntastic'
 
 " Use solarized-light as a color scheme
-
 Bundle 'altercation/vim-colors-solarized'
-
 let g:solarized_italic=0
 filetype on
 syntax on
 colorscheme solarized
 set background=light
 
-" Event bindings
-augroup vimrcEx
-  autocmd!
-
-  " When opening a file, jump to the last cursor position
-  autocmd BufReadPost *
-    \ if line("'\"") > 0 && line("'\"") <= line("$") |
-    \   exe "normal g`\"" |
-    \ endif
-
-  " Disable wrapping in view files
-  autocmd FileType erb,html,haml,emblem set nowrap
-  autocmd FileType markdown set ai formatoptions=tcroqn2 comments=n:&gt
-
-  " Alternative extensions
-  autocmd BufEnter *.mkd,*.markdown,*.md set filetype=markdown
-  autocmd BufEnter *.fdoc*,*.pv,Procfile set filetype=yaml
-  autocmd BufEnter *.rake,*file set filetype=ruby
-  autocmd BufEnter *.bowerrc set filetype=json
-  autocmd BufEnter *.hamlc set filetype=haml
-  autocmd BufEnter *.gemrc set filetype=yaml
-  autocmd BufEnter gemrc.erb set filetype=yaml
-  autocmd BufEnter .slate set filetype=javascript
-  autocmd BufEnter Cakefile set filetype=coffee
-
-  " Auto-indent with 2 spaces on most code files.
-  autocmd FileType * set ai sw=2 sts=2 et
-
-  " In Python, maintain strict 4-space indents and don't word wrap
-  autocmd FileType python set sw=4 sts=4 tw=0
-
-  " Strip whitespace in Python
-  autocmd BufWritePre *.py :%s/\s\+$//e
+" When opening a file, jump to the last cursor position
+autocmd BufReadPost *
+  \ if line("'\"") > 0 && line("'\"") <= line("$") |
+  \   exe "normal g`\"" |
+  \ endif
 
 
-  " Escape from a Unite buffer quickly by pressing ESC
-  function! s:unite_settings()
-    nmap <buffer> <esc> <plug>(unite_exit)
-    imap <buffer> <esc> <plug>(unite_exit)
-  endfunction
-  "autocmd FileType unite call s:unite_settings()
-augroup END
 
-" Get Vim working with `sudo`
-Bundle 'vim-scripts/sudo.vim'
+"" Ruby
+
+" Auto-add Ruby `end` keywords
+Bundle 'tpope/vim-endwise'
+
+" Alternative Ruby extensions
+autocmd BufEnter *.rake,*file set filetype=ruby
+
+" Alternative YAML extensions
+autocmd BufEnter *.gemrc set filetype=yaml
+autocmd BufEnter gemrc.erb set filetype=yaml
+autocmd BufEnter *.fdoc*,*.pv,Procfile set filetype=yaml
+
+" Ruby/Rails project swiss-army knives
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-rake'
+
+" Disable wrapping in Rails view files
+autocmd FileType erb,html,haml,emblem set nowrap
+autocmd FileType markdown set ai formatoptions=tcroqn2 comments=n:&gt
+
+"" Javascript
+
+Bundle 'leshill/vim-json'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'heartsentwined/vim-ember-script'
+Bundle 'heartsentwined/vim-emblem'
+Bundle 'nono/vim-handlebars'
+
+" Alternative JSON extensions
+autocmd BufEnter *.bowerrc set filetype=json
+
+" Alternative CoffeeScript extensions
+autocmd BufEnter .slate set filetype=javascript
+autocmd BufEnter Cakefile set filetype=coffee
+
+"" Python
+
+" In Python, maintain strict 4-space indents and don't word wrap
+autocmd FileType python set sw=4 sts=4 tw=0
+
+" Strip whitespace in Python
+autocmd BufWritePre *.py :%s/\s\+$//e
+
+
+"" Markdown
+
+Bundle 'tpope/vim-markdown'
+
+" Alternative extensions for Markdown
+autocmd BufEnter *.mkd,*.markdown,*.md set filetype=markdown
 
