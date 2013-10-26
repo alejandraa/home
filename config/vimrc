@@ -64,6 +64,8 @@ set wrap                          " turn word wrap on
 set textwidth=72                  " attempt to enforce 72 chars
 set linebreak                     " wait for word char to break lines
 set tabstop=2                     " a tab is two spaces
+set smartindent                   " automatic indentation
+set autoindent
 set shiftwidth=2                  " an autoindent (with <<) is two spaces
 set expandtab                     " use spaces, not tabs
 set list                          " Show invisible characters
@@ -81,8 +83,6 @@ set listchars+=precedes:<         " The character to show in the last column whe
 set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
 set wildignore+=*.swp,*~,._*
-" Ignore Ruby files
-set wildignore+=vendor/gems/**
 " Ignore Rails 2.x files
 set wildignore+=vendor/rails**,vendor/plugins**
 
@@ -90,8 +90,7 @@ set wildignore+=vendor/rails**,vendor/plugins**
 set backupdir=~/.vim/_backup//    " where to put backup files.
 set directory=~/.vim/_temp//      " where to put swap files.
 
-" Enforce Ruby 1.9 syntax on this line
-map <leader>h :s/:\([a-z0-9_]\+\)\s*=>/\1: /g<cr>
+
 
 " Easy saving of files
 nnoremap Z :w<cr>
@@ -287,6 +286,9 @@ autocmd BufReadPost *
 
 "" Ruby
 
+" Extra Ruby language support
+Bundle 'vim-ruby/vim-ruby'
+
 " Auto-add Ruby `end` keywords
 Bundle 'tpope/vim-endwise'
 
@@ -305,6 +307,13 @@ Bundle 'tpope/vim-rake'
 " Disable wrapping in Rails view files
 autocmd FileType erb,html,haml,emblem set nowrap
 autocmd FileType markdown set ai formatoptions=tcroqn2 comments=n:&gt
+
+" Ignore 3rd-party Ruby files in searches
+set wildignore+=vendor/gems/**
+
+" Enforce Ruby 1.9 syntax on the line this command was called upon
+map <leader>h :s/:\([a-z0-9_]\+\)\s*=>/\1: /g<cr>
+
 
 "" Javascript
 
@@ -337,3 +346,6 @@ Bundle 'tpope/vim-markdown'
 " Alternative extensions for Markdown
 autocmd BufEnter *.mkd,*.markdown,*.md set filetype=markdown
 
+"" AppleScript
+
+Bundle 'vim-scripts/applescript.vim'
