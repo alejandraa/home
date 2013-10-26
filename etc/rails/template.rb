@@ -2,13 +2,22 @@
 # Default Rails application template
 #
 
-templates = File.expand_path '~/etc/rails/template'
+def template_path template_name
+  File.expand_path "~/etc/rails/template/#{template_name}"
+end
+
+def template_for name
+  IO.read template_path(name)
+end
+
+def erb_template_for name
+  ERB.new template_for("#{name}.erb")
+end
 
 # Set up the template engine and test framework to use when generating
 # new resources in the course of development.
 initializer "generators.rb", <<-RUBY
 Rails.application.config.generators do |g|
-  #g.template_engine :haml
   g.test_framework :rspec, fixtures: true, fixture_location: "spec/fixtures"
 end
 RUBY
@@ -17,31 +26,33 @@ RUBY
 # become available.
 file "Procfile" do
   <<-RUBY
-web: bundle exec rails server puma
+web: bundle exec rails server
   RUBY
 end
 
 # Set up the shell environment and CI configuration
 %w(env travis.yml gitignore ruby-version).each do |name|
-  file(".#{name}") { IO.read File.expand_path("~/etc/rails/template/#{name}") }
+  file(".#{name}") { template_for(name) }
 end
 
 # Generate the README and remove the default one
-run "rm -rf README.rdoc"
+run "rm README.rdoc"
 file("README.md") { "# #{app_name.titleize}" }
 
 # Set up the database
 run "createuser -s #{app_name}"
 
 # Remove the Rails tests
-run "rm -rf test/"
+run "rm -r test/"
 
-# Remove unnecessary default files
-run "rm -rf public/index.html"
+# Override application.rb
+app_config = "config/application.rb"
+run "rm #{app_config}"
+file app_config, erb_template_for(app_config).result(binding)
 
 # Add necessary gems
-run "rm -rf Gemfile"
-file('Gemfile') { IO.read File.join(templates, 'Gemfile') }
+run "rm Gemfile"
+file('Gemfile') { template_for('Gemfile') }
 
 # Initialize the repository
 git :init
