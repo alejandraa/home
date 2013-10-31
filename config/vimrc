@@ -14,7 +14,7 @@ Bundle 'gmarik/vundle'
 
 
 " Get Vim working with `sudo`
-Bundle 'vim-scripts/sudo.vim'
+"Bundle 'vim-scripts/sudo.vim'
 
 " No need to be backwards-compatible with Vi
 set nocompatible
@@ -90,8 +90,6 @@ set wildignore+=vendor/rails**,vendor/plugins**
 set backupdir=~/.vim/_backup//    " where to put backup files.
 set directory=~/.vim/_temp//      " where to put swap files.
 
-
-
 " Easy saving of files
 nnoremap Z :w<cr>
 nnoremap ZZ :wq<cr>
@@ -110,13 +108,7 @@ autocmd BufWritePost *.vimrc nested source ~/.vimrc
 
 "" Search
 
-Bundle 'Shougo/vimproc.vim'
-Bundle "vim-scripts/AutoTag"
-Bundle 'Shougo/unite.vim'
-Bundle 'tsukkee/unite-tag'
-Bundle 'Shougo/neocomplcache'
-Bundle 'rizzatti/funcoo.vim'
-Bundle 'rizzatti/dash.vim'
+Bundle 'kien/ctrlp.vim'
 
 " Search docs with Dash.app
 map <leader>d :Dash!<cr>
@@ -132,32 +124,11 @@ set incsearch   " incremental searching
 set ignorecase  " searches are case insensitive...
 set smartcase   " ... unless they contain at least one capital letter
 
-" Use the fuzzy matcher in a Unite buffer
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-
-" Escape from a Unite buffer quickly by pressing ESC
-function! s:unite_settings()
-  nmap <buffer> <esc> <plug>(unite_exit)
-  imap <buffer> <esc> <plug>(unite_exit)
-endfunction
-
-" Use Ag to grep through files with Unite
-let g:unite_source_grep_command='ag'
-let g:unite_source_grep_default_opts='--nocolor --nogroup -S -C4'
-let g:unite_source_grep_recursive_opt=''
-
-" Invoke project-wide file search with Ctrl+T
-map <c-t> :Unite file_rec<cr>i
-
-" Invoke project-wide ctag/autocomplete with Ctrl+H
-map <c-h> :Unite tag/include<cr>i
-
-" Invoke project-wide grep with Ctrl+F
-map <c-f> :Unite grep:.<cr>
-
-" Skip bullshit directories in grep
-let Grep_Skip_Dirs = 'RCS CVS SCCS .svn generated .sass-cache .git'
-set grepprg=/bin/grep\ -nH
+let g:ctrlp_map = '<c-t>'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn|vendor)$',
+  \ 'file': '\v\.(exe|so|dll|tar.gz|zip)$',
+  \ }
 
 " Use <tab> for autocompletion in INSERT mode by checking for a space
 " on the next column. If there is one, insert a 'tab'. Otherwise, try
@@ -184,7 +155,7 @@ map ; :
 
 "" Test Running
 
-Bundle 'skalnik/vim-vroom'
+"Bundle 'skalnik/vim-vroom'
 
 " Configure Vroom to use RSpec and M as test runners.
 let g:vroom_use_binstubs = 0
@@ -287,7 +258,7 @@ autocmd BufReadPost *
 "" Ruby
 
 " Extra Ruby language support
-Bundle 'vim-ruby/vim-ruby'
+"Bundle 'vim-ruby/vim-ruby'
 
 " Auto-add Ruby `end` keywords
 Bundle 'tpope/vim-endwise'
@@ -300,9 +271,9 @@ autocmd BufEnter *.gemrc set filetype=yaml
 autocmd BufEnter gemrc.erb set filetype=yaml
 autocmd BufEnter *.fdoc*,*.pv,Procfile set filetype=yaml
 
-" Ruby/Rails project swiss-army knives
+" Ruby/Rails project swiss-army knife
 Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-rake'
+"Bundle 'tpope/vim-rake'
 
 " Disable wrapping in Rails view files
 autocmd FileType erb,html,haml,emblem set nowrap
@@ -319,16 +290,17 @@ map <leader>h :s/:\([a-z0-9_]\+\)\s*=>/\1: /g<cr>
 
 Bundle 'leshill/vim-json'
 Bundle 'kchmck/vim-coffee-script'
-Bundle 'heartsentwined/vim-ember-script'
-Bundle 'heartsentwined/vim-emblem'
 Bundle 'nono/vim-handlebars'
+Bundle 'heartsentwined/vim-emblem'
+Bundle 'heartsentwined/vim-ember-script'
 
-" Alternative JSON extensions
+" Alternative extensions for JS
 autocmd BufEnter *.bowerrc set filetype=json
-
-" Alternative CoffeeScript extensions
 autocmd BufEnter .slate set filetype=javascript
 autocmd BufEnter Cakefile set filetype=coffee
+autocmd BufEnter *.js.em set filetype=ember-script
+autocmd BufEnter *.js.coffee set filetype=coffee
+autocmd BufEnter *.emblem set filetype=emblem
 
 "" Python
 
@@ -345,7 +317,3 @@ Bundle 'tpope/vim-markdown'
 
 " Alternative extensions for Markdown
 autocmd BufEnter *.mkd,*.markdown,*.md set filetype=markdown
-
-"" AppleScript
-
-Bundle 'vim-scripts/applescript.vim'
