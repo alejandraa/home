@@ -1,8 +1,10 @@
----
-BUNDLE_PATH: vendor/gems
-BUNDLE_DISABLE_SHARED_GEMS: '0'
-BUNDLE_BIN: vendor/gems/bin
-BUNDLE_LOCAL__PROVUE_OVERLAYS: /Users/tscott/Code/provue_overlays
+--- 
+BUNDLE_LOCAL__REDIS-STORE: /Users/tscott/Code/redis-store
 BUNDLE_LOCAL__PROVUE: /Users/tscott/Code/provue-ruby
-BUNDLE_LOCAL__OSCLI: /Users/tscott/Code/oscli
+BUNDLE_DISABLE_SHARED_GEMS: "0"
 BUNDLE_LOCAL__ACTIVEADMIN: /Users/tscott/Code/active_admin
+BUNDLE_LOCAL__PROVUE_OVERLAYS: /Users/tscott/Code/provue_overlays
+BUNDLE_BIN: vendor/gems/bin
+BUNDLE_LOCAL__EMBER-RAILS: /Users/tscott/Code/ember-rails
+BUNDLE_PATH: vendor/gems
+BUNDLE_LOCAL__OSCLI: /Users/tscott/Code/oscli
