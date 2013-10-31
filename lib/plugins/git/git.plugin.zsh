@@ -27,11 +27,13 @@ alias gcoh='git checkout HEAD'
 compdef _git gcoh=git-checkout
 
 # Logging and Viewing
-alias gl='git blog'
+alias gl='tig'
 compdef _git glg=git-log
 alias gls='git log --stat --max-count=5'
 compdef _git gls=git-log
 alias glg='git log --graph --max-count=5'
+compdef _git glg=git-log
+alias gls='git blog'
 compdef _git glg=git-log
 alias lol='git lol'
 compdef _git lol=git-log
