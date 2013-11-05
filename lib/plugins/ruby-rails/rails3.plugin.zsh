@@ -79,4 +79,4 @@ alias rks="rake server" # for storing server command configuration inside Rake
 alias redis="redis-server /usr/local/etc/redis.conf"
 
 # Run a singleton test
-alias t='m'
+alias t="bundle exec ruby -Itest $1"
