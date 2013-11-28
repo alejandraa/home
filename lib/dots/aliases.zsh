@@ -18,8 +18,6 @@ alias fgt='forget'
 alias v=$PAGER
 alias e='editor'
 alias se='sudo vim' # for now..
-alias l='ls -A'
-alias lv='ls -lA'
 
 # Terminal support
 alias c='clear'
