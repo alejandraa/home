@@ -20,24 +20,8 @@ source /usr/local/opt/chruby/share/chruby/auto.sh
 source $HOME/Code/chruby-default-gems/lib/chruby/default_gems.sh
 export DEFAULT_GEMFILE=$HOME/.default-gems
 
-# Domain-specific PATHs.
-MDPATH=/Applications/Marked.app/Contents/Resources/
-RBPATH=/usr/local/lib/ruby/gems/1.9.1/bin:vendor/gems/bin
-JSPATH=node_modules/.bin:/usr/local/share/npm/bin
-PYPATH=/usr/local/lib/python2.7/site-packages
-GOPATH=$HOME/Code/Go
-PGPATH=/Applications/Postgres.app/Contents/MacOS/bin
-HEROKU_PATH="/usr/local/heroku/bin"
-PERLPATH=/usr/local/ActivePerl-5.16/bin
-CPATH=/usr/local/bin:$HOME/bin
-MYSQLPATH=/usr/local/mysql/bin
-#COREPATH=/usr/local/opt/coreutils/libexec/gnubin
-
 # Documentation PATHs
 MANPATH=/usr/local/opt/coreutils/libexec/gnuman:$MANPATH
-
-# Global PATH, the variable that really matters
-PATH=$MYSQLPATH:$CPATH:$MDPATH:$HEROKU_PATH:$PGPATH:$RBPATH:$JSPATH:$PYPATH:$PATH
 
 # Cache the path laid out in this file and `reset_path` if the shell
 # gets confused.
