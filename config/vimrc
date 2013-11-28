@@ -271,9 +271,10 @@ autocmd BufEnter *.gemrc set filetype=yaml
 autocmd BufEnter gemrc.erb set filetype=yaml
 autocmd BufEnter *.fdoc*,*.pv,Procfile set filetype=yaml
 
-" Ruby/Rails project swiss-army knife
+" Syntax highlighting for Rails & testing
 Bundle 'tpope/vim-rails'
 "Bundle 'tpope/vim-rake'
+Bundle 'tsaleh/vim-shoulda'
 
 " Disable wrapping in Rails view files
 autocmd FileType erb,html,haml,emblem set nowrap
@@ -300,6 +301,7 @@ autocmd BufEnter .slate set filetype=javascript
 autocmd BufEnter Cakefile set filetype=coffee
 autocmd BufEnter *.js.em set filetype=ember-script
 autocmd BufEnter *.js.coffee set filetype=coffee
+autocmd BufEnter *.coffee set filetype=coffee
 autocmd BufEnter *.emblem set filetype=emblem
 
 "" Python
