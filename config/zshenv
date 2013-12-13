@@ -104,3 +104,6 @@ source ~/.antigen/repos/https-COLON--SLASH--SLASH-github.com-SLASH-kennethreitz-
 
 # So we can actually compile Ruby 1.8
 export CPPFLAGS=-I/opt/X11/include
+
+# Fix ssh-agent in Tmux
+source $HOME/.dots/vendor/ssh-find-agent/ssh-find-agent.zsh
