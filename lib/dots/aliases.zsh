@@ -69,3 +69,5 @@ alias git='hub'
 rk() {
   cat $HOME/.ssh/known_hosts | sed "$1 d" > $HOME/.ssh/known_hosts
 }
+
+alias repo="ssh git@git.teve.inc 'git init --bare $1.git'"
