@@ -229,6 +229,12 @@ if exists("g:enable_mvim_shift_arrow")
   let macvim_hig_shift_movement = 1 " mvim shift-arrow-keys
 endif
 
+"" Tmux integration
+
+" Run Tmux commands within Vim
+Bundle 'benmills/vimux'
+
+
 "" Cosmetics
 
 
@@ -257,9 +263,6 @@ autocmd BufReadPost *
 
 "" Ruby
 
-" Extra Ruby language support
-"Bundle 'vim-ruby/vim-ruby'
-
 " Auto-add Ruby `end` keywords
 Bundle 'tpope/vim-endwise'
 
@@ -286,6 +289,11 @@ set wildignore+=vendor/gems/**
 " Enforce Ruby 1.9 syntax on the line this command was called upon
 map <leader>h :s/:\([a-z0-9_]\+\)\s*=>/\1: /g<cr>
 
+" Automatically run RSpec and Test::Unit examples
+Bundle 'skalnik/vim-vroom'
+
+" Run tests in a connected Tmux pane
+let g:vroom_use_vimux = 1
 
 "" Javascript
 
@@ -319,3 +327,9 @@ Bundle 'tpope/vim-markdown'
 
 " Alternative extensions for Markdown
 autocmd BufEnter *.mkd,*.markdown,*.md set filetype=markdown
+
+"" Elixir
+
+Bundle 'elixir-lang/vim-elixir'
+autocmd BufEnter *.exs set filetype=elixir
+autocmd BufEnter *.ex set filetype=elixir
