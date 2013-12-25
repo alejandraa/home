@@ -1,3 +1,4 @@
+## mutt e-mail configuration
 
 # Reading
 mailboxes = INBOX /var/mail/tscott
@@ -10,10 +11,14 @@ set pager_stop = yes        # PgDown at bottom does not move to next message
 set markers = no            # Don't add "+" on wrapped lines (hard to copy)
 set sort=threads            # Sort into threads
 
-# Load accounts
+# Load accounts from ~/.mutt/accounts
 folder-hook 'personal' 'source ~/.mutt/accounts/personal/credentials'
 folder-hook 'work' 'source ~/.mutt/accounts/work/credentials'
 source ~/.mutt/accounts/work/credentials
+
+# Add macros for quick-switching between accounts
+macro index - '<sync-mailbox><enter-command>source ~/.mutt/accounts/personal/credentials<enter><change-folder>!<enter>'
+macro index = '<sync-mailbox><enter-command>source ~/.mutt/accounts/work/credentials<enter><change-folder>!<enter>'
 
 # Composing
 set signature = "~/.signature"
