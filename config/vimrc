@@ -70,7 +70,8 @@ set shiftwidth=2                  " an autoindent (with <<) is two spaces
 set expandtab                     " use spaces, not tabs
 set list                          " Show invisible characters
 set backspace=indent,eol,start    " backspace through everything in insert mode
-" List chars
+
+" View invisible characters
 set listchars=""                  " Reset the listchars
 set listchars=tab:\ \             " a tab should display as "  ", trailing whitespace as "."
 set listchars+=trail:.            " show trailing spaces as dots
@@ -93,6 +94,9 @@ set directory=~/.vim/_temp//      " where to put swap files.
 " Easy saving of files
 nnoremap Z :w<cr>
 nnoremap ZZ :wq<cr>
+
+" Easy command editing
+nnoremap  ;  :
 
 "" Configuration Editing
 
@@ -130,6 +134,8 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v\.(exe|so|dll|tar.gz|zip)$',
   \ }
 
+"" Tab key
+
 " Use <tab> for autocompletion in INSERT mode by checking for a space
 " on the next column. If there is one, insert a 'tab'. Otherwise, try
 " to autocomplete the word prior to the current column.
@@ -143,6 +149,8 @@ function! InsertTabWrapper()
 endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <s-tab> <c-n>
+
+"" Navigation
 
 " Alternate through tabs
 map <leader>m :tabn<cr>
@@ -281,6 +289,7 @@ Bundle 'tsaleh/vim-shoulda'
 
 " Disable wrapping in Rails view files
 autocmd FileType erb,html,haml,emblem set nowrap
+autocmd FileType erb,html,haml,emblem set tw=999
 autocmd FileType markdown set ai formatoptions=tcroqn2 comments=n:&gt
 
 " Ignore 3rd-party Ruby files in searches
