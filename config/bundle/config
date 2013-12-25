@@ -4,7 +4,6 @@ BUNDLE_BIN: vendor/gems/bin
 BUNDLE_PATH: vendor/gems
 BUNDLE_LOCAL__ZEN_GARDEN: /Users/tscott/Code/zen_garden
 BUNDLE_LOCAL__ACTIVE_COPY: /Users/tscott/Code/active_copy
-BUNDLE_LOCAL__EMBER-RAILS: /Users/tscott/Code/ember-rails
-BUNDLE_LOCAL__EMBER_SCRIPT-RAILS: /Users/tscott/Code/ember-script-rails
 BUNDLE_LOCAL__EZPASS: /Users/tscott/Code/turnpike/ezpass
-BUNDLE_LOCAL__TLVRUBYTOOLS: /Users/tscott/Code/tlvrubytools
+BUNDLE_LOCAL__TLVRUBYTOOLS: /Users/tscott/Code/telvue/tlvrubytools
+BUNDLE_LOCAL__PROVUE_OVERLAYS: /Users/tscott/Code/telvue/provue_overlays
