@@ -149,3 +149,23 @@ gem-defaults() {
     gem install $name
   done < $DEFAULT_GEMFILE
 }
+
+# Download a file to the ~/Downloads folder with cURL.
+download() {
+  let url=$1
+  let file=$url
+  curl "$1" -o ~/Downloads/$file
+}
+
+# Start a new tmux session or attach to the one that's currently open.
+# We always name the session 'local', and run it with `-CC` so new
+# windows & panes are opened as iTerm tabs & panes, respectively.
+sesh() {
+  export STY="tmux-local"
+
+  if tmux has-session -t "local" 2>/dev/null ; then
+    tmux -CC attach-session -t "local"
+  else
+    tmux -CC -t "local"
+  fi
+}
