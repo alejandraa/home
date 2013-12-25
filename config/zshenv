@@ -23,6 +23,8 @@ export DEFAULT_GEMFILE=$HOME/.default-gems
 # Documentation PATHs
 MANPATH=/usr/local/opt/coreutils/libexec/gnuman:$MANPATH
 
+export PYTHONPATH=$HOME/.python/lib/python2.7/site-packages/
+
 # Cache the path laid out in this file and `reset_path` if the shell
 # gets confused.
 export DEFAULT_PATH=$PATH
