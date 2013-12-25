@@ -1,25 +1,6 @@
-##
-## Email configuration.
-##
-
-
-# IMAP Connection
-set imap_user = 'tubbo@psychedeli.ca'
-set imap_pass = ''
-set spoolfile = imaps://imap.gmail.com:993/INBOX
-set folder = imaps://imap.gmail.com:993
-set postponed=”imaps://imap.gmail.com/[Gmail]/Drafts”
-set message_cachedir=”~/.mutt/cache/bodies”
-set certificate_file=~/.mutt/certificates
-
-# SMTP Connection
-set smtp_url = "smtp://tubbo@psychedeli.ca@smtp.gmail.com:587/"
-set smtp_pass = ""
-set from = "tubbo@psychedeli.ca"
-set realname = "Tom Scott"
 
 # Reading
-mailboxes = INBOX /var/mail/necromancer
+mailboxes = INBOX /var/mail/tscott
 set mail_check=300          # Check for new mail every 5 minutes
 auto_view text/html         # View as HTML with `lynx -dump`
 alternative_order text/enriched text/plain text/html
@@ -28,6 +9,11 @@ set pager_index_lines = 6   # Show a few lines from the index above the msg
 set pager_stop = yes        # PgDown at bottom does not move to next message
 set markers = no            # Don't add "+" on wrapped lines (hard to copy)
 set sort=threads            # Sort into threads
+
+# Load accounts
+folder-hook 'personal' 'source ~/.mutt/accounts/personal/credentials'
+folder-hook 'work' 'source ~/.mutt/accounts/work/credentials'
+source ~/.mutt/accounts/work/credentials
 
 # Composing
 set signature = "~/.signature"
@@ -76,4 +62,7 @@ message-hook '!(~g|~G) ~b"BEGIN\ PGP\ (SIGNED\ )?MESSAGE"' "exec check-tradition
 # Mailing Lists
 subscribe diaspora-dev@groups.google.com
 subscribe phillyrb@groups.google.com
-subscribe development@elocal.com
+subscribe development@telvue.com
+subscribe development-and-engineering@telvue.com
+subscribe broadcast@telvue.com
+subscribe connect@telvue.com
