@@ -112,8 +112,6 @@ autocmd BufWritePost *.vimrc nested source ~/.vimrc
 
 "" Search
 
-Bundle 'kien/ctrlp.vim'
-
 " Search docs with Dash.app
 map <leader>d :Dash!<cr>
 
@@ -128,11 +126,25 @@ set incsearch   " incremental searching
 set ignorecase  " searches are case insensitive...
 set smartcase   " ... unless they contain at least one capital letter
 
-let g:ctrlp_map = '<c-t>'
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn|vendor)$',
-  \ 'file': '\v\.(exe|so|dll|tar.gz|zip)$',
-  \ }
+Bundle 'Shougo/vimproc.vim'
+Bundle 'Shougo/unite.vim'
+
+" Project-wide file goto
+nnoremap <C-t> :Unite file_rec<cr>
+
+" Project-wide file search
+let g:unite_source_grep_command = 'ag'
+let g:unite_source_grep_default_opts =
+  \ '--line-numbers --nocolor --nogroup --hidden --ignore ' .
+  \  '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
+let g:unite_source_grep_recursive_opt = ''
+nnoremap <space>/ :Unite grep<cr>
+
+" Yank history search
+nnoremap <space>y :Unite history/yank<cr>
+
+" Open buffer goto
+nnoremap <space>s :Unite -quick-match buffer<cr>
 
 "" Tab key
 
@@ -172,11 +184,11 @@ let g:vroom_map_keys = 0
 let g:vroom_spec_command = 'rspec --format=progress '
 let g:vroom_test_unit_command = 'm'
 
-" ,t runs the nearest test
-nnoremap <leader>t :VroomRunNearestTest<cr>
+" ,r runs the nearest test
+nnoremap <leader>r :VroomRunNearestTest<cr>
 
-" ,T runs the whole test file from inside Vim
-nnoremap <leader>T :VroomRunTestFile<cr>
+" ,R runs the whole test file from inside Vim
+nnoremap <leader>R :VroomRunTestFile<cr>
 
 " ,. switches to the test alternate
 nnoremap <leader>. :A<cr>
@@ -284,13 +296,16 @@ autocmd BufEnter *.fdoc*,*.pv,Procfile set filetype=yaml
 
 " Syntax highlighting for Rails & testing
 Bundle 'tpope/vim-rails'
-"Bundle 'tpope/vim-rake'
+Bundle 'Keithbsmiley/rspec.vim'
 Bundle 'tsaleh/vim-shoulda'
 
 " Disable wrapping in Rails view files
 autocmd FileType erb,html,haml,emblem set nowrap
 autocmd FileType erb,html,haml,emblem set tw=999
 autocmd FileType markdown set ai formatoptions=tcroqn2 comments=n:&gt
+
+" Use RSpec syntax for spec files and spec_helper
+autocmd BufEnter *_spec.rb,spec_*.rb set filetype=rspec
 
 " Ignore 3rd-party Ruby files in searches
 set wildignore+=vendor/gems/**
@@ -332,7 +347,7 @@ autocmd BufWritePre *.py :%s/\s\+$//e
 
 "" Markdown
 
-Bundle 'tpope/vim-markdown'
+Bundle 'plasticboy/vim-markdown'
 
 " Alternative extensions for Markdown
 autocmd BufEnter *.mkd,*.markdown,*.md set filetype=markdown
