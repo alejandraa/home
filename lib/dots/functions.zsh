@@ -153,8 +153,10 @@ gem-defaults() {
 # Download a file to the ~/Downloads folder with cURL.
 download() {
   let url=$1
-  let file=$url
-  curl "$1" -o ~/Downloads/$file
+  let cmd="require 'uri'; puts URI.parse('$url').path.split('/').last"
+  let file=`ruby -e "$cmd"`
+
+  curl "$url" -o ~/Downloads/$file
 }
 
 # Start a new tmux session or attach to the one that's currently open.
