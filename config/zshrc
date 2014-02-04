@@ -20,3 +20,6 @@ bindkey '\e[B' history-beginning-search-forward
 
 # added by travis gem
 #source /Users/tscott/.travis/travis.sh
+
+# SSH agent forwarding
+zstyle :omz:plugins:ssh-agent agent-forwarding on
