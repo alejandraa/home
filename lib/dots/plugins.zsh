@@ -19,6 +19,7 @@ antigen use oh-my-zsh
 antigen bundle osx
 antigen bundle vi-mode
 antigen bundle tmux
+antigen bundle ssh-agent
 
 # Apply loaded plugins to the environment
 antigen apply
