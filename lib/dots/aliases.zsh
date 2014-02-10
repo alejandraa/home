@@ -74,3 +74,6 @@ alias repo="ssh git@git.teve.inc 'git init --bare $1.git'"
 
 # Run a single test.
 alias rtest="rake test:units TEST=$1"
+
+# Make autoenv work
+alias sha1sum=shasum
