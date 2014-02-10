@@ -171,3 +171,16 @@ sesh() {
     tmux -CC -t "local"
   fi
 }
+
+# Replace text throughout a project.
+rep() {
+  let original=$1
+  let replacement=$2
+  let filesToChange=$3
+
+  if [[ -e $replacement ]]; then
+    ag -l "${original}" $filesToChange | xargs perl -pi -E "s/${original}/${replacement}/g"
+  else
+    ag -l "${original}" $filesToChange
+  fi
+}
