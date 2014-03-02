@@ -29,12 +29,11 @@
   swim = !git pull --rebase origin master && git checkout master
   ship = !export GIT_BRANCH=`git current-branch` && git swim && git merge $GIT_BRANCH && git push origin master && git branch -D $GIT_BRANCH
   complete = !git expose && git internal-pull-request
-  prepare = rebase --interactive origin/master
-  prep = !git prepare
   # Makes your life generally easier..
   rename-branch = !export GIT_BRANCH=`git current-branch` && git checkout master && git branch -m $GIT_BRANCH $1
   delete-branch = !export GIT_BRANCH=`git current-branch` && git checkout master && git branch -D $GIT_BRANCH
   internal-pull-request = !export GIT_BRANCH=`git current-branch` && GIT_REMOTE=`git config hub.remote` && hub pull-request -h $GIT_REMOTE:$GIT_BRANCH
+  pr = !git internal-pull-request
   standup = !git blog --author="`git config user.name`" --since=yesterday
   finish = branch -D
   update-submodules = !git pull --recursee-submodules && git submodule update --recursive
@@ -64,3 +63,5 @@
 	keepLocalIntegrationBranch = true
 [rerere]
 	enabled = 1
+[hub]
+	remote = tubbo
