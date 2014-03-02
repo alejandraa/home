@@ -7,5 +7,6 @@ BUNDLE_LOCAL__EZPASS: /Users/tscott/Code/turnpike/ezpass
 BUNDLE_DISABLE_SHARED_GEMS: '0'
 BUNDLE_LOCAL__TLVRUBYTOOLS: /Users/tscott/Code/telvue/tlvrubytools
 BUNDLE_LOCAL__ZEN_GARDEN: /Users/tscott/Code/zen_garden
-BUNDLE_LOCAL__SWCODEC: /Users/tscott/Code/provue/swcodec-ruby
+BUNDLE_LOCAL__SWCODEC: /Users/tscott/Code/provue/client
 BUNDLE_LOCAL__JMAJIK: /Users/tscott/Code/hypercaster/jmajik
+BUNDLE_LOCAL__SS: /Users/tscott/Code/hypercaster/ss_client
