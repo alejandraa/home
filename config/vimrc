@@ -126,28 +126,10 @@ set incsearch   " incremental searching
 set ignorecase  " searches are case insensitive...
 set smartcase   " ... unless they contain at least one capital letter
 
-Bundle 'Shougo/vimproc.vim'
-Bundle 'Shougo/unite.vim'
+Bundle 'kien/ctrlp.vim'
 
-" Ignore unimportant files in file search
-call unite#custom#source('file_rec', 'ignore_pattern', 'vendor/*')
-
-" Project-wide file goto
-nnoremap <C-t> :Unite -start-insert file_rec<cr>
-
-" Project-wide file search
-let g:unite_source_grep_command = 'ag'
-let g:unite_source_grep_default_opts =
-  \ '--line-numbers --nocolor --nogroup --hidden --ignore ' .
-  \  '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
-let g:unite_source_grep_recursive_opt = ''
-nnoremap <leader>f :Unite -start-insert grep<cr>
-
-" Search the yank history
-nnoremap <leader>y :Unite history/yank<cr>
-
-" Go to open buffers
-nnoremap <leader>o :Unite -quick-match buffer<cr>
+let g:ctrlp_map = '<c-t>'
+let g:ctrlp_custom_ignore = '\v(tmp|vendor\/gems|[\/]\.(git|hg|svn))$'
 
 "" Tab key
 
@@ -316,6 +298,8 @@ set wildignore+=vendor/gems/**
 " Enforce Ruby 1.9 syntax on the line this command was called upon
 map <leader>h :s/:\([a-z0-9_]\+\)\s*=>/\1: /g<cr>
 
+Bundle 'vim-scripts/change-hash-syntax'
+
 " Automatically run RSpec and Test::Unit examples
 Bundle 'skalnik/vim-vroom'
 
@@ -339,15 +323,6 @@ autocmd BufEnter *.js.coffee set filetype=coffee
 autocmd BufEnter *.coffee set filetype=coffee
 autocmd BufEnter *.emblem set filetype=emblem
 
-"" Python
-
-" In Python, maintain strict 4-space indents and don't word wrap
-autocmd FileType python set sw=4 sts=4 tw=0
-
-" Strip whitespace in Python
-autocmd BufWritePre *.py :%s/\s\+$//e
-
-
 "" Markdown
 
 Bundle 'plasticboy/vim-markdown'
@@ -360,3 +335,5 @@ autocmd BufEnter *.mkd,*.markdown,*.md set filetype=markdown
 Bundle 'elixir-lang/vim-elixir'
 autocmd BufEnter *.exs set filetype=elixir
 autocmd BufEnter *.ex set filetype=elixir
+
+map <C-r> <Plug>(unite_redraw)
