@@ -4,7 +4,7 @@ alias be="bundle exec"
 
 # Bundle installation tasks come with `ct` alias so CTags are generated
 # on the fly.
-alias bib="bundle install"
+alias bib="bundle install -j 4"
 alias bic="bib && ct"
 alias bi=bic
 
