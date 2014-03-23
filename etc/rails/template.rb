@@ -35,6 +35,9 @@ end
   file(".#{name}") { template_for(name) }
 end
 
+# Replace db/seeds.rb
+file "db/seeds.rb", 'seeds.rb'
+
 # Generate the README and remove the default one
 run "rm README.rdoc"
 file("README.md") { "# #{app_name.titleize}" }
