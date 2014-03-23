@@ -16,10 +16,6 @@ RUBIES=(
 # Enable auto-switching of Ruby on `cd`.
 source /usr/local/opt/chruby/share/chruby/auto.sh
 
-# Enable running scripts after Ruby installs
-source $HOME/Code/chruby-default-gems/lib/chruby/default_gems.sh
-export DEFAULT_GEMFILE=$HOME/.default-gems
-
 # Documentation PATHs
 MANPATH=/usr/local/opt/coreutils/libexec/gnuman:$MANPATH
 
