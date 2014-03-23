@@ -129,7 +129,7 @@ set smartcase   " ... unless they contain at least one capital letter
 Bundle 'kien/ctrlp.vim'
 
 let g:ctrlp_map = '<c-t>'
-let g:ctrlp_custom_ignore = '\v(tmp|vendor\/gems|[\/]\.(git|hg|svn))$'
+let g:ctrlp_custom_ignore = '\v(doc|tmp|vendor\/gems|[\/]\.(git|hg|svn))$'
 
 "" Tab key
 
@@ -223,8 +223,8 @@ let g:vimwiki_list = [{ 'path': '~/Documents/Wiki', 'path_html': '~/Library/Appl
 set modelines=0
 
 " Highlight RSpec code in every project with the same strategy
-autocmd BufRead *_spec.rb syn keyword rubyRspec describe context it specify it_should_behave_like before after setup subject its shared_examples_for shared_context let
-highlight def link rubyRspec Function
+"autocmd BufRead *_spec.rb syn keyword rubyRspec describe context it specify it_should_behave_like before after setup subject its shared_examples_for shared_context let
+"highlight def link rubyRspec Function
 
 
 "" MacVim
@@ -281,7 +281,7 @@ autocmd BufEnter *.fdoc*,*.pv,Procfile set filetype=yaml
 
 " Syntax highlighting for Rails & testing
 Bundle 'tpope/vim-rails'
-Bundle 'Keithbsmiley/rspec.vim'
+"Bundle 'Keithbsmiley/rspec.vim'
 Bundle 'tsaleh/vim-shoulda'
 
 " Disable wrapping in Rails view files
@@ -290,7 +290,7 @@ autocmd FileType erb,html,haml,emblem set tw=999
 autocmd FileType markdown set ai formatoptions=tcroqn2 comments=n:&gt
 
 " Use RSpec syntax for spec files and spec_helper
-autocmd BufEnter *_spec.rb,spec_*.rb set filetype=rspec
+"autocmd BufEnter *_spec.rb,spec_*.rb set filetype=rspec
 
 " Ignore 3rd-party Ruby files in searches
 set wildignore+=vendor/gems/**
@@ -337,3 +337,5 @@ autocmd BufEnter *.exs set filetype=elixir
 autocmd BufEnter *.ex set filetype=elixir
 
 map <C-r> <Plug>(unite_redraw)
+
+Bundle 'rking/ag.vim'
