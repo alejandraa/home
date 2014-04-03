@@ -129,7 +129,7 @@ set smartcase   " ... unless they contain at least one capital letter
 Bundle 'kien/ctrlp.vim'
 
 let g:ctrlp_map = '<c-t>'
-let g:ctrlp_custom_ignore = '\v(doc|tmp|vendor\/gems|[\/]\.(git|hg|svn))$'
+let g:ctrlp_custom_ignore = '\v(doc|tmp|vendor\/gems|[\/]\.(git|hg|svn)|tags)$'
 
 "" Tab key
 
