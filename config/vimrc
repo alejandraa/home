@@ -12,10 +12,6 @@ Bundle 'gmarik/vundle'
 
 "" Application
 
-
-" Get Vim working with `sudo`
-"Bundle 'vim-scripts/sudo.vim'
-
 " No need to be backwards-compatible with Vi
 set nocompatible
 
@@ -40,8 +36,6 @@ set showcmd
 " Use the system clipboard
 set clipboard=unnamed
 
-" Make Powerline work on single-file sessions
-set laststatus=2
 
 " Set leader key to ','
 let mapleader = ","
@@ -129,7 +123,7 @@ set smartcase   " ... unless they contain at least one capital letter
 Bundle 'kien/ctrlp.vim'
 
 let g:ctrlp_map = '<c-t>'
-let g:ctrlp_custom_ignore = '\v(doc|tmp|vendor\/gems|[\/]\.(git|hg|svn)|tags)$'
+let g:ctrlp_custom_ignore = '\v(coverage|doc|tmp|vendor\/gems|[\/]\.(git|hg|svn)|tags)$'
 
 "" Tab key
 
@@ -158,25 +152,6 @@ command! W w
 command! Q q
 map ; :
 
-"" Test Running
-
-"Bundle 'skalnik/vim-vroom'
-
-" Configure Vroom to use RSpec and M as test runners.
-let g:vroom_use_binstubs = 0
-let g:vroom_use_colors = 1
-let g:vroom_map_keys = 0
-let g:vroom_spec_command = 'rspec --format=progress '
-let g:vroom_test_unit_command = 'm'
-
-" ,r runs the nearest test
-nnoremap <leader>r :VroomRunNearestTest<cr>
-
-" ,R runs the whole test file from inside Vim
-nnoremap <leader>R :VroomRunTestFile<cr>
-
-" ,. switches to the test alternate
-nnoremap <leader>. :A<cr>
 
 
 " Disable code folding
@@ -243,10 +218,6 @@ Bundle 'benmills/vimux'
 "" Cosmetics
 
 
-" Use Powerline for a colorful status bar
-Bundle 'Lokaltog/vim-powerline'
-
-
 " Run code through syntax checker before save
 Bundle 'scrooloose/syntastic'
 
@@ -300,14 +271,31 @@ map <leader>h :s/:\([a-z0-9_]\+\)\s*=>/\1: /g<cr>
 
 Bundle 'vim-scripts/change-hash-syntax'
 
-" Automatically run RSpec and Test::Unit examples
 Bundle 'skalnik/vim-vroom'
+
+" Configure Vroom to use RSpec and M as test runners.
+let g:vroom_use_binstubs = 0
+let g:vroom_use_colors = 1
+let g:vroom_map_keys = 0
+let g:vroom_spec_command = 'rspec --format=progress '
+"let g:vroom_test_unit_command = 'm'
 
 " Run tests in a connected Tmux pane
 let g:vroom_use_vimux = 1
 
+" ,r runs the nearest test
+nnoremap <leader>r :VroomRunNearestTest<cr>
+
+" ,R runs the whole test file from inside Vim
+nnoremap <leader>R :VroomRunTestFile<cr>
+
+" ,. switches to the test alternate
+nnoremap <leader>. :A<cr>
+
+
 "" Javascript
 
+Bundle 'jelera/vim-javascript-syntax'
 Bundle 'leshill/vim-json'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'nono/vim-handlebars'
@@ -332,10 +320,17 @@ autocmd BufEnter *.mkd,*.markdown,*.md set filetype=markdown
 
 "" Elixir
 
-Bundle 'elixir-lang/vim-elixir'
-autocmd BufEnter *.exs set filetype=elixir
-autocmd BufEnter *.ex set filetype=elixir
+"Bundle 'elixir-lang/vim-elixir'
+"autocmd BufEnter *.exs set filetype=elixir
+"autocmd BufEnter *.ex set filetype=elixir
 
-map <C-r> <Plug>(unite_redraw)
+"" Powerline
 
-Bundle 'rking/ag.vim'
+Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
+
+" Use powerline on single-file sessions
+set laststatus=2

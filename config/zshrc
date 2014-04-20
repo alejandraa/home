@@ -3,9 +3,12 @@
 # Basically sets up your PROMPT/RPROMPT strings with colors, so
 # everything looks pretty.
 
-local path_prompt="%{$reset_color%}%~"
-PROMPT="%m %{$fg[white]%}♬  %{$reset_color%}"
-RPROMPT="%{$fg[yellow]%}${path_prompt}"
+#local path_prompt="%{$reset_color%}%~"
+#PROMPT="%m %{$fg[white]%}♬  %{$reset_color%}"
+#RPROMPT="%{$fg[yellow]%}${path_prompt}"
+
+# Use powerline for the prompt
+source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 
 # Use 'viins' mappings for *most* inline command editing
 bindkey -v
