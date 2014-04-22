@@ -3,4 +3,4 @@ alias brake='noglob bundle exec rake' # execute the bundled rake gem
 alias srake='noglob sudo rake' # noglob must come before sudo
 alias sbrake='noglob sudo bundle exec rake' # altogether now ... 
 
-
+alias rvt='rake -vT'
