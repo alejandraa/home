@@ -219,7 +219,7 @@ Bundle 'benmills/vimux'
 
 
 " Run code through syntax checker before save
-Bundle 'scrooloose/syntastic'
+"Bundle 'scrooloose/syntastic'
 
 " Use solarized-light as a color scheme
 Bundle 'altercation/vim-colors-solarized'
@@ -240,7 +240,7 @@ autocmd BufReadPost *
 "" Ruby
 
 " Auto-add Ruby `end` keywords
-Bundle 'tpope/vim-endwise'
+"Bundle 'tpope/vim-endwise'
 
 " Alternative Ruby extensions
 autocmd BufEnter *.rake,*file set filetype=ruby
@@ -253,7 +253,7 @@ autocmd BufEnter *.fdoc*,*.pv,Procfile set filetype=yaml
 " Syntax highlighting for Rails & testing
 Bundle 'tpope/vim-rails'
 "Bundle 'Keithbsmiley/rspec.vim'
-Bundle 'tsaleh/vim-shoulda'
+"Bundle 'tsaleh/vim-shoulda'
 
 " Disable wrapping in Rails view files
 autocmd FileType erb,html,haml,emblem set nowrap
@@ -269,8 +269,7 @@ set wildignore+=vendor/gems/**
 " Enforce Ruby 1.9 syntax on the line this command was called upon
 map <leader>h :s/:\([a-z0-9_]\+\)\s*=>/\1: /g<cr>
 
-Bundle 'vim-scripts/change-hash-syntax'
-
+" Run tests with Vim
 Bundle 'skalnik/vim-vroom'
 
 " Configure Vroom to use RSpec and M as test runners.
@@ -278,16 +277,16 @@ let g:vroom_use_binstubs = 0
 let g:vroom_use_colors = 1
 let g:vroom_map_keys = 0
 let g:vroom_spec_command = 'rspec --format=progress '
-"let g:vroom_test_unit_command = 'm'
+let g:vroom_test_unit_command = 'm'
 
 " Run tests in a connected Tmux pane
 let g:vroom_use_vimux = 1
 
 " ,r runs the nearest test
-nnoremap <leader>r :VroomRunNearestTest<cr>
+nnoremap <leader>t :VroomRunNearestTest<cr>
 
 " ,R runs the whole test file from inside Vim
-nnoremap <leader>R :VroomRunTestFile<cr>
+nnoremap <leader>T :VroomRunTestFile<cr>
 
 " ,. switches to the test alternate
 nnoremap <leader>. :A<cr>
@@ -295,9 +294,12 @@ nnoremap <leader>. :A<cr>
 
 "" Javascript
 
+" Better JS-family syntax highlighting
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'leshill/vim-json'
 Bundle 'kchmck/vim-coffee-script'
+
+" Ember.js syntax files
 Bundle 'nono/vim-handlebars'
 Bundle 'heartsentwined/vim-emblem'
 Bundle 'heartsentwined/vim-ember-script'
@@ -318,19 +320,9 @@ Bundle 'plasticboy/vim-markdown'
 " Alternative extensions for Markdown
 autocmd BufEnter *.mkd,*.markdown,*.md set filetype=markdown
 
-"" Elixir
-
-"Bundle 'elixir-lang/vim-elixir'
-"autocmd BufEnter *.exs set filetype=elixir
-"autocmd BufEnter *.ex set filetype=elixir
-
 "" Powerline
 
 Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
 
 " Use powerline on single-file sessions
 set laststatus=2
