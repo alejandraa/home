@@ -7,6 +7,9 @@
 #PROMPT="%m %{$fg[white]%}♬  %{$reset_color%}"
 #RPROMPT="%{$fg[yellow]%}${path_prompt}"
 
+# Use zpython
+module_path=($module_path /usr/local/lib/zpython)
+
 # Use powerline for the prompt
 source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 
