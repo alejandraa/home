@@ -312,6 +312,7 @@ autocmd BufEnter *.js.em set filetype=ember-script
 autocmd BufEnter *.js.coffee set filetype=coffee
 autocmd BufEnter *.coffee set filetype=coffee
 autocmd BufEnter *.emblem set filetype=emblem
+autocmd BufEnter *.emblem.erb set filetype=emblem
 
 "" Markdown
 
@@ -326,3 +327,9 @@ Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 
 " Use powerline on single-file sessions
 set laststatus=2
+
+"" Go
+
+Bundle 'jnwhiteh/vim-golang'
+
+autocmd BufEnter *.go set filetype=go
