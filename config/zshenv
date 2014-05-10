@@ -105,3 +105,8 @@ export CPPFLAGS=-I/opt/X11/include
 
 # Fix ssh-agent in Tmux
 source $HOME/.dots/vendor/ssh-find-agent/ssh-find-agent.zsh
+
+# Use online help
+unalias run-help
+autoload run-help
+HELPDIR=/usr/local/share/zsh/helpfiles
