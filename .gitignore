@@ -8,6 +8,7 @@ config/aws.zsh
 config/*.zsh
 config/.weechat/logs/*.weechatlog
 config/.weechat/*.log
+config/.weechat/sec.conf
 Gemfile.lock
 spec/reports
 tmp
