@@ -1,21 +1,8 @@
 #!/usr/bin/env rake
+#
+# Contains scripts for installing and maintaining the DOTS ZSH
+# framework.
 
-
-begin
-  require 'rspec/core/rake_task'
-  RSpec::Core::RakeTask.new(:test)
-rescue LoadError => e
-  # RSpec can not be run in the gem installation.
-end
+HOME = ENV['HOME']
 
 Dir["lib/tasks/*.rake"].each { |rake_file| load rake_file }
-
-desc "Update DOTS, Antigen, and all installed plugins."
-task :update do
-  sh "cd ~/.dots && git pull origin master"
-  sh "cd ~/.dots && git submodule sync"
-  sh "antigen-update"
-end
-
-desc "Preload some config files to bootstrap the framework"
-task :default => ['install:configuration', 'install:submodules']
