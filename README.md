@@ -35,15 +35,23 @@ Features
 Installation
 ------------
 
-Before installing, make sure you have Git on your system!
+Installation is quick and easy. This is how you do it:
+
+### Requirements
+
+- Ruby v1.9+ (the one installed to system will be used)
+- Bundler
+- Git
+
+### Procedure
 
 Fork this project, then clone your fork of the repo like so:
 
 ```bash
-$ git clone git@github.com:tubbo/dots.git ~/.dots
+$ git clone git@github.com:$GITHUB_USERNAME/dots.git $HOME/.dots
 ```
 
-You'll then need to 
+Make sure you have `bundler` installed, and 
 
 
 Usage
