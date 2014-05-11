@@ -1,5 +1,0 @@
-#!/usr/bin/env ruby
-#
-# Install DOTS for the first time
-
-system 'cd ~/.dots && rake install'

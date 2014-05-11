@@ -1,9 +1,0 @@
-#!/bin/zsh
-#
-# A little shell script for maintaining your DOTS infrastructure.
-
-cd ~/.dots
-git pull --rebase origin master
-source $HOME/zshenv
-source $HOME/zshrc
-ctags -R .

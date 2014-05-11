@@ -1,28 +1,15 @@
-#!/usr/bin/env ruby
+#!/bin/zsh
 #
-#    dots - A shell framework for ZSH
-#
-# == Usage
-#
-# Master control for the dots framework shell commands.
+# Master control for the dots framework shell commands. These can either
+# be installed to 
 
-command = ARGV.first
+PATH=$HOME/.dots/bin:$PATH
+cd $HOME/.dots
 
-if command.nil?
-  `dots-help`
-  welcome = %(
-  DOTS | http://tubbo.github.com/dots
-  -----------------------------------
-  )
+export DOTS_COMMAND=$1
 
-  help = %(
-  Usage:
-
-    dots update - Update the ~/.dots directory and Antigen
-  )
-
-  puts "#{welcome}\n#{help}"
+if [[ $COMMAND == ('help' || '') ]]; then
+  rake -vT
 else
-  arguments = ARGV.reject { |arg| arg =~ /#{command}|dots/o }.join ' '
-  `dots-#{command} #{arguments}`
-end
+  rake $1
+fi
