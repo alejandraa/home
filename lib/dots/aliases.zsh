@@ -55,13 +55,13 @@ alias revert='patch -R -p1'
 alias cfg='source .env'
 
 # IRC
-alias irc="set_title irc; irssi"
+alias irc=weechat
 
 # Use tmux with iTerm2 integration
 alias tm='tmux -CC'
 
 # Generate CTags for all dependencies and code in the $PWD
-alias ct='ctags -R .'
+alias ct='ctags -R . 2> /dev/null &'
 
 # Use `hub` as a wrapper over Git
 alias git='hub'
