@@ -2,6 +2,10 @@
 BUNDLE_BIN: vendor/gems/bin
 BUNDLE_PATH: vendor/gems
 BUNDLE_DISABLE_SHARED_GEMS: '0'
-BUNDLE_LOCAL__ACTIVE_COPY: "/Users/tscott/Code/active_copy"
-BUNDLE_LOCAL__BOWERY: "/Users/tscott/Code/bowery"
-BUNDLE_LOCAL__EMBER-AUTH-RAILS: "/Users/tscott/Code/ember-auth-rails"
+BUNDLE_LOCAL__ACTIVE_COPY: /Users/tscott/Code/active_copy
+BUNDLE_LOCAL__BOWERY: /Users/tscott/Code/bowery
+BUNDLE_LOCAL__EMBER-AUTH-RAILS: /Users/tscott/Code/ember-auth-rails
+BUNDLE_LOCAL__HIBACHI: /Users/tscott/Code/hibachi
+BUNDLE_LOCAL__PROVUE: /Users/tscott/Code/telvue/provue-ruby
+BUNDLE_LOCAL__HARE: /Users/tscott/Code/hare
+BUNDLE_LOCAL__ICEBURN: /Users/tscott/Code/iceburn
