@@ -244,6 +244,7 @@ autocmd BufReadPost *
 
 " Alternative Ruby extensions
 autocmd BufEnter *.rake,*file set filetype=ruby
+autocmd BufEnter Makefile set filetype=make
 
 " Alternative YAML extensions
 autocmd BufEnter *.gemrc set filetype=yaml
