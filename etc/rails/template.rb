@@ -14,6 +14,12 @@ def erb_template_for name
   ERB.new template_for("#{name}.erb")
 end
 
+def latest_ruby_version
+  Dir["#{ENV['HOME']}/.rubies/*"].map { |rbdir|
+    File.basename rbdir.gsub(/(rubinius|ruby)-/, '')
+  }.last
+end
+
 # Set up the template engine and test framework to use when generating
 # new resources in the course of development.
 initializer "generators.rb", <<-RUBY
@@ -55,7 +61,7 @@ file app_config, erb_template_for(app_config).result(binding)
 
 # Add necessary gems
 run "rm Gemfile"
-file('Gemfile') { template_for('Gemfile') }
+file('Gemfile') { erb_template_for('Gemfile').result(binding) }
 
 # Initialize the repository
 git :init
