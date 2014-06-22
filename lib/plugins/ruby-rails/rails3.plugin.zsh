@@ -65,7 +65,7 @@ alias rg='_rails_command generate'
 # Rake tasks
 alias rdm='rake db:migrate'
 alias rdr='rake db:rollback'
-alias rdbm='rake db:migrate db:test:prepare'
+alias rdbm=rdm
 alias rt='rake test'
 alias rtu='rake test:units'
 alias rtf='rake test:functionals'
