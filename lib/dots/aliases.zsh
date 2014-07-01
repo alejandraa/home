@@ -77,3 +77,5 @@ alias rtest="rake test:units TEST=$1"
 
 # Make autoenv work
 alias sha1sum=shasum
+
+alias rv='/Applications/RemoteViewer.app/Contents/MacOS/RemoteViewer'
