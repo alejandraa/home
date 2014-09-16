@@ -42,7 +42,7 @@ end
 end
 
 # Replace db/seeds.rb
-file "db/seeds.rb", 'seeds.rb'
+file("db/seeds.rb") { template_for 'seeds.rb' }
 
 # Generate the README and remove the default one
 run "rm README.rdoc"
