@@ -17,6 +17,8 @@ Rails.application.config.active_record.seed_tables.each do |table|
 end
 
 =begin
+# In case you need to create objects manually, do it after fixtures are
+# loaded in.
 User.create \
   email: 'admin@example.com',
   password: 'admin123',
