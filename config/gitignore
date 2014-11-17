@@ -24,6 +24,7 @@ Session.vim
 # Local Bundler settings
 .bundle
 /vendor/gems
+/vendor/bundle
 
 # Environment configuration
 .env
