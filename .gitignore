@@ -16,3 +16,4 @@ tags
 vendor/ievms
 vendor/gems
 config/.weechat/sec.conf
+cache
