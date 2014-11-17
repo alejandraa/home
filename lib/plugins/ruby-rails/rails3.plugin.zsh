@@ -83,3 +83,8 @@ alias redis="redis-server /usr/local/etc/redis.conf"
 t() {
   bundle exec ruby -Itest $@
 }
+
+# Run a single test with Rake.
+alias tr="rake test:units TEST=$1"
+
+alias fs='foreman start'
