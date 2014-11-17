@@ -1,3 +1,13 @@
+# Create a new repo on git.teve.inc
+createrepo() { ssh git@git.teve.inc "git init --bare $1.git" }
+
+# Use `hub` as a wrapper over Git
+alias git='hub'
+
+# Sane defaults for the `patch` command, reverts a given diff.
+alias revert='patch -R -p1'
+
+
 # Aliases
 alias g='git'
 compdef g=git
