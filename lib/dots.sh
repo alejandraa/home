@@ -11,7 +11,6 @@ compinit -i
 # Load DOTS source code
 source "$ZSH/lib/dots/functions.zsh"
 source "$ZSH/lib/dots/aliases.zsh"
-source "$ZSH/lib/dots/directories.zsh"
 source "$ZSH/lib/dots/plugins.zsh"
 
 # Add DOTS binaries to the $PATH
