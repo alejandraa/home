@@ -1,1 +1,1 @@
-PATH=$PWD/bin:$PATH
+PATH=$PWD/bin:$PWD/vendor/bundle/bin:$PATH
