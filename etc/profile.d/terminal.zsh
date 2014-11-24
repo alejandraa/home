@@ -16,4 +16,10 @@ export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;32'
 
 # Fix ssh-agent in Tmux
-source /usr/local/lib/homer/ssh-find-agent.sh
+#source /usr/local/lib/homer/ssh-find-agent.sh
+
+# Set the title of the iTerm window.
+function title() {
+  print -Pn "\033];$1\007";
+}
+alias t=title
