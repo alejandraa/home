@@ -1,2 +1,67 @@
+[user]
+	name = Tom Scott
+	email = tscott@telvue.com
+[repo]
+	user = tubbo
+[github]
+	user = tubbo
+[alias]
+	ci = commit
+	st = status
+	on = branch
+	br = branch
+  co = checkout
+  staged = diff --cached
+  unstaged = diff
+  current-branch = !git symbolic-ref -q HEAD | sed -e 's|^refs/heads/||'
+  track = checkout -t
+  restore = stash pop
+  # git_ship: Rewrite of 'git-process' in git. Basically the same thing without the _parking_ branch (it's the same as master)
+  blog = log --graph --pretty=format':%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset' --abbrev-commit --decorate
+  unstage = reset HEAD
+  restore = stash pop
+  update-master-and-return-to-branch = !export GIT_BRANCH=`git current-branch` && git fetch origin && git checkout master && git rebase origin/master && git checkout $GIT_BRANCH && unset GIT_BRANCH
+  sync = !git update-master-and-return-to-branch && git rebase master
+  sync-pr = !git update-master-and-return-to-branch && git merge master
+  feature = !git checkout master && git pull --rebase origin master && git checkout -b $2
+  new-fb = !git feature
+  expose = !git sync && git push origin `git current-branch`
+  swim = !git pull --rebase origin master && git checkout master
+  ship = !export GIT_BRANCH=`git current-branch` && git swim && git merge $GIT_BRANCH && git push origin master && git branch -D $GIT_BRANCH
+  complete = !git expose && git internal-pull-request
+  # Makes your life generally easier..
+  rename-branch = !export GIT_BRANCH=`git current-branch` && git checkout master && git branch -m $GIT_BRANCH $1
+  delete-branch = !export GIT_BRANCH=`git current-branch` && git checkout master && git branch -D $GIT_BRANCH
+  internal-pull-request = !export GIT_BRANCH=`git current-branch` && GIT_REMOTE=`git config hub.remote` && hub pull-request -h $GIT_REMOTE:$GIT_BRANCH
+  pr = !git internal-pull-request
+  standup = !git blog --author="`git config user.name`" --since=yesterday
+  finish = branch -D
+  update-submodules = !git pull --recursee-submodules && git submodule update --recursive
+  exclude = !echo $1 >> .git/info/exclude
+[apply]
+  whitespace = warn
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+  ui = true
+[help]
+  autocorrect = 1
+[status]
+  submodule = 1
+[push]
+  # Only push branches that have been set up to track a remote branch.
+  default = current
 [core]
+	editor = vim
+  pager = less -r
 	excludesfile = /Users/tscott/.gitignore.global
+[merge]
+  tool = vimdiff
+
+[gitProcess]
+	keepLocalIntegrationBranch = true
+[rerere]
+	enabled = 1
+[hub]
+	remote = tubbo
