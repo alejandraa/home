@@ -1,6 +1,0 @@
-[submodule "vendor/antigen"]
-	path = vendor/antigen
-	url = git://github.com/zsh-users/antigen.git
-[submodule "vendor/osx_for_hackers"]
-	path = vendor/osx_for_hackers
-	url = https://gist.github.com/2260182.git
