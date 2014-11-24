@@ -16,4 +16,4 @@ export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;32'
 
 # Fix ssh-agent in Tmux
-source $HOME/.dots/vendor/ssh-find-agent/ssh-find-agent.zsh
+source /usr/local/lib/homer/ssh-find-agent.sh
