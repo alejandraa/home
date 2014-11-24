@@ -1,5 +1,3 @@
-# Load the plugin architecture
-source "$ZSH/vendor/antigen/antigen.zsh"
 
 # Local plugins and OMZ overrides
 antigen bundle tubbo/dots lib/plugins/bundler
