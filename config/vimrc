@@ -2,13 +2,37 @@
 "" tubbo's vimrc
 ""
 
+
 "" Vundle is used for dependency management
+set nocompatible              " be iMproved, required
+filetype off                  " required
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-" Load plug-in environment
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'kien/ctrlp.vim'
+Plugin 'mattn/gist-vim'
+Plugin 'mattn/webapi-vim'
+Plugin 'bling/vim-airline'
+Plugin 'vim-scripts/vimwiki'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'scrooloose/syntastic'
+Plugin 'skalnik/vim-vroom'
 
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'leshill/vim-json'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'nono/vim-handlebars'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'jnwhiteh/vim-golang'
+Plugin 'toyamarinyon/vim-swift'
+
+call vundle#end()     " required
+"filetype indent on    " required
+
+let ruby_no_expensive=1
+set re=1
 
 "" Application
 
@@ -36,7 +60,6 @@ set showcmd
 " Use the system clipboard
 set clipboard=unnamed
 
-
 " Set leader key to ','
 let mapleader = ","
 
@@ -51,7 +74,7 @@ set undofile
 
 " Disable sounds and visual bells
 set noerrorbells visualbell t_vb=
-autocmd GUIEnter * set visualbell t_vb=
+"autocmd GUIEnter * set visualbell t_vb=
 
 " Whitespace settings
 set wrap                          " turn word wrap on
@@ -98,10 +121,10 @@ nnoremap  ;  :
 map <leader>c :tabnew ~/.vimrc<cr>
 
 " ,b to install the Bundle from within Vim
-map <leader>b :BundleInstall<cr>:q<cr>
+map <leader>b :PluginInstall<cr>:q<cr>
 
 " Auto-load Vim configuration after a change
-autocmd BufWritePost *.vimrc nested source ~/.vimrc
+"autocmd BufWritePost *.vimrc nested source ~/.vimrc
 
 
 "" Search
@@ -119,8 +142,6 @@ set hlsearch!   " highlight matches
 set incsearch   " incremental searching
 set ignorecase  " searches are case insensitive...
 set smartcase   " ... unless they contain at least one capital letter
-
-Bundle 'kien/ctrlp.vim'
 
 let g:ctrlp_map = '<c-t>'
 let g:ctrlp_custom_ignore = '\v(coverage|doc|tmp|node_modules|vendor\/bundle|vendor\/gems|[\/]\.(git|hg|svn)|tags)$'
@@ -152,8 +173,6 @@ command! W w
 command! Q q
 map ; :
 
-
-
 " Disable code folding
 set foldmethod=manual
 set foldlevel=99
@@ -163,29 +182,25 @@ set t_ut=
 
 "" Git and GitHub
 
-" Save to Gist from Vim
-Bundle 'mattn/gist-vim'
-Bundle 'mattn/webapi-vim'
-
-" Integrate with Git
-Bundle 'tpope/vim-fugitive'
-
 " Copy Gists to clipboard after creation
 let g:gist_clip_command = 'pbcopy'
+
 " Detect filetype by file extension (just like on gist.github.com)
 let g:gist_detect_filetype = 1
+
 " Post all Gists as private unless otherwise noted
 let g:gist_post_private = 1
+
 " Enable multi-file Gists
 let g:gist_get_multiplefile = 1
+
 " Use ,g to create a single-file Gist
-"map <leader>g :Gist<cr>
+map <leader>g :Gist<cr>
+
 " Use ,G to create a multi-file Gist of all buffers
-"map <leader>G :Gist -m<cr>
+map <leader>G :Gist -m<cr>
 
 "" Vimwiki
-
-Bundle 'vim-scripts/vimwiki'
 
 " Open Vimwiki
 map <leader>p :filetype plugin on<cr>
@@ -193,14 +208,8 @@ map <leader>/ <leader>p<leader>wt
 " Vimwiki should use files in ~/Documents/Wiki
 let g:vimwiki_list = [{ 'path': '~/Documents/Wiki', 'path_html': '~/Library/Application Support/Dash/DocSets/Wiki/Contents/Resources/Documents/' }]
 
-
 " Disable modelines for security
 set modelines=0
-
-" Highlight RSpec code in every project with the same strategy
-"autocmd BufRead *_spec.rb syn keyword rubyRspec describe context it specify it_should_behave_like before after setup subject its shared_examples_for shared_context let
-"highlight def link rubyRspec Function
-
 
 "" MacVim
 
@@ -209,22 +218,10 @@ if exists("g:enable_mvim_shift_arrow")
   let macvim_hig_shift_movement = 1 " mvim shift-arrow-keys
 endif
 
-"" Tmux integration
-
-" Run Tmux commands within Vim
-Bundle 'benmills/vimux'
-
-
 "" Cosmetics
 
-
-" Run code through syntax checker before save
-"Bundle 'scrooloose/syntastic'
-
 " Use solarized-light as a color scheme
-Bundle 'altercation/vim-colors-solarized'
 let g:solarized_italic=0
-filetype on
 syntax on
 colorscheme solarized
 set background=light
@@ -235,34 +232,22 @@ autocmd BufReadPost *
   \   exe "normal g`\"" |
   \ endif
 
-
-
 "" Ruby
 
-Bundle 'slim-template/vim-slim'
-autocmd BufEnter *.slim set filetype=slim
-
-" Auto-add Ruby `end` keywords
-"Bundle 'tpope/vim-endwise'
-
 " Alternative Ruby extensions
-autocmd BufEnter *.thor,*.rake,*file set filetype=ruby
-autocmd BufEnter Makefile set filetype=make
+"autocmd BufEnter *.thor,*.rake,*file set filetype=ruby
 
 " Alternative YAML extensions
-autocmd BufEnter *.gemrc set filetype=yaml
-autocmd BufEnter gemrc.erb set filetype=yaml
-autocmd BufEnter *.fdoc*,*.pv,Procfile set filetype=yaml
+"autocmd BufEnter *.gemrc set filetype=yaml
+"autocmd BufEnter gemrc.erb set filetype=yaml
+"autocmd BufEnter *.fdoc*,*.pv,Procfile set filetype=yaml
 
 " Syntax highlighting for Rails & testing
-Bundle 'tpope/vim-rails'
-"Bundle 'Keithbsmiley/rspec.vim'
-"Bundle 'tsaleh/vim-shoulda'
 
 " Disable wrapping in Rails view files
-autocmd FileType erb,html,haml,emblem set nowrap
-autocmd FileType erb,html,haml,emblem set tw=999
-autocmd FileType markdown set ai formatoptions=tcroqn2 comments=n:&gt
+"autocmd FileType erb,html,haml,emblem set nowrap
+"autocmd FileType erb,html,haml,emblem set tw=999
+"autocmd FileType markdown set ai formatoptions=tcroqn2 comments=n:&gt
 
 " Use RSpec syntax for spec files and spec_helper
 "autocmd BufEnter *_spec.rb,spec_*.rb set filetype=rspec
@@ -274,7 +259,6 @@ set wildignore+=vendor/gems/**
 map <leader>h :s/:\([a-z0-9_]\+\)\s*=>/\1: /g<cr>
 
 " Run tests with Vim
-Bundle 'skalnik/vim-vroom'
 
 " Configure Vroom to use RSpec and M as test runners.
 let g:vroom_use_binstubs = 0
@@ -298,50 +282,13 @@ nnoremap <leader>. :A<cr>
 
 "" Javascript
 
-" Better JS-family syntax highlighting
-Bundle 'jelera/vim-javascript-syntax'
-Bundle 'leshill/vim-json'
-Bundle 'kchmck/vim-coffee-script'
-
-" Ember.js syntax files
-Bundle 'nono/vim-handlebars'
-Bundle 'heartsentwined/vim-emblem'
-Bundle 'heartsentwined/vim-ember-script'
-
 " Alternative extensions for JS
-autocmd BufEnter *.bowerrc set filetype=json
-autocmd BufEnter .slate set filetype=javascript
-autocmd BufEnter Cakefile set filetype=coffee
-autocmd BufEnter *.js.em set filetype=ember-script
-autocmd BufEnter *.js set filetype=javascript
-autocmd BufEnter *.js.coffee set filetype=coffee
-autocmd BufEnter *.coffee set filetype=coffee
-autocmd BufEnter *.emblem set filetype=emblem
-autocmd BufEnter *.emblem.erb set filetype=emblem
-autocmd BufEnter *.hbs set filetype=handlebars
-
-"" Markdown
-
-Bundle 'plasticboy/vim-markdown'
-
-" Alternative extensions for Markdown
-autocmd BufEnter *.mkd,*.markdown,*.md set filetype=markdown
+"autocmd BufEnter *.bowerrc set filetype=json
+"autocmd BufEnter .slate set filetype=javascript
+"autocmd BufEnter Cakefile set filetype=coffee
 
 "" Powerline
 
-Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-
 " Use powerline on single-file sessions
 set laststatus=2
-
-"" Go
-
-Bundle 'jnwhiteh/vim-golang'
-
-autocmd BufEnter *.go set filetype=go
-
-"" Swift
-
-Bundle 'toyamarinyon/vim-swift'
-
-Bundle 'rorymckinley/vim-symbols-strings'
+let g:airline_theme='powerlineish'
