@@ -1,4 +1,6 @@
-config/.weechat/logs
-config/.weechat/sec.conf
-config/.weechat/*.log
-config/.weechat/script/*.gz
+/*
+!/bin/
+!/etc/
+!/README.md
+!/.gitignore.global
+!/.zshrc
