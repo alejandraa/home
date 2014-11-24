@@ -1,3 +1,0 @@
-#Triggers file version 1.0
--privmsgs -command 'exec /usr/local/bin/terminal-notifier -message "$\M" -title "$\N"' 
--publics -regexp 'tubbo' -command 'exec /usr/local/bin/terminal-notifier -message "$\M" -title "$\N ($\C)"' 
