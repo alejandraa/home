@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 # A more basic version of my promptstring for non-interactive shells.
 PROMPT="♬  "
 
