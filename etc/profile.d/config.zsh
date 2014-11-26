@@ -4,4 +4,4 @@
 
 
 # Use 'viins' mappings for *most* inline command editing
-bindkey -v
+#bindkey -v
