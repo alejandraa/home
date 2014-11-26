@@ -22,10 +22,6 @@
 				"select": "select"
 			}
 		},
-		"tmux": {
-			"colorscheme": "default",
-			"theme": "default"
-		},
 		"vim": {
 			"colorscheme": "solarizedlight",
 			"theme": "default",
@@ -38,6 +34,9 @@
 				"powerline.matchers.plugin.gundo.gundo": "plugin_gundo",
 				"powerline.matchers.plugin.gundo.gundo_preview": "plugin_gundo-preview"
 			}
+      "branch": {
+        "status_colors": false
+      }
 		}
 	}
 }

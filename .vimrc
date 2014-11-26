@@ -14,8 +14,9 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'kien/ctrlp.vim'
 Plugin 'mattn/gist-vim'
 Plugin 'mattn/webapi-vim'
-Plugin 'bling/vim-airline'
+"Plugin 'bling/vim-airline'
 Plugin 'vim-scripts/vimwiki'
+Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 "Plugin 'airblade/vim-gitgutter'
 "Plugin 'scrooloose/syntastic'
 "Plugin 'skalnik/vim-vroom'
@@ -289,6 +290,14 @@ nnoremap <leader>. :A<cr>
 
 "" Powerline
 
-" Use powerline on single-file sessions
 set laststatus=2
-let g:airline_theme='powerlineish'
+"set guifont=Monaco\ for\ Powerline:h15
+"let g:Powerline_symbols = 'fancy'
+"set encoding=utf-8
+"set t_Co=256
+"set fillchars+=stl:\ ,stlnc:\
+"set term=xterm-256color
+"set termencoding=utf-8
+
+" Alternative shell extensions
+autocmd BufEnter *.bats set filetype=zsh
