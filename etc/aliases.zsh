@@ -4,3 +4,4 @@
 # edit this file, Homer will keep it up to date for you.
 
 alias ll='ls -la'
+alias l='ls -l'
