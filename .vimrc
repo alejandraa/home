@@ -245,9 +245,9 @@ autocmd BufReadPost *
 " Syntax highlighting for Rails & testing
 
 " Disable wrapping in Rails view files
-"autocmd FileType erb,html,haml,emblem set nowrap
-"autocmd FileType erb,html,haml,emblem set tw=999
-"autocmd FileType markdown set ai formatoptions=tcroqn2 comments=n:&gt
+autocmd FileType erb,html,haml,emblem set nowrap
+autocmd FileType erb,html,haml,emblem set tw=999
+autocmd FileType markdown set ai formatoptions=tcroqn2 comments=n:&gt
 
 " Use RSpec syntax for spec files and spec_helper
 "autocmd BufEnter *_spec.rb,spec_*.rb set filetype=rspec
