@@ -1,4 +1,5 @@
-# Master configuration for all shells. Responsible for loading the
-# "profile.d" drop-dir where all real configuration is stored.
+#!/bin/zsh
+#
+# A more basic version of the shell for non-interactive sessions.
 
-source "/usr/local/lib/homer.zsh"
+#$PROMPT="♬  "
