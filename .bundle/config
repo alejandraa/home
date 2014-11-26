@@ -1,4 +1,5 @@
 ---
 BUNDLE_PATH: ./vendor/bundle
+BUNDLE_BIN: ./vendor/bundle/bin
 BUNDLE_DISABLE_SHARED_GEMS: '1'
 BUNDLE_JOBS: 4
