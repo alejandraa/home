@@ -1,0 +1,6 @@
+#!/bin/zsh
+#
+# Custom shell aliases
+
+alias ll='ls -la'
+alias hello='echo "world"'
