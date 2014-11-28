@@ -30,7 +30,9 @@ Plugin 'jnwhiteh/vim-golang'
 Plugin 'toyamarinyon/vim-swift'
 
 call vundle#end()     " required
-"filetype indent on    " required
+filetype on
+filetype plugin on
+filetype indent on
 
 let ruby_no_expensive=1
 set re=1
@@ -236,7 +238,7 @@ autocmd BufReadPost *
 "" Ruby
 
 " Alternative Ruby extensions
-"autocmd BufEnter *.thor,*.rake,*file set filetype=ruby
+autocmd BufEnter *.thor,*.rake,*file set filetype=ruby
 
 " Alternative YAML extensions
 "autocmd BufEnter *.gemrc set filetype=yaml
@@ -301,3 +303,8 @@ set laststatus=2
 
 " Alternative shell extensions
 autocmd BufEnter *.bats set filetype=zsh
+
+" When editing Makefiles, use tab characters instead of spaces
+" while indenting the file.
+autocmd BufEnter Makefile set filetype=make
+autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
