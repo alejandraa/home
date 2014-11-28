@@ -1,7 +1,7 @@
 #
 # Low-character aliases for working with Git.
 #
-
+alias git=hub
 alias s='git status'
 alias gl='git blog'
 alias ga='git add'
