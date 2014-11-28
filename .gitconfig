@@ -1,15 +1,15 @@
 [user]
-	name = Tom Scott
-	email = tscott@telvue.com
+  name = Tom Scott
+  email = tscott@telvue.com
 [repo]
-	user = tubbo
+  user = tubbo
 [github]
-	user = tubbo
+  user = tubbo
 [alias]
-	ci = commit
-	st = status
-	on = branch
-	br = branch
+  ci = commit
+  st = status
+  on = branch
+  br = branch
   co = checkout
   staged = diff --cached
   unstaged = diff
@@ -53,15 +53,14 @@
   # Only push branches that have been set up to track a remote branch.
   default = current
 [core]
-	editor = vim
+  editor = vim
   pager = less -r
-	excludesfile = /Users/tscott/.gitignore.global
+  excludesfile = /Users/tscott/.gitignore.global
 [merge]
   tool = vimdiff
-
 [gitProcess]
-	keepLocalIntegrationBranch = true
+  keepLocalIntegrationBranch = true
 [rerere]
-	enabled = 1
+  enabled = 1
 [hub]
-	remote = tubbo
+  remote = tubbo
