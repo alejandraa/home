@@ -282,24 +282,22 @@ nnoremap <leader>T :VroomRunTestFile<cr>
 " ,. switches to the test alternate
 nnoremap <leader>. :A<cr>
 
-
 "" Javascript
 
 " Alternative extensions for JS
-"autocmd BufEnter *.bowerrc set filetype=json
-"autocmd BufEnter .slate set filetype=javascript
-"autocmd BufEnter Cakefile set filetype=coffee
+autocmd BufEnter *.bowerrc set filetype=json
+autocmd BufEnter Cakefile set filetype=coffee
 
 "" Powerline
 
 set laststatus=2
-"set guifont=Monaco\ for\ Powerline:h15
-"let g:Powerline_symbols = 'fancy'
-"set encoding=utf-8
-"set t_Co=256
-"set fillchars+=stl:\ ,stlnc:\
-"set term=xterm-256color
-"set termencoding=utf-8
+set guifont=Monaco\ for\ Powerline:h14
+let g:Powerline_symbols = 'fancy'
+set encoding=utf-8
+set t_Co=256
+set fillchars+=stl:\ ,stlnc:\
+set term=xterm-256color
+set termencoding=utf-8
 
 " Alternative shell extensions
 autocmd BufEnter *.bats set filetype=zsh
