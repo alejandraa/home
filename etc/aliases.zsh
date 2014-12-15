@@ -5,3 +5,4 @@
 
 alias ll='ls -la'
 alias l='ls -l'
+alias gcf='git clean -f'
