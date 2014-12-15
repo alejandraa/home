@@ -14,9 +14,8 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'kien/ctrlp.vim'
 Plugin 'mattn/gist-vim'
 Plugin 'mattn/webapi-vim'
-"Plugin 'bling/vim-airline'
+Plugin 'bling/vim-airline'
 Plugin 'vim-scripts/vimwiki'
-Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 "Plugin 'airblade/vim-gitgutter'
 "Plugin 'scrooloose/syntastic'
 "Plugin 'skalnik/vim-vroom'
@@ -288,16 +287,28 @@ nnoremap <leader>. :A<cr>
 autocmd BufEnter *.bowerrc set filetype=json
 autocmd BufEnter Cakefile set filetype=coffee
 
-"" Powerline
-
-set laststatus=2
-set guifont=Monaco\ for\ Powerline:h14
-let g:Powerline_symbols = 'fancy'
-set encoding=utf-8
-set t_Co=256
-set fillchars+=stl:\ ,stlnc:\
+" Ensure we're running on a 256-color terminal with UTF-8 encoding
 set term=xterm-256color
 set termencoding=utf-8
+
+" Use the same font on the GUI that we use in the shell
+set guifont=Monaco\ for\ Powerline:h14
+
+
+"" Display
+
+" Airline uses Powerline symbols
+let g:airline_solarized_bg = 'dark'
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols = {
+      \'branch': '',
+      \'readonly': '',
+      \'linenr': ''}
+
+"" Shell
 
 " Alternative shell extensions
 autocmd BufEnter *.bats set filetype=zsh
