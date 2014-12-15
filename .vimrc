@@ -28,10 +28,18 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'jnwhiteh/vim-golang'
 Plugin 'toyamarinyon/vim-swift'
 
+Plugin 'hsitz/VimOrganizer'
+Plugin 'vim-scripts/utl.vim'
+Plugin 'chrisbra/NrrwRgn'
+Plugin 'itchyny/calendar.vim'
+
 call vundle#end()     " required
 filetype on
 filetype plugin on
 filetype indent on
+
+au! BufRead,BufWrite,BufWritePost,BufNewFile *.org
+au BufEnter *.org            call org#SetOrgFileType()
 
 let ruby_no_expensive=1
 set re=1
