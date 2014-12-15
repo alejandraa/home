@@ -10,3 +10,6 @@ precmd() {
 
 PROMPT="♬  "
 PROMPT2="${vcs_info_message[0]}"
+
+# added by travis gem
+[ -f /Users/tscott/.travis/travis.sh ] && source /Users/tscott/.travis/travis.sh
