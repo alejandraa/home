@@ -7,3 +7,5 @@ if [[ -o login ]]; then
 else
   PROMPT='♬  '
 fi
+
+source "$HOME/etc/profile.d/autocomplete.zsh"

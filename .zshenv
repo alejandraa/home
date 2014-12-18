@@ -1,2 +1,7 @@
 #!zsh
-source "/usr/local/lib/homer.zsh"
+#
+# Shell initialization file. Typically just loads the Homer framework.
+
+source "/usr/local/share/homer.zsh"
+
+
