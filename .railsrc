@@ -1,1 +1,1 @@
---skip-bundle --database=postgresql --template=/usr/local/lib/rails-template.rb
+--skip-bundle --database=postgresql --template=/usr/local/share/rails-template.rb
