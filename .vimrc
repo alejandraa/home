@@ -20,6 +20,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/syntastic'
 Plugin 'skalnik/vim-vroom'
 Plugin 'tpope/vim-fugitive'
+Plugin 'cyphactor/vim-open-alternate'
 
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'leshill/vim-json'
@@ -291,7 +292,7 @@ nnoremap <leader>t :VroomRunNearestTest<cr>
 nnoremap <leader>T :VroomRunTestFile<cr>
 
 " ,. switches to the test alternate
-nnoremap <leader>. :A<cr>
+nnoremap <leader>. :OpenAlternate<cr>
 
 "" Javascript
 
@@ -362,10 +363,13 @@ autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
 
 let g:syntastic_ruby_checkers = ["mri", "rubocop"]
 let g:syntastic_enable_signs = 1
-let g:syntastic_error_symbol = "✗"
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+
+let g:syntastic_error_symbol = "✗"
 let g:syntastic_warning_symbol = "⚠"
+let g:syntastic_style_error_symbol = "$"
+let g:syntastic_style_warning_symbol = "$"
 
 "" Vroom
 
