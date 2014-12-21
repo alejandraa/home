@@ -16,17 +16,17 @@ Plugin 'mattn/gist-vim'
 Plugin 'mattn/webapi-vim'
 Plugin 'bling/vim-airline'
 Plugin 'vim-scripts/vimwiki'
-"Plugin 'airblade/vim-gitgutter'
-"Plugin 'scrooloose/syntastic'
-"Plugin 'skalnik/vim-vroom'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'scrooloose/syntastic'
+Plugin 'skalnik/vim-vroom'
 
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'leshill/vim-json'
 Plugin 'kchmck/vim-coffee-script'
-Plugin 'nono/vim-handlebars'
+"Plugin 'nono/vim-handlebars'
 Plugin 'plasticboy/vim-markdown'
-Plugin 'jnwhiteh/vim-golang'
-Plugin 'toyamarinyon/vim-swift'
+"Plugin 'jnwhiteh/vim-golang'
+"Plugin 'toyamarinyon/vim-swift'
 
 Plugin 'hsitz/VimOrganizer'
 Plugin 'vim-scripts/utl.vim'
@@ -136,6 +136,8 @@ map <leader>b :PluginInstall<cr>:q<cr>
 " Auto-load Vim configuration after a change
 "autocmd BufWritePost *.vimrc nested source ~/.vimrc
 
+" Open help windows in a vertical split.
+autocmd FileType help wincmd L
 
 "" Search
 
@@ -242,6 +244,7 @@ autocmd BufReadPost *
   \   exe "normal g`\"" |
   \ endif
 
+
 "" Ruby
 
 " Alternative Ruby extensions
@@ -325,3 +328,12 @@ autocmd BufEnter *.bats set filetype=zsh
 " while indenting the file.
 autocmd BufEnter Makefile set filetype=make
 autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
+
+"" Syntastic
+
+let g:syntastic_ruby_checkers = ["mri", "rubocop"]
+let g:syntastic_enable_signs = 1
+let g:syntastic_error_symbol = "✗"
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+let g:syntastic_warning_symbol = "⚠"
