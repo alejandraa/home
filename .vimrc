@@ -19,6 +19,7 @@ Plugin 'vim-scripts/vimwiki'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/syntastic'
 Plugin 'skalnik/vim-vroom'
+Plugin 'tpope/vim-fugitive'
 
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'leshill/vim-json'
@@ -306,10 +307,38 @@ set termencoding=utf-8
 set guifont=Monaco\ for\ Powerline:h14
 
 
-"" Display
+"" Airline
 
-" Airline uses Powerline symbols
+" Enforce the 'dark' solarized background to contrast with the light
+" theme throughout the editor.
 let g:airline_solarized_bg = 'dark'
+
+" Enable the tabline extension to make tabs look more pretty
+let g:airline#extensions#tabline#enabled = 1
+
+" Integrate with Fugitive
+let g:airline#extensions#branch#enabled = 1
+
+" Integrate with Syntastic
+let g:airline#extensions#syntastic#enabled = 1
+
+" Detect when there's a paste occurring
+let g:airline_detect_paste=1
+
+" Always show the full airline even when we only have one file open
+let g:airline_inactive_collapse=1
+
+" Show a summary of changed hunk sunder source control with gitgutter
+let g:airline#extensions#hunks#enabled = 1
+
+" Use the colors for the rarely-used REPLACE mode when opening CtrlP
+" windows
+let g:airline#extensions#ctrlp#color_template = 'replace'
+
+" Show detected whitespace errors
+let g:airline#extensions#whitespace#enabled = 1
+
+" Use Powerline font symbols
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
@@ -337,3 +366,10 @@ let g:syntastic_error_symbol = "✗"
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_warning_symbol = "⚠"
+
+"" Vroom
+
+let g:vroom_use_colors = 0
+let g:vroom_clear_screen = 1
+let g:vroom_use_spring = 1
+let g:vroom_use_bundle_exec = 1
