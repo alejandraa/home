@@ -15,6 +15,7 @@ Icon
 *.un~
 Session.vim
 .netrwhist
+#*.orig
 
 # Mercurial repos
 /.hg/*
