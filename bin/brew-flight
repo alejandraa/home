@@ -20,38 +20,50 @@
 
 require 'yaml'
 
-config = YAML::load_file File.expand_path('~/.flight.yml')
-taps = `brew tap`.split "\n"
-packages = `brew list`.split "\s"
+@config = YAML::load_file File.expand_path('~/.flight.yml')
+@installed = {
+  'taps' => `brew tap`.split("\n"),
+  'packages' => `brew list`.split("\s"),
+  'casks' => `brew cask list 2> /dev/null`.split("\s"),
+}
 @error_code = 1
 
-config['taps'].each do |tap|
-  `brew tap #{tap} -q` unless taps.include? tap
-  puts "Fetching packages from '#{tap}'..."
+@config['taps'].each do |tap|
+  `brew tap #{tap} -q` unless @installed['taps'].include? tap
+  puts "Fetching formulae from '#{tap}'..."
 end
 
-puts "Fetching packages from 'homebrew/homebrew'..."
+puts "Fetching formulae from 'homebrew/homebrew'..."
 
 `brew update -q`
 
-success = config['packages'].all? do |package|
-  if packages.include?(package)
-    puts "Using #{package}"
-    true
-  else
-    puts "Installing #{package}..."
-    `brew install #{package} -q`
-    unless $?.success?
-      puts "Couldn't install #{package}!"
-      @error_code = $?.to_i
+def install(collection)
+  @config[collection].all? do |package|
+    if @installed[collection].include?(package)
+      puts "Using #{package}"
+      true
+    else
+      puts "Installing #{package}..."
+
+      if collection == 'casks'
+        `brew cask install #{package}`
+      else
+        `brew install #{package} -q`
+      end
+
+      unless $?.success?
+        puts "Couldn't install #{package}!"
+        @error_code = $?.to_i
+      end
+
+      $?.success?
     end
-    $?.success?
   end
 end
 
-code = if success
+code = if install('packages') && install('casks')
   puts 'Your flight has been installed!'
-  0
+  exit 0
 else
   puts 'There were errors installing your flight.'
   @error_code

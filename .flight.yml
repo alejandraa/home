@@ -17,3 +17,19 @@ packages:
   - mailutils
   - keychain
   - flac
+casks:
+  - google-chrome
+  - slack
+  - sequel-pro
+  - psequel
+  - virtualbox
+  - mailbox
+  - bittorrent-sync
+  - dropbox
+  - vimr
+  - the-unarchiver
+  - vlc
+  - spotify
+  - soundcleod
+  - utorrent
+  - iterm
