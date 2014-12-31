@@ -8,5 +8,4 @@ alias l='ls -l'
 <<<<<<< HEAD
 alias gcf='git clean -f'
 =======
-alias hello='echo "test"'
->>>>>>> Testing some things.
+>>>>>>> Remove test alias
