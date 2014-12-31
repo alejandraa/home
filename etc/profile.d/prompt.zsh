@@ -38,12 +38,12 @@ precmd() {
     POWERLINE_RIGHT_A="$POWERLINE_DATE_FORMAT"
   fi
 
-  POWERLINE_HIDE_HOST_NAME="true"
+  POWERLINE_HIDE_USER_NAME="true"
 
   if [ "$POWERLINE_HIDE_USER_NAME" = "" ] && [ "$POWERLINE_HIDE_HOST_NAME" = "" ]; then
-      POWERLINE_USER_NAME="%n@%M"
+      POWERLINE_USER_NAME="%n@%m"
   elif [ "$POWERLINE_HIDE_USER_NAME" != "" ] && [ "$POWERLINE_HIDE_HOST_NAME" = "" ]; then
-      POWERLINE_USER_NAME="@%M"
+      POWERLINE_USER_NAME="%m"
   elif [ "$POWERLINE_HIDE_USER_NAME" = "" ] && [ "$POWERLINE_HIDE_HOST_NAME" != "" ]; then
       POWERLINE_USER_NAME="%n"
   else
