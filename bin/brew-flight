@@ -22,18 +22,39 @@ require 'yaml'
 
 config = YAML::load_file File.expand_path('~/.flight.yml')
 taps = `brew tap`.split "\n"
-list = `brew list`.split "\s"
+packages = `brew list`.split "\s"
+@error_code = 1
 
-config['taps'].reject { |name|
-  taps.include? name
-}.each { |repo|
-  `brew tap #{repo}`
-}
+config['taps'].each do |tap|
+  `brew tap #{tap} -q` unless taps.include? tap
+  puts "Fetching packages from '#{tap}'..."
+end
 
-config['packages'].reject { |name|
-  list.include? name
-}.each { |package|
-  `brew install #{package}`
-}
+puts "Fetching packages from 'homebrew/homebrew'..."
 
-puts 'Your flight has been installed!'
+`brew update -q`
+
+success = config['packages'].all? do |package|
+  if packages.include?(package)
+    puts "Using #{package}"
+    true
+  else
+    puts "Installing #{package}..."
+    `brew install #{package} -q`
+    unless $?.success?
+      puts "Couldn't install #{package}!"
+      @error_code = $?.to_i
+    end
+    $?.success?
+  end
+end
+
+code = if success
+  puts 'Your flight has been installed!'
+  0
+else
+  puts 'There were errors installing your flight.'
+  @error_code
+end
+
+exit code
