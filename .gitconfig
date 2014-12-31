@@ -60,10 +60,9 @@
   tool = vimdiff
 [diff]
   tool = vimdiff
-[gitProcess]
-  keepLocalIntegrationBranch = true
 [rerere]
   enabled = 1
 [hub]
   remote = tubbo
-
+[difftool]
+  prompt = 0
