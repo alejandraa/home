@@ -2,6 +2,8 @@
 # Basic ZSH shell configuration
 #
 
+# Edit files with Vim
+export EDITOR='vim'
 
-# Use 'viins' mappings for *most* inline command editing
-#bindkey -v
+# View files with Less
+export PAGER='less -r'
