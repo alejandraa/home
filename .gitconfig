@@ -59,7 +59,7 @@
 [merge]
   tool = vimdiff
 [diff]
-	tool = vimdiff
+  tool = vimdiff
 [gitProcess]
   keepLocalIntegrationBranch = true
 [rerere]
