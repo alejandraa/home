@@ -16,7 +16,6 @@ Plugin 'mattn/gist-vim'
 Plugin 'mattn/webapi-vim'
 Plugin 'bling/vim-airline'
 Plugin 'vim-scripts/vimwiki'
-Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/syntastic'
 Plugin 'skalnik/vim-vroom'
 Plugin 'tpope/vim-fugitive'
@@ -25,15 +24,12 @@ Plugin 'cyphactor/vim-open-alternate'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'leshill/vim-json'
 Plugin 'kchmck/vim-coffee-script'
-"Plugin 'nono/vim-handlebars'
 Plugin 'plasticboy/vim-markdown'
+
+"" Disabled extensions: I might use these someday, but not today
+Plugin 'nono/vim-handlebars'
 "Plugin 'jnwhiteh/vim-golang'
 "Plugin 'toyamarinyon/vim-swift'
-
-Plugin 'hsitz/VimOrganizer'
-Plugin 'vim-scripts/utl.vim'
-Plugin 'chrisbra/NrrwRgn'
-Plugin 'itchyny/calendar.vim'
 
 call vundle#end()     " required
 filetype on
@@ -157,8 +153,19 @@ set incsearch   " incremental searching
 set ignorecase  " searches are case insensitive...
 set smartcase   " ... unless they contain at least one capital letter
 
+"" CtrlP searches files within the project dir
+
 let g:ctrlp_map = '<c-t>'
 let g:ctrlp_custom_ignore = '\v(coverage|doc|tmp|node_modules|vendor\/bundle|vendor\/gems|[\/]\.(git|hg|svn)|tags)$'
+let g:ctrlp_extensions = ['tag', 'mixed']
+let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_use_caching = 2
+let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
+map <c-T> :CtrlPTag<cr>
+
+map <c-x> :bd<cr>
 
 "" Tab key
 
@@ -314,8 +321,23 @@ set guifont=Monaco\ for\ Powerline:h14
 " theme throughout the editor.
 let g:airline_solarized_bg = 'dark'
 
+" Don't collapse when inactive
+let g:airline_inactive_collapse=0
+
 " Enable the tabline extension to make tabs look more pretty
 let g:airline#extensions#tabline#enabled = 1
+
+" Map tabs to ,# keys
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
 
 " Integrate with Fugitive
 let g:airline#extensions#branch#enabled = 1
@@ -377,3 +399,5 @@ let g:vroom_use_colors = 0
 let g:vroom_clear_screen = 1
 let g:vroom_use_spring = 1
 let g:vroom_use_bundle_exec = 1
+
+map <c-h> :h 
