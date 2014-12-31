@@ -6,6 +6,7 @@
 alias ll='ls -la'
 alias l='ls -l'
 <<<<<<< HEAD
-alias gcf='git clean -f'
+alias irc='weechat'
 =======
->>>>>>> Remove test alias
+alias rn='chruby-exec 2.1.5 -- rails new'
+>>>>>>> Add rails new alias

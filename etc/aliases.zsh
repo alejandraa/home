@@ -6,3 +6,4 @@
 alias ll='ls -la'
 alias l='ls -l'
 alias irc='weechat'
+alias rn='chruby-exec 2.1.5 -- rails new'
