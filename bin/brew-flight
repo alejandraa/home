@@ -1,0 +1,39 @@
+#!/usr/bin/env ruby
+#
+# Install a flight of brews from a YAML file at ~/.flight.yml that has
+# the following syntax:
+#
+#     taps:
+#       - tubbo/homebrew-tap
+#       - homebrew/homebrew-versions
+#     packages:
+#       - vim
+#       - zsh
+#       - postgresql93
+#
+# To invoke, run the following command in your console:
+#
+#     brew flight
+#
+# This will install all of the packages and taps you lay out in your
+# YAML file.
+
+require 'yaml'
+
+config = YAML::load_file File.expand_path('~/.flight.yml')
+taps = `brew tap`.split "\n"
+list = `brew list`.split "\s"
+
+config['taps'].reject { |name|
+  taps.include? name
+}.each { |repo|
+  `brew tap #{repo}`
+}
+
+config['packages'].reject { |name|
+  list.include? name
+}.each { |package|
+  `brew install #{package}`
+}
+
+puts 'Your flight has been installed!'

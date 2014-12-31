@@ -1,0 +1,22 @@
+taps:
+  - tubbo/homebrew-tap
+packages:
+  - homer
+  - antigen
+  - git
+  - git-tracker
+  - imagemagick
+  - node
+  - bats
+  - cairo
+  - coreutils
+  - mutt
+  - ssh-copy-id
+  - ruby-install
+  - chruby
+  - phantomjs
+  - postgresql
+  - redis
+  - mailutils
+  - keychain
+  - flac
