@@ -1,11 +1,5 @@
 #!/bin/zsh
 #
-# A less-fancy prompt string for basic shells.
+# Load the Homer framework whenever we enter an interactive shell.
 
-if [[ -o login ]]; then
-  # use the regular shell
-else
-  PROMPT='♬  '
-fi
-
-source "$HOME/etc/profile.d/autocomplete.zsh"
+source "/usr/local/share/homer.zsh"
