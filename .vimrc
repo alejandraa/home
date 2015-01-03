@@ -224,8 +224,7 @@ map <leader>G :Gist -m<cr>
 "" Vimwiki
 
 " Open Vimwiki
-map <leader>p :filetype plugin on<cr>
-map <leader>/ <leader>p<leader>wt
+map <leader>/ <leader>ww
 " Vimwiki should use files in ~/Documents/Wiki
 let g:vimwiki_list = [{ 'path': '~/Documents/Wiki', 'path_html': '~/Library/Application Support/Dash/DocSets/Wiki/Contents/Resources/Documents/' }]
 
