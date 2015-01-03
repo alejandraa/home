@@ -125,8 +125,8 @@ nnoremap  ;  :
 
 "" Configuration Editing
 
-" Open Vim configuration in a new tab
-map <leader>c :tabnew ~/.vimrc<cr>
+" Open Vim configuration
+map <leader>c :e ~/.vimrc<cr>
 
 " ,b to install the Bundle from within Vim
 map <leader>b :PluginInstall<cr>:q<cr>
