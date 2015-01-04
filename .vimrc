@@ -16,6 +16,7 @@ Plugin 'mattn/gist-vim'
 Plugin 'mattn/webapi-vim'
 Plugin 'bling/vim-airline'
 Plugin 'vim-scripts/vimwiki'
+Plugin 'itchyny/calendar.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'skalnik/vim-vroom'
 Plugin 'tpope/vim-fugitive'
@@ -25,11 +26,9 @@ Plugin 'jelera/vim-javascript-syntax'
 Plugin 'leshill/vim-json'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'plasticboy/vim-markdown'
-
-"" Disabled extensions: I might use these someday, but not today
 Plugin 'nono/vim-handlebars'
-"Plugin 'jnwhiteh/vim-golang'
-"Plugin 'toyamarinyon/vim-swift'
+Plugin 'jnwhiteh/vim-golang'
+Plugin 'toyamarinyon/vim-swift'
 
 call vundle#end()     " required
 filetype on
@@ -158,7 +157,7 @@ set smartcase   " ... unless they contain at least one capital letter
 let g:ctrlp_map = '<c-t>'
 let g:ctrlp_custom_ignore = '\v(coverage|doc|tmp|node_modules|vendor\/bundle|vendor\/gems|[\/]\.(git|hg|svn)|tags)$'
 let g:ctrlp_extensions = ['tag', 'mixed']
-let g:ctrlp_cmd = 'CtrlPMixed'
+"let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_use_caching = 2
 let g:ctrlp_clear_cache_on_exit = 0
@@ -225,8 +224,17 @@ map <leader>G :Gist -m<cr>
 
 " Open Vimwiki
 map <leader>/ :cd ~/Documents/Wiki<cr><leader>ww
+map <leader>wc :VimwikiAll2HTML<cr>
 " Vimwiki should use files in ~/Documents/Wiki
-let g:vimwiki_list = [{ 'path': '~/Documents/Wiki', 'path_html': '~/Library/Application Support/Dash/DocSets/Wiki/Contents/Resources/Documents/' }]
+let vimwiki_path=$HOME.'/Documents/Wiki'
+let vimwiki_html_path=$HOME.'/Code/dubya/public'
+let g:vimwiki_use_calendar = 1
+let g:vimwiki_list = [{  'path':vimwiki_path,
+                       \ 'path_html':vimwiki_html_path,
+                       \ 'template_path':vimwiki_html_path.'/assets/',
+                       \ 'template_default': 'default',
+                       \ 'template_ext': '.tpl',
+                       \ 'auto_export': 0}]
 
 " Disable modelines for security
 set modelines=0
