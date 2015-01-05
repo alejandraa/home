@@ -5,7 +5,6 @@
 # first command you run on a new machine install.
 
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-brew tap tubbo/homebrew-tap
-brew install homer
+brew install tubbo/homebrew-tap/homer caskroom/cask/brew-cask
 homer init -c git@github.com:tubbo/home.git
 brew flight install
