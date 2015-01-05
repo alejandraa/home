@@ -35,9 +35,6 @@ filetype on
 filetype plugin on
 filetype indent on
 
-au! BufRead,BufWrite,BufWritePost,BufNewFile *.org
-au BufEnter *.org            call org#SetOrgFileType()
-
 let ruby_no_expensive=1
 set re=1
 
