@@ -7,4 +7,4 @@
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew install tubbo/homebrew-tap/homer caskroom/cask/brew-cask
 homer init -c git@github.com:tubbo/home.git
-brew flight install
+brew flight
