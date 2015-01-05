@@ -17,6 +17,8 @@ packages:
   - mailutils
   - keychain
   - flac
+  - rails-template
+  - terminal-notifier
 casks:
   - google-chrome
   - slack
