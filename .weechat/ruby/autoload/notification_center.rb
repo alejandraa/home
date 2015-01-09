@@ -17,6 +17,8 @@ def weechat_init
 
   hook_notifications
 
+  show_notification 'weechat', 'has started'
+
   return Weechat::WEECHAT_RC_OK
 end
 
