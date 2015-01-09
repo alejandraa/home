@@ -261,7 +261,7 @@ autocmd BufReadPost *
 "" Ruby
 
 " Alternative Ruby extensions
-autocmd BufEnter *.thor,*.rake,*file set filetype=ruby
+autocmd BufEnter *.thor,*.rake,*file,*.ru set filetype=ruby
 
 " Alternative YAML extensions
 "autocmd BufEnter *.gemrc set filetype=yaml
