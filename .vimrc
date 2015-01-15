@@ -36,7 +36,6 @@ filetype plugin on
 filetype indent on
 
 let ruby_no_expensive=1
-set re=1
 
 "" Application
 
