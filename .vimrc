@@ -101,11 +101,15 @@ set listchars+=precedes:<         " The character to show in the last column whe
                                   " off and the line continues beyond the right of the screen
 
 " Ignore files that Vim can't edit
-set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
+set wildignore=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
 set wildignore+=*.swp,*~,._*
-" Ignore Rails 2.x files
-set wildignore+=vendor/rails**,vendor/plugins**
+" Ignore Ruby deps
+set wildignore+=vendor/rails**,vendor/plugins**,vendor/gems/**
+" Ignore Mac & Git files
+set wildignore+=.DS_Store,.gitkeep,.keep
+" Ignore JS deps
+set wildignore+=bower_components,node_modules
 
 " Backup and swap files
 set backupdir=~/.vim/_backup//    " where to put backup files.
@@ -151,7 +155,7 @@ set smartcase   " ... unless they contain at least one capital letter
 "" CtrlP searches files within the project dir
 
 let g:ctrlp_map = '<c-t>'
-let g:ctrlp_custom_ignore = '\v(coverage|doc|tmp|node_modules|vendor\/bundle|vendor\/gems|[\/]\.(git|hg|svn)|tags)$'
+let g:ctrlp_custom_ignore = '\v(coverage|doc|tmp|bower_components|node_modules|vendor\/bundle|vendor\/gems|[\/]\.(git|hg|svn)|tags)$'
 let g:ctrlp_extensions = ['tag', 'mixed']
 "let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_show_hidden = 1
@@ -278,7 +282,6 @@ autocmd FileType markdown set ai formatoptions=tcroqn2 comments=n:&gt
 "autocmd BufEnter *_spec.rb,spec_*.rb set filetype=rspec
 
 " Ignore 3rd-party Ruby files in searches
-set wildignore+=vendor/gems/**
 
 " Enforce Ruby 1.9 syntax on the line this command was called upon
 map <leader>h :s/:\([a-z0-9_]\+\)\s*=>/\1: /g<cr>
