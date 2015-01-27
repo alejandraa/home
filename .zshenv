@@ -11,7 +11,7 @@ export PROMPT='♬  '
 
 # Text editing and paging
 export EDITOR='vim'
-export PAGER='less -r'
+export PAGER='less'
 
 # Force 256 color terminals
 export TERM=screen-256color
