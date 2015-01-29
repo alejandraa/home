@@ -276,7 +276,11 @@ autocmd BufEnter *.thor,*.rake,*file,*.ru set filetype=ruby
 " Disable wrapping in Rails view files
 autocmd FileType erb,html,haml,emblem set nowrap
 autocmd FileType erb,html,haml,emblem set tw=999
+
+" Configure how Markdown is displayed
 autocmd FileType markdown set ai formatoptions=tcroqn2 comments=n:&gt
+let g:vim_markdown_folding_disabled=1
+let g:vim_markdown_frontmatter=1
 
 " Use RSpec syntax for spec files and spec_helper
 "autocmd BufEnter *_spec.rb,spec_*.rb set filetype=rspec
