@@ -1,0 +1,5 @@
+#!zsh
+#
+# Pow configuration
+
+source "$HOME/etc/profile.d/ruby.zsh"
