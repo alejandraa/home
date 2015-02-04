@@ -21,6 +21,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'skalnik/vim-vroom'
 Plugin 'tpope/vim-fugitive'
 Plugin 'cyphactor/vim-open-alternate'
+Plugin 'editorconfig/editorconfig-vim'
 
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'leshill/vim-json'
