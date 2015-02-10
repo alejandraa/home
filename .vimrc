@@ -22,6 +22,7 @@ Plugin 'skalnik/vim-vroom'
 Plugin 'tpope/vim-fugitive'
 Plugin 'cyphactor/vim-open-alternate'
 Plugin 'editorconfig/editorconfig-vim'
+Plugin 'rizzatti/dash.vim'
 
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'leshill/vim-json'
@@ -30,6 +31,7 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'nono/vim-handlebars'
 Plugin 'jnwhiteh/vim-golang'
 Plugin 'toyamarinyon/vim-swift'
+Plugin 'briancollins/vim-jst'
 
 call vundle#end()     " required
 filetype on
@@ -394,7 +396,7 @@ autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
 
 "" Syntastic
 
-let g:syntastic_ruby_checkers = ["mri", "rubocop"]
+let g:syntastic_ruby_checkers = ["mri", "rubocop", "tailor"]
 let g:syntastic_enable_signs = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
