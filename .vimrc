@@ -158,7 +158,7 @@ set smartcase   " ... unless they contain at least one capital letter
 "" CtrlP searches files within the project dir
 
 let g:ctrlp_map = '<c-t>'
-let g:ctrlp_custom_ignore = '\v(coverage|doc|tmp|bower_components|node_modules|vendor\/bundle|vendor\/gems|[\/]\.(git|hg|svn)|tags)$'
+let g:ctrlp_custom_ignore = '\v(coverage|doc|tmp|bower_components|node_modules|vendor\/bundle|vendor\/gems|[\/]\.(git|hg|svn)|tags|dist|public\/articles|public\/pages)$'
 let g:ctrlp_extensions = ['tag', 'mixed']
 "let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_show_hidden = 1
