@@ -396,7 +396,7 @@ autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
 
 "" Syntastic
 
-let g:syntastic_ruby_checkers = ["mri", "rubocop", "tailor"]
+let g:syntastic_ruby_checkers = ["mri"]
 let g:syntastic_enable_signs = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
