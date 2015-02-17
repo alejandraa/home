@@ -4,4 +4,8 @@
 !/README.md
 !/.gitignore.global
 !/.zshrc
+!/.weechat
+/.weechat/logs
+/.weechat/*.log
+/.weechat/sec.conf
 /etc/solarized
