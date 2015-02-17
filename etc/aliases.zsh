@@ -5,7 +5,7 @@
 
 alias ll='ls -la'
 alias l='ls -l'
-alias irc='weechat'
+alias irc='chruby-exec system -- weechat'
 alias rn='chruby-exec 2.1.5 -- rails new'
 alias o='open'
 alias t='title'
