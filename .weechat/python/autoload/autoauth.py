@@ -1,1 +1,0 @@
-../autoauth.py
