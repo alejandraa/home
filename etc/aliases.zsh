@@ -10,6 +10,7 @@ alias rn='chruby-exec 2.1.5 -- rails new'
 alias o='open'
 alias t='title'
 alias vb='vim +PluginInstall +qall'
+
 alias en='ember new'
 alias ena='ember addon'
 alias ea=ena
@@ -18,3 +19,5 @@ alias es='ember server'
 alias ein='ember install:npm'
 alias eib='ember install:bower'
 alias eia='ember install:addon'
+
+alias pow=powify
