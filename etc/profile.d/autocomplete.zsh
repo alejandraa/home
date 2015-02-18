@@ -2,7 +2,7 @@
 #
 # Auto-completion
 
-fpath=(/usr/local/share/zsh-completions /usr/local/etc/bash_completion.d $fpath)
+fpath=(/usr/local/share/zsh/site-functions $fpath)
 
 ## The following lines were added by compinstall
 
