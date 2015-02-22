@@ -21,3 +21,6 @@ alias eib='ember install:bower'
 alias eia='ember install:addon'
 
 alias pow=powify
+alias por='pow restart'
+alias pol='pow logs'
+alias ber='be rspec'
