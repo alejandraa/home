@@ -19,6 +19,7 @@ Plugin 'vim-scripts/vimwiki'
 Plugin 'itchyny/calendar.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'skalnik/vim-vroom'
+Plugin 'benmills/vimux'
 Plugin 'tpope/vim-fugitive'
 Plugin 'cyphactor/vim-open-alternate'
 Plugin 'editorconfig/editorconfig-vim'
@@ -347,7 +348,7 @@ let g:syntastic_style_warning_symbol = "$"
 "" Vroom
 
 let g:vroom_clear_screen = 1
-let g:vroom_use_spring = 1
+let g:vroom_use_spring = 0
 let g:vroom_use_bundle_exec = 1
 let g:vroom_use_binstubs = 0
 let g:vroom_use_colors = 1
