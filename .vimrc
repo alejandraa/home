@@ -3,10 +3,10 @@
 ""
 
 
-"" Vundle is used for dependency management
-set nocompatible              " be iMproved, required
-filetype off                  " required
-" set the runtime path to include Vundle and initialize
+"" Plugins
+
+set nocompatible
+filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
@@ -33,14 +33,17 @@ Plugin 'jnwhiteh/vim-golang'
 Plugin 'toyamarinyon/vim-swift'
 Plugin 'briancollins/vim-jst'
 
-call vundle#end()     " required
+call vundle#end()
+
+
+"" File Type Handling
+
 filetype on
 filetype plugin on
 filetype indent on
 
-let ruby_no_expensive=1
 
-"" Application
+"" Basic Settings
 
 " No need to be backwards-compatible with Vi
 set nocompatible
@@ -118,26 +121,16 @@ set wildignore+=bower_components,node_modules
 set backupdir=~/.vim/_backup//    " where to put backup files.
 set directory=~/.vim/_temp//      " where to put swap files.
 
-" Easy saving of files
+
+"" Key Bindings
+
 nnoremap Z :w<cr>
 nnoremap ZZ :wq<cr>
-
-" Easy command editing
 nnoremap  ;  :
 
-"" Configuration Editing
-
-" Open Vim configuration
 map <leader>c :e ~/.vimrc<cr>
-
-" ,b to install the Bundle from within Vim
 map <leader>b :PluginInstall<cr>:q<cr>
 
-" Auto-load Vim configuration after a change
-"autocmd BufWritePost *.vimrc nested source ~/.vimrc
-
-" Open help windows in a vertical split.
-autocmd FileType help wincmd L
 
 "" Search
 
@@ -155,17 +148,15 @@ set incsearch   " incremental searching
 set ignorecase  " searches are case insensitive...
 set smartcase   " ... unless they contain at least one capital letter
 
-"" CtrlP searches files within the project dir
-
+"" Search project files with CtrlP
 let g:ctrlp_map = '<c-t>'
 let g:ctrlp_custom_ignore = '\v(coverage|doc|tmp|bower_components|node_modules|vendor\/bundle|vendor\/gems|[\/]\.(git|hg|svn)|tags|dist|public\/articles|public\/pages)$'
 let g:ctrlp_extensions = ['tag', 'mixed']
-"let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_use_caching = 2
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
-map <c-T> :CtrlPTag<cr>
+map <leader>t :CtrlPTag<cr>
 
 map <c-x> :bd<cr>
 
@@ -175,12 +166,12 @@ map <c-x> :bd<cr>
 " on the next column. If there is one, insert a 'tab'. Otherwise, try
 " to autocomplete the word prior to the current column.
 function! InsertTabWrapper()
-  let col = col('.') - 1
-  if !col || getline('.')[col - 1] !~ '\k'
-      return "\<tab>"
-  else
-      return "\<c-p>"
-  endif
+let col = col('.') - 1
+if !col || getline('.')[col - 1] !~ '\k'
+    return "\<tab>"
+else
+    return "\<c-p>"
+endif
 endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <s-tab> <c-n>
@@ -264,84 +255,50 @@ autocmd BufReadPost *
   \ endif
 
 
-"" Ruby
+"" Markdown
 
-" Alternative Ruby extensions
-autocmd BufEnter *.thor,*.rake,*file,*.ru set filetype=ruby
-
-" Alternative YAML extensions
-"autocmd BufEnter *.gemrc set filetype=yaml
-"autocmd BufEnter gemrc.erb set filetype=yaml
-"autocmd BufEnter *.fdoc*,*.pv,Procfile set filetype=yaml
-
-" Syntax highlighting for Rails & testing
-
-" Disable wrapping in Rails view files
-autocmd FileType erb,html,haml,emblem set nowrap
-autocmd FileType erb,html,haml,emblem set tw=999
-
-" Configure how Markdown is displayed
+autocmd BufEnter *.md.html set filetype=markdown
 autocmd FileType markdown set ai formatoptions=tcroqn2 comments=n:&gt
 let g:vim_markdown_folding_disabled=1
 let g:vim_markdown_frontmatter=1
 
-" Use RSpec syntax for spec files and spec_helper
-"autocmd BufEnter *_spec.rb,spec_*.rb set filetype=rspec
+"" Ruby
 
-" Ignore 3rd-party Ruby files in searches
+autocmd BufEnter *.thor,*.rake,*file,*.ru set filetype=ruby
+autocmd BufEnter *.gemrc set filetype=yaml
+autocmd BufEnter gemrc.erb set filetype=yaml
+autocmd BufEnter *.fdoc*,*.pv,Procfile set filetype=yaml
 
-" Enforce Ruby 1.9 syntax on the line this command was called upon
-map <leader>h :s/:\([a-z0-9_]\+\)\s*=>/\1: /g<cr>
+let ruby_no_expensive=1
 
-" Run tests with Vim
-
-" Configure Vroom to use RSpec and M as test runners.
-let g:vroom_use_binstubs = 0
-let g:vroom_use_colors = 1
-let g:vroom_map_keys = 0
-let g:vroom_spec_command = 'rspec --format=progress '
-let g:vroom_test_unit_command = 'm'
-
-" Run tests in a connected Tmux pane
-let g:vroom_use_vimux = 1
-
-" ,r runs the nearest test
-nnoremap <leader>t :VroomRunNearestTest<cr>
-
-" ,R runs the whole test file from inside Vim
-nnoremap <leader>T :VroomRunTestFile<cr>
-
-" ,. switches to the test alternate
-nnoremap <leader>. :OpenAlternate<cr>
 
 "" Javascript
 
-" Alternative extensions for JS
 autocmd BufEnter *.bowerrc set filetype=json
 autocmd BufEnter Cakefile set filetype=coffee
 
-" Ensure we're running on a 256-color terminal with UTF-8 encoding
+
+"" User Interface
+
+set guifont=Monaco\ for\ Powerline:h14
 set term=xterm-256color
 set termencoding=utf-8
-
-" Use the same font on the GUI that we use in the shell
-set guifont=Monaco\ for\ Powerline:h14
-
+set shell=/bin/zsh
 
 "" Airline
 
-" Enforce the 'dark' solarized background to contrast with the light
-" theme throughout the editor.
 let g:airline_solarized_bg = 'dark'
-
-" Don't collapse when inactive
 let g:airline_inactive_collapse=0
+let g:airline_detect_paste=1
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols = {
+      \'branch': '',
+      \'readonly': '',
+      \'linenr': ''}
 
-" Enable the tabline extension to make tabs look more pretty
-let g:airline#extensions#tabline#enabled = 1
-
-" Map tabs to ,# keys
-let g:airline#extensions#tabline#buffer_idx_mode = 1
 nmap <leader>1 <Plug>AirlineSelectTab1
 nmap <leader>2 <Plug>AirlineSelectTab2
 nmap <leader>3 <Plug>AirlineSelectTab3
@@ -352,47 +309,27 @@ nmap <leader>7 <Plug>AirlineSelectTab7
 nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
 
-" Integrate with Fugitive
+let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#branch#enabled = 1
-
-" Integrate with Syntastic
 let g:airline#extensions#syntastic#enabled = 1
-
-" Detect when there's a paste occurring
-let g:airline_detect_paste=1
-
-" Always show the full airline even when we only have one file open
-let g:airline_inactive_collapse=1
-
-" Show a summary of changed hunk sunder source control with gitgutter
 let g:airline#extensions#hunks#enabled = 1
-
-" Use the colors for the rarely-used REPLACE mode when opening CtrlP
-" windows
-let g:airline#extensions#ctrlp#color_template = 'replace'
-
-" Show detected whitespace errors
 let g:airline#extensions#whitespace#enabled = 1
 
-" Use Powerline font symbols
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols = {
-      \'branch': '',
-      \'readonly': '',
-      \'linenr': ''}
+let g:airline#extensions#ctrlp#color_template = 'replace'
+let g:airline#extensions#tabline#buffer_idx_mode = 1
 
-"" Shell
+
+"" Shell Script
 
 " Alternative shell extensions
 autocmd BufEnter *.bats set filetype=zsh
 
-" When editing Makefiles, use tab characters instead of spaces
-" while indenting the file.
+
+"" Make
+
 autocmd BufEnter Makefile set filetype=make
 autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
+
 
 "" Syntastic
 
@@ -406,11 +343,25 @@ let g:syntastic_warning_symbol = "⚠"
 let g:syntastic_style_error_symbol = "$"
 let g:syntastic_style_warning_symbol = "$"
 
+
 "" Vroom
 
-let g:vroom_use_colors = 0
 let g:vroom_clear_screen = 1
 let g:vroom_use_spring = 1
 let g:vroom_use_bundle_exec = 1
+let g:vroom_use_binstubs = 0
+let g:vroom_use_colors = 1
+let g:vroom_map_keys = 0
+let g:vroom_spec_command = 'rspec --format=documentation '
+let g:vroom_use_vimux = 1
+
+nnoremap <leader>v :VroomRunNearestTest<cr>
+nnoremap <leader>V :VroomRunTestFile<cr>
+nnoremap <leader>. :OpenAlternate<cr>
+
+
+"" Help
 
 map <c-h> :h 
+autocmd FileType help wincmd L
+
