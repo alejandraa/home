@@ -1,2 +1,10 @@
 #!/bin/zsh
+#
+# Project-wide find and replace.
+
 ag -l "$1" | xargs perl -pi.bak -e "s/$1/$2/g"
+
+# In a Git repo, get rid of the backup files.
+if [ -e '.git/HEAD' ]; then
+  git clean -f
+fi
