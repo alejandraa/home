@@ -131,7 +131,7 @@ nnoremap  ;  :
 
 map <leader>c :e ~/.vimrc<cr>
 map <leader>b :PluginInstall<cr>:q<cr>
-
+map <leader>m :execute '! mkdir -p '.shellescape(expand("%:p:h"))<cr>
 
 "" Search
 
@@ -157,7 +157,7 @@ let g:ctrlp_show_hidden = 1
 let g:ctrlp_use_caching = 2
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
-map <leader>t :CtrlPTag<cr>
+map <leader>f :CtrlPTag<cr>
 
 map <c-x> :bd<cr>
 
@@ -347,17 +347,17 @@ let g:syntastic_style_warning_symbol = "$"
 
 "" Vroom
 
-let g:vroom_clear_screen = 1
+let g:vroom_clear_screen = 0
 let g:vroom_use_spring = 0
 let g:vroom_use_bundle_exec = 1
 let g:vroom_use_binstubs = 0
 let g:vroom_use_colors = 1
 let g:vroom_map_keys = 0
 let g:vroom_spec_command = 'rspec --format=documentation '
-let g:vroom_use_vimux = 1
+let g:vroom_use_vimux = 0
 
-nnoremap <leader>v :VroomRunNearestTest<cr>
-nnoremap <leader>V :VroomRunTestFile<cr>
+nnoremap <leader>t :VroomRunNearestTest<cr>
+nnoremap <leader>T :VroomRunTestFile<cr>
 nnoremap <leader>. :OpenAlternate<cr>
 
 
