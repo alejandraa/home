@@ -265,7 +265,7 @@ let g:vim_markdown_frontmatter=1
 
 "" Ruby
 
-autocmd BufEnter *.thor,*.rake,*file,*.ru set filetype=ruby
+autocmd BufEnter *.thor,*.rake,*file,*.ru,*.jbuilder set filetype=ruby
 autocmd BufEnter *.gemrc set filetype=yaml
 autocmd BufEnter gemrc.erb set filetype=yaml
 autocmd BufEnter *.fdoc*,*.pv,Procfile set filetype=yaml
@@ -366,3 +366,12 @@ nnoremap <leader>. :OpenAlternate<cr>
 map <c-h> :h 
 autocmd FileType help wincmd L
 
+"" Mouse Support
+
+set ttyfast
+set mouse=a
+set ttymouse=xterm2
+
+"" Editor Config
+
+let g:EditorConfig_core_mode = 'external_command'
