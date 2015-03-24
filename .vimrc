@@ -12,6 +12,7 @@ call vundle#begin()
 
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'kien/ctrlp.vim'
+Plugin 'JazzCore/ctrlp-cmatcher'
 Plugin 'mattn/gist-vim'
 Plugin 'mattn/webapi-vim'
 Plugin 'bling/vim-airline'
@@ -157,6 +158,8 @@ let g:ctrlp_show_hidden = 1
 let g:ctrlp_use_caching = 2
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
+let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
+let g:ctrlp_max_files = 0
 map <leader>f :CtrlPTag<cr>
 
 map <c-x> :bd<cr>
