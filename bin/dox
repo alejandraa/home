@@ -1,0 +1,46 @@
+#!/usr/bin/env ruby
+
+require 'thor'
+
+# Docset generator for Dash.app.
+class Dox < Thor
+  attr_reader :name
+
+  desc :install, 'Install documentation'
+  method_option :path
+  def install(name)
+    @name = name
+    run "mkdir -P #{docset}/Documents"
+    run "cp -a #{path} #{docset}/Documents"
+    create_file "#{docset}/Info.plist", plist
+  end
+
+  private
+
+  def path
+    options[:path] || "./#{name}"
+  end
+
+  def docset
+    "#{path}.docset/Contents/Resources"
+  end
+
+  def plist
+    %[
+      <?xml version="1.0" encoding="UTF-8"?>
+      <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+      <plist version="1.0">
+      <dict>
+        <key>CFBundleIdentifier</key>
+        <string>#{name}</string>
+        <key>CFBundleName</key>
+        <string>#{name}</string>
+        <key>DocSetPlatformFamily</key>
+        <string>#{name}</string>
+        <key>isDashDocset</key>
+        <true/>
+      </dict>
+      </plist>
+    ]
+  end
+end
