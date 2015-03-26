@@ -152,7 +152,8 @@ set smartcase   " ... unless they contain at least one capital letter
 
 "" Search project files with CtrlP
 let g:ctrlp_map = '<c-t>'
-let g:ctrlp_custom_ignore = '\v(coverage|doc|tmp|bower_components|node_modules|vendor\/bundle|vendor\/gems|[\/]\.(git|hg|svn)|tags|dist|public\/articles|public\/pages)$'
+"let g:ctrlp_custom_ignore = '\v(coverage|doc|tmp|bower_components|node_modules|vendor\/bundle|vendor\/gems|[\/]\.(git|hg|svn)|tags|dist|public\/articles|public\/pages)$'
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 let g:ctrlp_extensions = ['tag', 'mixed']
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_use_caching = 2
