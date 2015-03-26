@@ -23,3 +23,6 @@ alias eia='ember install:addon'
 alias pow=powify
 alias por='pow restart'
 alias pol='pow logs'
+
+alias gsh='git show'
+alias gcp='git cherry-pick'
