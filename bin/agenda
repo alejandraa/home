@@ -1,0 +1,1 @@
+/usr/local/bin/icalBuddy --includeOnlyEventsFromNowOn --bullet '⇒ ' --propertyOrder 'datetime,title' --excludeEndDates --propertySeparators '|: |' --noCalendarNames --includeEventProps datetime,title eventsToday

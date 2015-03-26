@@ -1,0 +1,1 @@
+/usr/local/bin/icalBuddy --bullet '◦ ' --noCalendarNames --includeCals 'Reminders' --includeTaskProps title uncompletedTasks
