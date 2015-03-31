@@ -25,6 +25,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'cyphactor/vim-open-alternate'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'rizzatti/dash.vim'
+Plugin 'tpope/vim-commentary'
 
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'leshill/vim-json'
@@ -118,6 +119,8 @@ set wildignore+=vendor/rails**,vendor/plugins**,vendor/gems/**
 set wildignore+=.DS_Store,.gitkeep,.keep
 " Ignore JS deps
 set wildignore+=bower_components,node_modules
+" Ignore build directories
+set wildignore+=build,dist
 
 " Backup and swap files
 set backupdir=~/.vim/_backup//    " where to put backup files.
@@ -263,6 +266,12 @@ autocmd BufReadPost *
 "" Markdown
 
 autocmd BufEnter *.md.html set filetype=markdown
+
+"" Ruby
+
+" Alternative Ruby extensions
+autocmd BufEnter *.jbuilder,*.thor,*.rake,*file,*.ru set filetype=ruby
+
 autocmd FileType markdown set ai formatoptions=tcroqn2 comments=n:&gt
 let g:vim_markdown_folding_disabled=1
 let g:vim_markdown_frontmatter=1
@@ -338,7 +347,7 @@ autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
 
 "" Syntastic
 
-let g:syntastic_ruby_checkers = ["mri"]
+let g:syntastic_ruby_checkers = ["mri", "rubocop"]
 let g:syntastic_enable_signs = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
