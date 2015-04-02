@@ -1,1 +1,1 @@
---database=postgresql --template=/usr/local/share/rails-template/generator.rb
+--database=postgresql --skip-bundle
