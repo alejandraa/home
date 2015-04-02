@@ -21,10 +21,12 @@ alias eib='ember install:bower'
 alias eia='ember install:addon'
 
 alias pow='chruby-exec 2.1.2 -- powify'
+alias powder=pow
 alias por='pow restart'
 alias pol='pow logs'
 
 alias gsh='git show'
 alias gcp='git cherry-pick'
+alias gpf='git push tubbo'
 
 alias rv='ruby -v'
