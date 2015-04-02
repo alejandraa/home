@@ -29,6 +29,7 @@ Session.vim
 
 # Environment configuration
 .env
+.env.local
 
 # CTags
 tags
