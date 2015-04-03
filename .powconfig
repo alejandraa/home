@@ -1,3 +1,3 @@
 #!zsh
 
-source /usr/local/share/chruby/chruby.sh
+source "$HOME/etc/profile.d/ruby.zsh"
