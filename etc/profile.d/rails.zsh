@@ -2,28 +2,14 @@
 #
 # Helpful Rails aliases
 
-_rails() {
-  if [[ -e $PWD/script/rails ]]; then
-    ./script/rails $*
-  else
-    rails $*
-  fi
-}
+alias rg='bin/rails generate'
+alias rdb='bin/rails db'
+alias rc='bin/rails console'
+alias rt='bin/rake test'
+alias ts='bin/rspec'
+alias rdm='bin/rake db:migrate'
 
-_test() {
-  if [[ -e $PWD/spec ]]; then
-    rspec $*
-  else
-    rake test $*
-  fi
-}
-
-alias rg='_rails generate'
-alias rs='_rails server'
-alias rdb='_rails db'
-alias rc='_rails console'
-alias rt='_test'
-alias rdm='rake db:migrate'
-alias rtu='_test test:units'
-alias rtf='_test test:functionals'
-alias rti='_test test:integration'
+# pow
+alias powder=powify
+alias rs='powify restart'
+alias rl='powify logs'

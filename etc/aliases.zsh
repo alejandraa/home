@@ -6,27 +6,8 @@
 alias ll='ls -la'
 alias l='ls -l'
 alias irc='chruby-exec system -- weechat'
-alias rn='chruby-exec 2.1.5 -- rails new'
 alias o='open'
 alias t='title'
 alias vb='vim +PluginInstall +qall'
-
-alias en='ember new'
-alias ena='ember addon'
-alias ea=ena
-alias eg='ember generate'
-alias es='ember server'
-alias ein='ember install:npm'
-alias eib='ember install:bower'
-alias eia='ember install:addon'
-
-alias pow='chruby-exec 2.1.2 -- powify'
-alias powder=pow
-alias por='pow restart'
-alias pol='pow logs'
-
-alias gsh='git show'
-alias gcp='git cherry-pick'
-alias gpf='git push tubbo'
-
 alias rv='ruby -v'
+alias lunchy='chruby-exec system -- /usr/bin/lunchy'

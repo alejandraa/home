@@ -1,5 +1,9 @@
+#!zsh
+
 # Change package-installed Ruby on demand
 source /usr/local/opt/chruby/share/chruby/chruby.sh
+
+# Configure where to look for Ruby versions
 RUBIES=(
   $HOME/.rubies/*
 )
@@ -8,7 +12,7 @@ RUBIES=(
 source /usr/local/opt/chruby/share/chruby/auto.sh
 
 # So we can actually compile Ruby 1.8
-export CPPFLAGS=-I/opt/X11/include
+#export CPPFLAGS=-I/opt/X11/include
 
 # Make Ruby even faster
 #RUBY_HEAP_MIN_SLOTS=1000000
@@ -17,6 +21,7 @@ export CPPFLAGS=-I/opt/X11/include
 #RUBY_GC_MALLOC_LIMIT=1000000000
 #RUBY_HEAP_FREE_MIN=500000
 
+# Bundler aliases
 alias bn='bundle install'
 alias bu='bundle update'
 alias be='bundle exec'
