@@ -58,3 +58,5 @@ tags
 
 # Directory info
 .info
+
+.sass-cache
