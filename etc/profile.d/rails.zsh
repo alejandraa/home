@@ -13,3 +13,6 @@ alias rdm='bin/rake db:migrate'
 alias powder=powify
 alias rs='powify restart'
 alias rl='powify logs'
+
+# Generate a new Rails app with a pre-configured version of Ruby
+alias rn='chruby-exec 2.2.0 -- rails new'
