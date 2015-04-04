@@ -30,6 +30,7 @@ Session.vim
 # Environment configuration
 .env
 .env.local
+.powenv
 
 # CTags
 tags
