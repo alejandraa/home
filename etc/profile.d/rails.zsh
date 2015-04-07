@@ -10,7 +10,8 @@ alias ts='bin/rspec'
 alias rdm='bin/rake db:migrate'
 
 # pow
-alias powder=powify
+alias pw='chruby-exec system -- powify'
+alias powder=pw
 alias rs='powify restart'
 alias rl='powify logs'
 
