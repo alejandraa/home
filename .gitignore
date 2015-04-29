@@ -9,4 +9,3 @@
 /.weechat/*.log
 /.weechat/sec.conf
 /etc/solarized
-/etc/profile.d/weblinc.zsh
