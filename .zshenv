@@ -25,3 +25,7 @@ export COMPLETION_WAITING_DOTS="true"
 # Colorize Grep
 export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;32'
+
+if [[ -e "$HOME/.zshsecret" ]]; then
+  source "$HOME/.zshsecret";
+fi
