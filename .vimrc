@@ -35,6 +35,7 @@ Plugin 'nono/vim-handlebars'
 Plugin 'jnwhiteh/vim-golang'
 Plugin 'toyamarinyon/vim-swift'
 Plugin 'briancollins/vim-jst'
+Plugin 'depuracao/vim-rdoc'
 
 call vundle#end()
 
