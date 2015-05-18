@@ -9,6 +9,3 @@ export PATH=$PYTHONPATH:$JSPATH:/bin:/usr/local/sbin:$PATH
 # gets confused.
 export DEFAULT_PATH=$PATH
 alias reset_path='export PATH=$DEFAULT_PATH'
-
-# Load Java on OS X
-export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home/
