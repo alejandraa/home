@@ -36,6 +36,7 @@ Plugin 'jnwhiteh/vim-golang'
 Plugin 'toyamarinyon/vim-swift'
 Plugin 'briancollins/vim-jst'
 Plugin 'depuracao/vim-rdoc'
+Plugin 'uarun/vim-protobuf'
 
 call vundle#end()
 
