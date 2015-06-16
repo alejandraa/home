@@ -338,6 +338,7 @@ let g:airline#extensions#tabline#buffer_idx_mode = 1
 
 " Alternative shell extensions
 autocmd BufEnter *.bats set filetype=zsh
+autocmd BufEnter *.env.local set filetype=zsh
 
 
 "" Make
