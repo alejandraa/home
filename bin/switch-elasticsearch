@@ -1,0 +1,5 @@
+#!/bin/sh
+
+brew update;
+brew remove elasticsearch;
+brew install elasticsearch090;
