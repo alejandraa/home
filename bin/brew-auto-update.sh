@@ -12,6 +12,9 @@ TERMINAL_NOTIFIER=`which terminal-notifier`
 NOTIF_ARGS="-sender com.apple.Terminal"
 
 $BREW_EXEC update 2>&1 > /dev/null
+$BREW_EXEC cleanup 2>&1 > /dev/null
+$BREW_EXEC doctor 2>&1 > /dev/null
+
 outdated=`$BREW_EXEC outdated --quiet`
 pinned=`$BREW_EXEC list --pinned`
 
