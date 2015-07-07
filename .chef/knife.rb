@@ -1,8 +1,11 @@
+# See https://docs.chef.io/config_rb_knife.html for more information on knife configuration options
+
+current_dir = File.dirname(__FILE__)
 log_level                :info
 log_location             STDOUT
-node_name                'tscott'
-client_key               '/Users/tscott/.chef/tubbo.pem'
-validation_client_name   'chef-validator'
-validation_key           '/Users/tscott/.chef/waxpoetic-validator.pem'
-syntax_check_cache_path  '/Users/tscott/.chef/syntax_check_cache'
-#chef_server_url          'https://coda.local:443'
+node_name                "tubbo"
+client_key               "#{current_dir}/tubbo.pem"
+validation_client_name   "waxpoetic-validator"
+validation_key           "#{current_dir}/waxpoetic-validator.pem"
+chef_server_url          "https://api.opscode.com/organizations/waxpoetic"
+cookbook_path            ["#{current_dir}/../cookbooks"]
