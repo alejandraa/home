@@ -38,6 +38,8 @@ Plugin 'briancollins/vim-jst'
 Plugin 'depuracao/vim-rdoc'
 Plugin 'uarun/vim-protobuf'
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'phmongeau/vim-slate'
+Plugin 'tmatilai/vim-monit'
 
 call vundle#end()
 
@@ -401,3 +403,6 @@ let g:eighties_compute = 1 " Disable this if you just want the minimum + extra
 "let g:eighties_bufname_additional_patterns = ['fugitiveblame'] " Defaults to [], 'fugitiveblame' is only an example. Takes a comma delimited list of bufnames as strings.
 
 nmap <leader>p :let @" = expand("%")<cr>
+
+" Alternative Monit extensions
+autocmd BufEnter *.monit set filetype=monitrc
