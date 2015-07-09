@@ -40,6 +40,9 @@ Plugin 'uarun/vim-protobuf'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'phmongeau/vim-slate'
 Plugin 'tmatilai/vim-monit'
+Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'evanmiller/nginx-vim-syntax'
+Plugin 'zah/nim.vim'
 
 call vundle#end()
 
@@ -282,18 +285,20 @@ let g:vim_markdown_frontmatter=1
 
 "" Ruby
 
-autocmd BufEnter *.thor,*.rake,*file,*.ru,*.jbuilder set filetype=ruby
 autocmd BufEnter *.gemrc set filetype=yaml
 autocmd BufEnter gemrc.erb set filetype=yaml
 autocmd BufEnter *.fdoc*,*.pv,Procfile set filetype=yaml
 
 let ruby_no_expensive=1
 
+autocmd BufEnter Dockerfile set filetype=Dockerfile
+
 
 "" Javascript
 
 autocmd BufEnter *.bowerrc set filetype=json
 autocmd BufEnter Cakefile set filetype=coffee
+autocmd BufEnter *.es6 set filetype=javascript
 
 
 "" User Interface

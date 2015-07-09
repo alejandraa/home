@@ -1,8 +1,7 @@
 # ~
 
-This is my home directory, managed by [Homer][homer].
-
-[Homer]: http://github.com/tubbo/homer
+This is my home directory, managed by [Homer][homer]. I use this repo to
+synchronize configuration and command-line tools between my machines.
 
 ## Installation
 
@@ -13,3 +12,5 @@ repo as your home dir.
 ```bash
 $ bash -c "$(curl https://raw.githubusercontent.com/tubbo/home/master/bin/bootstrap.sh)"
 ```
+
+[homer]: http://github.com/tubbo/homer

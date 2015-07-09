@@ -6,4 +6,4 @@ BUNDLE_JOBS: '4'
 BUNDLE_GEM__COC: '1'
 BUNDLE_GEM__MIT: '1'
 BUNDLE_GEM__TEST: rspec
-BUNDLE_BUILD__NOKOGIRI: "--use-system-libraries"
+BUNDLE_BUILD__NOKOGIRI: "--with-xml2-include=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/usr/include/libxml2 --use-system-libraries"
