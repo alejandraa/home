@@ -14,3 +14,5 @@ alias rv='ruby -v'
 alias lunchy='chruby-exec system -- /usr/bin/lunchy'
 alias cask='brew cask'
 alias mutt='cd ~/Desktop && /usr/local/bin/mutt'
+
+alias 1pass="echo $ONEPASSWORD_MASTER_PASSWORD | 1pass --no-prompt"

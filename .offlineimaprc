@@ -18,16 +18,16 @@ postsynchook = notmuch new
 
 [Repository Local]
 type = GmailMaildir
-localfolders = ~/Mail
+localfolders = ~/Mail/Local
 
 [Repository Psychedelica]
 type = Gmail
 remoteuser = tubbo@psychedeli.ca
-remotepasseval = get_password("PERSONAL")
+remotepasseval = get_password("Google: Personal")
 sslcacertfile = ~/etc/Certificates.cer
 
 [Repository WebLinc]
 type = Gmail
 remoteuser = tscott@weblinc.com
-remotepasseval = get_password("BUSINESS")
+remotepasseval = get_password("Google: WebLinc")
 sslcacertfile = ~/etc/Certificates.cer

@@ -16,3 +16,7 @@ text/html; ~/.mutt/view_attachment.sh %s html
 
 # Unidentified files
 application/octet-stream; ~/.mutt/view_attachment.sh %s "-"
+
+# Calendar invites
+text/calendar; mutt-ical.py -i -e "tscott@weblinc.com" %s
+application/ics; mutt-ical.py -i -e "tscott@weblinc.com" %s

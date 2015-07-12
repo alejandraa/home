@@ -26,6 +26,5 @@ export COMPLETION_WAITING_DOTS="true"
 export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;32'
 
-if [[ -e "$HOME/.zshsecret" ]]; then
-  source "$HOME/.zshsecret";
-fi
+# Use 1password to manage secret keys
+export ONEPASSWORD_KEYCHAIN=$HOME/Documents/1password.agilekeychain

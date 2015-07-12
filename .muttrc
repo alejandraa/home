@@ -46,24 +46,22 @@ hdr_order from: to: cc: date: subject:  # and in this order
 # Account Settings -----------------------------------
 
 # Default inbox.
-set spoolfile = "+Personal/INBOX"
+set spoolfile = "+Local/INBOX"
 
 # Alternate email addresses.
 alternates tubbo@psychedeli.ca still\.?tscott@weblinc.com tom@thewonderbars.com tscott@waxpoeticrecords.com
 
 # Mailboxes to show in the sidebar.
-mailboxes +Personal/INBOX #\
-          # +Personal/vim \
-          # +Personal/clojure \
-          # +Personal/python \
-          # +Personal/mercurial \
-          # +Personal/archive \
-          # +Personal/sent \
-          # +Personal/drafts \
+mailboxes +Local/INBOX #\
+          +Local/Music \
+          +Local/Receipts \
+          +Local/Drafts \
+          +Local/Sent \
+          +Local/Archive \
 
 # Other special folders.
-set mbox      = "+Personal/archive"
-set postponed = "+Personal/drafts"
+set mbox      = "+Local/Archive"
+set postponed = "+Local/Drafts"
 
 # Index View Options ---------------------------------
 set date_format = "%m/%d"
