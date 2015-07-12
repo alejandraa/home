@@ -1,0 +1,33 @@
+#
+# Mail download configuration
+#
+
+[general]
+accounts = Personal, Business
+pythonfile = ~/etc/get_password.py
+
+[Account Personal]
+localrepository = Local
+remoterepository = Psychedelica
+postsynchook = notmuch new
+
+[Account Business]
+localrepository = Local
+remoterepository = WebLinc
+postsynchook = notmuch new
+
+[Repository Local]
+type = GmailMaildir
+localfolders = ~/Mail
+
+[Repository Psychedelica]
+type = Gmail
+remoteuser = tubbo@psychedeli.ca
+remotepasseval = get_password("PERSONAL")
+sslcacertfile = ~/etc/Certificates.cer
+
+[Repository WebLinc]
+type = Gmail
+remoteuser = tscott@weblinc.com
+remotepasseval = get_password("BUSINESS")
+sslcacertfile = ~/etc/Certificates.cer

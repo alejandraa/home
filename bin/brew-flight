@@ -1,72 +1,24 @@
 #!/usr/bin/env ruby
 #
-# Install a flight of brews from a YAML file at ~/.flight.yml that has
-# the following syntax:
-#
-#     taps:
-#       - tubbo/homebrew-tap
-#       - homebrew/homebrew-versions
-#     packages:
-#       - vim
-#       - zsh
-#       - postgresql93
-#
-# To invoke, run the following command in your console:
-#
-#     brew flight
-#
-# This will install all of the packages and taps you lay out in your
-# YAML file.
+# Install a "flight" of Homebrew packages and casks
 
-require 'yaml'
+kinds = { 'brew' => 'packages', 'brew cask' => 'casks' }
 
-@config = YAML::load_file File.expand_path('~/.flight.yml')
-@installed = {
-  'taps' => `brew tap`.split("\n"),
-  'packages' => `brew list`.split("\s"),
-  'casks' => `brew cask list 2> /dev/null`.split("\s"),
-}
-@error_code = 1
+kinds.delete('brew') if ARGV.include?('--casks')
+kinds.delete('brew cask') if ARGV.include?('--packages')
 
-@config['taps'].each do |tap|
-  `brew tap #{tap} -q` unless @installed['taps'].include? tap
-  puts "Fetching formulae from '#{tap}'..."
-end
+kinds.each do |program, manifest|
+  File.open(File.expand_path("~/etc/brew/#{manifest}")).each_line.map do |formula|
+    formula.strip
+  end.each do |formula|
+    info = `#{program} info #{formula}`
+    version = info.split("\n").first.gsub(/#{formula}: /, '')
 
-puts "Fetching formulae from 'homebrew/homebrew'..."
-
-`brew update -q`
-
-def install(collection)
-  @config[collection].all? do |package|
-    if @installed[collection].include?(package)
-      puts "Using #{package}"
-      true
+    if info.include?('Not installed')
+      puts "Installing #{formula} @ #{version}..."
+      system "#{program} install #{formula} 2&>1"
     else
-      puts "Installing #{package}..."
-
-      if collection == 'casks'
-        `brew cask install #{package}`
-      else
-        `brew install #{package} -q`
-      end
-
-      unless $?.success?
-        puts "Couldn't install #{package}!"
-        @error_code = $?.to_i
-      end
-
-      $?.success?
+      puts "Using #{formula} #{version}"
     end
   end
 end
-
-code = if install('packages') && install('casks')
-  puts 'Your flight has been installed!'
-  exit 0
-else
-  puts 'There were errors installing your flight.'
-  @error_code
-end
-
-exit code

@@ -10,3 +10,5 @@
 /.weechat/sec.conf
 /etc/solarized
 .zshsecret
+etc/Certificates*
+*.pyc
