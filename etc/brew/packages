@@ -9,6 +9,7 @@ brew-cask
 chruby
 cmake
 coreutils
+contacts
 ctags
 curl
 docker
