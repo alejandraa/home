@@ -191,3 +191,6 @@ set pgp_export_command="gpg --no-verbose --export --armor %r"
 set pgp_verify_key_command="gpg --no-verbose --batch --fingerprint --check-sigs %r"
 set pgp_list_pubring_command="gpg --no-verbose --batch --with-colons --list-keys %r" 
 set pgp_list_secring_command="gpg --no-verbose --batch --with-colons --list-secret-keys %r" 
+
+# Use Solarized dark for colors
+source /Users/tscott/.mutt/mutt-colors-solarized/mutt-colors-solarized-dark-16.muttrc
