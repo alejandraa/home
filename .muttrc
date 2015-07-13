@@ -52,20 +52,30 @@ set spoolfile = "+tubbo-psychedeli.ca/INBOX"
 alternates tubbo@psychedeli.ca still\.?tscott@weblinc.com tom@thewonderbars.com tscott@waxpoeticrecords.com
 
 # Mailboxes to show in the sidebar.
-mailboxes +tubbo-psychedeli.ca/INBOX #\
-#          +tubbo-psychedeli.ca/deferred \
-#          +tubbo-psychedeli.ca/important \
-#          +tubbo-psychedeli.ca/starred \
-#          +tubbo-psychedeli.ca/sent \
-#          +tubbo-psychedeli.ca/drafts \
-#          +tubbo-psychedeli.ca/archive \
-#          +tubbo-psychedeli.ca/trash \
-#          +tubbo-psychedeli.ca/notes \
-#          +tubbo-psychedeli.ca/songs \
+mailboxes +tubbo-psychedeli.ca/INBOX \
+          +tubbo-psychedeli.ca/deferred \
+          +tubbo-psychedeli.ca/important \
+          +tubbo-psychedeli.ca/starred \
+          +tubbo-psychedeli.ca/sent \
+          +tubbo-psychedeli.ca/drafts \
+          +tubbo-psychedeli.ca/archive \
+          +tubbo-psychedeli.ca/trash \
+          +tubbo-psychedeli.ca/notes \
+          +tubbo-psychedeli.ca/songs \
 
 # Other special folders.
-set mbox      = "+tubbo-psychedeli.ca/Archive"
-set postponed = "+tubbo-psychedeli.ca/[Gmail].Drafts"
+set mbox      = "+tubbo-psychedeli.ca/archive"
+set postponed = "+tubbo-psychedeli.ca/drafts"
+
+# macro index,pager \1 "=later"     "Read message later"
+# macro index,pager \2 "=evening"   "Read message this evening"
+# macro index,pager \3 "=tomorrow"  "Read message tomorrow"
+# macro index,pager \4 "=weekend"   "Read message this weekend"
+# macro index,pager \5 "=nextweek"  "Read message next week"
+# macro index,pager \6 "=nextmonth" "Read message next month"
+# macro index,pager \7 "=someday"   "Read message at some point in the future"
+# macro index,pager \8 "=starred"   "Save message as important"
+# macro index,pager \9 "=important" "'Star' message in gmail"
 
 # Index View Options ---------------------------------
 set date_format = "%m/%d"

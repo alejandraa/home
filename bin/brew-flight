@@ -21,4 +21,6 @@ kinds.each do |program, manifest|
       puts "Using #{formula} #{version}"
     end
   end
+
+  puts "Installed all formulae to /usr/local and ~/Applications"
 end
