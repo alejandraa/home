@@ -4,7 +4,7 @@
 
 
 # Paths ----------------------------------------------
-set folder           = ~/Mail                # mailbox location
+set folder           = ~/.mail               # mailbox location
 set alias_file       = ~/.mutt/alias         # where to store aliases
 set header_cache     = ~/.mutt/cache/headers # where to store headers
 set message_cachedir = ~/.mutt/cache/bodies  # where to store bodies
@@ -46,22 +46,20 @@ hdr_order from: to: cc: date: subject:  # and in this order
 # Account Settings -----------------------------------
 
 # Default inbox.
-set spoolfile = "+Local/INBOX"
+set spoolfile = "+tubbo-psychedeli.ca/INBOX"
 
 # Alternate email addresses.
 alternates tubbo@psychedeli.ca still\.?tscott@weblinc.com tom@thewonderbars.com tscott@waxpoeticrecords.com
 
 # Mailboxes to show in the sidebar.
-mailboxes +Local/INBOX #\
-          +Local/Music \
-          +Local/Receipts \
-          +Local/Drafts \
-          +Local/Sent \
-          +Local/Archive \
+mailboxes +tubbo-psychedeli.ca/INBOX \
+          +tubbo-psychedeli.ca/Receipts \
+          +tubbo-psychedeli.ca/All Mail \
+          +tubbo-psychedeli.ca/Drafts \
 
 # Other special folders.
-set mbox      = "+Local/Archive"
-set postponed = "+Local/Drafts"
+set mbox      = "+tubbo-psychedeli.ca/Archive"
+set postponed = "+tubbo-psychedeli.ca/[Gmail].Drafts"
 
 # Index View Options ---------------------------------
 set date_format = "%m/%d"
@@ -149,7 +147,7 @@ unset record
 bind compose p postpone-message
 bind index p recall-message
 
-# Use Apple Contacts
+# Use iCloud Contacts in autocomplete
 set query_command = "contacts -Sf '%eTOKEN%n' '%s' | sed -e 's/TOKEN/\t/g'"
 bind editor <Tab> complete-query
 bind editor ^T    complete
@@ -161,3 +159,16 @@ bind pager N search-opposite
 # Full-text Search with `notmuch`
 macro index / "<enter-command>unset wait_key<enter><shell-escape>mutt-notmuch-py<enter><change-folder-readonly>~/.cache/mutt_results<enter>" \
         "search mail (using notmuch)"
+
+# Mailing Lists
+subscribe rubyonrails-security@groups.google.com
+subscribe ruby@groups.weblinc.com
+subscribe navalsquare@groups.weblinc.com
+subscribe badlands@groups.weblinc.com
+
+# Sign emails with PGP
+set pgp_use_gpg_agent = yes
+set pgp_sign_as = 9348E547
+set pgp_timeout = 3600
+set crypt_autosign = yes
+set crypt_replyencrypt = yes

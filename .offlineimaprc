@@ -3,31 +3,41 @@
 #
 
 [general]
-accounts = Personal, Business
+accounts = Psychedelica
 pythonfile = ~/etc/get_password.py
 
-[Account Personal]
-localrepository = Local
-remoterepository = Psychedelica
+[Account Psychedelica]
+localrepository = Filesystem
+remoterepository = Google
 postsynchook = notmuch new
 
-[Account Business]
-localrepository = Local
-remoterepository = WebLinc
-postsynchook = notmuch new
+[Repository Filesystem]
+type = Maildir
+localfolders = ~/.mail/tubbo-psychedeli.ca
+nametrans = lambda folder: {'[Gmail].Drafts': 'drafts',
+                            '[Gmail].Sent Mail': 'sent',
+                            '[Gmail].Starred': 'flagged',
+                            '[Gmail].Trash': 'trash',
+                            '[Gmail].All Mail': 'archive',
+                            '[Mailbox].Receipts': 'receipts',
+                            '[Mailbox].Later': 'deferred',
+                            '[Gmail].Important': 'important',
+                            }.get(folder, folder)
+folderfilter = lambda folder: folder in ['[Gmail].Drafts', '[Gmail].Sent Mail', '[Gmail].Starred', '[Gmail].Trash', '[Gmail].All Mail', '[Mailbox].Receipts', '[Mailbox].Later', '[Gmail].Important']
 
-[Repository Local]
-type = GmailMaildir
-localfolders = ~/Mail/Local
-
-[Repository Psychedelica]
+[Repository Google]
 type = Gmail
 remoteuser = tubbo@psychedeli.ca
 remotepasseval = get_password("Google: Personal")
 sslcacertfile = ~/etc/Certificates.cer
+nametrans = lambda folder: {'[Gmail].Drafts': 'drafts',
+                            '[Gmail].Sent Mail': 'sent',
+                            '[Gmail].Starred': 'flagged',
+                            '[Gmail].Trash': 'trash',
+                            '[Gmail].All Mail': 'archive',
+                            '[Mailbox].Receipts': 'receipts',
+                            '[Mailbox].Later': 'deferred',
+                            '[Gmail].Important': 'important',
+                            }.get(folder, folder)
+folderfilter = lambda folder: folder in ['[Gmail].Drafts', '[Gmail].Sent Mail', '[Gmail].Starred', '[Gmail].Trash', '[Gmail].All Mail', '[Mailbox].Receipts', '[Mailbox].Later', '[Gmail].Important']
 
-[Repository WebLinc]
-type = Gmail
-remoteuser = tscott@weblinc.com
-remotepasseval = get_password("Google: WebLinc")
-sslcacertfile = ~/etc/Certificates.cer

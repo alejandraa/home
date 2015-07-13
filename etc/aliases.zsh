@@ -16,3 +16,4 @@ alias cask='brew cask'
 alias mutt='cd ~/Desktop && /usr/local/bin/mutt'
 
 alias 1pass="echo $ONEPASSWORD_MASTER_PASSWORD | 1pass --no-prompt"
+alias mail='t 'mail';mutt'
