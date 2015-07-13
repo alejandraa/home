@@ -194,3 +194,7 @@ set pgp_list_secring_command="gpg --no-verbose --batch --with-colons --list-secr
 
 # Use Solarized dark for colors
 source /Users/tscott/.mutt/mutt-colors-solarized/mutt-colors-solarized-dark-16.muttrc
+
+# View HTML email automatically
+auto_view text/html
+alternative_order text/plain text/enriched text/html

@@ -14,30 +14,21 @@ postsynchook = notmuch new
 [Repository Filesystem]
 type = Maildir
 localfolders = ~/.mail/tubbo-psychedeli.ca
-nametrans = lambda folder: {'[Gmail].Drafts': 'drafts',
-                            '[Gmail].Sent Mail': 'sent',
-                            '[Gmail].Starred': 'flagged',
-                            '[Gmail].Trash': 'trash',
-                            '[Gmail].All Mail': 'archive',
-                            '[Mailbox].Receipts': 'receipts',
-                            '[Mailbox].Later': 'deferred',
-                            '[Gmail].Important': 'important',
-                            }.get(folder, folder)
-folderfilter = lambda folder: folder in ['[Gmail].Drafts', '[Gmail].Sent Mail', '[Gmail].Starred', '[Gmail].Trash', '[Gmail].All Mail', '[Mailbox].Receipts', '[Mailbox].Later', '[Gmail].Important']
+# nametrans = lambda folder: {'[Gmail].Drafts': 'drafts',
+#                             '[Gmail].Sent Mail': 'sent',
+#                             '[Gmail].Starred': 'flagged',
+#                             '[Gmail].Trash': 'trash',
+#                             '[Gmail].All Mail': 'archive',
+#                             'Notes': 'notes',
+#                             'Notes.Songs': 'songs',
+#                             '[Mailbox].Receipts': 'receipts',
+#                             '[Mailbox].Later': 'deferred',
+#                             '[Gmail].Important': 'important',
+#                             }.get(folder, folder)
+folderfilter = lambda folder: folder in ['[Gmail].Drafts', '[Gmail].Sent Mail', '[Gmail].Starred', '[Gmail].Trash', '[Gmail].All Mail', '[Mailbox].Receipts', '[Mailbox].Later', '[Gmail].Important', 'INBOX']
 
 [Repository Google]
 type = Gmail
 remoteuser = tubbo@psychedeli.ca
 remotepasseval = get_password("Google: Personal")
 sslcacertfile = ~/etc/Certificates.cer
-nametrans = lambda folder: {'[Gmail].Drafts': 'drafts',
-                            '[Gmail].Sent Mail': 'sent',
-                            '[Gmail].Starred': 'flagged',
-                            '[Gmail].Trash': 'trash',
-                            '[Gmail].All Mail': 'archive',
-                            '[Mailbox].Receipts': 'receipts',
-                            '[Mailbox].Later': 'deferred',
-                            '[Gmail].Important': 'important',
-                            }.get(folder, folder)
-folderfilter = lambda folder: folder in ['[Gmail].Drafts', '[Gmail].Sent Mail', '[Gmail].Starred', '[Gmail].Trash', '[Gmail].All Mail', '[Mailbox].Receipts', '[Mailbox].Later', '[Gmail].Important']
-
