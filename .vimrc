@@ -411,3 +411,6 @@ nmap <leader>p :let @" = expand("%")<cr>
 
 " Alternative Monit extensions
 autocmd BufEnter *.monit set filetype=monitrc
+autocmd BufEnter *.monit.erb set filetype=monitrc
+
+
