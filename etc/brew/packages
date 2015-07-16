@@ -58,6 +58,7 @@ llvm35
 lua
 makedepend
 mongodb
+msmtp
 mutt
 nettle
 node

@@ -9,7 +9,7 @@ pythonfile = ~/etc/get_password.py
 [Account Psychedelica]
 localrepository = Filesystem
 remoterepository = Google
-postsynchook = notmuch new
+postsynchook = ~/bin/reindex-mail
 
 [Repository Filesystem]
 type = Maildir
