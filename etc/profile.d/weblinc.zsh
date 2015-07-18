@@ -30,6 +30,11 @@ weblinc-plugin() {
     --no-rc
 }
 
+# Easy alias to any weblinc function.
+weblinc() {
+  weblinc-$1 $2
+}
+
 # Override the `bundle` command to authenticate with the WebLinc gem
 # server before usage.
 bundle() {
