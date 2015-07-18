@@ -1,7 +1,42 @@
 #!zsh
+#
+# Commands exclusive to my work life.
 
-alias weblinc="chruby-exec 2.2.2 -- GEMS_PATH='~/Code' rails new $1 --template=~/Code/weblinc/docs/guides/source/app_template.rb --skip-active-record --no-rc"
+# Restart the demo app server from anywhere.
 alias rsd='pw restart demo'
+
+# Stop running Spring.
 alias ss='spring stop'
 
-export BUNDLE_GEMS__WEBLINC__COM=$(1pass 'WebLinc: Gem Server')
+# Create a new WebLinc app implementation using the app template
+# generator.
+weblinc-app() {
+  export GEMS_PATH='~/Code'
+  #bundle config gems.weblinc.com $(1pass 'WebLinc: Gem Server');
+  /usr/local/bin/chruby 2.2.2;
+  /usr/local/bin/chruby-exec 2.2.2 -- rails new $1 \
+    --template=~/Code/weblinc/docs/guides/source/app_template.rb \
+    --skip-active-record \
+    --no-rc
+}
+
+# Create a new WebLinc plugin using the plugin template generator.
+weblinc-plugin() {
+  export GEMS_PATH='~/Code'
+  /usr/local/bin/chruby 2.2.2;
+  /usr/local/bin/chruby-exec 2.2.2 -- rails plugin new $1 \
+    --template=~/Code/weblinc/docs/guides/source/plugin_template.rb \
+    --skip-active-record \
+    --no-rc
+}
+
+# Override the `bundle` command to authenticate with the WebLinc gem
+# server before usage.
+bundle() {
+  export BUNDLE_GEMS__WEBLINC__COM=$(1pass 'WebLinc: Gem Server');
+  if [[ -f ./bin/bundle ]]; then
+    ./bin/bundle $?
+  else
+    /usr/bin/bundle $?
+  fi
+}
