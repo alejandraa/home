@@ -16,7 +16,6 @@ docker
 editorconfig
 elasticsearch
 elixir
-emacs
 erlang
 fig
 flac
@@ -67,7 +66,7 @@ offline-imap
 openssl
 optipng
 pcre
-phantomjs192
+phantomjs198
 pkg-config
 pngcrush
 postgresql
