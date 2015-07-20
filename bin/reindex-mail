@@ -8,5 +8,5 @@ require 'terminal-notifier'
 system 'notmuch new'
 
 # Send a desktop notification when new mail comes in.
-num = `~/.mail/tubbo-psychedeli.ca/INBOX/new | wc -l`
-TerminalNotifier.notify "You have #{num} new messages.", title: 'Mail' if num > 0
+num = `ls -l ~/.mail/tubbo-psychedeli.ca/INBOX/new | wc -l`
+TerminalNotifier.notify "You have #{num} new messages.", title: 'Mail' if num.to_i > 0
