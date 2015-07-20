@@ -8,5 +8,11 @@ require 'terminal-notifier'
 system 'notmuch new'
 
 # Send a desktop notification when new mail comes in.
-num = `ls -l ~/.mail/tubbo-psychedeli.ca/INBOX/new | wc -l`
-TerminalNotifier.notify "You have #{num} new messages.", title: 'Mail' if num.to_i > 0
+num = `ls -l ~/.mail/tubbo-psychedeli.ca/INBOX/new | wc -l`.to_i
+message = case
+when num == 1
+  "You have a new message."
+when num > 0
+  "You have #{num} new messages."
+end
+TerminalNotifier.notify message, title: 'mutt' unless message.nil?
