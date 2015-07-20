@@ -12,7 +12,6 @@ alias ss='spring stop'
 # generator.
 weblinc-app() {
   export GEMS_PATH='~/Code'
-  #bundle config gems.weblinc.com $(1pass 'WebLinc: Gem Server');
   /usr/local/bin/chruby 2.2.2;
   /usr/local/bin/chruby-exec 2.2.2 -- rails new $1 \
     --template=~/Code/weblinc/docs/guides/source/app_template.rb \
@@ -38,10 +37,10 @@ weblinc() {
 # Override the `bundle` command to authenticate with the WebLinc gem
 # server before usage.
 bundle() {
-  export BUNDLE_GEMS__WEBLINC__COM=$(1pass 'WebLinc: Gem Server');
+  export BUNDLE_GEMS__WEBLINC__COM=$(echo $ONEPASSWORD_MASTER_PASSWORD | 1pass --no-prompt 'WebLinc: Gem Server');
   if [[ -f ./bin/bundle ]]; then
-    ./bin/bundle $?
+    ./bin/bundle $*
   else
-    /usr/bin/bundle $?
+    /usr/bin/bundle $*
   fi
 }
