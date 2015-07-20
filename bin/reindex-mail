@@ -9,6 +9,7 @@ system 'notmuch new'
 
 # Send a desktop notification when new mail comes in.
 num = `ls -l ~/.mail/tubbo-psychedeli.ca/INBOX/new | wc -l`.to_i
+num -= 1
 message = case
 when num == 1
   "You have a new message."
