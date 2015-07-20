@@ -28,3 +28,7 @@ export GREP_COLOR='1;32'
 
 # Use 1password to manage secret keys
 export ONEPASSWORD_KEYCHAIN=$HOME/Documents/1password.agilekeychain
+
+if [[ -f $HOME/.zshsecret ]]; then
+  source $HOME/.zshsecret
+fi
