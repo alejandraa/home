@@ -30,7 +30,7 @@
 [core]
   editor = vim
   pager = less -r
-  excludesfile = /Users/tscott/.gitignore.global
+  excludesfile = /Users/tscott/etc/gitignore
 [merge]
   tool = vimdiff
 [diff]
