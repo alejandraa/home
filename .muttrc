@@ -39,7 +39,7 @@ set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)
 
 # Header Options -------------------------------------
 ignore *                                # ignore all headers
-unignore from: to: cc: date: subject:   # show only these
+unignore from to cc date subject   # show only these
 unhdr_order *                           # some distros order things by default
 hdr_order from: to: cc: date: subject:  # and in this order
 
@@ -60,8 +60,7 @@ mailboxes +tubbo-psychedeli.ca/INBOX \
           +tubbo-psychedeli.ca/drafts \
           +tubbo-psychedeli.ca/archive \
           +tubbo-psychedeli.ca/trash \
-          +tubbo-psychedeli.ca/notes \
-          +tubbo-psychedeli.ca/songs \
+          +tubbo-psychedeli.ca/receipts \
 
 # Other special folders.
 set mbox      = "+tubbo-psychedeli.ca/archive"
