@@ -33,14 +33,3 @@ weblinc-plugin() {
 weblinc() {
   weblinc-$1 $2
 }
-
-# Override the `bundle` command to authenticate with the WebLinc gem
-# server before usage.
-bundle() {
-  export BUNDLE_GEMS__WEBLINC__COM=$(echo $ONEPASSWORD_MASTER_PASSWORD | 1pass --no-prompt 'WebLinc: Gem Server');
-  if [[ -f ./bin/bundle ]]; then
-    ./bin/bundle $*
-  else
-    /usr/bin/bundle $*
-  fi
-}
