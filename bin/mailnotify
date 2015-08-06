@@ -1,5 +1,5 @@
 #/bin/zsh
 
-if [[ $1 != "You have 0 new messages." ]]; then
+if [[ $1 != "You have 0 new messages" ]]; then
   terminal-notifier -title "Mutt" -sender "com.apple.Mail" -message "$1"
 fi

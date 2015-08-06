@@ -43,5 +43,5 @@ def show_highlight(data, signal, message)
 end
 
 def show_notification(title, message)
-  TerminalNotifier.notify(message, { :title  => title })
+  TerminalNotifier.notify(message, title: title, sender: 'com.atlassian.HipChat')
 end
