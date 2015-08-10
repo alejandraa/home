@@ -8,9 +8,9 @@ alias l='ls -l'
 alias irc='chruby-exec system -- weechat'
 alias o='open'
 alias t='title'
-
 alias vb='vim +PluginInstall +qall'
 alias rv='ruby -v'
 alias lunchy='chruby-exec system -- /usr/bin/lunchy'
 alias cask='brew cask'
 alias email="t 'mail' && mutt"
+alias eml=email
