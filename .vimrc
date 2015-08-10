@@ -43,6 +43,7 @@ Plugin 'tmatilai/vim-monit'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'evanmiller/nginx-vim-syntax'
 Plugin 'zah/nim.vim'
+Plugin 'cespare/vim-toml'
 
 call vundle#end()
 
