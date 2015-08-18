@@ -1,5 +1,17 @@
-#/bin/zsh
+#!/usr/bin/env ruby
 
-if [[ $1 != "You have 0 new messages" ]]; then
-  terminal-notifier -title "Mutt" -sender "com.apple.Mail" -message "$1"
-fi
+HOME = ENV['HOME']
+STORE = "#{HOME}/.last-mutt-message"
+last = File.read(STORE)
+exit 0 if ARGV[0] == "You have 0 new messages"
+
+message = if ARGV[0] == "You have 1 new messages"
+  "You have a new message"
+else
+  ARGV[0]
+end
+
+if last != message
+  File.write STORE, message
+  `terminal-notifier -title "Mutt" -sender "com.apple.Mail" -message "#{message}"`
+end
