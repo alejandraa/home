@@ -26,6 +26,7 @@ Plugin 'cyphactor/vim-open-alternate'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'rizzatti/dash.vim'
 Plugin 'tpope/vim-commentary'
+Plugin 'duggiefresh/vim-easydir'
 
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'leshill/vim-json'
